@@ -4,93 +4,42 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lead Generation Dashboard — 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    /* Intercare Brand Colors */
-    --green:   #26CCA0;
-    --navy:    #291A6B;
-    --purple:  #8270DE;
-    --blue:    #77D6FF;
-    --yellow:  #FFD333;
-    --cream:   #FCF9F7;
+    --green:#26CCA0; --navy:#291A6B; --purple:#8270DE;
+    --blue:#77D6FF; --yellow:#FFD333; --cream:#FCF9F7;
+    --bg:#ffffff; --surface:#ffffff; --surface2:var(--cream);
+    --border:#e8e4f0; --text:var(--navy); --muted:#7a7099;
+    --accent:var(--green); --success:var(--green); --danger:#e05252;
+    --digital:var(--green); --outreach:var(--purple);
+    --green-light:rgba(38,204,160,0.10); --navy-light:rgba(41,26,107,0.08);
+    --purple-light:rgba(130,112,222,0.10); --yellow-light:rgba(255,211,51,0.18);
+    --blue-light:rgba(119,214,255,0.18);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;min-height:100vh;overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 5% 0%,rgba(38,204,160,0.07) 0%,transparent 45%),radial-gradient(ellipse at 95% 95%,rgba(130,112,222,0.06) 0%,transparent 40%);pointer-events:none;z-index:0;}
+  .container{max-width:1400px;margin:0 auto;padding:2rem;position:relative;z-index:1;}
 
-    /* Semantic mappings */
-    --bg:       #ffffff;
-    --surface:  #ffffff;
-    --surface2: var(--cream);
-    --border:   #e8e4f0;
-    --text:     var(--navy);
-    --muted:    #7a7099;
-    --accent:   var(--green);
-    --success:  var(--green);
-    --danger:   #e05252;
-    --digital:  var(--green);
-    --outreach: var(--purple);
-    --campaign: #f0a500;
+  header{display:flex;align-items:center;justify-content:space-between;margin-bottom:2.5rem;padding-bottom:1.5rem;border-bottom:2px solid var(--border);}
+  .header-brand{display:flex;align-items:center;gap:0.75rem;}
+  .brand-icon{width:40px;height:40px;background:var(--green);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .brand-icon svg{width:24px;height:24px;}
+  .header-left h1{font-family:'Nunito',sans-serif;font-size:1.75rem;font-weight:800;color:var(--navy);line-height:1;letter-spacing:-0.02em;}
+  .header-left h1 span{color:var(--green);}
+  .header-left p{font-size:0.65rem;color:var(--muted);margin-top:0.3rem;letter-spacing:0.1em;text-transform:uppercase;}
+  .header-right{text-align:right;font-size:0.65rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;}
+  .header-right .date{font-size:0.95rem;color:var(--navy);font-weight:700;}
 
-    /* Green shade overlay */
-    --green-light: rgba(38,204,160,0.10);
-    --navy-light:  rgba(41,26,107,0.08);
-    --purple-light:rgba(130,112,222,0.10);
-    --yellow-light:rgba(255,211,51,0.18);
-    --blue-light:  rgba(119,214,255,0.18);
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { background:var(--bg); color:var(--text); font-family:'Nunito',sans-serif; min-height:100vh; overflow-x:hidden; }
-  body::before {
-    content:''; position:fixed; inset:0;
-    background: radial-gradient(ellipse at 5% 0%, rgba(38,204,160,0.07) 0%, transparent 45%),
-                radial-gradient(ellipse at 95% 95%, rgba(130,112,222,0.06) 0%, transparent 40%);
-    pointer-events:none; z-index:0;
-  }
-  .container { max-width:1400px; margin:0 auto; padding:2rem; position:relative; z-index:1; }
+  .section-label{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;font-weight:700;}
+  .section-label::after{content:'';flex:1;height:1px;background:var(--border);}
 
-  /* ── Header ── */
-  header {
-    display:flex; align-items:center; justify-content:space-between;
-    margin-bottom:2.5rem; padding-bottom:1.5rem;
-    border-bottom:2px solid var(--border);
-  }
-  .header-brand { display:flex; align-items:center; gap:0.75rem; }
-  .brand-icon {
-    width:40px; height:40px; background:var(--green); border-radius:10px;
-    display:flex; align-items:center; justify-content:center; flex-shrink:0;
-  }
-  .brand-icon svg { width:24px; height:24px; }
-  .header-left h1 {
-    font-family:'Nunito',sans-serif; font-size:1.75rem; font-weight:800;
-    color:var(--navy); line-height:1; letter-spacing:-0.02em;
-  }
-  .header-left h1 span { color:var(--green); }
-  .header-left p { font-size:0.65rem; color:var(--muted); margin-top:0.3rem; letter-spacing:0.1em; text-transform:uppercase; }
-  .header-right { text-align:right; font-size:0.65rem; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; }
-  .header-right .date { font-size:0.95rem; color:var(--navy); font-weight:700; }
+  .card{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:1.25rem;position:relative;overflow:hidden;transition:border-color 0.2s,box-shadow 0.2s;box-shadow:0 1px 4px rgba(41,26,107,0.04);}
+  .card:hover{border-color:var(--green);box-shadow:0 4px 16px rgba(38,204,160,0.10);}
 
-  /* ── Section label ── */
-  .section-label {
-    font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase;
-    color:var(--muted); margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;
-    font-weight:700;
-  }
-  .section-label::after { content:''; flex:1; height:1px; background:var(--border); }
-
-  /* ── Cards ── */
-  .card {
-    background:#fff; border:1.5px solid var(--border); border-radius:14px;
-    padding:1.25rem; position:relative; overflow:hidden;
-    transition:border-color 0.2s, box-shadow 0.2s;
-    box-shadow: 0 1px 4px rgba(41,26,107,0.04);
-  }
-  .card:hover { border-color:var(--green); box-shadow:0 4px 16px rgba(38,204,160,0.10); }
-
-  /* ── KPI Grid ── */
-  .kpi-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:1rem; margin-bottom:2.5rem; }
-  .kpi-card {
-    background:#fff; border:1.5px solid var(--border); border-radius:14px; padding:1.25rem;
-    box-shadow:0 1px 4px rgba(41,26,107,0.04);
-    animation:fadeSlideUp 0.5s ease both;
-  }
+  .kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-bottom:2.5rem;}
+  .kpi-card{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:1.25rem;box-shadow:0 1px 4px rgba(41,26,107,0.04);animation:fadeSlideUp 0.5s ease both;}
   .kpi-card:nth-child(1){animation-delay:0.05s}.kpi-card:nth-child(2){animation-delay:0.1s}
   .kpi-card:nth-child(3){animation-delay:0.15s}.kpi-card:nth-child(4){animation-delay:0.2s}
   .kpi-card:nth-child(5){animation-delay:0.25s}
@@ -101,199 +50,127 @@
   @keyframes drawCircle{from{stroke-dashoffset:314}}
   @keyframes fillBar{from{width:0%!important}}
 
-  .kpi-label { font-size:0.58rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--muted); margin-bottom:0.5rem; font-weight:700; }
-  .kpi-value { font-family:'Nunito',sans-serif; font-size:2.4rem; font-weight:800; line-height:1; margin-bottom:0.25rem; }
-  .kpi-sub { font-size:0.6rem; color:var(--muted); }
-  .kpi-badge { display:inline-block; font-size:0.55rem; padding:0.15rem 0.4rem; border-radius:20px; margin-top:0.4rem; font-weight:700; }
+  .kpi-label{font-size:0.58rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--muted);margin-bottom:0.5rem;font-weight:700;}
+  .kpi-value{font-family:'Nunito',sans-serif;font-size:2.4rem;font-weight:800;line-height:1;margin-bottom:0.25rem;}
+  .kpi-sub{font-size:0.6rem;color:var(--muted);}
+  .kpi-badge{display:inline-block;font-size:0.55rem;padding:0.15rem 0.4rem;border-radius:20px;margin-top:0.4rem;font-weight:700;}
+  .card-title{font-family:'Nunito',sans-serif;font-size:0.72rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1rem;color:var(--navy);}
+  .card-title span{color:var(--green);}
+  .chip{display:inline-block;font-size:0.52rem;padding:0.1rem 0.4rem;border-radius:20px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;}
+  .chip-digital{background:var(--green-light);color:#1a9e7c;}
+  .chip-outreach{background:var(--purple-light);color:#5b47c4;}
 
-  .card-title { font-family:'Nunito',sans-serif; font-size:0.72rem; font-weight:800; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:1rem; color:var(--navy); }
-  .card-title span { color:var(--green); }
+  .goal-card{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:1.5rem 2rem;display:grid;grid-template-columns:1fr 2fr 1fr;gap:2rem;align-items:center;box-shadow:0 1px 4px rgba(41,26,107,0.04);}
+  .goal-stat h2{font-family:'Nunito',sans-serif;font-size:3.5rem;font-weight:800;color:var(--green);line-height:1;}
+  .goal-stat p{font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);font-weight:700;}
+  .goal-track{width:100%;height:22px;background:var(--cream);border-radius:50px;overflow:hidden;border:1.5px solid var(--border);position:relative;}
+  .goal-tick-marks{display:flex;justify-content:space-between;margin-top:0.4rem;padding:0 2px;}
+  .goal-tick{font-size:0.52rem;color:var(--muted);font-weight:600;}
 
-  /* ── Chips ── */
-  .chip { display:inline-block; font-size:0.52rem; padding:0.1rem 0.4rem; border-radius:20px; text-transform:uppercase; letter-spacing:0.08em; font-weight:700; }
-  .chip-digital  { background:var(--green-light);  color:#1a9e7c; }
-  .chip-outreach { background:var(--purple-light); color:#5b47c4; }
+  .source-row{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.8rem;}
+  .source-track{flex:1;height:10px;background:var(--cream);border-radius:50px;overflow:hidden;}
+  .source-fill{height:100%;border-radius:50px;animation:growWidth 0.7s ease both;}
 
-  /* ── Goal card ── */
-  .goal-card {
-    background:#fff; border:1.5px solid var(--border); border-radius:14px;
-    padding:1.5rem 2rem; display:grid; grid-template-columns:1fr 2fr 1fr;
-    gap:2rem; align-items:center; box-shadow:0 1px 4px rgba(41,26,107,0.04);
-  }
-  .goal-stat h2 { font-family:'Nunito',sans-serif; font-size:3.5rem; font-weight:800; color:var(--green); line-height:1; }
-  .goal-stat p { font-size:0.6rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); font-weight:700; }
-  .goal-track { width:100%; height:22px; background:var(--cream); border-radius:50px; overflow:hidden; border:1.5px solid var(--border); }
-  .goal-fill { height:100%; background:linear-gradient(90deg,var(--green),#56e8c4); border-radius:50px; animation:fillBar 1s ease 0.3s both; }
-  .goal-tick-marks { display:flex; justify-content:space-between; margin-top:0.4rem; padding:0 2px; }
-  .goal-tick { font-size:0.52rem; color:var(--muted); font-weight:600; }
-  .pace-val { font-family:'Nunito',sans-serif; font-size:1.8rem; font-weight:800; color:var(--navy); line-height:1; }
+  .pipeline-donut{display:flex;gap:1.5rem;align-items:center;}
+  .donut-wrap{position:relative;flex-shrink:0;}
+  .donut-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;}
+  .dc-val{font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;color:var(--navy);}
+  .dc-label{font-size:0.52rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;font-weight:700;}
+  .legend-item{display:flex;align-items:center;gap:0.5rem;margin-bottom:0.45rem;}
+  .legend-dot{width:8px;height:8px;border-radius:3px;flex-shrink:0;}
+  .legend-name{font-size:0.6rem;color:var(--navy);flex:1;font-weight:600;}
+  .legend-count{font-size:0.6rem;color:var(--muted);}
+  .legend-pct{font-size:0.6rem;font-weight:700;text-align:right;min-width:34px;}
 
-  /* ── Source bars ── */
-  .source-row { display:flex; align-items:center; gap:0.75rem; margin-bottom:0.8rem; }
-  .source-track { flex:1; height:10px; background:var(--cream); border-radius:50px; overflow:hidden; }
-  .source-fill { height:100%; border-radius:50px; animation:growWidth 0.7s ease both; }
-
-  /* ── Pipeline donut ── */
-  .pipeline-donut { display:flex; gap:1.5rem; align-items:center; }
-  .donut-wrap { position:relative; flex-shrink:0; }
-  .donut-center { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; }
-  .dc-val { font-family:'Nunito',sans-serif; font-size:1.4rem; font-weight:800; color:var(--navy); }
-  .dc-label { font-size:0.52rem; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; font-weight:700; }
-  .legend-item { display:flex; align-items:center; gap:0.5rem; margin-bottom:0.45rem; }
-  .legend-dot { width:8px; height:8px; border-radius:3px; flex-shrink:0; }
-  .legend-name { font-size:0.6rem; color:var(--navy); flex:1; font-weight:600; }
-  .legend-count { font-size:0.6rem; color:var(--muted); }
-  .legend-pct { font-size:0.6rem; font-weight:700; text-align:right; min-width:34px; }
-
-  /* ── Conv items ── */
-  .conv-item { display:flex; justify-content:space-between; align-items:center; padding:0.6rem 0.75rem; background:var(--cream); border-radius:8px; border-left:3px solid transparent; margin-bottom:0.5rem; }
+  .conv-item{display:flex;justify-content:space-between;align-items:center;padding:0.6rem 0.75rem;background:var(--cream);border-radius:8px;border-left:3px solid transparent;margin-bottom:0.5rem;}
   .conv-item.best{border-left-color:var(--green)}.conv-item.mid{border-left-color:var(--yellow)}.conv-item.low{border-left-color:var(--muted)}
-  .conv-item-label { font-size:0.62rem; font-weight:700; color:var(--navy); }
-  .conv-item-pct { font-family:'Nunito',sans-serif; font-size:1.1rem; font-weight:800; }
-  .conv-item-detail { font-size:0.52rem; color:var(--muted); }
+  .conv-item-label{font-size:0.62rem;font-weight:700;color:var(--navy);}
+  .conv-item-pct{font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:800;}
+  .conv-item-detail{font-size:0.52rem;color:var(--muted);}
 
-  /* ── Decline bars ── */
-  .decline-item { display:flex; align-items:center; gap:0.75rem; margin-bottom:0.45rem; }
-  .decline-reason { font-size:0.6rem; flex:1; color:var(--navy); font-weight:600; }
-  .decline-bar-bg { width:80px; height:6px; background:var(--cream); border-radius:50px; overflow:hidden; }
-  .decline-bar-fill { height:100%; background:var(--danger); border-radius:50px; opacity:0.6; }
-  .decline-count { font-size:0.6rem; color:var(--muted); width:20px; text-align:right; font-weight:700; }
+  .decline-item{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.45rem;}
+  .decline-reason{font-size:0.6rem;flex:1;color:var(--navy);font-weight:600;}
+  .decline-bar-bg{width:80px;height:6px;background:var(--cream);border-radius:50px;overflow:hidden;}
+  .decline-bar-fill{height:100%;background:var(--danger);border-radius:50px;opacity:0.6;}
+  .decline-count{font-size:0.6rem;color:var(--muted);width:28px;text-align:right;font-weight:700;}
 
-  /* ── Territory Table ── */
-  .territory-table { width:100%; border-collapse:collapse; font-size:0.65rem; }
-  .territory-table th { text-transform:uppercase; letter-spacing:0.1em; font-size:0.52rem; color:var(--muted); font-weight:700; padding:0.5rem 0.75rem; text-align:left; border-bottom:2px solid var(--border); }
-  .territory-table td { padding:0.6rem 0.75rem; border-bottom:1px solid var(--border); color:var(--navy); }
+  .territory-table{width:100%;border-collapse:collapse;font-size:0.65rem;}
+  .territory-table th{text-transform:uppercase;letter-spacing:0.1em;font-size:0.52rem;color:var(--muted);font-weight:700;padding:0.5rem 0.75rem;text-align:left;border-bottom:2px solid var(--border);}
+  .territory-table td{padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--navy);}
   .territory-table tr:last-child td{border-bottom:none}
   .territory-table tr:hover td{background:var(--cream)}
-  .territory-name { font-family:'Nunito',sans-serif; font-weight:800; font-size:0.75rem; color:var(--navy); }
-  .mini-bar-bg { background:var(--cream); border-radius:50px; height:6px; overflow:hidden; }
-  .mini-bar-fill { height:100%; background:var(--green); border-radius:50px; }
-  .conversion-badge { display:inline-block; padding:0.15rem 0.45rem; border-radius:20px; font-size:0.58rem; font-weight:700; }
+  .territory-name{font-family:'Nunito',sans-serif;font-weight:800;font-size:0.75rem;color:var(--navy);}
+  .mini-bar-bg{background:var(--cream);border-radius:50px;height:6px;overflow:hidden;}
+  .mini-bar-fill{height:100%;background:var(--green);border-radius:50px;}
+  .conversion-badge{display:inline-block;padding:0.15rem 0.45rem;border-radius:20px;font-size:0.58rem;font-weight:700;}
 
-  /* ── Campaign cards ── */
-  .campaign-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0.75rem; }
-  .campaign-card { background:var(--cream); border:1.5px solid var(--border); border-radius:12px; padding:1rem; transition:border-color 0.2s,box-shadow 0.2s; }
+  .campaign-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0.75rem;}
+  .campaign-card{background:var(--cream);border:1.5px solid var(--border);border-radius:12px;padding:1rem;transition:border-color 0.2s,box-shadow 0.2s;}
   .campaign-card:hover{border-color:var(--green);box-shadow:0 4px 12px rgba(38,204,160,0.12)}
-  .campaign-name { font-family:'Nunito',sans-serif; font-size:0.8rem; font-weight:800; color:var(--navy); margin-bottom:0.2rem; }
-  .campaign-cpa { font-family:'Nunito',sans-serif; font-size:1.6rem; font-weight:800; color:var(--navy); line-height:1; }
-  .campaign-label { font-size:0.52rem; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.25rem; font-weight:700; }
-  .cpa-bar-bg { height:4px; background:rgba(41,26,107,0.08); border-radius:50px; margin-top:0.5rem; overflow:hidden; }
-  .cpa-bar-fill { height:100%; background:var(--green); border-radius:50px; animation:growWidth 0.8s ease both; }
-  .campaign-summary { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; padding:1rem 1.25rem; background:var(--navy); border-radius:10px; margin-bottom:1.25rem; }
-  .cs-label { font-size:0.52rem; text-transform:uppercase; letter-spacing:0.1em; color:rgba(255,255,255,0.55); margin-bottom:0.25rem; font-weight:700; }
-  .cs-value { font-family:'Nunito',sans-serif; font-size:1.2rem; font-weight:800; color:#fff; }
+  .campaign-name{font-family:'Nunito',sans-serif;font-size:0.8rem;font-weight:800;color:var(--navy);margin-bottom:0.2rem;}
+  .campaign-cpa{font-family:'Nunito',sans-serif;font-size:1.6rem;font-weight:800;color:var(--navy);line-height:1;}
+  .campaign-label{font-size:0.52rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.25rem;font-weight:700;}
+  .cpa-bar-bg{height:4px;background:rgba(41,26,107,0.08);border-radius:50px;margin-top:0.5rem;overflow:hidden;}
+  .cpa-bar-fill{height:100%;background:var(--green);border-radius:50px;animation:growWidth 0.8s ease both;}
+  .campaign-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding:1rem 1.25rem;background:var(--navy);border-radius:10px;margin-bottom:1.25rem;}
+  .cs-label{font-size:0.52rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.55);margin-bottom:0.25rem;font-weight:700;}
+  .cs-value{font-family:'Nunito',sans-serif;font-size:1.2rem;font-weight:800;color:#fff;}
 
-  /* ── Layouts ── */
-  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:2.5rem; }
-  .full-width { margin-bottom:2.5rem; }
-
-  /* ── Live dot ── */
-  .live-dot { display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--green); margin-right:6px; animation:pulse 2s ease infinite; vertical-align:middle; }
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2.5rem;}
+  .full-width{margin-bottom:2.5rem;}
+  .live-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);margin-right:6px;animation:pulse 2s ease infinite;vertical-align:middle;}
   @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(1.4)}}
 
+  /* ── RESPONSIVE ── */
+  @media(max-width:900px){
+    .container{padding:1.25rem;}
+    header{flex-direction:column;align-items:flex-start;gap:0.75rem;}
+    .header-right{text-align:left;}
+    .kpi-grid{grid-template-columns:repeat(2,1fr);}
+    .kpi-card:nth-child(5){grid-column:span 2;}
+    .kpi-value{font-size:2rem;}
+    .goal-card{grid-template-columns:1fr;gap:1.25rem;padding:1.25rem;}
+    .goal-stat h2{font-size:2.75rem;}
+    .grid-2{grid-template-columns:1fr;}
+    .campaign-grid{grid-template-columns:repeat(2,1fr);}
+    .campaign-summary{grid-template-columns:repeat(2,1fr);gap:0.75rem;}
+    .pipeline-donut{flex-direction:column;align-items:flex-start;}
+    .donut-wrap{align-self:center;}
+    .territory-table th:nth-child(7),.territory-table td:nth-child(7){display:none;}
+  }
+  @media(max-width:600px){
+    .container{padding:1rem;}
+    .header-left h1{font-size:1.35rem;}
+    .brand-icon{width:34px;height:34px;}
+    .kpi-grid{grid-template-columns:1fr 1fr;gap:0.65rem;margin-bottom:1.75rem;}
+    .kpi-card{padding:0.9rem;}
+    .kpi-card:nth-child(5){grid-column:span 2;}
+    .kpi-value{font-size:1.8rem;}
+    .kpi-sub{font-size:0.55rem;}
+    .goal-card{padding:1rem;}
+    .goal-stat h2{font-size:2.4rem;}
+    .campaign-grid{grid-template-columns:1fr 1fr;gap:0.6rem;}
+    .campaign-card{padding:0.75rem;}
+    .campaign-cpa{font-size:1.3rem;}
+    .campaign-summary{grid-template-columns:repeat(2,1fr);padding:0.75rem;}
+    .cs-value{font-size:1rem;}
+    .pipeline-donut{flex-direction:column;align-items:center;}
+    .territory-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+    .territory-table{min-width:480px;font-size:0.58rem;}
+    .territory-table th,.territory-table td{padding:0.4rem 0.5rem;}
+    .territory-table th:nth-child(7),.territory-table td:nth-child(7),
+    .territory-table th:nth-child(8),.territory-table td:nth-child(8){display:none;}
+    .card{padding:1rem;border-radius:10px;}
+    .card-title{font-size:0.65rem;}
+    .grid-2{gap:0.75rem;margin-bottom:1.75rem;}
+    .full-width{margin-bottom:1.75rem;}
+  }
+  @media(max-width:380px){
+    .kpi-grid{grid-template-columns:1fr;}
+    .kpi-card:nth-child(5){grid-column:span 1;}
+    .campaign-grid{grid-template-columns:1fr;}
+  }
   ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:#f0f0f0}::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
-
-  /* ═══════════════════════════════
-     RESPONSIVE — TABLET (≤900px)
-  ═══════════════════════════════ */
-  @media (max-width: 900px) {
-    .container { padding: 1.25rem; }
-
-    header { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
-    .header-right { text-align: left; }
-
-    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
-    .kpi-card:nth-child(5) { grid-column: span 2; }
-    .kpi-value { font-size: 2rem; }
-
-    .goal-card { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.25rem; }
-    .goal-stat h2 { font-size: 2.75rem; }
-
-    .grid-2 { grid-template-columns: 1fr; }
-
-    .campaign-grid { grid-template-columns: repeat(2, 1fr); }
-    .campaign-summary { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
-
-    .pipeline-donut { flex-direction: column; align-items: flex-start; }
-    .donut-wrap { align-self: center; }
-
-    .source-row { flex-wrap: wrap; }
-    .source-row > div:first-child { width: 100%; margin-bottom: 0.25rem; }
-
-    /* Territory table — hide less critical cols on tablet */
-    .territory-table th:nth-child(7),
-    .territory-table td:nth-child(7) { display: none; }
-  }
-
-  /* ═══════════════════════════════
-     RESPONSIVE — MOBILE (≤600px)
-  ═══════════════════════════════ */
-  @media (max-width: 600px) {
-    .container { padding: 1rem; }
-
-    .header-left h1 { font-size: 1.35rem; }
-    .brand-icon { width: 34px; height: 34px; }
-
-    .kpi-grid { grid-template-columns: 1fr 1fr; gap: 0.65rem; margin-bottom: 1.75rem; }
-    .kpi-card { padding: 0.9rem; }
-    .kpi-card:nth-child(5) { grid-column: span 2; }
-    .kpi-value { font-size: 1.8rem; }
-    .kpi-sub { font-size: 0.55rem; }
-
-    .goal-card { padding: 1rem; }
-    .goal-stat h2 { font-size: 2.4rem; }
-
-    /* Stack quarterly targets 2x2 */
-    .goal-card > div:nth-child(2) > div:last-child {
-      grid-template-columns: repeat(2, 1fr) !important;
-    }
-
-    /* Goal tracker right panel stacks */
-    .goal-card > div:last-child { gap: 0.4rem; }
-
-    .campaign-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
-    .campaign-card { padding: 0.75rem; }
-    .campaign-cpa { font-size: 1.3rem; }
-    .campaign-summary { grid-template-columns: repeat(2, 1fr); padding: 0.75rem; }
-    .cs-value { font-size: 1rem; }
-
-    .pipeline-donut { flex-direction: column; align-items: center; }
-
-    /* Territory table — scroll horizontally on mobile */
-    .territory-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    .territory-table { min-width: 480px; font-size: 0.58rem; }
-    .territory-table th { padding: 0.4rem 0.5rem; }
-    .territory-table td { padding: 0.5rem 0.5rem; }
-    .territory-table th:nth-child(7),
-    .territory-table td:nth-child(7),
-    .territory-table th:nth-child(8),
-    .territory-table td:nth-child(8) { display: none; }
-
-    /* CPA rank chart labels */
-    .cpa-rank-label { width: 58px !important; font-size: 0.55rem !important; }
-
-    .section-label { font-size: 0.55rem; }
-
-    .card { padding: 1rem; border-radius: 10px; }
-    .card-title { font-size: 0.65rem; }
-
-    .conv-item-pct { font-size: 0.95rem; }
-    .conv-item-label { font-size: 0.58rem; }
-    .conv-item-detail { font-size: 0.48rem; }
-
-    .grid-2 { gap: 0.75rem; margin-bottom: 1.75rem; }
-    .full-width { margin-bottom: 1.75rem; }
-  }
-
-  /* ═══════════════════════════════
-     RESPONSIVE — SMALL (≤380px)
-  ═══════════════════════════════ */
-  @media (max-width: 380px) {
-    .kpi-grid { grid-template-columns: 1fr; }
-    .kpi-card:nth-child(5) { grid-column: span 1; }
-    .campaign-grid { grid-template-columns: 1fr; }
-  }
-
 </style>
 </head>
 <body>
@@ -303,7 +180,6 @@
   <header>
     <div class="header-brand">
       <div class="brand-icon">
-        <!-- Intercare icon approximation in SVG -->
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="12" cy="4" r="2.5" stroke="white" stroke-width="2"/>
           <path d="M6 10.5 C6 8.5 8 7.5 12 7.5 C16 7.5 18 8.5 18 10.5 C18 12.5 16 13.5 12 13.5 C8 13.5 6 12.5 6 10.5Z" stroke="white" stroke-width="2" fill="none"/>
@@ -313,13 +189,13 @@
       </div>
       <div class="header-left">
         <h1>intercare <span>dashboard</span></h1>
-        <p><span class="live-dot"></span>YTD 2026 · Jan 1 — Mar 20 · All Territories</p>
+        <p><span class="live-dot"></span>YTD 2026 · Jan 1 — Mar 25 · All Territories</p>
       </div>
     </div>
     <div class="header-right">
-      <div class="date">Mar 20, 2026</div>
+      <div class="date">Mar 25, 2026</div>
       <div style="margin-top:4px;">Generated by Ashley Quintero</div>
-      <div style="margin-top:2px;">Digital Outreach · Physician Outreach</div>
+      <div style="margin-top:2px;">Digital Outreach · Field Marketing</div>
     </div>
   </header>
 
@@ -328,33 +204,33 @@
   <div class="kpi-grid">
     <div class="kpi-card" style="border-top:3px solid var(--green);">
       <div class="kpi-label">Total Leads</div>
-      <div class="kpi-value" style="color:var(--green);">566</div>
+      <div class="kpi-value" style="color:var(--green);">1,712</div>
       <div class="kpi-sub">All channels · YTD</div>
-      <div class="kpi-badge" style="background:var(--green-light);color:#1a9e7c;">+79 since Feb</div>
+      <div class="kpi-badge" style="background:var(--green-light);color:#1a9e7c;">Jan–Mar 2026</div>
     </div>
     <div class="kpi-card" style="border-top:3px solid var(--navy);">
       <div class="kpi-label">Converted</div>
-      <div class="kpi-value" style="color:var(--navy);">13</div>
-      <div class="kpi-sub">Of 566 total leads</div>
-      <div class="kpi-badge" style="background:var(--navy-light);color:var(--navy);">Goal: 100 / yr</div>
+      <div class="kpi-value" style="color:var(--navy);">117</div>
+      <div class="kpi-sub">Of 1,712 total leads</div>
+      <div class="kpi-badge" style="background:var(--navy-light);color:var(--navy);">Goal: 100 / yr ✓</div>
     </div>
     <div class="kpi-card" style="border-top:3px solid var(--purple);">
       <div class="kpi-label">Conversion Rate</div>
-      <div class="kpi-value" style="color:var(--purple);">2.3%</div>
-      <div class="kpi-sub">Digital: 1.3% · Outreach: 30%</div>
-      <div class="kpi-badge" style="background:var(--purple-light);color:#5b47c4;">13 of 566</div>
+      <div class="kpi-value" style="color:var(--purple);">6.8%</div>
+      <div class="kpi-sub">Digital: 8.3% · Field Mktg: 32.7%</div>
+      <div class="kpi-badge" style="background:var(--purple-light);color:#5b47c4;">117 of 1,712</div>
     </div>
     <div class="kpi-card" style="border-top:3px solid var(--yellow);">
       <div class="kpi-label">Active Pipeline</div>
-      <div class="kpi-value" style="color:#c48a00;">35</div>
-      <div class="kpi-sub">Review · Benefits · Pending</div>
-      <div class="kpi-badge" style="background:var(--yellow-light);color:#a07200;">Not yet converted</div>
+      <div class="kpi-value" style="color:#c48a00;">104</div>
+      <div class="kpi-sub">Pending · Review · Benefits</div>
+      <div class="kpi-badge" style="background:var(--yellow-light);color:#a07200;">In progress</div>
     </div>
     <div class="kpi-card" style="border-top:3px solid var(--blue);">
-      <div class="kpi-label">Physician Outreach</div>
-      <div class="kpi-value" style="color:#3dafd9;">30%</div>
+      <div class="kpi-label">Field Marketing</div>
+      <div class="kpi-value" style="color:#3dafd9;">32.7%</div>
       <div class="kpi-sub">Best-converting channel</div>
-      <div class="kpi-badge" style="background:var(--blue-light);color:#2a8aab;">6 of 20 leads</div>
+      <div class="kpi-badge" style="background:var(--blue-light);color:#2a8aab;">18 of 55 leads</div>
     </div>
   </div>
 
@@ -363,52 +239,50 @@
   <div style="margin-bottom:2.5rem;">
     <div class="goal-card">
       <div class="goal-stat">
-        <h2>48</h2>
+        <h2>221</h2>
         <p>Leads Engaged<br>Toward Goal</p>
         <div style="margin-top:0.6rem;">
-          <div style="font-size:0.58rem;color:#1a9e7c;font-weight:800;">13 converted ✓</div>
-          <div style="font-size:0.58rem;color:#5b47c4;font-weight:800;">35 in pipeline →</div>
+          <div style="font-size:0.58rem;color:#1a9e7c;font-weight:800;">117 converted ✓</div>
+          <div style="font-size:0.58rem;color:#5b47c4;font-weight:800;">104 in pipeline →</div>
         </div>
         <div style="margin-top:0.5rem;font-size:0.55rem;color:var(--muted);font-weight:600;">
-          <span style="color:var(--navy);font-weight:800;">52</span> remaining to goal
+          Goal already <span style="color:var(--navy);font-weight:800;">exceeded</span> 🎉
         </div>
       </div>
       <div>
         <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;">
           <span style="font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);font-weight:700;">Road to 100 Conversions</span>
-          <span style="font-size:0.65rem;color:var(--green);font-weight:800;">13 confirmed &nbsp;+&nbsp; 35 in pipeline</span>
+          <span style="font-size:0.65rem;color:var(--green);font-weight:800;">117 confirmed &nbsp;+&nbsp; 104 in pipeline</span>
         </div>
-        <div class="goal-track" style="position:relative;overflow:hidden;">
-          <div style="position:absolute;left:0;top:0;height:100%;width:48%;background:linear-gradient(90deg,var(--green),#56e8c4);border-radius:50px;animation:fillBar 1s ease 0.3s both;"></div>
-          <div style="position:absolute;left:13%;top:0;height:100%;width:35%;background:linear-gradient(90deg,rgba(130,112,222,0.5),rgba(130,112,222,0.3));border-radius:0 50px 50px 0;animation:fillBar 1.2s ease 0.5s both;"></div>
+        <!-- Progress bar: 117% confirmed = full green, pipeline shown separately -->
+        <div class="goal-track">
+          <div style="position:absolute;left:0;top:0;height:100%;width:100%;background:linear-gradient(90deg,var(--green),#56e8c4);border-radius:50px;animation:fillBar 1s ease 0.3s both;"></div>
+          <div style="position:absolute;right:0;top:0;height:100%;width:12px;background:linear-gradient(90deg,#56e8c4,#fff);border-radius:50px;"></div>
         </div>
         <div style="display:flex;gap:0.75rem;margin-top:0.4rem;">
-          <span style="display:flex;align-items:center;gap:4px;font-size:0.52rem;font-weight:700;color:#1a9e7c;"><span style="width:8px;height:8px;background:var(--green);border-radius:2px;display:inline-block;"></span>13 Converted</span>
-          <span style="display:flex;align-items:center;gap:4px;font-size:0.52rem;font-weight:700;color:#5b47c4;"><span style="width:8px;height:8px;background:var(--purple);border-radius:2px;display:inline-block;opacity:0.5;"></span>35 Active Pipeline</span>
-        </div>
-        <div class="goal-tick-marks">
-          <span class="goal-tick">0</span><span class="goal-tick">25</span><span class="goal-tick">50</span><span class="goal-tick">75</span><span class="goal-tick">100</span>
+          <span style="display:flex;align-items:center;gap:4px;font-size:0.52rem;font-weight:700;color:#1a9e7c;"><span style="width:8px;height:8px;background:var(--green);border-radius:2px;display:inline-block;"></span>117 Converted — Goal Reached!</span>
+          <span style="display:flex;align-items:center;gap:4px;font-size:0.52rem;font-weight:700;color:#5b47c4;"><span style="width:8px;height:8px;background:var(--purple);border-radius:2px;display:inline-block;opacity:0.5;"></span>104 Still Active</span>
         </div>
         <div style="margin-top:1rem;display:grid;grid-template-columns:repeat(4,1fr);gap:0.5rem;">
           <div style="background:var(--green);border-radius:8px;padding:0.6rem;text-align:center;">
             <div style="font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:800;color:#fff;">Q1</div>
-            <div style="font-size:0.52rem;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">In Progress</div>
-            <div style="font-size:0.72rem;color:#fff;margin-top:0.2rem;font-weight:800;">13 ✓</div>
+            <div style="font-size:0.52rem;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Complete</div>
+            <div style="font-size:0.72rem;color:#fff;margin-top:0.2rem;font-weight:800;">117 ✓</div>
           </div>
           <div style="background:var(--cream);border-radius:8px;padding:0.6rem;text-align:center;border:1.5px solid var(--border);opacity:0.7;">
             <div style="font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:800;color:var(--navy);">Q2</div>
             <div style="font-size:0.52rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Upcoming</div>
-            <div style="font-size:0.65rem;color:var(--muted);margin-top:0.2rem;font-weight:700;">Target: 25</div>
+            <div style="font-size:0.65rem;color:var(--muted);margin-top:0.2rem;font-weight:700;">Keep going!</div>
           </div>
           <div style="background:var(--cream);border-radius:8px;padding:0.6rem;text-align:center;border:1.5px solid var(--border);opacity:0.5;">
             <div style="font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:800;color:var(--navy);">Q3</div>
             <div style="font-size:0.52rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Upcoming</div>
-            <div style="font-size:0.65rem;color:var(--muted);margin-top:0.2rem;font-weight:700;">Target: 25</div>
+            <div style="font-size:0.65rem;color:var(--muted);margin-top:0.2rem;font-weight:700;">Upcoming</div>
           </div>
           <div style="background:var(--cream);border-radius:8px;padding:0.6rem;text-align:center;border:1.5px solid var(--border);opacity:0.35;">
             <div style="font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:800;color:var(--navy);">Q4</div>
             <div style="font-size:0.52rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Upcoming</div>
-            <div style="font-size:0.65rem;color:var(--muted);margin-top:0.2rem;font-weight:700;">Target: 37</div>
+            <div style="font-size:0.65rem;color:var(--muted);margin-top:0.2rem;font-weight:700;">Upcoming</div>
           </div>
         </div>
       </div>
@@ -417,24 +291,24 @@
         <div style="background:var(--green);border-radius:8px;padding:0.6rem 0.75rem;margin-bottom:0.4rem;display:flex;justify-content:space-between;align-items:center;">
           <div>
             <div style="font-size:0.52rem;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Confirmed Conversions</div>
-            <div style="font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:800;color:#fff;line-height:1.1;">13</div>
+            <div style="font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:800;color:#fff;line-height:1.1;">117</div>
           </div>
           <div style="font-size:1rem;color:#fff;">✓</div>
         </div>
         <div style="background:var(--purple-light);border:1.5px solid var(--purple);border-radius:8px;padding:0.6rem 0.75rem;margin-bottom:0.4rem;display:flex;justify-content:space-between;align-items:center;">
           <div>
             <div style="font-size:0.52rem;color:#5b47c4;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Active Pipeline</div>
-            <div style="font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:800;color:var(--purple);line-height:1.1;">35</div>
-            <div style="font-size:0.5rem;color:#5b47c4;font-weight:600;">Review · Benefits · Pending</div>
+            <div style="font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:800;color:var(--purple);line-height:1.1;">104</div>
+            <div style="font-size:0.5rem;color:#5b47c4;font-weight:600;">Pending · Review · Benefits</div>
           </div>
           <div style="font-size:0.9rem;color:var(--purple);">→</div>
         </div>
         <div style="background:var(--navy);border-radius:8px;padding:0.6rem 0.75rem;display:flex;justify-content:space-between;align-items:center;">
           <div>
             <div style="font-size:0.52rem;color:rgba(255,255,255,0.65);text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Total Engaged</div>
-            <div style="font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:800;color:#fff;line-height:1.1;">48 <span style="font-size:0.6rem;color:rgba(255,255,255,0.6);font-weight:600;">/ 100</span></div>
+            <div style="font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:800;color:#fff;line-height:1.1;">221 <span style="font-size:0.6rem;color:rgba(255,255,255,0.6);font-weight:600;">/ 100</span></div>
           </div>
-          <div style="font-size:0.6rem;color:var(--green);font-weight:800;">48%</div>
+          <div style="font-size:0.6rem;color:var(--green);font-weight:800;">221% 🎉</div>
         </div>
       </div>
     </div>
@@ -445,38 +319,36 @@
     <div class="card">
       <div class="card-title">Monthly Lead <span>Volume</span></div>
       <div style="display:flex;gap:1rem;margin-bottom:1rem;">
-        <span style="display:flex;align-items:center;gap:5px;font-size:0.6rem;font-weight:700;color:var(--navy);">
-          <span style="width:10px;height:10px;background:var(--green);border-radius:3px;display:inline-block;"></span>Digital Outreach</span>
-        <span style="display:flex;align-items:center;gap:5px;font-size:0.6rem;font-weight:700;color:var(--navy);">
-          <span style="width:10px;height:10px;background:var(--purple);border-radius:3px;display:inline-block;"></span>Physician Outreach</span>
+        <span style="display:flex;align-items:center;gap:5px;font-size:0.6rem;font-weight:700;color:var(--navy);"><span style="width:10px;height:10px;background:var(--green);border-radius:3px;display:inline-block;"></span>Digital Outreach</span>
+        <span style="display:flex;align-items:center;gap:5px;font-size:0.6rem;font-weight:700;color:var(--navy);"><span style="width:10px;height:10px;background:var(--purple);border-radius:3px;display:inline-block;"></span>Field Marketing</span>
       </div>
+      <!-- Jan: Digital=427+164=591, FM=19 | Feb: 397+159=556, FM=20 | Mar: 364+146=510, FM=16 -->
       <div style="display:flex;gap:1.5rem;align-items:flex-end;height:130px;padding-top:10px;">
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;">
           <div style="display:flex;gap:3px;align-items:flex-end;width:100%;height:110px;">
-            <div style="flex:2;background:var(--green);opacity:0.85;border-radius:4px 4px 0 0;animation:growBar 0.6s ease 0.1s both;height:95%;"></div>
-            <div style="flex:1;background:var(--purple);opacity:0.85;border-radius:4px 4px 0 0;animation:growBar 0.6s ease 0.15s both;height:3.5%;"></div>
+            <div style="flex:2;background:var(--green);opacity:0.85;border-radius:4px 4px 0 0;animation:growBar 0.6s ease 0.1s both;height:99%;"></div>
+            <div style="flex:1;background:var(--purple);opacity:0.85;border-radius:4px 4px 0 0;animation:growBar 0.6s ease 0.15s both;height:3.2%;"></div>
           </div>
           <div style="font-size:0.55rem;color:var(--muted);margin-top:5px;font-weight:700;">Jan</div>
-          <div style="font-size:0.62rem;color:var(--navy);font-weight:800;">197</div>
+          <div style="font-size:0.62rem;color:var(--navy);font-weight:800;">610</div>
         </div>
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;">
           <div style="display:flex;gap:3px;align-items:flex-end;width:100%;height:110px;">
-            <div style="flex:2;background:var(--green);opacity:0.85;border-radius:4px 4px 0 0;animation:growBar 0.6s ease 0.2s both;height:99%;"></div>
-            <div style="flex:1;background:var(--purple);opacity:0.85;border-radius:4px 4px 0 0;animation:growBar 0.6s ease 0.25s both;height:4%;"></div>
+            <div style="flex:2;background:var(--green);opacity:0.85;border-radius:4px 4px 0 0;animation:growBar 0.6s ease 0.2s both;height:94%;"></div>
+            <div style="flex:1;background:var(--purple);opacity:0.85;border-radius:4px 4px 0 0;animation:growBar 0.6s ease 0.25s both;height:3.4%;"></div>
           </div>
           <div style="font-size:0.55rem;color:var(--muted);margin-top:5px;font-weight:700;">Feb</div>
-          <div style="font-size:0.62rem;color:var(--navy);font-weight:800;">207</div>
+          <div style="font-size:0.62rem;color:var(--navy);font-weight:800;">576</div>
         </div>
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;">
           <div style="display:flex;gap:3px;align-items:flex-end;width:100%;height:110px;">
-            <div style="flex:2;background:var(--green);opacity:0.85;border-radius:4px 4px 0 0;animation:growBar 0.6s ease 0.3s both;height:78%;"></div>
-            <div style="flex:1;background:var(--purple);opacity:0.85;border-radius:4px 4px 0 0;animation:growBar 0.6s ease 0.35s both;height:2.5%;"></div>
+            <div style="flex:2;background:var(--green);opacity:0.85;border-radius:4px 4px 0 0;animation:growBar 0.6s ease 0.3s both;height:86%;"></div>
+            <div style="flex:1;background:var(--purple);opacity:0.85;border-radius:4px 4px 0 0;animation:growBar 0.6s ease 0.35s both;height:2.7%;"></div>
           </div>
-          <div style="font-size:0.55rem;color:var(--muted);margin-top:5px;font-weight:700;">Mar*</div>
-          <div style="font-size:0.62rem;color:var(--navy);font-weight:800;">162</div>
+          <div style="font-size:0.55rem;color:var(--muted);margin-top:5px;font-weight:700;">Mar</div>
+          <div style="font-size:0.62rem;color:var(--navy);font-weight:800;">526</div>
         </div>
       </div>
-      <div style="font-size:0.52rem;color:var(--muted);margin-top:0.5rem;font-weight:600;">* Mar 1–20 partial month</div>
     </div>
 
     <div class="card">
@@ -487,35 +359,35 @@
             <div style="font-size:0.62rem;font-weight:700;color:var(--navy);">Digital Outreach</div>
             <span class="chip chip-digital" style="margin-top:3px;">Website + Social</span>
           </div>
-          <div class="source-track"><div class="source-fill" style="width:96.5%;background:var(--green);"></div></div>
-          <div style="font-size:0.6rem;color:var(--muted);width:30px;text-align:right;font-weight:700;">546</div>
-          <div style="font-size:0.62rem;width:38px;text-align:right;color:#c48a00;font-weight:800;">1.3%</div>
+          <div class="source-track"><div class="source-fill" style="width:96.8%;background:var(--green);"></div></div>
+          <div style="font-size:0.6rem;color:var(--muted);width:38px;text-align:right;font-weight:700;">1,657</div>
+          <div style="font-size:0.62rem;width:38px;text-align:right;color:#1a9e7c;font-weight:800;">5.9%</div>
         </div>
         <div class="source-row">
           <div style="width:155px;flex-shrink:0;">
-            <div style="font-size:0.62rem;font-weight:700;color:var(--navy);">Physician Outreach</div>
+            <div style="font-size:0.62rem;font-weight:700;color:var(--navy);">Field Marketing</div>
             <span class="chip chip-outreach" style="margin-top:3px;">Coordinator</span>
           </div>
-          <div class="source-track"><div class="source-fill" style="width:3.5%;background:var(--purple);"></div></div>
-          <div style="font-size:0.6rem;color:var(--muted);width:30px;text-align:right;font-weight:700;">20</div>
-          <div style="font-size:0.62rem;width:38px;text-align:right;color:#1a9e7c;font-weight:800;">30.0%</div>
+          <div class="source-track"><div class="source-fill" style="width:3.2%;background:var(--purple);"></div></div>
+          <div style="font-size:0.6rem;color:var(--muted);width:38px;text-align:right;font-weight:700;">55</div>
+          <div style="font-size:0.62rem;width:38px;text-align:right;color:#1a9e7c;font-weight:800;">32.7%</div>
         </div>
       </div>
       <div style="margin-top:1.25rem;padding:0.75rem;background:rgba(38,204,160,0.08);border:1.5px solid rgba(38,204,160,0.25);border-radius:8px;">
         <div style="font-size:0.58rem;color:#1a9e7c;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.35rem;">💡 Key Insight</div>
-        <div style="font-size:0.6rem;color:var(--navy);line-height:1.5;font-weight:600;">Physician Outreach converts at <strong style="color:#1a9e7c;">30%</strong> — 23× higher than Digital Outreach. Scaling this channel is the highest-leverage path to hitting the 100-conversion annual goal.</div>
+        <div style="font-size:0.6rem;color:var(--navy);line-height:1.5;font-weight:600;">Field Marketing converts at <strong style="color:#1a9e7c;">32.7%</strong> — nearly 6× higher than Digital. With Efren Castro (28 leads) and Sofia Hernandez (15 leads) leading, growing this team is the highest-ROI path forward.</div>
       </div>
       <div style="margin-top:0.75rem;display:flex;gap:0.5rem;">
         <div style="flex:1;background:var(--green);border-radius:8px;padding:0.6rem;text-align:center;">
-          <div style="font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:800;color:#fff;">6</div>
-          <div style="font-size:0.52rem;color:rgba(255,255,255,0.8);font-weight:700;">Physician Outreach</div>
+          <div style="font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:800;color:#fff;">18</div>
+          <div style="font-size:0.52rem;color:rgba(255,255,255,0.8);font-weight:700;">Field Marketing</div>
         </div>
         <div style="flex:1;background:var(--navy);border-radius:8px;padding:0.6rem;text-align:center;">
-          <div style="font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:800;color:#fff;">7</div>
+          <div style="font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:800;color:#fff;">99</div>
           <div style="font-size:0.52rem;color:rgba(255,255,255,0.7);font-weight:700;">Digital Outreach</div>
         </div>
         <div style="flex:1;background:var(--cream);border-radius:8px;padding:0.6rem;text-align:center;border:1.5px solid var(--border);">
-          <div style="font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:800;color:var(--navy);">13</div>
+          <div style="font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:800;color:var(--navy);">117</div>
           <div style="font-size:0.52rem;color:var(--muted);font-weight:700;">Total YTD</div>
         </div>
       </div>
@@ -533,7 +405,6 @@
         <div><div class="cs-label">Blended CPA</div><div class="cs-value">$12.87</div></div>
         <div><div class="cs-label">Best CPA</div><div class="cs-value" style="color:var(--green);">$6.31 <span style="font-size:0.65rem;color:rgba(255,255,255,0.6);">Ontario</span></div></div>
       </div>
-
       <div class="campaign-grid">
         <div class="campaign-card">
           <div class="campaign-name">SAC</div>
@@ -541,10 +412,7 @@
           <div class="campaign-label">Cost Per Lead</div>
           <div class="campaign-cpa">$15.71</div>
           <div class="cpa-bar-bg"><div class="cpa-bar-fill" style="width:80.2%;animation-delay:0.1s;"></div></div>
-          <div style="display:flex;justify-content:space-between;margin-top:0.5rem;">
-            <div style="font-size:0.6rem;color:var(--muted);font-weight:600;">45 leads</div>
-            <div style="font-size:0.58rem;color:var(--muted);">~$707</div>
-          </div>
+          <div style="display:flex;justify-content:space-between;margin-top:0.5rem;"><div style="font-size:0.6rem;color:var(--muted);font-weight:600;">45 leads</div><div style="font-size:0.58rem;color:var(--muted);">~$707</div></div>
         </div>
         <div class="campaign-card" style="border-color:rgba(38,204,160,0.4);">
           <div class="campaign-name">Van Nuys</div>
@@ -552,10 +420,7 @@
           <div class="campaign-label">Cost Per Lead</div>
           <div class="campaign-cpa" style="color:#1a9e7c;">$9.75</div>
           <div class="cpa-bar-bg"><div class="cpa-bar-fill" style="width:49.7%;background:var(--green);animation-delay:0.15s;"></div></div>
-          <div style="display:flex;justify-content:space-between;margin-top:0.5rem;">
-            <div style="font-size:0.6rem;color:#1a9e7c;font-weight:700;">93 leads ★ Most</div>
-            <div style="font-size:0.58rem;color:var(--muted);">~$907</div>
-          </div>
+          <div style="display:flex;justify-content:space-between;margin-top:0.5rem;"><div style="font-size:0.6rem;color:#1a9e7c;font-weight:700;">93 leads ★ Most</div><div style="font-size:0.58rem;color:var(--muted);">~$907</div></div>
         </div>
         <div class="campaign-card">
           <div class="campaign-name">San Diego</div>
@@ -563,10 +428,7 @@
           <div class="campaign-label">Cost Per Lead</div>
           <div class="campaign-cpa">$16.26</div>
           <div class="cpa-bar-bg"><div class="cpa-bar-fill" style="width:83%;animation-delay:0.2s;background:#c48a00;"></div></div>
-          <div style="display:flex;justify-content:space-between;margin-top:0.5rem;">
-            <div style="font-size:0.6rem;color:var(--muted);font-weight:600;">56 leads</div>
-            <div style="font-size:0.58rem;color:var(--muted);">~$911</div>
-          </div>
+          <div style="display:flex;justify-content:space-between;margin-top:0.5rem;"><div style="font-size:0.6rem;color:var(--muted);font-weight:600;">56 leads</div><div style="font-size:0.58rem;color:var(--muted);">~$911</div></div>
         </div>
         <div class="campaign-card" style="border-color:rgba(224,82,82,0.3);">
           <div class="campaign-name">Anaheim</div>
@@ -574,10 +436,7 @@
           <div class="campaign-label">Cost Per Lead</div>
           <div class="campaign-cpa" style="color:var(--danger);">$19.60</div>
           <div class="cpa-bar-bg"><div class="cpa-bar-fill" style="width:100%;background:var(--danger);animation-delay:0.25s;"></div></div>
-          <div style="display:flex;justify-content:space-between;margin-top:0.5rem;">
-            <div style="font-size:0.6rem;color:var(--danger);font-weight:700;">32 leads ↑ High</div>
-            <div style="font-size:0.58rem;color:var(--muted);">~$627</div>
-          </div>
+          <div style="display:flex;justify-content:space-between;margin-top:0.5rem;"><div style="font-size:0.6rem;color:var(--danger);font-weight:700;">32 leads ↑ High</div><div style="font-size:0.58rem;color:var(--muted);">~$627</div></div>
         </div>
         <div class="campaign-card">
           <div class="campaign-name">Torrance</div>
@@ -585,10 +444,7 @@
           <div class="campaign-label">Cost Per Lead</div>
           <div class="campaign-cpa">$12.08</div>
           <div class="cpa-bar-bg"><div class="cpa-bar-fill" style="width:61.6%;animation-delay:0.3s;"></div></div>
-          <div style="display:flex;justify-content:space-between;margin-top:0.5rem;">
-            <div style="font-size:0.6rem;color:var(--muted);font-weight:600;">52 leads</div>
-            <div style="font-size:0.58rem;color:var(--muted);">~$628</div>
-          </div>
+          <div style="display:flex;justify-content:space-between;margin-top:0.5rem;"><div style="font-size:0.6rem;color:var(--muted);font-weight:600;">52 leads</div><div style="font-size:0.58rem;color:var(--muted);">~$628</div></div>
         </div>
         <div class="campaign-card">
           <div class="campaign-name">Riverside</div>
@@ -596,10 +452,7 @@
           <div class="campaign-label">Cost Per Lead</div>
           <div class="campaign-cpa">$15.37</div>
           <div class="cpa-bar-bg"><div class="cpa-bar-fill" style="width:78.4%;animation-delay:0.35s;"></div></div>
-          <div style="display:flex;justify-content:space-between;margin-top:0.5rem;">
-            <div style="font-size:0.6rem;color:var(--muted);font-weight:600;">41 leads</div>
-            <div style="font-size:0.58rem;color:var(--muted);">~$630</div>
-          </div>
+          <div style="display:flex;justify-content:space-between;margin-top:0.5rem;"><div style="font-size:0.6rem;color:var(--muted);font-weight:600;">41 leads</div><div style="font-size:0.58rem;color:var(--muted);">~$630</div></div>
         </div>
         <div class="campaign-card">
           <div class="campaign-name">Wilshire</div>
@@ -607,10 +460,7 @@
           <div class="campaign-label">Cost Per Lead</div>
           <div class="campaign-cpa">$12.81</div>
           <div class="cpa-bar-bg"><div class="cpa-bar-fill" style="width:65.4%;animation-delay:0.4s;"></div></div>
-          <div style="display:flex;justify-content:space-between;margin-top:0.5rem;">
-            <div style="font-size:0.6rem;color:var(--muted);font-weight:600;">49 leads</div>
-            <div style="font-size:0.58rem;color:var(--muted);">~$628</div>
-          </div>
+          <div style="display:flex;justify-content:space-between;margin-top:0.5rem;"><div style="font-size:0.6rem;color:var(--muted);font-weight:600;">49 leads</div><div style="font-size:0.58rem;color:var(--muted);">~$628</div></div>
         </div>
         <div class="campaign-card" style="border-color:rgba(38,204,160,0.5);background:rgba(38,204,160,0.05);">
           <div class="campaign-name">Ontario</div>
@@ -618,57 +468,20 @@
           <div class="campaign-label">Cost Per Lead</div>
           <div class="campaign-cpa" style="color:#1a9e7c;">$6.31</div>
           <div class="cpa-bar-bg"><div class="cpa-bar-fill" style="width:32.2%;background:var(--green);animation-delay:0.45s;"></div></div>
-          <div style="display:flex;justify-content:space-between;margin-top:0.5rem;">
-            <div style="font-size:0.6rem;color:#1a9e7c;font-weight:700;">46 leads ★ Best</div>
-            <div style="font-size:0.58rem;color:var(--muted);">~$290</div>
-          </div>
+          <div style="display:flex;justify-content:space-between;margin-top:0.5rem;"><div style="font-size:0.6rem;color:#1a9e7c;font-weight:700;">46 leads ★ Best</div><div style="font-size:0.58rem;color:var(--muted);">~$290</div></div>
         </div>
       </div>
-
-      <!-- CPA Rank chart -->
       <div style="margin-top:1.25rem;padding:1rem;background:var(--cream);border-radius:10px;border:1.5px solid var(--border);">
         <div style="font-size:0.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:0.75rem;font-weight:800;">CPA Ranking — Lower is Better</div>
         <div style="display:flex;flex-direction:column;gap:0.45rem;">
-          <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.6rem;">
-            <span style="width:72px;color:#1a9e7c;font-weight:700;">Ontario</span>
-            <div style="flex:1;height:8px;background:#e8f8f4;border-radius:50px;overflow:hidden;"><div style="height:100%;width:32.2%;background:var(--green);border-radius:50px;animation:growWidth 0.8s ease 0.1s both;"></div></div>
-            <span style="color:#1a9e7c;width:42px;text-align:right;font-weight:800;">$6.31</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.6rem;">
-            <span style="width:72px;color:#1a9e7c;font-weight:700;">Van Nuys</span>
-            <div style="flex:1;height:8px;background:#e8f8f4;border-radius:50px;overflow:hidden;"><div style="height:100%;width:49.7%;background:var(--green);opacity:0.7;border-radius:50px;animation:growWidth 0.8s ease 0.15s both;"></div></div>
-            <span style="color:#1a9e7c;opacity:0.8;width:42px;text-align:right;font-weight:800;">$9.75</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.6rem;">
-            <span style="width:72px;font-weight:700;color:var(--navy);">Torrance</span>
-            <div style="flex:1;height:8px;background:var(--cream);border:1px solid var(--border);border-radius:50px;overflow:hidden;"><div style="height:100%;width:61.6%;background:var(--navy);border-radius:50px;animation:growWidth 0.8s ease 0.2s both;opacity:0.6;"></div></div>
-            <span style="width:42px;text-align:right;font-weight:800;color:var(--navy);">$12.08</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.6rem;">
-            <span style="width:72px;font-weight:700;color:var(--navy);">Wilshire</span>
-            <div style="flex:1;height:8px;background:var(--cream);border:1px solid var(--border);border-radius:50px;overflow:hidden;"><div style="height:100%;width:65.4%;background:var(--navy);border-radius:50px;animation:growWidth 0.8s ease 0.25s both;opacity:0.6;"></div></div>
-            <span style="width:42px;text-align:right;font-weight:800;color:var(--navy);">$12.81</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.6rem;">
-            <span style="width:72px;font-weight:700;color:var(--navy);">Riverside</span>
-            <div style="flex:1;height:8px;background:var(--cream);border:1px solid var(--border);border-radius:50px;overflow:hidden;"><div style="height:100%;width:78.4%;background:var(--purple);border-radius:50px;animation:growWidth 0.8s ease 0.3s both;opacity:0.7;"></div></div>
-            <span style="width:42px;text-align:right;font-weight:800;color:var(--purple);">$15.37</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.6rem;">
-            <span style="width:72px;font-weight:700;color:var(--navy);">SAC</span>
-            <div style="flex:1;height:8px;background:var(--cream);border:1px solid var(--border);border-radius:50px;overflow:hidden;"><div style="height:100%;width:80.2%;background:var(--purple);border-radius:50px;animation:growWidth 0.8s ease 0.35s both;opacity:0.7;"></div></div>
-            <span style="width:42px;text-align:right;font-weight:800;color:var(--purple);">$15.71</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.6rem;">
-            <span style="width:72px;font-weight:700;color:var(--danger);">San Diego</span>
-            <div style="flex:1;height:8px;background:var(--cream);border:1px solid var(--border);border-radius:50px;overflow:hidden;"><div style="height:100%;width:83%;background:var(--danger);border-radius:50px;animation:growWidth 0.8s ease 0.4s both;opacity:0.7;"></div></div>
-            <span style="color:var(--danger);width:42px;text-align:right;font-weight:800;">$16.26</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.6rem;">
-            <span style="width:72px;color:var(--danger);font-weight:700;">Anaheim</span>
-            <div style="flex:1;height:8px;background:var(--cream);border:1px solid var(--border);border-radius:50px;overflow:hidden;"><div style="height:100%;width:100%;background:var(--danger);border-radius:50px;animation:growWidth 0.8s ease 0.45s both;"></div></div>
-            <span style="color:var(--danger);width:42px;text-align:right;font-weight:800;">$19.60</span>
-          </div>
+          <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.6rem;"><span style="width:72px;color:#1a9e7c;font-weight:700;">Ontario</span><div style="flex:1;height:8px;background:#e8f8f4;border-radius:50px;overflow:hidden;"><div style="height:100%;width:32.2%;background:var(--green);border-radius:50px;animation:growWidth 0.8s ease 0.1s both;"></div></div><span style="color:#1a9e7c;width:42px;text-align:right;font-weight:800;">$6.31</span></div>
+          <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.6rem;"><span style="width:72px;color:#1a9e7c;font-weight:700;">Van Nuys</span><div style="flex:1;height:8px;background:#e8f8f4;border-radius:50px;overflow:hidden;"><div style="height:100%;width:49.7%;background:var(--green);opacity:0.7;border-radius:50px;animation:growWidth 0.8s ease 0.15s both;"></div></div><span style="color:#1a9e7c;opacity:0.8;width:42px;text-align:right;font-weight:800;">$9.75</span></div>
+          <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.6rem;"><span style="width:72px;font-weight:700;color:var(--navy);">Torrance</span><div style="flex:1;height:8px;background:var(--cream);border:1px solid var(--border);border-radius:50px;overflow:hidden;"><div style="height:100%;width:61.6%;background:var(--navy);border-radius:50px;animation:growWidth 0.8s ease 0.2s both;opacity:0.6;"></div></div><span style="width:42px;text-align:right;font-weight:800;color:var(--navy);">$12.08</span></div>
+          <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.6rem;"><span style="width:72px;font-weight:700;color:var(--navy);">Wilshire</span><div style="flex:1;height:8px;background:var(--cream);border:1px solid var(--border);border-radius:50px;overflow:hidden;"><div style="height:100%;width:65.4%;background:var(--navy);border-radius:50px;animation:growWidth 0.8s ease 0.25s both;opacity:0.6;"></div></div><span style="width:42px;text-align:right;font-weight:800;color:var(--navy);">$12.81</span></div>
+          <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.6rem;"><span style="width:72px;font-weight:700;color:var(--navy);">Riverside</span><div style="flex:1;height:8px;background:var(--cream);border:1px solid var(--border);border-radius:50px;overflow:hidden;"><div style="height:100%;width:78.4%;background:var(--purple);border-radius:50px;animation:growWidth 0.8s ease 0.3s both;opacity:0.7;"></div></div><span style="width:42px;text-align:right;font-weight:800;color:var(--purple);">$15.37</span></div>
+          <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.6rem;"><span style="width:72px;font-weight:700;color:var(--navy);">SAC</span><div style="flex:1;height:8px;background:var(--cream);border:1px solid var(--border);border-radius:50px;overflow:hidden;"><div style="height:100%;width:80.2%;background:var(--purple);border-radius:50px;animation:growWidth 0.8s ease 0.35s both;opacity:0.7;"></div></div><span style="width:42px;text-align:right;font-weight:800;color:var(--purple);">$15.71</span></div>
+          <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.6rem;"><span style="width:72px;font-weight:700;color:var(--danger);">San Diego</span><div style="flex:1;height:8px;background:var(--cream);border:1px solid var(--border);border-radius:50px;overflow:hidden;"><div style="height:100%;width:83%;background:var(--danger);border-radius:50px;animation:growWidth 0.8s ease 0.4s both;opacity:0.7;"></div></div><span style="color:var(--danger);width:42px;text-align:right;font-weight:800;">$16.26</span></div>
+          <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.6rem;"><span style="width:72px;color:var(--danger);font-weight:700;">Anaheim</span><div style="flex:1;height:8px;background:var(--cream);border:1px solid var(--border);border-radius:50px;overflow:hidden;"><div style="height:100%;width:100%;background:var(--danger);border-radius:50px;animation:growWidth 0.8s ease 0.45s both;"></div></div><span style="color:var(--danger);width:42px;text-align:right;font-weight:800;">$19.60</span></div>
         </div>
       </div>
     </div>
@@ -678,26 +491,36 @@
   <div class="grid-2">
     <div class="card">
       <div class="card-title">Lead <span>Pipeline</span> Status</div>
+      <!-- Total 1712: Closed-Declined=1228(71.7%), New=263(15.4%), Accepted=117(6.8%), Pending Conf=37(2.2%), Review=30(1.8%), Capacity=28(1.6%), Pending Auth=5(0.3%), Benefits=4(0.2%) -->
       <div class="pipeline-donut">
         <div class="donut-wrap">
           <svg width="130" height="130" viewBox="0 0 130 130">
             <circle cx="65" cy="65" r="50" fill="none" stroke="var(--cream)" stroke-width="18"/>
-            <circle cx="65" cy="65" r="50" fill="none" stroke="#26CCA0" stroke-width="18" stroke-dasharray="7.2 306.8" stroke-dashoffset="79" style="animation:drawCircle 1s ease 0.1s both;transform-origin:center;transform:rotate(-90deg);"/>
-            <circle cx="65" cy="65" r="50" fill="none" stroke="#77D6FF" stroke-width="18" stroke-dasharray="5 309" stroke-dashoffset="72" style="animation:drawCircle 1s ease 0.15s both;transform-origin:center;transform:rotate(-90deg);"/>
-            <circle cx="65" cy="65" r="50" fill="none" stroke="#FFD333" stroke-width="18" stroke-dasharray="8.2 305.8" stroke-dashoffset="67" style="animation:drawCircle 1s ease 0.2s both;transform-origin:center;transform:rotate(-90deg);"/>
-            <circle cx="65" cy="65" r="50" fill="none" stroke="#8270DE" stroke-width="18" stroke-dasharray="134 180" stroke-dashoffset="59" style="animation:drawCircle 1s ease 0.25s both;transform-origin:center;transform:rotate(-90deg);"/>
-            <circle cx="65" cy="65" r="50" fill="none" stroke="#291A6B" stroke-width="18" stroke-dasharray="160 154" stroke-dashoffset="-75" style="animation:drawCircle 1s ease 0.3s both;transform-origin:center;transform:rotate(-90deg);"/>
-            <circle cx="65" cy="65" r="50" fill="none" stroke="#c0bcd5" stroke-width="18" stroke-dasharray="4 310" stroke-dashoffset="-75" style="animation:drawCircle 1s ease 0.35s both;transform-origin:center;transform:rotate(-90deg);"/>
+            <!-- Accepted/Converted 6.8% = 21.4deg -->
+            <circle cx="65" cy="65" r="50" fill="none" stroke="#26CCA0" stroke-width="18" stroke-dasharray="21.4 292.6" stroke-dashoffset="79" style="animation:drawCircle 1s ease 0.1s both;transform-origin:center;transform:rotate(-90deg);"/>
+            <!-- Benefits+Pending Auth 0.5% -->
+            <circle cx="65" cy="65" r="50" fill="none" stroke="#77D6FF" stroke-width="18" stroke-dasharray="2.8 311.2" stroke-dashoffset="58" style="animation:drawCircle 1s ease 0.12s both;transform-origin:center;transform:rotate(-90deg);"/>
+            <!-- Capacity 1.6% -->
+            <circle cx="65" cy="65" r="50" fill="none" stroke="#FFD333" stroke-width="18" stroke-dasharray="5 309" stroke-dashoffset="55" style="animation:drawCircle 1s ease 0.15s both;transform-origin:center;transform:rotate(-90deg);"/>
+            <!-- Review 1.8% -->
+            <circle cx="65" cy="65" r="50" fill="none" stroke="#f59e0b" stroke-width="18" stroke-dasharray="5.7 308.3" stroke-dashoffset="50" style="animation:drawCircle 1s ease 0.18s both;transform-origin:center;transform:rotate(-90deg);"/>
+            <!-- Pending Confirmation 2.2% -->
+            <circle cx="65" cy="65" r="50" fill="none" stroke="#8270DE" stroke-width="18" stroke-dasharray="6.9 307.1" stroke-dashoffset="44" style="animation:drawCircle 1s ease 0.2s both;transform-origin:center;transform:rotate(-90deg);"/>
+            <!-- New 15.4% -->
+            <circle cx="65" cy="65" r="50" fill="none" stroke="#b8aff0" stroke-width="18" stroke-dasharray="48.5 265.5" stroke-dashoffset="37" style="animation:drawCircle 1s ease 0.25s both;transform-origin:center;transform:rotate(-90deg);"/>
+            <!-- Closed Declined 71.7% -->
+            <circle cx="65" cy="65" r="50" fill="none" stroke="#291A6B" stroke-width="18" stroke-dasharray="225.5 88.5" stroke-dashoffset="-11" style="animation:drawCircle 1s ease 0.3s both;transform-origin:center;transform:rotate(-90deg);"/>
           </svg>
-          <div class="donut-center"><div class="dc-val">566</div><div class="dc-label">total</div></div>
+          <div class="donut-center"><div class="dc-val">1,712</div><div class="dc-label">total</div></div>
         </div>
         <div style="flex:1;">
-          <div class="legend-item"><div class="legend-dot" style="background:#291A6B;"></div><div class="legend-name">Closed — Declined</div><div class="legend-count">288</div><div class="legend-pct" style="color:#291A6B;">50.9%</div></div>
-          <div class="legend-item"><div class="legend-dot" style="background:#8270DE;"></div><div class="legend-name">New</div><div class="legend-count">241</div><div class="legend-pct" style="color:#8270DE;">42.6%</div></div>
-          <div class="legend-item"><div class="legend-dot" style="background:#FFD333;"></div><div class="legend-name">Review</div><div class="legend-count">15</div><div class="legend-pct" style="color:#c48a00;">2.6%</div></div>
-          <div class="legend-item"><div class="legend-dot" style="background:#26CCA0;"></div><div class="legend-name">Accepted (Converted)</div><div class="legend-count">13</div><div class="legend-pct" style="color:#1a9e7c;">2.3%</div></div>
-          <div class="legend-item"><div class="legend-dot" style="background:#77D6FF;"></div><div class="legend-name">Benefits Check</div><div class="legend-count">5</div><div class="legend-pct" style="color:#3dafd9;">0.9%</div></div>
-          <div class="legend-item"><div class="legend-dot" style="background:#c0bcd5;"></div><div class="legend-name">Pending / Other</div><div class="legend-count">4</div><div class="legend-pct" style="color:var(--muted);">0.7%</div></div>
+          <div class="legend-item"><div class="legend-dot" style="background:#291A6B;"></div><div class="legend-name">Closed — Declined</div><div class="legend-count">1,228</div><div class="legend-pct" style="color:#291A6B;">71.7%</div></div>
+          <div class="legend-item"><div class="legend-dot" style="background:#b8aff0;"></div><div class="legend-name">New</div><div class="legend-count">263</div><div class="legend-pct" style="color:#8270DE;">15.4%</div></div>
+          <div class="legend-item"><div class="legend-dot" style="background:#26CCA0;"></div><div class="legend-name">Accepted (Converted)</div><div class="legend-count">117</div><div class="legend-pct" style="color:#1a9e7c;">6.8%</div></div>
+          <div class="legend-item"><div class="legend-dot" style="background:#8270DE;"></div><div class="legend-name">Pending Confirmation</div><div class="legend-count">37</div><div class="legend-pct" style="color:#8270DE;">2.2%</div></div>
+          <div class="legend-item"><div class="legend-dot" style="background:#f59e0b;"></div><div class="legend-name">Review</div><div class="legend-count">30</div><div class="legend-pct" style="color:#c48a00;">1.8%</div></div>
+          <div class="legend-item"><div class="legend-dot" style="background:#FFD333;"></div><div class="legend-name">Capacity</div><div class="legend-count">28</div><div class="legend-pct" style="color:#a07200;">1.6%</div></div>
+          <div class="legend-item"><div class="legend-dot" style="background:#77D6FF;"></div><div class="legend-name">Pending Auth / Benefits</div><div class="legend-count">9</div><div class="legend-pct" style="color:#3dafd9;">0.5%</div></div>
         </div>
       </div>
     </div>
@@ -706,32 +529,32 @@
       <div class="card-title">Conversion <span>Analysis</span></div>
       <div class="conv-item best">
         <div>
-          <div class="conv-item-label">Physician Outreach</div>
-          <div class="conv-item-detail">6 conversions / 20 leads · Patricia Bianca Simtoco</div>
+          <div class="conv-item-label">Field Marketing</div>
+          <div class="conv-item-detail">18 conversions / 55 leads · Efren Castro, Sofia Hernandez, Patricia B. Simtoco</div>
         </div>
-        <div class="conv-item-pct" style="color:#1a9e7c;">30.0%</div>
+        <div class="conv-item-pct" style="color:#1a9e7c;">32.7%</div>
       </div>
       <div class="conv-item mid">
         <div>
           <div class="conv-item-label">Digital — Website (Organic)</div>
-          <div class="conv-item-detail">7 conversions / 105 organic leads</div>
+          <div class="conv-item-detail">99 conversions / 1,188 digital leads</div>
         </div>
-        <div class="conv-item-pct" style="color:#c48a00;">6.7%</div>
+        <div class="conv-item-pct" style="color:#c48a00;">8.3%</div>
       </div>
       <div class="conv-item low">
         <div>
           <div class="conv-item-label">Digital — Social Campaigns</div>
-          <div class="conv-item-detail">0 conversions / 441 paid leads YTD</div>
+          <div class="conv-item-detail">0 conversions / 469 paid leads YTD</div>
         </div>
         <div class="conv-item-pct" style="color:var(--muted);">0.0%</div>
       </div>
       <div style="margin-top:1rem;">
         <div class="card-title">Top Decline <span>Reasons</span></div>
-        <div class="decline-item"><div class="decline-reason">Insurance</div><div class="decline-bar-bg"><div class="decline-bar-fill" style="width:100%;"></div></div><div class="decline-count">19</div></div>
-        <div class="decline-item"><div class="decline-reason">Wrong Service</div><div class="decline-bar-bg"><div class="decline-bar-fill" style="width:36%;"></div></div><div class="decline-count">7</div></div>
-        <div class="decline-item"><div class="decline-reason">Client Declined</div><div class="decline-bar-bg"><div class="decline-bar-fill" style="width:36%;"></div></div><div class="decline-count">7</div></div>
-        <div class="decline-item"><div class="decline-reason">Location</div><div class="decline-bar-bg"><div class="decline-bar-fill" style="width:21%;"></div></div><div class="decline-count">4</div></div>
-        <div class="decline-item"><div class="decline-reason">Approval Denied</div><div class="decline-bar-bg"><div class="decline-bar-fill" style="width:16%;"></div></div><div class="decline-count">3</div></div>
+        <div class="decline-item"><div class="decline-reason">Direct Therapy Intensity</div><div class="decline-bar-bg"><div class="decline-bar-fill" style="width:100%;"></div></div><div class="decline-count">431</div></div>
+        <div class="decline-item"><div class="decline-reason">Client Declined</div><div class="decline-bar-bg"><div class="decline-bar-fill" style="width:88%;"></div></div><div class="decline-count">379</div></div>
+        <div class="decline-item"><div class="decline-reason">Location</div><div class="decline-bar-bg"><div class="decline-bar-fill" style="width:12%;"></div></div><div class="decline-count">53</div></div>
+        <div class="decline-item"><div class="decline-reason">Approval Denied</div><div class="decline-bar-bg"><div class="decline-bar-fill" style="width:5%;"></div></div><div class="decline-count">23</div></div>
+        <div class="decline-item"><div class="decline-reason">Insurance</div><div class="decline-bar-bg"><div class="decline-bar-fill" style="width:5%;"></div></div><div class="decline-count">21</div></div>
       </div>
     </div>
   </div>
@@ -741,105 +564,106 @@
   <div class="full-width">
     <div class="card">
       <div class="card-title">Territory <span>Deep Dive</span></div>
-      <div class="territory-table-wrap"><table class="territory-table">
+      <div class="territory-table-wrap">
+      <table class="territory-table">
         <thead>
           <tr>
-            <th>Territory</th><th>Total Leads</th><th>Digital Outreach</th><th>Physician Outreach</th><th>Converted</th><th>Conv. Rate</th><th>Volume Share</th><th>Active Pipeline</th>
+            <th>Territory</th><th>Total Leads</th><th>Digital Outreach</th><th>Field Marketing</th><th>Converted</th><th>Conv. Rate</th><th>Volume Share</th><th>Active Pipeline</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><div class="territory-name">SAC</div><div style="font-size:0.52rem;color:var(--muted);font-weight:600;">Sacramento</div></td>
-            <td style="font-family:'Nunito',sans-serif;font-weight:800;">58</td>
-            <td><span class="chip chip-digital">50</span></td><td><span class="chip chip-outreach">8</span></td>
-            <td style="color:#1a9e7c;font-weight:800;">5</td>
-            <td><span class="conversion-badge" style="background:var(--green-light);color:#1a9e7c;">8.6%</span></td>
-            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:100%;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">10.2%</div></td>
-            <td style="color:#c48a00;font-weight:700;">8</td>
-          </tr>
-          <tr>
-            <td><div class="territory-name">SD</div><div style="font-size:0.52rem;color:var(--muted);font-weight:600;">San Diego</div></td>
-            <td style="font-family:'Nunito',sans-serif;font-weight:800;">55</td>
-            <td><span class="chip chip-digital">51</span></td><td><span class="chip chip-outreach">4</span></td>
-            <td style="color:#1a9e7c;font-weight:800;">2</td>
-            <td><span class="conversion-badge" style="background:var(--yellow-light);color:#a07200;">3.6%</span></td>
-            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:94.8%;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">9.7%</div></td>
-            <td style="color:#c48a00;font-weight:700;">4</td>
+            <td><div class="territory-name">LAN</div><div style="font-size:0.52rem;color:var(--muted);font-weight:600;">Los Angeles North</div></td>
+            <td style="font-family:'Nunito',sans-serif;font-weight:800;">232</td>
+            <td><span class="chip chip-digital">229</span></td><td><span class="chip chip-outreach">2</span></td>
+            <td style="color:#1a9e7c;font-weight:800;">22</td>
+            <td><span class="conversion-badge" style="background:var(--green-light);color:#1a9e7c;">9.5%</span></td>
+            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:100%;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">13.6%</div></td>
+            <td style="color:#c48a00;font-weight:700;">14</td>
           </tr>
           <tr>
             <td><div class="territory-name">LAW</div><div style="font-size:0.52rem;color:var(--muted);font-weight:600;">Los Angeles West</div></td>
-            <td style="font-family:'Nunito',sans-serif;font-weight:800;">21</td>
-            <td><span class="chip chip-digital">19</span></td><td><span class="chip chip-outreach">2</span></td>
-            <td style="color:#1a9e7c;font-weight:800;">2</td>
-            <td><span class="conversion-badge" style="background:var(--green-light);color:#1a9e7c;">9.5%</span></td>
-            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:36%;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">3.7%</div></td>
-            <td style="color:#c48a00;font-weight:700;">3</td>
-          </tr>
-          <tr>
-            <td><div class="territory-name">LAN</div><div style="font-size:0.52rem;color:var(--muted);font-weight:600;">Los Angeles North</div></td>
-            <td style="font-family:'Nunito',sans-serif;font-weight:800;">19</td>
-            <td><span class="chip chip-digital">19</span></td><td><span class="chip chip-outreach">0</span></td>
-            <td style="color:#1a9e7c;font-weight:800;">2</td>
-            <td><span class="conversion-badge" style="background:var(--green-light);color:#1a9e7c;">10.5%</span></td>
-            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:32.8%;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">3.4%</div></td>
-            <td style="color:#c48a00;font-weight:700;">3</td>
-          </tr>
-          <tr>
-            <td><div class="territory-name">IEN</div><div style="font-size:0.52rem;color:var(--muted);font-weight:600;">Inland Empire North</div></td>
-            <td style="font-family:'Nunito',sans-serif;font-weight:800;">19</td>
-            <td><span class="chip chip-digital">14</span></td><td><span class="chip chip-outreach">5</span></td>
-            <td style="color:#1a9e7c;font-weight:800;">1</td>
-            <td><span class="conversion-badge" style="background:var(--yellow-light);color:#a07200;">5.3%</span></td>
-            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:32.8%;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">3.4%</div></td>
-            <td style="color:#c48a00;font-weight:700;">4</td>
-          </tr>
-          <tr>
-            <td><div class="territory-name">OC</div><div style="font-size:0.52rem;color:var(--muted);font-weight:600;">Orange County</div></td>
-            <td style="font-family:'Nunito',sans-serif;font-weight:800;">10</td>
-            <td><span class="chip chip-digital">10</span></td><td><span class="chip chip-outreach">0</span></td>
-            <td style="color:var(--muted);font-weight:700;">1</td>
-            <td><span class="conversion-badge" style="background:var(--navy-light);color:var(--navy);">10.0%</span></td>
-            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:17.2%;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">1.8%</div></td>
-            <td style="color:var(--muted);font-weight:700;">2</td>
+            <td style="font-family:'Nunito',sans-serif;font-weight:800;">231</td>
+            <td><span class="chip chip-digital">225</span></td><td><span class="chip chip-outreach">3</span></td>
+            <td style="color:#1a9e7c;font-weight:800;">21</td>
+            <td><span class="conversion-badge" style="background:var(--green-light);color:#1a9e7c;">9.1%</span></td>
+            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:99.6%;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">13.5%</div></td>
+            <td style="color:#c48a00;font-weight:700;">13</td>
           </tr>
           <tr>
             <td><div class="territory-name">IES</div><div style="font-size:0.52rem;color:var(--muted);font-weight:600;">Inland Empire South</div></td>
-            <td style="font-family:'Nunito',sans-serif;font-weight:800;">9</td>
-            <td><span class="chip chip-digital">8</span></td><td><span class="chip chip-outreach">1</span></td>
-            <td style="color:var(--muted);font-weight:700;">0</td>
-            <td><span class="conversion-badge" style="background:rgba(224,82,82,0.1);color:var(--danger);">0.0%</span></td>
-            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:15.5%;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">1.6%</div></td>
-            <td style="color:var(--muted);font-weight:700;">1</td>
+            <td style="font-family:'Nunito',sans-serif;font-weight:800;">173</td>
+            <td><span class="chip chip-digital">151</span></td><td><span class="chip chip-outreach">15</span></td>
+            <td style="color:#1a9e7c;font-weight:800;">13</td>
+            <td><span class="conversion-badge" style="background:var(--yellow-light);color:#a07200;">7.5%</span></td>
+            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:74.6%;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">10.1%</div></td>
+            <td style="color:#c48a00;font-weight:700;">11</td>
+          </tr>
+          <tr>
+            <td><div class="territory-name">SD</div><div style="font-size:0.52rem;color:var(--muted);font-weight:600;">San Diego</div></td>
+            <td style="font-family:'Nunito',sans-serif;font-weight:800;">177</td>
+            <td><span class="chip chip-digital">111</span></td><td><span class="chip chip-outreach">15</span></td>
+            <td style="color:#1a9e7c;font-weight:800;">20</td>
+            <td><span class="conversion-badge" style="background:var(--green-light);color:#1a9e7c;">11.3%</span></td>
+            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:76.3%;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">10.3%</div></td>
+            <td style="color:#c48a00;font-weight:700;">10</td>
+          </tr>
+          <tr>
+            <td><div class="territory-name">IEN</div><div style="font-size:0.52rem;color:var(--muted);font-weight:600;">Inland Empire North</div></td>
+            <td style="font-family:'Nunito',sans-serif;font-weight:800;">141</td>
+            <td><span class="chip chip-digital">127</span></td><td><span class="chip chip-outreach">12</span></td>
+            <td style="color:#1a9e7c;font-weight:800;">17</td>
+            <td><span class="conversion-badge" style="background:var(--green-light);color:#1a9e7c;">12.1%</span></td>
+            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:60.8%;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">8.2%</div></td>
+            <td style="color:#c48a00;font-weight:700;">9</td>
+          </tr>
+          <tr>
+            <td><div class="territory-name">OC</div><div style="font-size:0.52rem;color:var(--muted);font-weight:600;">Orange County</div></td>
+            <td style="font-family:'Nunito',sans-serif;font-weight:800;">188</td>
+            <td><span class="chip chip-digital">184</span></td><td><span class="chip chip-outreach">0</span></td>
+            <td style="color:var(--muted);font-weight:700;">5</td>
+            <td><span class="conversion-badge" style="background:var(--yellow-light);color:#a07200;">2.7%</span></td>
+            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:81%;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">11.0%</div></td>
+            <td style="color:var(--muted);font-weight:700;">8</td>
+          </tr>
+          <tr>
+            <td><div class="territory-name">SAC</div><div style="font-size:0.52rem;color:var(--muted);font-weight:600;">Sacramento</div></td>
+            <td style="font-family:'Nunito',sans-serif;font-weight:800;">118</td>
+            <td><span class="chip chip-digital">80</span></td><td><span class="chip chip-outreach">8</span></td>
+            <td style="color:#1a9e7c;font-weight:800;">19</td>
+            <td><span class="conversion-badge" style="background:var(--green-light);color:#1a9e7c;">16.1%</span></td>
+            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:50.9%;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">6.9%</div></td>
+            <td style="color:#c48a00;font-weight:700;">7</td>
           </tr>
           <tr>
             <td><div class="territory-name">BAY</div><div style="font-size:0.52rem;color:var(--muted);font-weight:600;">Bay Area</div></td>
-            <td style="font-family:'Nunito',sans-serif;font-weight:800;">4</td>
-            <td><span class="chip chip-digital">4</span></td><td><span class="chip chip-outreach">0</span></td>
+            <td style="font-family:'Nunito',sans-serif;font-weight:800;">35</td>
+            <td><span class="chip chip-digital">35</span></td><td><span class="chip chip-outreach">0</span></td>
             <td style="color:var(--muted);font-weight:700;">0</td>
             <td><span class="conversion-badge" style="background:rgba(224,82,82,0.1);color:var(--danger);">0.0%</span></td>
-            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:6.9%;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">0.7%</div></td>
-            <td style="color:var(--muted);font-weight:700;">1</td>
+            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:15.1%;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">2.0%</div></td>
+            <td style="color:var(--muted);font-weight:700;">2</td>
           </tr>
           <tr>
             <td><div class="territory-name" style="color:var(--muted);">Unknown</div><div style="font-size:0.52rem;color:var(--muted);font-weight:600;">Unassigned</div></td>
-            <td style="font-family:'Nunito',sans-serif;font-weight:800;color:var(--muted);">168</td>
-            <td><span class="chip chip-digital">168</span></td><td><span class="chip chip-outreach">0</span></td>
+            <td style="font-family:'Nunito',sans-serif;font-weight:800;color:var(--muted);">202</td>
+            <td><span class="chip chip-digital">202</span></td><td><span class="chip chip-outreach">0</span></td>
             <td style="color:var(--muted);font-weight:700;">0</td>
             <td><span class="conversion-badge" style="background:var(--cream);color:var(--muted);">—</span></td>
-            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:100%;background:#c0bcd5;opacity:0.5;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">29.7%</div></td>
+            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:87.1%;background:#c0bcd5;opacity:0.5;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">11.8%</div></td>
             <td style="color:var(--muted);font-weight:700;">—</td>
           </tr>
         </tbody>
-      </table></div>
+      </table>
+      </div>
       <div style="margin-top:0.75rem;padding:0.6rem 0.75rem;background:var(--yellow-light);border:1.5px solid rgba(255,211,51,0.4);border-radius:8px;font-size:0.6rem;color:#8a6200;font-weight:700;">
-        ⚠ <strong>168 leads (29.7%) have no territory assigned</strong> — primarily from Social Media Paid campaigns. Territory assignment needed to fully attribute performance.
+        ⚠ <strong>202 leads (11.8%) have no territory assigned</strong> — primarily from Social Media Paid campaigns. Territory assignment needed to fully attribute performance.
       </div>
     </div>
   </div>
 
-  <!-- Footer -->
   <div style="text-align:center;padding:1.5rem 0;border-top:2px solid var(--border);font-size:0.58rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;font-weight:700;">
-    intercare therapy &nbsp;·&nbsp; Lead Generation Dashboard &nbsp;·&nbsp; YTD 2026 · Jan 1 – Mar 20 &nbsp;·&nbsp; Digital Outreach + Physician Outreach
+    intercare therapy &nbsp;·&nbsp; Lead Generation Dashboard &nbsp;·&nbsp; YTD 2026 · Jan 1 – Mar 25 &nbsp;·&nbsp; Digital Outreach + Field Marketing
   </div>
 
 </div>
