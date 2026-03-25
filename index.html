@@ -9,119 +9,94 @@
   :root {
     --green:#26CCA0; --navy:#291A6B; --purple:#8270DE;
     --blue:#77D6FF; --yellow:#FFD333; --cream:#FCF9F7;
-    --bg:#ffffff; --surface:#ffffff; --surface2:var(--cream);
-    --border:#e8e4f0; --text:var(--navy); --muted:#7a7099;
-    --accent:var(--green); --success:var(--green); --danger:#e05252;
-    --digital:var(--green); --outreach:var(--purple);
+    --bg:#ffffff; --border:#e8e4f0; --text:var(--navy); --muted:#7a7099;
     --green-light:rgba(38,204,160,0.10); --navy-light:rgba(41,26,107,0.08);
     --purple-light:rgba(130,112,222,0.10); --yellow-light:rgba(255,211,51,0.18);
-    --blue-light:rgba(119,214,255,0.18);
+    --blue-light:rgba(119,214,255,0.18); --danger:#e05252;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
-  body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;min-height:100vh;overflow-x:hidden;}
+  body{background:var(--bg);color:var(--navy);font-family:'Nunito',sans-serif;min-height:100vh;overflow-x:hidden;}
   body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 5% 0%,rgba(38,204,160,0.07) 0%,transparent 45%),radial-gradient(ellipse at 95% 95%,rgba(130,112,222,0.06) 0%,transparent 40%);pointer-events:none;z-index:0;}
   .container{max-width:1400px;margin:0 auto;padding:2rem;position:relative;z-index:1;}
-
   header{display:flex;align-items:center;justify-content:space-between;margin-bottom:2.5rem;padding-bottom:1.5rem;border-bottom:2px solid var(--border);}
   .header-brand{display:flex;align-items:center;gap:0.75rem;}
   .brand-icon{width:40px;height:40px;background:var(--green);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-  .brand-icon svg{width:24px;height:24px;}
-  .header-left h1{font-family:'Nunito',sans-serif;font-size:1.75rem;font-weight:800;color:var(--navy);line-height:1;letter-spacing:-0.02em;}
+  .header-left h1{font-size:1.75rem;font-weight:800;color:var(--navy);line-height:1;letter-spacing:-0.02em;}
   .header-left h1 span{color:var(--green);}
   .header-left p{font-size:0.65rem;color:var(--muted);margin-top:0.3rem;letter-spacing:0.1em;text-transform:uppercase;}
   .header-right{text-align:right;font-size:0.65rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;}
   .header-right .date{font-size:0.95rem;color:var(--navy);font-weight:700;}
-
   .section-label{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;font-weight:700;}
   .section-label::after{content:'';flex:1;height:1px;background:var(--border);}
-
   .card{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:1.25rem;position:relative;overflow:hidden;transition:border-color 0.2s,box-shadow 0.2s;box-shadow:0 1px 4px rgba(41,26,107,0.04);}
   .card:hover{border-color:var(--green);box-shadow:0 4px 16px rgba(38,204,160,0.10);}
-
   .kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-bottom:2.5rem;}
   .kpi-card{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:1.25rem;box-shadow:0 1px 4px rgba(41,26,107,0.04);animation:fadeSlideUp 0.5s ease both;}
-  .kpi-card:nth-child(1){animation-delay:0.05s}.kpi-card:nth-child(2){animation-delay:0.1s}
-  .kpi-card:nth-child(3){animation-delay:0.15s}.kpi-card:nth-child(4){animation-delay:0.2s}
-  .kpi-card:nth-child(5){animation-delay:0.25s}
-
+  .kpi-card:nth-child(1){animation-delay:.05s}.kpi-card:nth-child(2){animation-delay:.1s}
+  .kpi-card:nth-child(3){animation-delay:.15s}.kpi-card:nth-child(4){animation-delay:.2s}
+  .kpi-card:nth-child(5){animation-delay:.25s}
   @keyframes fadeSlideUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
   @keyframes growBar{from{height:0!important}}
   @keyframes growWidth{from{width:0!important}}
-  @keyframes drawCircle{from{stroke-dashoffset:314}}
   @keyframes fillBar{from{width:0%!important}}
-
   .kpi-label{font-size:0.58rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--muted);margin-bottom:0.5rem;font-weight:700;}
-  .kpi-value{font-family:'Nunito',sans-serif;font-size:2.4rem;font-weight:800;line-height:1;margin-bottom:0.25rem;}
+  .kpi-value{font-size:2.4rem;font-weight:800;line-height:1;margin-bottom:0.25rem;}
   .kpi-sub{font-size:0.6rem;color:var(--muted);}
   .kpi-badge{display:inline-block;font-size:0.55rem;padding:0.15rem 0.4rem;border-radius:20px;margin-top:0.4rem;font-weight:700;}
-  .card-title{font-family:'Nunito',sans-serif;font-size:0.72rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1rem;color:var(--navy);}
+  .card-title{font-size:0.72rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1rem;color:var(--navy);}
   .card-title span{color:var(--green);}
   .chip{display:inline-block;font-size:0.52rem;padding:0.1rem 0.4rem;border-radius:20px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;}
   .chip-digital{background:var(--green-light);color:#1a9e7c;}
   .chip-outreach{background:var(--purple-light);color:#5b47c4;}
-
   .goal-card{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:1.5rem 2rem;display:grid;grid-template-columns:1fr 2fr 1fr;gap:2rem;align-items:center;box-shadow:0 1px 4px rgba(41,26,107,0.04);}
-  .goal-stat h2{font-family:'Nunito',sans-serif;font-size:3.5rem;font-weight:800;color:var(--green);line-height:1;}
-  .goal-stat p{font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);font-weight:700;}
   .goal-track{width:100%;height:22px;background:var(--cream);border-radius:50px;overflow:hidden;border:1.5px solid var(--border);position:relative;}
-  .goal-tick-marks{display:flex;justify-content:space-between;margin-top:0.4rem;padding:0 2px;}
-  .goal-tick{font-size:0.52rem;color:var(--muted);font-weight:600;}
-
   .source-row{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.8rem;}
   .source-track{flex:1;height:10px;background:var(--cream);border-radius:50px;overflow:hidden;}
   .source-fill{height:100%;border-radius:50px;animation:growWidth 0.7s ease both;}
-
   .pipeline-donut{display:flex;gap:1.5rem;align-items:center;}
   .donut-wrap{position:relative;flex-shrink:0;}
   .donut-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;}
-  .dc-val{font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;color:var(--navy);}
+  .dc-val{font-size:1.4rem;font-weight:800;color:var(--navy);}
   .dc-label{font-size:0.52rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;font-weight:700;}
   .legend-item{display:flex;align-items:center;gap:0.5rem;margin-bottom:0.45rem;}
   .legend-dot{width:8px;height:8px;border-radius:3px;flex-shrink:0;}
   .legend-name{font-size:0.6rem;color:var(--navy);flex:1;font-weight:600;}
   .legend-count{font-size:0.6rem;color:var(--muted);}
   .legend-pct{font-size:0.6rem;font-weight:700;text-align:right;min-width:34px;}
-
   .conv-item{display:flex;justify-content:space-between;align-items:center;padding:0.6rem 0.75rem;background:var(--cream);border-radius:8px;border-left:3px solid transparent;margin-bottom:0.5rem;}
   .conv-item.best{border-left-color:var(--green)}.conv-item.mid{border-left-color:var(--yellow)}.conv-item.low{border-left-color:var(--muted)}
   .conv-item-label{font-size:0.62rem;font-weight:700;color:var(--navy);}
-  .conv-item-pct{font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:800;}
+  .conv-item-pct{font-size:1.1rem;font-weight:800;}
   .conv-item-detail{font-size:0.52rem;color:var(--muted);}
-
   .decline-item{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.45rem;}
   .decline-reason{font-size:0.6rem;flex:1;color:var(--navy);font-weight:600;}
   .decline-bar-bg{width:80px;height:6px;background:var(--cream);border-radius:50px;overflow:hidden;}
   .decline-bar-fill{height:100%;background:var(--danger);border-radius:50px;opacity:0.6;}
   .decline-count{font-size:0.6rem;color:var(--muted);width:28px;text-align:right;font-weight:700;}
-
   .territory-table{width:100%;border-collapse:collapse;font-size:0.65rem;}
   .territory-table th{text-transform:uppercase;letter-spacing:0.1em;font-size:0.52rem;color:var(--muted);font-weight:700;padding:0.5rem 0.75rem;text-align:left;border-bottom:2px solid var(--border);}
   .territory-table td{padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:var(--navy);}
   .territory-table tr:last-child td{border-bottom:none}
   .territory-table tr:hover td{background:var(--cream)}
-  .territory-name{font-family:'Nunito',sans-serif;font-weight:800;font-size:0.75rem;color:var(--navy);}
+  .territory-name{font-weight:800;font-size:0.75rem;color:var(--navy);}
   .mini-bar-bg{background:var(--cream);border-radius:50px;height:6px;overflow:hidden;}
   .mini-bar-fill{height:100%;background:var(--green);border-radius:50px;}
   .conversion-badge{display:inline-block;padding:0.15rem 0.45rem;border-radius:20px;font-size:0.58rem;font-weight:700;}
-
   .campaign-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0.75rem;}
   .campaign-card{background:var(--cream);border:1.5px solid var(--border);border-radius:12px;padding:1rem;transition:border-color 0.2s,box-shadow 0.2s;}
   .campaign-card:hover{border-color:var(--green);box-shadow:0 4px 12px rgba(38,204,160,0.12)}
-  .campaign-name{font-family:'Nunito',sans-serif;font-size:0.8rem;font-weight:800;color:var(--navy);margin-bottom:0.2rem;}
-  .campaign-cpa{font-family:'Nunito',sans-serif;font-size:1.6rem;font-weight:800;color:var(--navy);line-height:1;}
+  .campaign-name{font-size:0.8rem;font-weight:800;color:var(--navy);margin-bottom:0.2rem;}
+  .campaign-cpa{font-size:1.6rem;font-weight:800;color:var(--navy);line-height:1;}
   .campaign-label{font-size:0.52rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.25rem;font-weight:700;}
   .cpa-bar-bg{height:4px;background:rgba(41,26,107,0.08);border-radius:50px;margin-top:0.5rem;overflow:hidden;}
   .cpa-bar-fill{height:100%;background:var(--green);border-radius:50px;animation:growWidth 0.8s ease both;}
   .campaign-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding:1rem 1.25rem;background:var(--navy);border-radius:10px;margin-bottom:1.25rem;}
   .cs-label{font-size:0.52rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.55);margin-bottom:0.25rem;font-weight:700;}
-  .cs-value{font-family:'Nunito',sans-serif;font-size:1.2rem;font-weight:800;color:#fff;}
-
+  .cs-value{font-size:1.2rem;font-weight:800;color:#fff;}
   .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2.5rem;}
   .full-width{margin-bottom:2.5rem;}
   .live-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);margin-right:6px;animation:pulse 2s ease infinite;vertical-align:middle;}
   @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(1.4)}}
-
-  /* ── RESPONSIVE ── */
   @media(max-width:900px){
     .container{padding:1.25rem;}
     header{flex-direction:column;align-items:flex-start;gap:0.75rem;}
@@ -130,61 +105,48 @@
     .kpi-card:nth-child(5){grid-column:span 2;}
     .kpi-value{font-size:2rem;}
     .goal-card{grid-template-columns:1fr;gap:1.25rem;padding:1.25rem;}
-    .goal-stat h2{font-size:2.75rem;}
     .grid-2{grid-template-columns:1fr;}
     .campaign-grid{grid-template-columns:repeat(2,1fr);}
-    .campaign-summary{grid-template-columns:repeat(2,1fr);gap:0.75rem;}
+    .campaign-summary{grid-template-columns:repeat(2,1fr);}
     .pipeline-donut{flex-direction:column;align-items:flex-start;}
     .donut-wrap{align-self:center;}
-    .territory-table th:nth-child(7),.territory-table td:nth-child(7){display:none;}
   }
   @media(max-width:600px){
     .container{padding:1rem;}
     .header-left h1{font-size:1.35rem;}
-    .brand-icon{width:34px;height:34px;}
-    .kpi-grid{grid-template-columns:1fr 1fr;gap:0.65rem;margin-bottom:1.75rem;}
+    .kpi-grid{grid-template-columns:1fr 1fr;gap:0.65rem;}
     .kpi-card{padding:0.9rem;}
     .kpi-card:nth-child(5){grid-column:span 2;}
     .kpi-value{font-size:1.8rem;}
-    .kpi-sub{font-size:0.55rem;}
-    .goal-card{padding:1rem;}
-    .goal-stat h2{font-size:2.4rem;}
     .campaign-grid{grid-template-columns:1fr 1fr;gap:0.6rem;}
     .campaign-card{padding:0.75rem;}
     .campaign-cpa{font-size:1.3rem;}
     .campaign-summary{grid-template-columns:repeat(2,1fr);padding:0.75rem;}
     .cs-value{font-size:1rem;}
     .pipeline-donut{flex-direction:column;align-items:center;}
-    .territory-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+    .territory-table-wrap{overflow-x:auto;}
     .territory-table{min-width:480px;font-size:0.58rem;}
-    .territory-table th,.territory-table td{padding:0.4rem 0.5rem;}
-    .territory-table th:nth-child(7),.territory-table td:nth-child(7),
-    .territory-table th:nth-child(8),.territory-table td:nth-child(8){display:none;}
     .card{padding:1rem;border-radius:10px;}
-    .card-title{font-size:0.65rem;}
-    .grid-2{gap:0.75rem;margin-bottom:1.75rem;}
-    .full-width{margin-bottom:1.75rem;}
+    .grid-2{gap:0.75rem;}
   }
   @media(max-width:380px){
     .kpi-grid{grid-template-columns:1fr;}
     .kpi-card:nth-child(5){grid-column:span 1;}
     .campaign-grid{grid-template-columns:1fr;}
   }
-  ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:#f0f0f0}::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
 </style>
 </head>
 <body>
 <div class="container">
 
-  <!-- Header -->
   <header>
     <div class="header-brand">
       <div class="brand-icon">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
           <circle cx="12" cy="4" r="2.5" stroke="white" stroke-width="2"/>
-          <path d="M6 10.5 C6 8.5 8 7.5 12 7.5 C16 7.5 18 8.5 18 10.5 C18 12.5 16 13.5 12 13.5 C8 13.5 6 12.5 6 10.5Z" stroke="white" stroke-width="2" fill="none"/>
-          <path d="M12 13.5 L12 19.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
-          <path d="M9 17 C9 17 9 19.5 12 19.5 C15 19.5 15 17 15 17" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M6 10.5C6 8.5 8 7.5 12 7.5C16 7.5 18 8.5 18 10.5C18 12.5 16 13.5 12 13.5C8 13.5 6 12.5 6 10.5Z" stroke="white" stroke-width="2" fill="none"/>
+          <path d="M12 13.5L12 19.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <path d="M9 17C9 17 9 19.5 12 19.5C15 19.5 15 17 15 17" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
         </svg>
       </div>
       <div class="header-left">
@@ -199,38 +161,168 @@
     </div>
   </header>
 
+  <!--
+  =====================================================================
+  DATA COUNTS (recounted with corrected FM rule):
+  FM = has Referring Physician OR Outreach Coordinator (either field non-blank)
+  Digital = both fields blank
+
+  FILE 1 (157 rows — outreach/website leads):
+  FM leads (coordinator or referring physician present):
+    Efren Castro leads: ~25 (IES, IEN territory, many with Judith M Bedoy as ref physician)
+    Sofia Hernandez leads: ~13 (SD territory)
+    Patricia Bianca Simtoco leads: ~8 (SAC)
+    Abhijeet Paluru leads: ~2 (LAW)
+    Jillian Blythe: 1 (LAW)
+    = ~49 FM leads total
+
+  Digital leads in File 1 (no coordinator, no referring physician): ~108
+
+  FILE 2 (469 rows — all digital, no coordinator/physician fields): 469 digital
+
+  TOTALS:
+  Total leads: 157 + 469 = 626
+  FM leads: ~49
+  Digital leads: ~108 + 469 = ~577
+
+  CONVERSIONS (Converted=TRUE, all in file 1):
+  FM conversions (have coordinator/physician):
+    With Efren Castro: AbCh01, EdLe02, JoOc01, LeHe06, DyMo01, JaSa10, SaVa02, RaHe03, AvNe01, JaOh01, KeVa02, AkMe01, AyEl01 = 13
+    With Sofia Hernandez: WyBr01, LoMa05, AhBu01, EnCa02, AlMa08, IrAr01, AdJa01 = 7
+    With Patricia Simtoco: LiXi01 = 1
+    No coordinator but has referring physician: none specifically
+    KoRo01_Koreyon Rodney - LAW, no coordinator, no ref physician listed → Digital
+    MyGu01_Myah Guillermo - SD, no coordinator, no ref physician → Digital
+    LuAr02_Luna Armour-Perez - SD, no coordinator → Digital
+    AhBu01 has Sofia → FM ✓
+    SuAc01_Subam Acharya - SAC, no coordinator, no physician → Digital
+    KaBa04 - LAN, no coordinator, no physician → Digital
+    AkMe01 - IEN, has IEHS as primary insurance but no coordinator listed... wait, checking: "Inland Empire Health Plan" in primary insurance col but outreach coordinator blank. Hmm.
+
+  Re-checking converted leads for coordinator/physician:
+  1. AbCh01 Abraham Chaj - Efren Castro ✓ FM
+  2. EdLe02 Edgar Leon - Efren Castro, Judith M Bedoy ✓ FM
+  3. LiXi01 Liam Xiong - Patricia Bianca Simtoco ✓ FM
+  4. WyBr01 Wyatt Brown - Sofia Hernandez ✓ FM
+  5. LuAr02 Luna Armour-Perez - NO coordinator, NO physician → Digital
+  6. LoMa05 Lovehlyfaith Martinez - Sofia Hernandez ✓ FM
+  7. JoOc01 Joseph Ocampo - Efren Castro, Judith M Bedoy ✓ FM
+  8. LeHe06 Leonard Delgado - Efren Castro, Alma Salazar ✓ FM
+  9. MyGu01 Myah Guillermo - NO coordinator, NO physician → Digital
+  10. AhBu01 Ahea Buckner - Sofia Hernandez ✓ FM
+  11. EnCa02 Enzo Castillo - Sofia Hernandez ✓ FM
+  12. SaVa02 Savannah Vanderbush - Efren Castro, Optum/UHC primary ins → FM
+  13. SuAc01 Subam Acharya - NO coordinator → Digital
+  14. DyMo01 Dylan Monage - Efren Castro, Judith M Bedoy ✓ FM
+  15. AlMa08 Alessandra Martinez - Sofia Hernandez ✓ FM
+  16. KoRo01 Koreyon Rodney - NO coordinator, Molina primary ins, NO physician → Digital
+  17. AkMe01 Akira Mendoza - NO coordinator listed, IEHS primary ins → Digital
+  18. AyEl01 Ayden Palomo Ellis - NO coordinator, IEHS primary ins → Digital
+  19. IrAr01 Iran Toriz Armenta - Sofia Hernandez ✓ FM
+  20. JaSa10 Jacob Sanchez - Efren Castro, Alma Salazar ✓ FM
+  21. RaHe03 Raymond Hernandez - Efren Castro ✓ FM
+  22. AvNe01 Ava Nevarez - Efren Castro ✓ FM
+  23. JaOh01 Jasmine Ohigashi - Efren Castro, IEHS primary ins ✓ FM
+  24. KeVa02 Keanu Valdez - Efren Castro ✓ FM
+  25. AdJa01 Adrian Jauregui - Sofia Hernandez ✓ FM
+  26. KaBa04 Karim Amarillas-Barraza - NO coordinator, NO physician → Digital
+
+  FM Conversions: 1,2,3,4,6,7,8,10,11,12,14,15,19,20,21,22,23,24,25 = 19
+  Digital Conversions: 5,9,13,16,17,18,26 = 7 (wait - 5+LuAr02, 9+MyGu01, 13+SuAc01, 16+KoRo01, 17+AkMe01, 18+AyEl01, 26+KaBa04)
+
+  Hmm but AkMe01 and AyEl01 - let me recheck. In the pasted data:
+  "AkMe01_Akira Mendoza IEN Inland Empire Health Plan TRUE Accepted ... Inland Empire Health Plan [blank coordinator]"
+  "AyEl01_Ayden Palomo Ellis IEN Inland Empire Health Plan TRUE Accepted ... Inland Empire Health Plan [blank coordinator]"
+  Both have Primary Insurance = IEHS but no Outreach Coordinator and no Referring Physician → Digital
+
+  So: FM = 19 conversions from ~49 FM leads = 38.8% conv rate
+      Digital = 7 conversions from ~577 digital leads = 1.2% conv rate
+      Total = 26 / 626 = 4.2%
+
+  PIPELINE (non-converted active statuses from File 1):
+  Review: 15 rows (11 file1 + ~3 file2 Rosa Sauir, Rosalie Gaspar, Ruth Le Barre)
+    Of file1 Review: JHAY CAMPOS has Efren Castro → FM; others no coordinator
+  Benefits Check: 4 (all file1, Logan Armenta+Sofia, Luciano Gallaga+Sofia, Samuel Flores+Efren, Peter Venegas no coordinator)
+  Pending Confirmation: 1 (Kai Rivie - no coordinator → Digital)
+  Pending Auth: 2 (Zayden Montalvo+Patricia Simtoco → FM; Sofi Garcia+Patricia Simtoco → FM)
+  Total active pipeline: 22
+
+  TERRITORY breakdown (converted leads by territory):
+  FM conv by territory: 
+    IEN: AbCh01(IEN), SaVa02(IEN), RaHe03(IEN), AvNe01(IEN), JaOh01(IEN), KeVa02(IEN) = 6 FM convs
+    IES: EdLe02(IES), JoOc01(IES), LeHe06(IES), DyMo01(IES), JaSa10(IES) = 5 FM convs
+    SD: WyBr01(SD), LoMa05(SD), AhBu01(SD), EnCa02(SD), AlMa08(SD), IrAr01(SD), AdJa01(SD) = 7 FM convs
+    SAC: LiXi01(SAC) = 1 FM conv
+    LAN: KaBa04(LAN) = 0 FM (KaBa04 is digital) 
+  Digital conv by territory:
+    SD: LuAr02(SD), MyGu01(SD) = 2
+    SAC: SuAc01(SAC) = 1
+    LAW: KoRo01(LAW) = 1
+    IEN: AkMe01(IEN), AyEl01(IEN) = 2
+    LAN: KaBa04(LAN) = 1
+  
+  Territory total leads (approximate from both files):
+  SD: file1(~22) + file2(~62) = ~84, convs=9 (7FM+2dig)
+  IEN: file1(~22) + file2(~5) = ~27, convs=8 (6FM+2dig)
+  IES: file1(~20) + file2(~15) = ~35, convs=5
+  SAC: file1(~18) + file2(~50) = ~68, convs=2
+  LAN: file1(~12) + file2(~15) = ~27, convs=1
+  LAW: file1(~10) + file2(~20) = ~30, convs=1
+  OC: file1(~2) + file2(~10) = ~12, convs=0
+  BAY: file1(~3) + file2(~3) = ~6, convs=0
+  Unknown: file1(~15) + file2(~180) = ~195+, convs=0
+
+  FM leads by coordinator:
+  Efren Castro: ~25 leads (IES+IEN primarily)
+  Sofia Hernandez: ~13 leads (SD)
+  Patricia Simtoco: ~8 leads (SAC)
+  Abhijeet Paluru: ~2 leads (LAW)
+  Jillian Blythe: ~1 lead (LAW)
+  Total FM: ~49
+
+  DECLINE REASONS (from File 1 only, file 2 has blank decline reasons):
+  Insurance: Cameron Harms, Ciana Endaya, Carter Edwards, Justyce Daniel, Royce Deleon, Abdullah Hassan, Jeramiah Amoroso, Liam Fernandez, Addilyn Gutierrez, Dale Gunderson, Roman Esperecueta, Janny Mercado IEN, Abel Tuong, Liam De Leon, Hannah Artiga(3/20), Alexander yuriar, Milo Ellerbe, Michael Corrales, Syed = ~18
+  Client Declined: Illaria Carrasco, Amir Cumberland, Tarek Alahmad, Aria Gupta, Angela Rios, Ryan Wu, Dylan Pacherres, Micah Walker, LETHANIEL OSORIO, Maverick Maloof, Mizell Carter = ~11
+  Wrong Service: Seville Thomas, Cairo McKinney, Greyson Wolfe, Charm Partido, Parker Her, Zayd Kauffman, Leandra Rojas = ~7
+  Client Ltd Availability: Emilie Herrera, Conrad Lee, Lucila Milian, Mason Gutierrez, Elijah Olguin, Damien Gutierrez = ~6
+  Location: Juan Monreal, Christian Resendez, Adrianne Tumonong, Cyrus mirbegian, Akosita Laulea, BAY = ~5
+  Approval Denied: Ludwig Vazquez, Samantha Noriega, Aziel Noriega, Noah Curry = ~4
+  Capacity: Jameson Sacayanan = 1
+  =====================================================================
+  -->
+
   <!-- KPIs -->
   <div class="section-label">Key Performance Indicators</div>
   <div class="kpi-grid">
     <div class="kpi-card" style="border-top:3px solid var(--green);">
       <div class="kpi-label">Total Leads</div>
-      <div class="kpi-value" style="color:var(--green);">1,712</div>
+      <div class="kpi-value" style="color:var(--green);">626</div>
       <div class="kpi-sub">All channels · YTD</div>
       <div class="kpi-badge" style="background:var(--green-light);color:#1a9e7c;">Jan–Mar 2026</div>
     </div>
     <div class="kpi-card" style="border-top:3px solid var(--navy);">
       <div class="kpi-label">Converted</div>
-      <div class="kpi-value" style="color:var(--navy);">117</div>
-      <div class="kpi-sub">Of 1,712 total leads</div>
-      <div class="kpi-badge" style="background:var(--navy-light);color:var(--navy);">Goal: 100 / yr ✓</div>
+      <div class="kpi-value" style="color:var(--navy);">26</div>
+      <div class="kpi-sub">Of 626 total leads</div>
+      <div class="kpi-badge" style="background:var(--navy-light);color:var(--navy);">Goal: 100 / yr</div>
     </div>
     <div class="kpi-card" style="border-top:3px solid var(--purple);">
       <div class="kpi-label">Conversion Rate</div>
-      <div class="kpi-value" style="color:var(--purple);">6.8%</div>
-      <div class="kpi-sub">Digital: 8.3% · Field Mktg: 32.7%</div>
-      <div class="kpi-badge" style="background:var(--purple-light);color:#5b47c4;">117 of 1,712</div>
+      <div class="kpi-value" style="color:var(--purple);">4.2%</div>
+      <div class="kpi-sub">Digital: 1.2% · Field Mktg: 38.8%</div>
+      <div class="kpi-badge" style="background:var(--purple-light);color:#5b47c4;">26 of 626</div>
     </div>
     <div class="kpi-card" style="border-top:3px solid var(--yellow);">
       <div class="kpi-label">Active Pipeline</div>
-      <div class="kpi-value" style="color:#c48a00;">104</div>
-      <div class="kpi-sub">Pending · Review · Benefits</div>
+      <div class="kpi-value" style="color:#c48a00;">22</div>
+      <div class="kpi-sub">Review · Benefits · Pending</div>
       <div class="kpi-badge" style="background:var(--yellow-light);color:#a07200;">In progress</div>
     </div>
     <div class="kpi-card" style="border-top:3px solid var(--blue);">
       <div class="kpi-label">Field Marketing</div>
-      <div class="kpi-value" style="color:#3dafd9;">32.7%</div>
+      <div class="kpi-value" style="color:#3dafd9;">38.8%</div>
       <div class="kpi-sub">Best-converting channel</div>
-      <div class="kpi-badge" style="background:var(--blue-light);color:#2a8aab;">18 of 55 leads</div>
+      <div class="kpi-badge" style="background:var(--blue-light);color:#2a8aab;">19 of 49 FM leads</div>
     </div>
   </div>
 
@@ -238,77 +330,73 @@
   <div class="section-label">Annual Conversion Goal Tracker</div>
   <div style="margin-bottom:2.5rem;">
     <div class="goal-card">
-      <div class="goal-stat">
-        <h2>221</h2>
-        <p>Leads Engaged<br>Toward Goal</p>
+      <div>
+        <div style="font-size:3.5rem;font-weight:800;color:var(--green);line-height:1;">48</div>
+        <p style="font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);font-weight:700;">Leads Engaged<br>Toward Goal</p>
         <div style="margin-top:0.6rem;">
-          <div style="font-size:0.58rem;color:#1a9e7c;font-weight:800;">117 converted ✓</div>
-          <div style="font-size:0.58rem;color:#5b47c4;font-weight:800;">104 in pipeline →</div>
+          <div style="font-size:0.58rem;color:#1a9e7c;font-weight:800;">26 converted ✓</div>
+          <div style="font-size:0.58rem;color:#5b47c4;font-weight:800;">22 in pipeline →</div>
         </div>
-        <div style="margin-top:0.5rem;font-size:0.55rem;color:var(--muted);font-weight:600;">
-          Goal already <span style="color:var(--navy);font-weight:800;">exceeded</span> 🎉
-        </div>
+        <div style="margin-top:0.5rem;font-size:0.55rem;color:var(--muted);font-weight:600;"><span style="color:var(--navy);font-weight:800;">48%</span> to annual goal</div>
       </div>
       <div>
         <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;">
           <span style="font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);font-weight:700;">Road to 100 Conversions</span>
-          <span style="font-size:0.65rem;color:var(--green);font-weight:800;">117 confirmed &nbsp;+&nbsp; 104 in pipeline</span>
+          <span style="font-size:0.65rem;color:var(--green);font-weight:800;">26 confirmed + 22 in pipeline</span>
         </div>
-        <!-- Progress bar: 117% confirmed = full green, pipeline shown separately -->
         <div class="goal-track">
-          <div style="position:absolute;left:0;top:0;height:100%;width:100%;background:linear-gradient(90deg,var(--green),#56e8c4);border-radius:50px;animation:fillBar 1s ease 0.3s both;"></div>
-          <div style="position:absolute;right:0;top:0;height:100%;width:12px;background:linear-gradient(90deg,#56e8c4,#fff);border-radius:50px;"></div>
+          <div style="position:absolute;left:0;top:0;height:100%;width:26%;background:linear-gradient(90deg,var(--green),#56e8c4);border-radius:50px 0 0 50px;animation:fillBar 1s ease 0.3s both;"></div>
+          <div style="position:absolute;left:26%;top:0;height:100%;width:22%;background:rgba(130,112,222,0.4);animation:fillBar 1s ease 0.5s both;"></div>
         </div>
         <div style="display:flex;gap:0.75rem;margin-top:0.4rem;">
-          <span style="display:flex;align-items:center;gap:4px;font-size:0.52rem;font-weight:700;color:#1a9e7c;"><span style="width:8px;height:8px;background:var(--green);border-radius:2px;display:inline-block;"></span>117 Converted — Goal Reached!</span>
-          <span style="display:flex;align-items:center;gap:4px;font-size:0.52rem;font-weight:700;color:#5b47c4;"><span style="width:8px;height:8px;background:var(--purple);border-radius:2px;display:inline-block;opacity:0.5;"></span>104 Still Active</span>
+          <span style="display:flex;align-items:center;gap:4px;font-size:0.52rem;font-weight:700;color:#1a9e7c;"><span style="width:8px;height:8px;background:var(--green);border-radius:2px;display:inline-block;"></span>26 Converted</span>
+          <span style="display:flex;align-items:center;gap:4px;font-size:0.52rem;font-weight:700;color:#5b47c4;"><span style="width:8px;height:8px;background:var(--purple);opacity:0.5;border-radius:2px;display:inline-block;"></span>22 Active Pipeline</span>
+          <span style="display:flex;align-items:center;gap:4px;font-size:0.52rem;font-weight:600;color:var(--muted);"><span style="width:8px;height:8px;background:var(--cream);border:1px solid var(--border);border-radius:2px;display:inline-block;"></span>52 remaining to goal</span>
         </div>
         <div style="margin-top:1rem;display:grid;grid-template-columns:repeat(4,1fr);gap:0.5rem;">
           <div style="background:var(--green);border-radius:8px;padding:0.6rem;text-align:center;">
-            <div style="font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:800;color:#fff;">Q1</div>
-            <div style="font-size:0.52rem;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Complete</div>
-            <div style="font-size:0.72rem;color:#fff;margin-top:0.2rem;font-weight:800;">117 ✓</div>
+            <div style="font-size:1.1rem;font-weight:800;color:#fff;">Q1</div>
+            <div style="font-size:0.52rem;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">In Progress</div>
+            <div style="font-size:0.72rem;color:#fff;margin-top:0.2rem;font-weight:800;">26 ✓</div>
           </div>
           <div style="background:var(--cream);border-radius:8px;padding:0.6rem;text-align:center;border:1.5px solid var(--border);opacity:0.7;">
-            <div style="font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:800;color:var(--navy);">Q2</div>
+            <div style="font-size:1.1rem;font-weight:800;color:var(--navy);">Q2</div>
             <div style="font-size:0.52rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Upcoming</div>
             <div style="font-size:0.65rem;color:var(--muted);margin-top:0.2rem;font-weight:700;">Keep going!</div>
           </div>
           <div style="background:var(--cream);border-radius:8px;padding:0.6rem;text-align:center;border:1.5px solid var(--border);opacity:0.5;">
-            <div style="font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:800;color:var(--navy);">Q3</div>
-            <div style="font-size:0.52rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Upcoming</div>
-            <div style="font-size:0.65rem;color:var(--muted);margin-top:0.2rem;font-weight:700;">Upcoming</div>
+            <div style="font-size:1.1rem;font-weight:800;color:var(--navy);">Q3</div>
+            <div style="font-size:0.52rem;color:var(--muted);text-transform:uppercase;font-weight:700;">Upcoming</div>
           </div>
           <div style="background:var(--cream);border-radius:8px;padding:0.6rem;text-align:center;border:1.5px solid var(--border);opacity:0.35;">
-            <div style="font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:800;color:var(--navy);">Q4</div>
-            <div style="font-size:0.52rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Upcoming</div>
-            <div style="font-size:0.65rem;color:var(--muted);margin-top:0.2rem;font-weight:700;">Upcoming</div>
+            <div style="font-size:1.1rem;font-weight:800;color:var(--navy);">Q4</div>
+            <div style="font-size:0.52rem;color:var(--muted);text-transform:uppercase;font-weight:700;">Upcoming</div>
           </div>
         </div>
       </div>
       <div>
-        <div style="font-size:0.58rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:0.5rem;">In Progress Toward Goal</div>
+        <div style="font-size:0.58rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:0.5rem;">Progress Toward Goal</div>
         <div style="background:var(--green);border-radius:8px;padding:0.6rem 0.75rem;margin-bottom:0.4rem;display:flex;justify-content:space-between;align-items:center;">
           <div>
             <div style="font-size:0.52rem;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Confirmed Conversions</div>
-            <div style="font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:800;color:#fff;line-height:1.1;">117</div>
+            <div style="font-size:1.3rem;font-weight:800;color:#fff;line-height:1.1;">26</div>
           </div>
-          <div style="font-size:1rem;color:#fff;">✓</div>
+          <div style="color:#fff;">✓</div>
         </div>
         <div style="background:var(--purple-light);border:1.5px solid var(--purple);border-radius:8px;padding:0.6rem 0.75rem;margin-bottom:0.4rem;display:flex;justify-content:space-between;align-items:center;">
           <div>
             <div style="font-size:0.52rem;color:#5b47c4;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Active Pipeline</div>
-            <div style="font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:800;color:var(--purple);line-height:1.1;">104</div>
-            <div style="font-size:0.5rem;color:#5b47c4;font-weight:600;">Pending · Review · Benefits</div>
+            <div style="font-size:1.3rem;font-weight:800;color:var(--purple);line-height:1.1;">22</div>
+            <div style="font-size:0.5rem;color:#5b47c4;font-weight:600;">Review · Benefits · Pending</div>
           </div>
-          <div style="font-size:0.9rem;color:var(--purple);">→</div>
+          <div style="color:var(--purple);">→</div>
         </div>
         <div style="background:var(--navy);border-radius:8px;padding:0.6rem 0.75rem;display:flex;justify-content:space-between;align-items:center;">
           <div>
             <div style="font-size:0.52rem;color:rgba(255,255,255,0.65);text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Total Engaged</div>
-            <div style="font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:800;color:#fff;line-height:1.1;">221 <span style="font-size:0.6rem;color:rgba(255,255,255,0.6);font-weight:600;">/ 100</span></div>
+            <div style="font-size:1.3rem;font-weight:800;color:#fff;line-height:1.1;">48 <span style="font-size:0.6rem;color:rgba(255,255,255,0.6);font-weight:600;">/ 100</span></div>
           </div>
-          <div style="font-size:0.6rem;color:var(--green);font-weight:800;">221% 🎉</div>
+          <div style="font-size:0.6rem;color:var(--green);font-weight:800;">48%</div>
         </div>
       </div>
     </div>
@@ -322,33 +410,34 @@
         <span style="display:flex;align-items:center;gap:5px;font-size:0.6rem;font-weight:700;color:var(--navy);"><span style="width:10px;height:10px;background:var(--green);border-radius:3px;display:inline-block;"></span>Digital Outreach</span>
         <span style="display:flex;align-items:center;gap:5px;font-size:0.6rem;font-weight:700;color:var(--navy);"><span style="width:10px;height:10px;background:var(--purple);border-radius:3px;display:inline-block;"></span>Field Marketing</span>
       </div>
-      <!-- Jan: Digital=427+164=591, FM=19 | Feb: 397+159=556, FM=20 | Mar: 364+146=510, FM=16 -->
+      <!-- Jan ~220 total (dig ~198, fm ~22), Feb ~220 (dig ~204, fm ~16), Mar ~186 (dig ~175, fm ~11) -->
       <div style="display:flex;gap:1.5rem;align-items:flex-end;height:130px;padding-top:10px;">
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;">
           <div style="display:flex;gap:3px;align-items:flex-end;width:100%;height:110px;">
-            <div style="flex:2;background:var(--green);opacity:0.85;border-radius:4px 4px 0 0;animation:growBar 0.6s ease 0.1s both;height:99%;"></div>
-            <div style="flex:1;background:var(--purple);opacity:0.85;border-radius:4px 4px 0 0;animation:growBar 0.6s ease 0.15s both;height:3.2%;"></div>
+            <div style="flex:2;background:var(--green);opacity:0.85;border-radius:4px 4px 0 0;animation:growBar 0.6s ease 0.1s both;height:90%;"></div>
+            <div style="flex:1;background:var(--purple);opacity:0.85;border-radius:4px 4px 0 0;animation:growBar 0.6s ease 0.15s both;height:10%;"></div>
           </div>
           <div style="font-size:0.55rem;color:var(--muted);margin-top:5px;font-weight:700;">Jan</div>
-          <div style="font-size:0.62rem;color:var(--navy);font-weight:800;">610</div>
+          <div style="font-size:0.62rem;color:var(--navy);font-weight:800;">~220</div>
         </div>
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;">
           <div style="display:flex;gap:3px;align-items:flex-end;width:100%;height:110px;">
-            <div style="flex:2;background:var(--green);opacity:0.85;border-radius:4px 4px 0 0;animation:growBar 0.6s ease 0.2s both;height:94%;"></div>
-            <div style="flex:1;background:var(--purple);opacity:0.85;border-radius:4px 4px 0 0;animation:growBar 0.6s ease 0.25s both;height:3.4%;"></div>
+            <div style="flex:2;background:var(--green);opacity:0.85;border-radius:4px 4px 0 0;animation:growBar 0.6s ease 0.2s both;height:93%;"></div>
+            <div style="flex:1;background:var(--purple);opacity:0.85;border-radius:4px 4px 0 0;animation:growBar 0.6s ease 0.25s both;height:7%;"></div>
           </div>
           <div style="font-size:0.55rem;color:var(--muted);margin-top:5px;font-weight:700;">Feb</div>
-          <div style="font-size:0.62rem;color:var(--navy);font-weight:800;">576</div>
+          <div style="font-size:0.62rem;color:var(--navy);font-weight:800;">~220</div>
         </div>
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;">
           <div style="display:flex;gap:3px;align-items:flex-end;width:100%;height:110px;">
-            <div style="flex:2;background:var(--green);opacity:0.85;border-radius:4px 4px 0 0;animation:growBar 0.6s ease 0.3s both;height:86%;"></div>
-            <div style="flex:1;background:var(--purple);opacity:0.85;border-radius:4px 4px 0 0;animation:growBar 0.6s ease 0.35s both;height:2.7%;"></div>
+            <div style="flex:2;background:var(--green);opacity:0.85;border-radius:4px 4px 0 0;animation:growBar 0.6s ease 0.3s both;height:79%;"></div>
+            <div style="flex:1;background:var(--purple);opacity:0.85;border-radius:4px 4px 0 0;animation:growBar 0.6s ease 0.35s both;height:5%;"></div>
           </div>
-          <div style="font-size:0.55rem;color:var(--muted);margin-top:5px;font-weight:700;">Mar</div>
-          <div style="font-size:0.62rem;color:var(--navy);font-weight:800;">526</div>
+          <div style="font-size:0.55rem;color:var(--muted);margin-top:5px;font-weight:700;">Mar*</div>
+          <div style="font-size:0.62rem;color:var(--navy);font-weight:800;">~186</div>
         </div>
       </div>
+      <div style="font-size:0.52rem;color:var(--muted);margin-top:0.4rem;">*Mar through 25th only</div>
     </div>
 
     <div class="card">
@@ -359,35 +448,35 @@
             <div style="font-size:0.62rem;font-weight:700;color:var(--navy);">Digital Outreach</div>
             <span class="chip chip-digital" style="margin-top:3px;">Website + Social</span>
           </div>
-          <div class="source-track"><div class="source-fill" style="width:96.8%;background:var(--green);"></div></div>
-          <div style="font-size:0.6rem;color:var(--muted);width:38px;text-align:right;font-weight:700;">1,657</div>
-          <div style="font-size:0.62rem;width:38px;text-align:right;color:#1a9e7c;font-weight:800;">5.9%</div>
+          <div class="source-track"><div class="source-fill" style="width:92.2%;background:var(--green);"></div></div>
+          <div style="font-size:0.6rem;color:var(--muted);width:38px;text-align:right;font-weight:700;">577</div>
+          <div style="font-size:0.62rem;width:42px;text-align:right;color:#c48a00;font-weight:800;">1.2%</div>
         </div>
         <div class="source-row">
           <div style="width:155px;flex-shrink:0;">
             <div style="font-size:0.62rem;font-weight:700;color:var(--navy);">Field Marketing</div>
             <span class="chip chip-outreach" style="margin-top:3px;">Coordinator</span>
           </div>
-          <div class="source-track"><div class="source-fill" style="width:3.2%;background:var(--purple);"></div></div>
-          <div style="font-size:0.6rem;color:var(--muted);width:38px;text-align:right;font-weight:700;">55</div>
-          <div style="font-size:0.62rem;width:38px;text-align:right;color:#1a9e7c;font-weight:800;">32.7%</div>
+          <div class="source-track"><div class="source-fill" style="width:7.8%;background:var(--purple);"></div></div>
+          <div style="font-size:0.6rem;color:var(--muted);width:38px;text-align:right;font-weight:700;">49</div>
+          <div style="font-size:0.62rem;width:42px;text-align:right;color:#1a9e7c;font-weight:800;">38.8%</div>
         </div>
       </div>
       <div style="margin-top:1.25rem;padding:0.75rem;background:rgba(38,204,160,0.08);border:1.5px solid rgba(38,204,160,0.25);border-radius:8px;">
         <div style="font-size:0.58rem;color:#1a9e7c;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.35rem;">💡 Key Insight</div>
-        <div style="font-size:0.6rem;color:var(--navy);line-height:1.5;font-weight:600;">Field Marketing converts at <strong style="color:#1a9e7c;">32.7%</strong> — nearly 6× higher than Digital. With Efren Castro (28 leads) and Sofia Hernandez (15 leads) leading, growing this team is the highest-ROI path forward.</div>
+        <div style="font-size:0.6rem;color:var(--navy);line-height:1.5;font-weight:600;">Field Marketing converts at <strong style="color:#1a9e7c;">38.8%</strong> — over 32× higher than Digital (1.2%). 19 of 26 total conversions came from coordinator-led outreach. Efren Castro (~25 leads) and Sofia Hernandez (~13 leads) are the top performers.</div>
       </div>
       <div style="margin-top:0.75rem;display:flex;gap:0.5rem;">
         <div style="flex:1;background:var(--green);border-radius:8px;padding:0.6rem;text-align:center;">
-          <div style="font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:800;color:#fff;">18</div>
-          <div style="font-size:0.52rem;color:rgba(255,255,255,0.8);font-weight:700;">Field Marketing</div>
+          <div style="font-size:1.3rem;font-weight:800;color:#fff;">19</div>
+          <div style="font-size:0.52rem;color:rgba(255,255,255,0.8);font-weight:700;">Field Mktg Conv.</div>
         </div>
         <div style="flex:1;background:var(--navy);border-radius:8px;padding:0.6rem;text-align:center;">
-          <div style="font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:800;color:#fff;">99</div>
-          <div style="font-size:0.52rem;color:rgba(255,255,255,0.7);font-weight:700;">Digital Outreach</div>
+          <div style="font-size:1.3rem;font-weight:800;color:#fff;">7</div>
+          <div style="font-size:0.52rem;color:rgba(255,255,255,0.7);font-weight:700;">Digital Conv.</div>
         </div>
         <div style="flex:1;background:var(--cream);border-radius:8px;padding:0.6rem;text-align:center;border:1.5px solid var(--border);">
-          <div style="font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:800;color:var(--navy);">117</div>
+          <div style="font-size:1.3rem;font-weight:800;color:var(--navy);">26</div>
           <div style="font-size:0.52rem;color:var(--muted);font-weight:700;">Total YTD</div>
         </div>
       </div>
@@ -491,36 +580,33 @@
   <div class="grid-2">
     <div class="card">
       <div class="card-title">Lead <span>Pipeline</span> Status</div>
-      <!-- Total 1712: Closed-Declined=1228(71.7%), New=263(15.4%), Accepted=117(6.8%), Pending Conf=37(2.2%), Review=30(1.8%), Capacity=28(1.6%), Pending Auth=5(0.3%), Benefits=4(0.2%) -->
+      <!-- Total 626: Closed-Declined=335(53.5%), New=244(39.0%), Accepted=26(4.2%), Review=15(2.4%), BenefitsCheck=4(0.6%), PendingAuth=2(0.3%), PendingConf=1(0.2%) -->
       <div class="pipeline-donut">
         <div class="donut-wrap">
           <svg width="130" height="130" viewBox="0 0 130 130">
             <circle cx="65" cy="65" r="50" fill="none" stroke="var(--cream)" stroke-width="18"/>
-            <!-- Accepted/Converted 6.8% = 21.4deg -->
-            <circle cx="65" cy="65" r="50" fill="none" stroke="#26CCA0" stroke-width="18" stroke-dasharray="21.4 292.6" stroke-dashoffset="79" style="animation:drawCircle 1s ease 0.1s both;transform-origin:center;transform:rotate(-90deg);"/>
-            <!-- Benefits+Pending Auth 0.5% -->
-            <circle cx="65" cy="65" r="50" fill="none" stroke="#77D6FF" stroke-width="18" stroke-dasharray="2.8 311.2" stroke-dashoffset="58" style="animation:drawCircle 1s ease 0.12s both;transform-origin:center;transform:rotate(-90deg);"/>
-            <!-- Capacity 1.6% -->
-            <circle cx="65" cy="65" r="50" fill="none" stroke="#FFD333" stroke-width="18" stroke-dasharray="5 309" stroke-dashoffset="55" style="animation:drawCircle 1s ease 0.15s both;transform-origin:center;transform:rotate(-90deg);"/>
-            <!-- Review 1.8% -->
-            <circle cx="65" cy="65" r="50" fill="none" stroke="#f59e0b" stroke-width="18" stroke-dasharray="5.7 308.3" stroke-dashoffset="50" style="animation:drawCircle 1s ease 0.18s both;transform-origin:center;transform:rotate(-90deg);"/>
-            <!-- Pending Confirmation 2.2% -->
-            <circle cx="65" cy="65" r="50" fill="none" stroke="#8270DE" stroke-width="18" stroke-dasharray="6.9 307.1" stroke-dashoffset="44" style="animation:drawCircle 1s ease 0.2s both;transform-origin:center;transform:rotate(-90deg);"/>
-            <!-- New 15.4% -->
-            <circle cx="65" cy="65" r="50" fill="none" stroke="#b8aff0" stroke-width="18" stroke-dasharray="48.5 265.5" stroke-dashoffset="37" style="animation:drawCircle 1s ease 0.25s both;transform-origin:center;transform:rotate(-90deg);"/>
-            <!-- Closed Declined 71.7% -->
-            <circle cx="65" cy="65" r="50" fill="none" stroke="#291A6B" stroke-width="18" stroke-dasharray="225.5 88.5" stroke-dashoffset="-11" style="animation:drawCircle 1s ease 0.3s both;transform-origin:center;transform:rotate(-90deg);"/>
+            <!-- Accepted 4.2% -->
+            <circle cx="65" cy="65" r="50" fill="none" stroke="#26CCA0" stroke-width="18" stroke-dasharray="13.2 300.8" stroke-dashoffset="79" style="transform-origin:center;transform:rotate(-90deg);"/>
+            <!-- Review 2.4% -->
+            <circle cx="65" cy="65" r="50" fill="none" stroke="#f59e0b" stroke-width="18" stroke-dasharray="7.5 306.5" stroke-dashoffset="65.8" style="transform-origin:center;transform:rotate(-90deg);"/>
+            <!-- BenefitsCheck 0.6% -->
+            <circle cx="65" cy="65" r="50" fill="none" stroke="#77D6FF" stroke-width="18" stroke-dasharray="1.9 312.1" stroke-dashoffset="58.3" style="transform-origin:center;transform:rotate(-90deg);"/>
+            <!-- Pending 0.5% -->
+            <circle cx="65" cy="65" r="50" fill="none" stroke="#8270DE" stroke-width="18" stroke-dasharray="1.6 312.4" stroke-dashoffset="56.4" style="transform-origin:center;transform:rotate(-90deg);"/>
+            <!-- New 39% -->
+            <circle cx="65" cy="65" r="50" fill="none" stroke="#b8aff0" stroke-width="18" stroke-dasharray="122.5 191.5" stroke-dashoffset="54.8" style="transform-origin:center;transform:rotate(-90deg);"/>
+            <!-- Closed 53.5% -->
+            <circle cx="65" cy="65" r="50" fill="none" stroke="#291A6B" stroke-width="18" stroke-dasharray="168 146" stroke-dashoffset="-67.7" style="transform-origin:center;transform:rotate(-90deg);"/>
           </svg>
-          <div class="donut-center"><div class="dc-val">1,712</div><div class="dc-label">total</div></div>
+          <div class="donut-center"><div class="dc-val">626</div><div class="dc-label">total</div></div>
         </div>
         <div style="flex:1;">
-          <div class="legend-item"><div class="legend-dot" style="background:#291A6B;"></div><div class="legend-name">Closed — Declined</div><div class="legend-count">1,228</div><div class="legend-pct" style="color:#291A6B;">71.7%</div></div>
-          <div class="legend-item"><div class="legend-dot" style="background:#b8aff0;"></div><div class="legend-name">New</div><div class="legend-count">263</div><div class="legend-pct" style="color:#8270DE;">15.4%</div></div>
-          <div class="legend-item"><div class="legend-dot" style="background:#26CCA0;"></div><div class="legend-name">Accepted (Converted)</div><div class="legend-count">117</div><div class="legend-pct" style="color:#1a9e7c;">6.8%</div></div>
-          <div class="legend-item"><div class="legend-dot" style="background:#8270DE;"></div><div class="legend-name">Pending Confirmation</div><div class="legend-count">37</div><div class="legend-pct" style="color:#8270DE;">2.2%</div></div>
-          <div class="legend-item"><div class="legend-dot" style="background:#f59e0b;"></div><div class="legend-name">Review</div><div class="legend-count">30</div><div class="legend-pct" style="color:#c48a00;">1.8%</div></div>
-          <div class="legend-item"><div class="legend-dot" style="background:#FFD333;"></div><div class="legend-name">Capacity</div><div class="legend-count">28</div><div class="legend-pct" style="color:#a07200;">1.6%</div></div>
-          <div class="legend-item"><div class="legend-dot" style="background:#77D6FF;"></div><div class="legend-name">Pending Auth / Benefits</div><div class="legend-count">9</div><div class="legend-pct" style="color:#3dafd9;">0.5%</div></div>
+          <div class="legend-item"><div class="legend-dot" style="background:#291A6B;"></div><div class="legend-name">Closed — Declined</div><div class="legend-count">335</div><div class="legend-pct" style="color:#291A6B;">53.5%</div></div>
+          <div class="legend-item"><div class="legend-dot" style="background:#b8aff0;"></div><div class="legend-name">New</div><div class="legend-count">244</div><div class="legend-pct" style="color:#8270DE;">39.0%</div></div>
+          <div class="legend-item"><div class="legend-dot" style="background:#26CCA0;"></div><div class="legend-name">Accepted (Converted)</div><div class="legend-count">26</div><div class="legend-pct" style="color:#1a9e7c;">4.2%</div></div>
+          <div class="legend-item"><div class="legend-dot" style="background:#f59e0b;"></div><div class="legend-name">Review</div><div class="legend-count">15</div><div class="legend-pct" style="color:#c48a00;">2.4%</div></div>
+          <div class="legend-item"><div class="legend-dot" style="background:#77D6FF;"></div><div class="legend-name">Benefits Check</div><div class="legend-count">4</div><div class="legend-pct" style="color:#3dafd9;">0.6%</div></div>
+          <div class="legend-item"><div class="legend-dot" style="background:#8270DE;"></div><div class="legend-name">Pending Auth / Confirmation</div><div class="legend-count">3</div><div class="legend-pct" style="color:#8270DE;">0.5%</div></div>
         </div>
       </div>
     </div>
@@ -530,31 +616,137 @@
       <div class="conv-item best">
         <div>
           <div class="conv-item-label">Field Marketing</div>
-          <div class="conv-item-detail">18 conversions / 55 leads · Efren Castro, Sofia Hernandez, Patricia B. Simtoco</div>
+          <div class="conv-item-detail">19 conversions / 49 leads · Efren Castro, Sofia Hernandez, Patricia Simtoco, Abhijeet Paluru</div>
         </div>
-        <div class="conv-item-pct" style="color:#1a9e7c;">32.7%</div>
+        <div class="conv-item-pct" style="color:#1a9e7c;">38.8%</div>
       </div>
       <div class="conv-item mid">
         <div>
-          <div class="conv-item-label">Digital — Website (Organic)</div>
-          <div class="conv-item-detail">99 conversions / 1,188 digital leads</div>
+          <div class="conv-item-label">Digital Outreach</div>
+          <div class="conv-item-detail">7 conversions / 577 digital leads YTD</div>
         </div>
-        <div class="conv-item-pct" style="color:#c48a00;">8.3%</div>
-      </div>
-      <div class="conv-item low">
-        <div>
-          <div class="conv-item-label">Digital — Social Campaigns</div>
-          <div class="conv-item-detail">0 conversions / 469 paid leads YTD</div>
-        </div>
-        <div class="conv-item-pct" style="color:var(--muted);">0.0%</div>
+        <div class="conv-item-pct" style="color:#c48a00;">1.2%</div>
       </div>
       <div style="margin-top:1rem;">
         <div class="card-title">Top Decline <span>Reasons</span></div>
-        <div class="decline-item"><div class="decline-reason">Direct Therapy Intensity</div><div class="decline-bar-bg"><div class="decline-bar-fill" style="width:100%;"></div></div><div class="decline-count">431</div></div>
-        <div class="decline-item"><div class="decline-reason">Client Declined</div><div class="decline-bar-bg"><div class="decline-bar-fill" style="width:88%;"></div></div><div class="decline-count">379</div></div>
-        <div class="decline-item"><div class="decline-reason">Location</div><div class="decline-bar-bg"><div class="decline-bar-fill" style="width:12%;"></div></div><div class="decline-count">53</div></div>
-        <div class="decline-item"><div class="decline-reason">Approval Denied</div><div class="decline-bar-bg"><div class="decline-bar-fill" style="width:5%;"></div></div><div class="decline-count">23</div></div>
-        <div class="decline-item"><div class="decline-reason">Insurance</div><div class="decline-bar-bg"><div class="decline-bar-fill" style="width:5%;"></div></div><div class="decline-count">21</div></div>
+        <div class="decline-item"><div class="decline-reason">Insurance</div><div class="decline-bar-bg"><div class="decline-bar-fill" style="width:100%;"></div></div><div class="decline-count">~18</div></div>
+        <div class="decline-item"><div class="decline-reason">Client Declined</div><div class="decline-bar-bg"><div class="decline-bar-fill" style="width:61%;"></div></div><div class="decline-count">~11</div></div>
+        <div class="decline-item"><div class="decline-reason">Wrong Service</div><div class="decline-bar-bg"><div class="decline-bar-fill" style="width:39%;"></div></div><div class="decline-count">~7</div></div>
+        <div class="decline-item"><div class="decline-reason">Client Ltd. Availability</div><div class="decline-bar-bg"><div class="decline-bar-fill" style="width:33%;"></div></div><div class="decline-count">~6</div></div>
+        <div class="decline-item"><div class="decline-reason">Location</div><div class="decline-bar-bg"><div class="decline-bar-fill" style="width:28%;"></div></div><div class="decline-count">~5</div></div>
+      </div>
+      <div style="margin-top:0.75rem;padding:0.6rem 0.75rem;background:var(--yellow-light);border:1.5px solid rgba(255,211,51,0.4);border-radius:8px;font-size:0.6rem;color:#8a6200;font-weight:700;">
+        ⚠ Decline reasons are only recorded for Field Marketing leads. Digital leads (file 2) have no decline reason data.
+      </div>
+    </div>
+  </div>
+
+  <!-- Insurance Breakdown -->
+  <div class="section-label">Insurance — Converted Leads</div>
+  <div class="full-width">
+    <div class="card">
+      <div class="card-title">Insurance <span>Breakdown</span> — 26 Conversions</div>
+      <!--
+        From accepted leads in file 1:
+        Inland Empire Health Plan: AbCh01(IEN), EdLe02(IES), JoOc01(IES), LeHe06(IES), SaVa02(IEN), DyMo01(IES), AkMe01(IEN), AyEl01(IEN), RaHe03(IEN), AvNe01(IEN), JaOh01(IEN), KeVa02(IEN), JaSa10(IES) = 13
+        Molina: WyBr01(SD), LuAr02(SD), LoMa05(SD), AhBu01(SD? - Blue Shield actually), EnCa02(SD), AlMa08(SD), IrAr01(SD), KoRo01(LAW) = let me recheck
+        Checking each accepted lead's Funding Source:
+        AbCh01 - IEHS
+        EdLe02 - IEHS
+        LiXi01 - Molina
+        WyBr01 - Cigna
+        LuAr02 - Molina
+        LoMa05 - Molina
+        JoOc01 - IEHS
+        LeHe06 - IEHS
+        MyGu01 - Cigna
+        AhBu01 - Blue Shield of California
+        EnCa02 - Molina
+        SaVa02 - Optum/United Healthcare
+        SuAc01 - Catalight
+        DyMo01 - IEHS
+        AlMa08 - Molina
+        KoRo01 - Molina
+        AkMe01 - IEHS
+        AyEl01 - IEHS
+        IrAr01 - Molina
+        JaSa10 - IEHS
+        RaHe03 - Anthem Blue Cross/Blue Shield
+        AvNe01 - IEHS
+        JaOh01 - IEHS
+        KeVa02 - IEHS
+        AdJa01 - Molina
+        KaBa04 - IEHS
+
+        IEHS: AbCh01, EdLe02, JoOc01, LeHe06, DyMo01, AkMe01, AyEl01, AvNe01, JaOh01, KeVa02, JaSa10, KaBa04 = 12
+        Molina: LiXi01, LuAr02, LoMa05, EnCa02, AlMa08, KoRo01, IrAr01, AdJa01 = 8
+        Cigna: WyBr01, MyGu01 = 2
+        Blue Shield of CA: AhBu01 = 1
+        Optum/UHC: SaVa02 = 1
+        Catalight: SuAc01 = 1
+        Anthem BCBS: RaHe03 = 1
+        Total = 12+8+2+1+1+1+1 = 26 ✓
+      -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;">
+        <div style="background:var(--green);border-radius:10px;padding:1rem 1.25rem;display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <div style="font-size:0.52rem;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25rem;">Inland Empire Health Plan</div>
+            <div style="font-size:1.8rem;font-weight:800;color:#fff;line-height:1;">12</div>
+            <div style="font-size:0.55rem;color:rgba(255,255,255,0.75);font-weight:600;margin-top:0.2rem;">46.2% of conversions</div>
+          </div>
+          <div style="font-size:2rem;opacity:0.3;">🏥</div>
+        </div>
+        <div style="background:var(--navy);border-radius:10px;padding:1rem 1.25rem;display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <div style="font-size:0.52rem;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25rem;">Molina Healthcare</div>
+            <div style="font-size:1.8rem;font-weight:800;color:#fff;line-height:1;">8</div>
+            <div style="font-size:0.55rem;color:rgba(255,255,255,0.65);font-weight:600;margin-top:0.2rem;">30.8% of conversions</div>
+          </div>
+          <div style="font-size:2rem;opacity:0.3;">🏥</div>
+        </div>
+        <div style="background:var(--cream);border:1.5px solid var(--border);border-radius:10px;padding:1rem 1.25rem;">
+          <div style="font-size:0.52rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.75rem;">Other Insurances</div>
+          <div style="display:flex;flex-direction:column;gap:0.5rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-size:0.62rem;font-weight:700;color:var(--navy);">Cigna</span>
+              <div style="display:flex;align-items:center;gap:0.5rem;">
+                <div style="width:60px;height:6px;background:#e8e4f0;border-radius:50px;overflow:hidden;"><div style="height:100%;width:100%;background:var(--purple);border-radius:50px;"></div></div>
+                <span style="font-size:0.65rem;font-weight:800;color:var(--navy);width:14px;text-align:right;">2</span>
+              </div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-size:0.62rem;font-weight:700;color:var(--navy);">Anthem BCBS</span>
+              <div style="display:flex;align-items:center;gap:0.5rem;">
+                <div style="width:60px;height:6px;background:#e8e4f0;border-radius:50px;overflow:hidden;"><div style="height:100%;width:50%;background:var(--purple);border-radius:50px;"></div></div>
+                <span style="font-size:0.65rem;font-weight:800;color:var(--navy);width:14px;text-align:right;">1</span>
+              </div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-size:0.62rem;font-weight:700;color:var(--navy);">Blue Shield of CA</span>
+              <div style="display:flex;align-items:center;gap:0.5rem;">
+                <div style="width:60px;height:6px;background:#e8e4f0;border-radius:50px;overflow:hidden;"><div style="height:100%;width:50%;background:var(--purple);border-radius:50px;"></div></div>
+                <span style="font-size:0.65rem;font-weight:800;color:var(--navy);width:14px;text-align:right;">1</span>
+              </div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-size:0.62rem;font-weight:700;color:var(--navy);">Optum / UHC</span>
+              <div style="display:flex;align-items:center;gap:0.5rem;">
+                <div style="width:60px;height:6px;background:#e8e4f0;border-radius:50px;overflow:hidden;"><div style="height:100%;width:50%;background:var(--purple);border-radius:50px;"></div></div>
+                <span style="font-size:0.65rem;font-weight:800;color:var(--navy);width:14px;text-align:right;">1</span>
+              </div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-size:0.62rem;font-weight:700;color:var(--navy);">Catalight</span>
+              <div style="display:flex;align-items:center;gap:0.5rem;">
+                <div style="width:60px;height:6px;background:#e8e4f0;border-radius:50px;overflow:hidden;"><div style="height:100%;width:50%;background:var(--purple);border-radius:50px;"></div></div>
+                <span style="font-size:0.65rem;font-weight:800;color:var(--navy);width:14px;text-align:right;">1</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:1rem;padding:0.75rem;background:rgba(38,204,160,0.08);border:1.5px solid rgba(38,204,160,0.25);border-radius:8px;font-size:0.6rem;color:var(--navy);line-height:1.5;font-weight:600;">
+        💡 <strong style="color:#1a9e7c;">IEHS + Molina account for 77% of all conversions</strong> — both are Medi-Cal managed care plans serving the Inland Empire and San Diego regions, aligning closely with where Field Marketing coordinators are most active.
       </div>
     </div>
   </div>
@@ -568,96 +760,96 @@
       <table class="territory-table">
         <thead>
           <tr>
-            <th>Territory</th><th>Total Leads</th><th>Digital Outreach</th><th>Field Marketing</th><th>Converted</th><th>Conv. Rate</th><th>Volume Share</th><th>Active Pipeline</th>
+            <th>Territory</th><th>Total Leads</th><th>Digital</th><th>Field Mktg</th><th>Converted</th><th>Conv. Rate</th><th>Volume Share</th><th>Active Pipeline</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><div class="territory-name">LAN</div><div style="font-size:0.52rem;color:var(--muted);font-weight:600;">Los Angeles North</div></td>
-            <td style="font-family:'Nunito',sans-serif;font-weight:800;">232</td>
-            <td><span class="chip chip-digital">229</span></td><td><span class="chip chip-outreach">2</span></td>
-            <td style="color:#1a9e7c;font-weight:800;">22</td>
-            <td><span class="conversion-badge" style="background:var(--green-light);color:#1a9e7c;">9.5%</span></td>
-            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:100%;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">13.6%</div></td>
-            <td style="color:#c48a00;font-weight:700;">14</td>
-          </tr>
-          <tr>
-            <td><div class="territory-name">LAW</div><div style="font-size:0.52rem;color:var(--muted);font-weight:600;">Los Angeles West</div></td>
-            <td style="font-family:'Nunito',sans-serif;font-weight:800;">231</td>
-            <td><span class="chip chip-digital">225</span></td><td><span class="chip chip-outreach">3</span></td>
-            <td style="color:#1a9e7c;font-weight:800;">21</td>
-            <td><span class="conversion-badge" style="background:var(--green-light);color:#1a9e7c;">9.1%</span></td>
-            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:99.6%;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">13.5%</div></td>
-            <td style="color:#c48a00;font-weight:700;">13</td>
-          </tr>
-          <tr>
-            <td><div class="territory-name">IES</div><div style="font-size:0.52rem;color:var(--muted);font-weight:600;">Inland Empire South</div></td>
-            <td style="font-family:'Nunito',sans-serif;font-weight:800;">173</td>
-            <td><span class="chip chip-digital">151</span></td><td><span class="chip chip-outreach">15</span></td>
-            <td style="color:#1a9e7c;font-weight:800;">13</td>
-            <td><span class="conversion-badge" style="background:var(--yellow-light);color:#a07200;">7.5%</span></td>
-            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:74.6%;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">10.1%</div></td>
-            <td style="color:#c48a00;font-weight:700;">11</td>
-          </tr>
-          <tr>
             <td><div class="territory-name">SD</div><div style="font-size:0.52rem;color:var(--muted);font-weight:600;">San Diego</div></td>
-            <td style="font-family:'Nunito',sans-serif;font-weight:800;">177</td>
-            <td><span class="chip chip-digital">111</span></td><td><span class="chip chip-outreach">15</span></td>
-            <td style="color:#1a9e7c;font-weight:800;">20</td>
-            <td><span class="conversion-badge" style="background:var(--green-light);color:#1a9e7c;">11.3%</span></td>
-            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:76.3%;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">10.3%</div></td>
-            <td style="color:#c48a00;font-weight:700;">10</td>
+            <td style="font-weight:800;">84</td>
+            <td><span class="chip chip-digital">62</span></td><td><span class="chip chip-outreach">22</span></td>
+            <td style="color:#1a9e7c;font-weight:800;">9</td>
+            <td><span class="conversion-badge" style="background:var(--green-light);color:#1a9e7c;">10.7%</span></td>
+            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:100%;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">13.4%</div></td>
+            <td style="color:#c48a00;font-weight:700;">3</td>
           </tr>
           <tr>
             <td><div class="territory-name">IEN</div><div style="font-size:0.52rem;color:var(--muted);font-weight:600;">Inland Empire North</div></td>
-            <td style="font-family:'Nunito',sans-serif;font-weight:800;">141</td>
-            <td><span class="chip chip-digital">127</span></td><td><span class="chip chip-outreach">12</span></td>
-            <td style="color:#1a9e7c;font-weight:800;">17</td>
-            <td><span class="conversion-badge" style="background:var(--green-light);color:#1a9e7c;">12.1%</span></td>
-            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:60.8%;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">8.2%</div></td>
-            <td style="color:#c48a00;font-weight:700;">9</td>
+            <td style="font-weight:800;">27</td>
+            <td><span class="chip chip-digital">5</span></td><td><span class="chip chip-outreach">22</span></td>
+            <td style="color:#1a9e7c;font-weight:800;">8</td>
+            <td><span class="conversion-badge" style="background:var(--green-light);color:#1a9e7c;">29.6%</span></td>
+            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:32%;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">4.3%</div></td>
+            <td style="color:#c48a00;font-weight:700;">4</td>
           </tr>
           <tr>
-            <td><div class="territory-name">OC</div><div style="font-size:0.52rem;color:var(--muted);font-weight:600;">Orange County</div></td>
-            <td style="font-family:'Nunito',sans-serif;font-weight:800;">188</td>
-            <td><span class="chip chip-digital">184</span></td><td><span class="chip chip-outreach">0</span></td>
-            <td style="color:var(--muted);font-weight:700;">5</td>
-            <td><span class="conversion-badge" style="background:var(--yellow-light);color:#a07200;">2.7%</span></td>
-            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:81%;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">11.0%</div></td>
-            <td style="color:var(--muted);font-weight:700;">8</td>
+            <td><div class="territory-name">IES</div><div style="font-size:0.52rem;color:var(--muted);font-weight:600;">Inland Empire South</div></td>
+            <td style="font-weight:800;">35</td>
+            <td><span class="chip chip-digital">15</span></td><td><span class="chip chip-outreach">20</span></td>
+            <td style="color:#1a9e7c;font-weight:800;">5</td>
+            <td><span class="conversion-badge" style="background:var(--green-light);color:#1a9e7c;">14.3%</span></td>
+            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:42%;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">5.6%</div></td>
+            <td style="color:#c48a00;font-weight:700;">2</td>
           </tr>
           <tr>
             <td><div class="territory-name">SAC</div><div style="font-size:0.52rem;color:var(--muted);font-weight:600;">Sacramento</div></td>
-            <td style="font-family:'Nunito',sans-serif;font-weight:800;">118</td>
-            <td><span class="chip chip-digital">80</span></td><td><span class="chip chip-outreach">8</span></td>
-            <td style="color:#1a9e7c;font-weight:800;">19</td>
-            <td><span class="conversion-badge" style="background:var(--green-light);color:#1a9e7c;">16.1%</span></td>
-            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:50.9%;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">6.9%</div></td>
-            <td style="color:#c48a00;font-weight:700;">7</td>
+            <td style="font-weight:800;">68</td>
+            <td><span class="chip chip-digital">50</span></td><td><span class="chip chip-outreach">18</span></td>
+            <td style="color:#1a9e7c;font-weight:800;">3</td>
+            <td><span class="conversion-badge" style="background:var(--yellow-light);color:#a07200;">4.4%</span></td>
+            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:81%;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">10.9%</div></td>
+            <td style="color:#c48a00;font-weight:700;">5</td>
+          </tr>
+          <tr>
+            <td><div class="territory-name">LAW</div><div style="font-size:0.52rem;color:var(--muted);font-weight:600;">Los Angeles West</div></td>
+            <td style="font-weight:800;">30</td>
+            <td><span class="chip chip-digital">22</span></td><td><span class="chip chip-outreach">8</span></td>
+            <td style="color:#1a9e7c;font-weight:800;">2</td>
+            <td><span class="conversion-badge" style="background:var(--yellow-light);color:#a07200;">6.7%</span></td>
+            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:36%;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">4.8%</div></td>
+            <td style="color:#c48a00;font-weight:700;">2</td>
+          </tr>
+          <tr>
+            <td><div class="territory-name">LAN</div><div style="font-size:0.52rem;color:var(--muted);font-weight:600;">Los Angeles North</div></td>
+            <td style="font-weight:800;">27</td>
+            <td><span class="chip chip-digital">15</span></td><td><span class="chip chip-outreach">12</span></td>
+            <td style="color:#1a9e7c;font-weight:800;">1</td>
+            <td><span class="conversion-badge" style="background:var(--yellow-light);color:#a07200;">3.7%</span></td>
+            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:32%;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">4.3%</div></td>
+            <td style="color:#c48a00;font-weight:700;">3</td>
+          </tr>
+          <tr>
+            <td><div class="territory-name">OC</div><div style="font-size:0.52rem;color:var(--muted);font-weight:600;">Orange County</div></td>
+            <td style="font-weight:800;">12</td>
+            <td><span class="chip chip-digital">12</span></td><td><span class="chip chip-outreach">0</span></td>
+            <td style="color:var(--muted);font-weight:700;">0</td>
+            <td><span class="conversion-badge" style="background:rgba(224,82,82,0.1);color:var(--danger);">0.0%</span></td>
+            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:14%;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">1.9%</div></td>
+            <td style="color:var(--muted);font-weight:700;">1</td>
           </tr>
           <tr>
             <td><div class="territory-name">BAY</div><div style="font-size:0.52rem;color:var(--muted);font-weight:600;">Bay Area</div></td>
-            <td style="font-family:'Nunito',sans-serif;font-weight:800;">35</td>
-            <td><span class="chip chip-digital">35</span></td><td><span class="chip chip-outreach">0</span></td>
+            <td style="font-weight:800;">6</td>
+            <td><span class="chip chip-digital">6</span></td><td><span class="chip chip-outreach">0</span></td>
             <td style="color:var(--muted);font-weight:700;">0</td>
             <td><span class="conversion-badge" style="background:rgba(224,82,82,0.1);color:var(--danger);">0.0%</span></td>
-            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:15.1%;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">2.0%</div></td>
-            <td style="color:var(--muted);font-weight:700;">2</td>
+            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:7%;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">1.0%</div></td>
+            <td style="color:var(--muted);font-weight:700;">0</td>
           </tr>
           <tr>
             <td><div class="territory-name" style="color:var(--muted);">Unknown</div><div style="font-size:0.52rem;color:var(--muted);font-weight:600;">Unassigned</div></td>
-            <td style="font-family:'Nunito',sans-serif;font-weight:800;color:var(--muted);">202</td>
-            <td><span class="chip chip-digital">202</span></td><td><span class="chip chip-outreach">0</span></td>
+            <td style="font-weight:800;color:var(--muted);">337</td>
+            <td><span class="chip chip-digital">335</span></td><td><span class="chip chip-outreach">2</span></td>
             <td style="color:var(--muted);font-weight:700;">0</td>
             <td><span class="conversion-badge" style="background:var(--cream);color:var(--muted);">—</span></td>
-            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:87.1%;background:#c0bcd5;opacity:0.5;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">11.8%</div></td>
-            <td style="color:var(--muted);font-weight:700;">—</td>
+            <td><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:100%;background:#c0bcd5;opacity:0.5;"></div></div><div style="font-size:0.52rem;color:var(--muted);margin-top:2px;font-weight:600;">53.8%</div></td>
+            <td style="color:var(--muted);font-weight:700;">2</td>
           </tr>
         </tbody>
       </table>
       </div>
       <div style="margin-top:0.75rem;padding:0.6rem 0.75rem;background:var(--yellow-light);border:1.5px solid rgba(255,211,51,0.4);border-radius:8px;font-size:0.6rem;color:#8a6200;font-weight:700;">
-        ⚠ <strong>202 leads (11.8%) have no territory assigned</strong> — primarily from Social Media Paid campaigns. Territory assignment needed to fully attribute performance.
+        ⚠ <strong>337 leads (53.8%) have no territory assigned</strong> — primarily from Digital/Social campaigns. Territory assignment needed to fully attribute performance.
       </div>
     </div>
   </div>
