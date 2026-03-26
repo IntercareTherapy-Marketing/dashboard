@@ -217,7 +217,7 @@
   <div class="page-header">
     <div>
       <div class="page-title" id="page-title">Dashboard</div>
-      <div class="page-sub" id="page-sub">YTD 2026 · Jan 1 — Mar 25 · All Territories</div>
+      <div class="page-sub" id="page-sub">YTD 2026 · Jan 1 — Mar 26 · All Territories</div>
     </div>
   </div>
 
@@ -225,33 +225,33 @@
   <div class="kpi-row">
     <div class="kpi" style="background:var(--green);">
       <div class="kpi-label">Total Leads</div>
-      <div class="kpi-val" id="kpi-leads">626</div>
+      <div class="kpi-val" id="kpi-leads">628</div>
       <div class="kpi-sub" id="kpi-leads-sub">All channels · YTD</div>
       <div class="kpi-tag" id="kpi-leads-tag">Jan–Mar 2026</div>
     </div>
     <div class="kpi" style="background:var(--navy);">
       <div class="kpi-label">Converted</div>
-      <div class="kpi-val" id="kpi-conv">26</div>
-      <div class="kpi-sub">Of <span id="kpi-conv-of">626</span> total leads</div>
+      <div class="kpi-val" id="kpi-conv">27</div>
+      <div class="kpi-sub">Of <span id="kpi-conv-of">628</span> total leads</div>
       <div class="kpi-tag">Goal: 100 / yr</div>
     </div>
     <div class="kpi" style="background:var(--purple);">
       <div class="kpi-label">Conversion Rate</div>
-      <div class="kpi-val" id="kpi-rate">4.2%</div>
-      <div class="kpi-sub" id="kpi-rate-sub">Digital: 1.2% · FM: 38.8%</div>
-      <div class="kpi-tag" id="kpi-rate-tag">26 of 626</div>
+      <div class="kpi-val" id="kpi-rate">4.3%</div>
+      <div class="kpi-sub" id="kpi-rate-sub">Digital: 1.2% · FM: 38.5%</div>
+      <div class="kpi-tag" id="kpi-rate-tag">27 of 628</div>
     </div>
     <div class="kpi" style="background:var(--amber);">
       <div class="kpi-label">Active Pipeline</div>
-      <div class="kpi-val" id="kpi-pipe">22</div>
+      <div class="kpi-val" id="kpi-pipe">24</div>
       <div class="kpi-sub">Review · Benefits · Pending</div>
       <div class="kpi-tag">In progress</div>
     </div>
     <div class="kpi" style="background:#2a8aab;">
       <div class="kpi-label">Field Marketing</div>
-      <div class="kpi-val" id="kpi-fm">38.8%</div>
+      <div class="kpi-val" id="kpi-fm">38.5%</div>
       <div class="kpi-sub" id="kpi-fm-sub">Best-converting channel</div>
-      <div class="kpi-tag" id="kpi-fm-tag">19 of 49 leads</div>
+      <div class="kpi-tag" id="kpi-fm-tag">20 of 52 leads</div>
     </div>
   </div>
 
@@ -426,6 +426,162 @@
     </div>
   </div>
 
+  <!-- Diagnostic Leads -->
+  <div class="card full-w">
+    <div class="card-head">
+      <div class="card-title">Diagnostic <span>Leads</span></div>
+      <span class="card-tag">118 total</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.75rem;margin-bottom:1rem;">
+      <div style="background:var(--navy);border-radius:12px;padding:1rem 1.25rem;">
+        <div style="font-size:0.52rem;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25rem;">Total Diagnostic</div>
+        <div style="font-size:2rem;font-weight:800;color:#fff;line-height:1;">118</div>
+        <div style="font-size:0.52rem;color:rgba(255,255,255,0.6);margin-top:3px;">18.8% of all leads</div>
+      </div>
+      <div style="background:var(--purple);border-radius:12px;padding:1rem 1.25rem;">
+        <div style="font-size:0.52rem;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25rem;">Active Pipeline</div>
+        <div style="font-size:2rem;font-weight:800;color:#fff;line-height:1;">11</div>
+        <div style="font-size:0.52rem;color:rgba(255,255,255,0.6);margin-top:3px;">Review · Pending · Benefits</div>
+      </div>
+      <div style="background:var(--cream);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;">
+        <div style="font-size:0.52rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25rem;">New (Unworked)</div>
+        <div style="font-size:2rem;font-weight:800;color:var(--navy);line-height:1;">52</div>
+        <div style="font-size:0.52rem;color:var(--muted);margin-top:3px;">Awaiting contact</div>
+      </div>
+      <div style="background:var(--cream);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;">
+        <div style="font-size:0.52rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25rem;">Closed — Declined</div>
+        <div style="font-size:2rem;font-weight:800;color:var(--danger);line-height:1;">55</div>
+        <div style="font-size:0.52rem;color:var(--muted);margin-top:3px;">46.6% decline rate</div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+      <!-- Status breakdown -->
+      <div>
+        <div style="font-size:0.6rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:var(--navy);margin-bottom:0.65rem;">Status Breakdown</div>
+        <div style="display:flex;flex-direction:column;gap:0.4rem;">
+          <div style="display:flex;align-items:center;gap:0.6rem;">
+            <div style="width:10px;height:10px;border-radius:3px;background:#b8aff0;flex-shrink:0;"></div>
+            <div style="font-size:0.62rem;font-weight:600;color:var(--navy);flex:1;">New</div>
+            <div style="flex:2;height:7px;background:var(--cream);border-radius:50px;overflow:hidden;"><div style="height:100%;width:44%;background:#b8aff0;border-radius:50px;"></div></div>
+            <div style="font-size:0.62rem;font-weight:800;color:var(--navy);width:24px;text-align:right;">52</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.6rem;">
+            <div style="width:10px;height:10px;border-radius:3px;background:var(--danger);flex-shrink:0;"></div>
+            <div style="font-size:0.62rem;font-weight:600;color:var(--navy);flex:1;">Closed — Declined</div>
+            <div style="flex:2;height:7px;background:var(--cream);border-radius:50px;overflow:hidden;"><div style="height:100%;width:47%;background:var(--danger);border-radius:50px;opacity:0.7;"></div></div>
+            <div style="font-size:0.62rem;font-weight:800;color:var(--navy);width:24px;text-align:right;">55</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.6rem;">
+            <div style="width:10px;height:10px;border-radius:3px;background:#f59e0b;flex-shrink:0;"></div>
+            <div style="font-size:0.62rem;font-weight:600;color:var(--navy);flex:1;">Review</div>
+            <div style="flex:2;height:7px;background:var(--cream);border-radius:50px;overflow:hidden;"><div style="height:100%;width:7%;background:#f59e0b;border-radius:50px;"></div></div>
+            <div style="font-size:0.62rem;font-weight:800;color:var(--navy);width:24px;text-align:right;">8</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.6rem;">
+            <div style="width:10px;height:10px;border-radius:3px;background:var(--purple);flex-shrink:0;"></div>
+            <div style="font-size:0.62rem;font-weight:600;color:var(--navy);flex:1;">Pending Auth</div>
+            <div style="flex:2;height:7px;background:var(--cream);border-radius:50px;overflow:hidden;"><div style="height:100%;width:2%;background:var(--purple);border-radius:50px;"></div></div>
+            <div style="font-size:0.62rem;font-weight:800;color:var(--navy);width:24px;text-align:right;">2</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.6rem;">
+            <div style="width:10px;height:10px;border-radius:3px;background:#77D6FF;flex-shrink:0;"></div>
+            <div style="font-size:0.62rem;font-weight:600;color:var(--navy);flex:1;">Pending Confirmation</div>
+            <div style="flex:2;height:7px;background:var(--cream);border-radius:50px;overflow:hidden;"><div style="height:100%;width:1%;background:#77D6FF;border-radius:50px;"></div></div>
+            <div style="font-size:0.62rem;font-weight:800;color:var(--navy);width:24px;text-align:right;">1</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Active diagnostic pipeline detail -->
+      <div>
+        <div style="font-size:0.6rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:var(--navy);margin-bottom:0.65rem;">Active Diagnostic Pipeline</div>
+        <div style="display:flex;flex-direction:column;gap:0.35rem;">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.45rem 0.65rem;background:var(--cream);border-radius:7px;border-left:3px solid #f59e0b;">
+            <div>
+              <div style="font-size:0.6rem;font-weight:700;color:var(--navy);">Hudson Riley · SAC</div>
+              <div style="font-size:0.5rem;color:var(--muted);">Review · Anthem BCBS</div>
+            </div>
+            <span style="font-size:0.52rem;font-weight:700;color:#c48a00;">Review</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.45rem 0.65rem;background:var(--cream);border-radius:7px;border-left:3px solid #f59e0b;">
+            <div>
+              <div style="font-size:0.6rem;font-weight:700;color:var(--navy);">Avali Lorm</div>
+              <div style="font-size:0.5rem;color:var(--muted);">Review · Other</div>
+            </div>
+            <span style="font-size:0.52rem;font-weight:700;color:#c48a00;">Review</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.45rem 0.65rem;background:var(--cream);border-radius:7px;border-left:3px solid #f59e0b;">
+            <div>
+              <div style="font-size:0.6rem;font-weight:700;color:var(--navy);">Aleyah Valle · SAC</div>
+              <div style="font-size:0.5rem;color:var(--muted);">Review · Other</div>
+            </div>
+            <span style="font-size:0.52rem;font-weight:700;color:#c48a00;">Review</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.45rem 0.65rem;background:var(--cream);border-radius:7px;border-left:3px solid #f59e0b;">
+            <div>
+              <div style="font-size:0.6rem;font-weight:700;color:var(--navy);">Jason Aparicio</div>
+              <div style="font-size:0.5rem;color:var(--muted);">Review · Blue Shield CA</div>
+            </div>
+            <span style="font-size:0.52rem;font-weight:700;color:#c48a00;">Review</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.45rem 0.65rem;background:var(--cream);border-radius:7px;border-left:3px solid #f59e0b;">
+            <div>
+              <div style="font-size:0.6rem;font-weight:700;color:var(--navy);">Hannah Artiga · LAN</div>
+              <div style="font-size:0.5rem;color:var(--muted);">Review · Other</div>
+            </div>
+            <span style="font-size:0.52rem;font-weight:700;color:#c48a00;">Review</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.45rem 0.65rem;background:var(--cream);border-radius:7px;border-left:3px solid #f59e0b;">
+            <div>
+              <div style="font-size:0.6rem;font-weight:700;color:var(--navy);">Joaquin Velasquez · LAN</div>
+              <div style="font-size:0.5rem;color:var(--muted);">Review · Optum/UHC</div>
+            </div>
+            <span style="font-size:0.52rem;font-weight:700;color:#c48a00;">Review</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.45rem 0.65rem;background:var(--cream);border-radius:7px;border-left:3px solid #f59e0b;">
+            <div>
+              <div style="font-size:0.6rem;font-weight:700;color:var(--navy);">Braxton Heron-Evans · OC</div>
+              <div style="font-size:0.5rem;color:var(--muted);">Review · Blue Shield CA</div>
+            </div>
+            <span style="font-size:0.52rem;font-weight:700;color:#c48a00;">Review</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.45rem 0.65rem;background:var(--cream);border-radius:7px;border-left:3px solid #f59e0b;">
+            <div>
+              <div style="font-size:0.6rem;font-weight:700;color:var(--navy);">Ian Byrum</div>
+              <div style="font-size:0.5rem;color:var(--muted);">Review · Other</div>
+            </div>
+            <span style="font-size:0.52rem;font-weight:700;color:#c48a00;">Review</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.45rem 0.65rem;background:var(--cream);border-radius:7px;border-left:3px solid var(--purple);">
+            <div>
+              <div style="font-size:0.6rem;font-weight:700;color:var(--navy);">Zayden Montalvo · SAC</div>
+              <div style="font-size:0.5rem;color:var(--muted);">Pending Auth · Patricia Simtoco</div>
+            </div>
+            <span style="font-size:0.52rem;font-weight:700;color:#5b47c4;">Pending Auth</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.45rem 0.65rem;background:var(--cream);border-radius:7px;border-left:3px solid var(--purple);">
+            <div>
+              <div style="font-size:0.6rem;font-weight:700;color:var(--navy);">Sofi Garcia · LAW</div>
+              <div style="font-size:0.5rem;color:var(--muted);">Pending Auth · Patricia Simtoco</div>
+            </div>
+            <span style="font-size:0.52rem;font-weight:700;color:#5b47c4;">Pending Auth</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.45rem 0.65rem;background:var(--cream);border-radius:7px;border-left:3px solid #77D6FF;">
+            <div>
+              <div style="font-size:0.6rem;font-weight:700;color:var(--navy);">Kai Rivie</div>
+              <div style="font-size:0.5rem;color:var(--muted);">Pending Confirmation · Aetna</div>
+            </div>
+            <span style="font-size:0.52rem;font-weight:700;color:#3dafd9;">Pending Conf.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
   <!-- Campaign -->
   <div class="card full-w">
     <div class="card-head"><div class="card-title">Social Media Campaign <span>CPA Breakdown</span></div></div>
@@ -493,11 +649,11 @@
 <script>
 // Data snapshots per period
 const DATA = {
-  ytd:  { leads:626, conv:26, pipe:22, digLeads:577, fmLeads:49, digConv:7, fmConv:19, digRate:'1.2%', fmRate:'38.8%', rate:'4.2%', label:'Jan 1 – Mar 25, 2026', sub:'YTD 2026 · Jan 1 — Mar 25', closed:335, newL:244, acc:26, rev:15, ben:4, pend:3, goalConvW:26, goalPipeW:22 },
-  q1:   { leads:626, conv:26, pipe:22, digLeads:577, fmLeads:49, digConv:7, fmConv:19, digRate:'1.2%', fmRate:'38.8%', rate:'4.2%', label:'Q1 2026 (Jan–Mar)', sub:'Q1 2026 · Jan 1 — Mar 25', closed:335, newL:244, acc:26, rev:15, ben:4, pend:3, goalConvW:26, goalPipeW:22 },
-  jan:  { leads:208, conv:8,  pipe:6,  digLeads:190, fmLeads:18, digConv:1, fmConv:7,  digRate:'0.5%', fmRate:'38.9%', rate:'3.8%', label:'January 2026', sub:'January 2026 · Jan 1 — Jan 31', closed:102, newL:86,  acc:8,  rev:6,  ben:2, pend:1, goalConvW:8,  goalPipeW:6  },
-  feb:  { leads:220, conv:11, pipe:9,  digLeads:204, fmLeads:16, digConv:3, fmConv:8,  digRate:'1.5%', fmRate:'50.0%', rate:'5.0%', label:'February 2026', sub:'February 2026 · Feb 1 — Feb 28', closed:118, newL:80,  acc:11, rev:6,  ben:2, pend:1, goalConvW:11, goalPipeW:9  },
-  mar:  { leads:198, conv:7,  pipe:7,  digLeads:183, fmLeads:15, digConv:3, fmConv:4,  digRate:'1.6%', fmRate:'26.7%', rate:'3.5%', label:'March 2026 (to 25th)', sub:'March 2026 · Mar 1 — Mar 25', closed:115, newL:68,  acc:7,  rev:5,  ben:1, pend:1, goalConvW:7,  goalPipeW:7  },
+  ytd:  { leads:628, conv:27, pipe:24, digLeads:576, fmLeads:52, digConv:7, fmConv:20, digRate:'1.2%', fmRate:'38.5%', rate:'4.3%', label:'Jan 1 – Mar 26, 2026', sub:'YTD 2026 · Jan 1 — Mar 26', closed:325, newL:252, acc:27, rev:17, ben:4, pend:3, goalConvW:27, goalPipeW:24 },
+  q1:   { leads:628, conv:27, pipe:24, digLeads:576, fmLeads:52, digConv:7, fmConv:20, digRate:'1.2%', fmRate:'38.5%', rate:'4.3%', label:'Q1 2026 (Jan–Mar)', sub:'Q1 2026 · Jan 1 — Mar 26', closed:325, newL:252, acc:27, rev:17, ben:4, pend:3, goalConvW:27, goalPipeW:24 },
+  jan:  { leads:215, conv:8,  pipe:3,  digLeads:192, fmLeads:23, digConv:1, fmConv:7,  digRate:'0.5%', fmRate:'30.4%', rate:'3.7%', label:'January 2026', sub:'January 2026 · Jan 1 — Jan 31', closed:104, newL:100, acc:8, rev:3, ben:0, pend:3, goalConvW:8,  goalPipeW:3  },
+  feb:  { leads:217, conv:11, pipe:5,  digLeads:198, fmLeads:19, digConv:3, fmConv:8,  digRate:'1.5%', fmRate:'42.1%', rate:'5.1%', label:'February 2026', sub:'February 2026 · Feb 1 — Feb 28', closed:114, newL:87, acc:11, rev:4, ben:2, pend:1, goalConvW:11, goalPipeW:5  },
+  mar:  { leads:196, conv:8,  pipe:16, digLeads:186, fmLeads:10, digConv:3, fmConv:5,  digRate:'1.6%', fmRate:'50.0%', rate:'4.1%', label:'March 2026 (to 26th)', sub:'March 2026 · Mar 1 — Mar 26', closed:107, newL:65, acc:8, rev:10, ben:2, pend:1, goalConvW:8,  goalPipeW:16 },
 };
 
 function fmt(n){ return n.toLocaleString(); }
