@@ -217,7 +217,7 @@
   <div class="page-header">
     <div>
       <div class="page-title" id="page-title">Dashboard</div>
-      <div class="page-sub" id="page-sub">YTD 2026 · Jan 1 — Mar 26 · All Territories</div>
+      <div class="page-sub" id="page-sub"></div>
     </div>
   </div>
 
@@ -649,14 +649,21 @@
 <script>
 // Data snapshots per period
 const DATA = {
-  ytd:  { leads:628, conv:27, pipe:24, digLeads:576, fmLeads:52, digConv:7, fmConv:20, digRate:'1.2%', fmRate:'38.5%', rate:'4.3%', label:'Jan 1 – Mar 26, 2026', sub:'YTD 2026 · Jan 1 — Mar 26', closed:325, newL:252, acc:27, rev:17, ben:4, pend:3, goalConvW:27, goalPipeW:24 },
-  q1:   { leads:628, conv:27, pipe:24, digLeads:576, fmLeads:52, digConv:7, fmConv:20, digRate:'1.2%', fmRate:'38.5%', rate:'4.3%', label:'Q1 2026 (Jan–Mar)', sub:'Q1 2026 · Jan 1 — Mar 26', closed:325, newL:252, acc:27, rev:17, ben:4, pend:3, goalConvW:27, goalPipeW:24 },
-  jan:  { leads:215, conv:8,  pipe:3,  digLeads:192, fmLeads:23, digConv:1, fmConv:7,  digRate:'0.5%', fmRate:'30.4%', rate:'3.7%', label:'January 2026', sub:'January 2026 · Jan 1 — Jan 31', closed:104, newL:100, acc:8, rev:3, ben:0, pend:3, goalConvW:8,  goalPipeW:3  },
-  feb:  { leads:217, conv:11, pipe:5,  digLeads:198, fmLeads:19, digConv:3, fmConv:8,  digRate:'1.5%', fmRate:'42.1%', rate:'5.1%', label:'February 2026', sub:'February 2026 · Feb 1 — Feb 28', closed:114, newL:87, acc:11, rev:4, ben:2, pend:1, goalConvW:11, goalPipeW:5  },
-  mar:  { leads:196, conv:8,  pipe:16, digLeads:186, fmLeads:10, digConv:3, fmConv:5,  digRate:'1.6%', fmRate:'50.0%', rate:'4.1%', label:'March 2026 (to 26th)', sub:'March 2026 · Mar 1 — Mar 26', closed:107, newL:65, acc:8, rev:10, ben:2, pend:1, goalConvW:8,  goalPipeW:16 },
+  ytd:  { leads:662, conv:28, pipe:25, digLeads:608, fmLeads:54, digConv:7, fmConv:21, digRate:'1.2%', fmRate:'38.9%', rate:'4.2%', label:'', sub:'', closed:349, newL:263, acc:28, rev:17, ben:4, pend:3, goalConvW:28, goalPipeW:25 },
+  q1:   { leads:662, conv:28, pipe:25, digLeads:608, fmLeads:54, digConv:7, fmConv:21, digRate:'1.2%', fmRate:'38.9%', rate:'4.2%', label:'', sub:'', closed:349, newL:263, acc:28, rev:17, ben:4, pend:3, goalConvW:28, goalPipeW:25 },
+  jan:  { leads:215, conv:8,  pipe:3,  digLeads:192, fmLeads:23, digConv:1, fmConv:7,  digRate:'0.5%', fmRate:'30.4%', rate:'3.7%', label:'January 2026', sub:'January 2026 · Jan 1 — Jan 31', closed:104, newL:100, acc:8,  rev:3,  ben:0, pend:3, goalConvW:8,  goalPipeW:3  },
+  feb:  { leads:217, conv:11, pipe:5,  digLeads:198, fmLeads:19, digConv:3, fmConv:8,  digRate:'1.5%', fmRate:'42.1%', rate:'5.1%', label:'February 2026', sub:'February 2026 · Feb 1 — Feb 28', closed:114, newL:87,  acc:11, rev:4,  ben:2, pend:1, goalConvW:11, goalPipeW:5  },
+  mar:  { leads:230, conv:9,  pipe:17, digLeads:218, fmLeads:12, digConv:3, fmConv:6,  digRate:'1.4%', fmRate:'50.0%', rate:'3.9%', label:'March 2026', sub:'March 2026 · Mar 1 — Mar 31', closed:131, newL:76,  acc:9,  rev:10, ben:2, pend:1, goalConvW:9,  goalPipeW:17 },
 };
 
 function fmt(n){ return n.toLocaleString(); }
+
+function todayLabel() {
+  return new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+function todayShort() {
+  return new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
 
 function applyData(d, rangeLabel) {
   const total = d.leads;
