@@ -24,7 +24,7 @@
   .apply-btn{font-size:0.62rem;font-weight:700;padding:0.38rem 0.85rem;border-radius:8px;border:none;background:var(--green);color:#fff;cursor:pointer;font-family:inherit;}
   .filter-info{margin-left:auto;font-size:0.58rem;color:var(--muted);font-weight:600;}
   .filter-info strong{color:var(--navy);}
-  .main{padding:1.75rem 2rem 3rem;}
+  .main{padding:1.75rem 2rem 3rem;width:100%;}
   .page-title{font-size:1.6rem;font-weight:800;color:var(--navy);letter-spacing:-0.02em;}
   .page-sub{font-size:0.6rem;color:var(--muted);margin-top:0.25rem;text-transform:uppercase;letter-spacing:0.1em;}
   .card{background:#fff;border-radius:14px;padding:1.25rem;border:1px solid var(--border);}
@@ -172,33 +172,33 @@
   <div class="kpi-row">
     <div class="kpi" style="background:var(--green);">
       <div class="kpi-label">Total Leads</div>
-      <div class="kpi-val" id="kpi-leads">671</div>
+      <div class="kpi-val" id="kpi-leads">716</div>
       <div class="kpi-sub" id="kpi-leads-sub">All channels · YTD</div>
       <div class="kpi-tag" id="kpi-leads-tag">Jan–Apr 2026</div>
     </div>
     <div class="kpi" style="background:var(--navy);">
       <div class="kpi-label">Converted</div>
-      <div class="kpi-val" id="kpi-conv">28</div>
-      <div class="kpi-sub">Of <span id="kpi-conv-of">671</span> total leads</div>
+      <div class="kpi-val" id="kpi-conv">31</div>
+      <div class="kpi-sub">Of <span id="kpi-conv-of">716</span> total leads</div>
       <div class="kpi-tag">Goal: 100 / yr</div>
     </div>
     <div class="kpi" style="background:var(--purple);">
       <div class="kpi-label">Conversion Rate</div>
-      <div class="kpi-val" id="kpi-rate">4.2%</div>
-      <div class="kpi-sub" id="kpi-rate-sub">Digital: 1.1% · FM: 38.9%</div>
-      <div class="kpi-tag" id="kpi-rate-tag">28 of 671</div>
+      <div class="kpi-val" id="kpi-rate">4.3%</div>
+      <div class="kpi-sub" id="kpi-rate-sub">Digital: 1.1% · FM: 38.7%</div>
+      <div class="kpi-tag" id="kpi-rate-tag">31 of 716</div>
     </div>
     <div class="kpi" style="background:var(--amber);">
       <div class="kpi-label">Active Pipeline</div>
-      <div class="kpi-val" id="kpi-pipe">25</div>
+      <div class="kpi-val" id="kpi-pipe">21</div>
       <div class="kpi-sub">Review · Benefits · Pending</div>
       <div class="kpi-tag">In progress</div>
     </div>
     <div class="kpi" style="background:#2a8aab;">
       <div class="kpi-label">Field Marketing</div>
-      <div class="kpi-val" id="kpi-fm">38.9%</div>
+      <div class="kpi-val" id="kpi-fm">38.7%</div>
       <div class="kpi-sub" id="kpi-fm-sub">Best-converting channel</div>
-      <div class="kpi-tag" id="kpi-fm-tag">21 of 54 leads</div>
+      <div class="kpi-tag" id="kpi-fm-tag">24 of 62 leads</div>
     </div>
   </div>
 
@@ -257,15 +257,15 @@
   </div>
 
   <!-- Home vs Center + Channel -->
-  <div class="row-2">
+  <div style="display:grid;grid-template-columns:3fr 2fr;gap:1rem;margin-bottom:1rem;">
   <div class="row-2">
     <div class="card">
       <div class="card-head"><div class="card-title">Home vs <span>Center</span> Conversions</div><span class="card-tag">28 total</span></div>
       <div class="hc-grid">
         <div class="hc-card" style="background:var(--navy);">
           <div style="font-size:0.52rem;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25rem;">Center-Based</div>
-          <div style="font-size:2.2rem;font-weight:800;color:#fff;line-height:1;">22</div>
-          <div style="font-size:0.52rem;color:rgba(255,255,255,0.6);margin-top:3px;">78.6% of conversions</div>
+          <div style="font-size:2.2rem;font-weight:800;color:#fff;line-height:1;">24</div>
+          <div style="font-size:0.52rem;color:rgba(255,255,255,0.6);margin-top:3px;">77.4% of conversions</div>
           <div style="margin-top:0.6rem;display:flex;flex-wrap:wrap;gap:0.3rem;justify-content:center;">
             <span style="font-size:0.48rem;background:rgba(255,255,255,0.15);color:#fff;padding:0.1rem 0.4rem;border-radius:20px;font-weight:600;">Riverside ×6</span>
             <span style="font-size:0.48rem;background:rgba(255,255,255,0.15);color:#fff;padding:0.1rem 0.4rem;border-radius:20px;font-weight:600;">Ontario ×6</span>
@@ -389,7 +389,7 @@
 
   <!-- Insurance -->
   <div class="card full-w">
-    <div class="card-head"><div class="card-title">Insurance <span>Breakdown</span> — 28 Conversions</div></div>
+    <div class="card-head"><div class="card-title">Insurance <span>Breakdown</span> — 31 Conversions</div></div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.75rem;">
       <div class="ins-big" style="background:var(--green);">
         <div style="font-size:0.52rem;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25rem;">Inland Empire Health Plan</div>
@@ -465,7 +465,7 @@ var TERR_ALL = [
   ['?',  'Unassigned',337,335,2,0,2,0,0]
 ];
 
-var MONTHLY = {labels:['Jan','Feb','Mar','Apr'],conv:[8,11,9,0],leads:[215,217,230,9]};
+var MONTHLY = {labels:['Jan','Feb','Mar','Apr'],conv:[8,11,9,3],leads:[215,217,230,54]};
 var WEEKLY  = {labels:['W1-J','W2-J','W3-J','W4-J','W1-F','W2-F','W3-F','W4-F','W1-M','W2-M','W3-M','W4-M','W1-A'],conv:[2,2,2,2,2,3,3,3,2,3,2,2,0],leads:[52,55,58,50,48,55,60,54,55,62,58,55,9]};
 
 function fmt(n){return n.toLocaleString();}
