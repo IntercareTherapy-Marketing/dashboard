@@ -73,7 +73,8 @@
   .leg-n{font-size:0.58rem;color:var(--muted);}
   .leg-pct{font-size:0.58rem;font-weight:700;min-width:32px;text-align:right;}
   .ins-big{border-radius:12px;padding:1rem 1.25rem;margin-bottom:0.75rem;}
-  .ins-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.4rem;}
+  .ins-row{display:flex;justify-content:space-between;align-items:center;padding:0.35rem 0;border-bottom:1px solid var(--border);}
+  .ins-row:last-child{border-bottom:none;}
   .ins-name{font-size:0.6rem;font-weight:700;color:var(--navy);}
   .ins-bar-bg{width:55px;height:5px;background:var(--cream);border-radius:50px;overflow:hidden;}
   .ins-bar-fill{height:100%;border-radius:50px;background:var(--purple);}
@@ -156,7 +157,6 @@
     <div class="page-sub" id="page-sub"></div>
   </div>
 
-  <!-- Definitions -->
   <div class="def-banner">
     <div>
       <div class="def-term">What is a Lead?</div>
@@ -168,37 +168,36 @@
     </div>
   </div>
 
-  <!-- KPIs -->
   <div class="kpi-row">
     <div class="kpi" style="background:var(--green);">
       <div class="kpi-label">Total Leads</div>
-      <div class="kpi-val" id="kpi-leads">716</div>
+      <div class="kpi-val" id="kpi-leads">—</div>
       <div class="kpi-sub" id="kpi-leads-sub">All channels · YTD</div>
       <div class="kpi-tag" id="kpi-leads-tag">Jan–Apr 2026</div>
     </div>
     <div class="kpi" style="background:var(--navy);">
       <div class="kpi-label">Converted</div>
-      <div class="kpi-val" id="kpi-conv">31</div>
-      <div class="kpi-sub">Of <span id="kpi-conv-of">716</span> total leads</div>
+      <div class="kpi-val" id="kpi-conv">—</div>
+      <div class="kpi-sub">Of <span id="kpi-conv-of">—</span> total leads</div>
       <div class="kpi-tag">Goal: 100 / yr</div>
     </div>
     <div class="kpi" style="background:var(--purple);">
       <div class="kpi-label">Conversion Rate</div>
-      <div class="kpi-val" id="kpi-rate">4.3%</div>
-      <div class="kpi-sub" id="kpi-rate-sub">Digital: 1.1% · FM: 38.7%</div>
-      <div class="kpi-tag" id="kpi-rate-tag">31 of 716</div>
+      <div class="kpi-val" id="kpi-rate">—</div>
+      <div class="kpi-sub" id="kpi-rate-sub">Digital vs FM</div>
+      <div class="kpi-tag" id="kpi-rate-tag">—</div>
     </div>
     <div class="kpi" style="background:var(--amber);">
       <div class="kpi-label">Active Pipeline</div>
-      <div class="kpi-val" id="kpi-pipe">21</div>
-      <div class="kpi-sub">Review · Benefits · Pending</div>
+      <div class="kpi-val" id="kpi-pipe">—</div>
+      <div class="kpi-sub">Review · Benefits · Pending · Capacity</div>
       <div class="kpi-tag">In progress</div>
     </div>
     <div class="kpi" style="background:#2a8aab;">
       <div class="kpi-label">Field Marketing</div>
-      <div class="kpi-val" id="kpi-fm">38.7%</div>
-      <div class="kpi-sub" id="kpi-fm-sub">Best-converting channel</div>
-      <div class="kpi-tag" id="kpi-fm-tag">24 of 62 leads</div>
+      <div class="kpi-val" id="kpi-fm">—</div>
+      <div class="kpi-sub">Best-converting channel</div>
+      <div class="kpi-tag" id="kpi-fm-tag">—</div>
     </div>
   </div>
 
@@ -206,32 +205,32 @@
   <div class="card full-w">
     <div class="card-head">
       <div class="card-title">Annual Goal <span>Tracker</span></div>
-      <span class="card-tag" id="goal-tag">53% to goal</span>
+      <span class="card-tag" id="goal-tag">—</span>
     </div>
     <div style="display:flex;gap:2rem;align-items:flex-start;">
       <div style="flex-shrink:0;">
-        <div style="font-size:3rem;font-weight:800;color:var(--green);line-height:1;" id="goal-big">53</div>
+        <div style="font-size:3rem;font-weight:800;color:var(--green);line-height:1;" id="goal-big">—</div>
         <div style="font-size:0.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-top:2px;">Leads Engaged</div>
         <div style="margin-top:0.5rem;">
-          <div style="font-size:0.58rem;color:#1a9e7c;font-weight:800;" id="goal-conv-line">28 converted ✓</div>
-          <div style="font-size:0.58rem;color:#5b47c4;font-weight:800;" id="goal-pipe-line">25 in pipeline →</div>
+          <div style="font-size:0.58rem;color:#1a9e7c;font-weight:800;" id="goal-conv-line">—</div>
+          <div style="font-size:0.58rem;color:#5b47c4;font-weight:800;" id="goal-pipe-line">—</div>
         </div>
       </div>
       <div style="flex:1;">
         <div style="display:flex;justify-content:space-between;font-size:0.58rem;color:var(--muted);font-weight:700;margin-bottom:0.4rem;">
-          <span>Road to 100</span><span style="color:var(--green);font-weight:800;" id="goal-summary">28 + 25</span>
+          <span>Road to 100</span><span style="color:var(--green);font-weight:800;" id="goal-summary">—</span>
         </div>
         <div class="goal-track">
-          <div class="goal-fill-conv" id="goal-bar-conv" style="width:28%;"></div>
-          <div class="goal-fill-pipe" id="goal-bar-pipe" style="left:28%;width:25%;"></div>
+          <div class="goal-fill-conv" id="goal-bar-conv" style="width:0%;"></div>
+          <div class="goal-fill-pipe" id="goal-bar-pipe" style="left:0%;width:0%;"></div>
         </div>
         <div style="display:flex;gap:0.75rem;font-size:0.55rem;font-weight:700;">
-          <span style="display:flex;align-items:center;gap:4px;color:#1a9e7c;"><span style="width:7px;height:7px;background:var(--green);border-radius:2px;display:inline-block;"></span><span id="leg-conv">28 Converted</span></span>
-          <span style="display:flex;align-items:center;gap:4px;color:#5b47c4;"><span style="width:7px;height:7px;background:var(--purple);opacity:0.5;border-radius:2px;display:inline-block;"></span><span id="leg-pipe">25 Pipeline</span></span>
-          <span style="display:flex;align-items:center;gap:4px;color:var(--muted);"><span style="width:7px;height:7px;background:var(--cream);border:1px solid var(--border);border-radius:2px;display:inline-block;"></span><span id="leg-rem">47 remaining</span></span>
+          <span style="display:flex;align-items:center;gap:4px;color:#1a9e7c;"><span style="width:7px;height:7px;background:var(--green);border-radius:2px;display:inline-block;"></span><span id="leg-conv">—</span></span>
+          <span style="display:flex;align-items:center;gap:4px;color:#5b47c4;"><span style="width:7px;height:7px;background:var(--purple);opacity:0.5;border-radius:2px;display:inline-block;"></span><span id="leg-pipe">—</span></span>
+          <span style="display:flex;align-items:center;gap:4px;color:var(--muted);"><span style="width:7px;height:7px;background:var(--cream);border:1px solid var(--border);border-radius:2px;display:inline-block;"></span><span id="leg-rem">—</span></span>
         </div>
         <div class="quarter-grid">
-          <div class="q-box" style="background:var(--green);"><div style="font-size:1rem;font-weight:800;color:#fff;">Q1</div><div style="font-size:0.5rem;color:rgba(255,255,255,0.75);text-transform:uppercase;font-weight:700;">Done</div><div style="font-size:0.65rem;color:#fff;margin-top:3px;font-weight:800;">28 ✓</div></div>
+          <div class="q-box" style="background:var(--green);"><div style="font-size:1rem;font-weight:800;color:#fff;">Q1</div><div style="font-size:0.5rem;color:rgba(255,255,255,0.75);text-transform:uppercase;font-weight:700;">Done</div><div style="font-size:0.65rem;color:#fff;margin-top:3px;font-weight:800;" id="q1-label">29 ✓</div></div>
           <div class="q-box" style="background:var(--cream);border:1px solid var(--border);opacity:0.75;"><div style="font-size:1rem;font-weight:800;color:var(--navy);">Q2</div><div style="font-size:0.5rem;color:var(--muted);text-transform:uppercase;font-weight:700;">In Progress</div></div>
           <div class="q-box" style="background:var(--cream);border:1px solid var(--border);opacity:0.5;"><div style="font-size:1rem;font-weight:800;color:var(--navy);">Q3</div><div style="font-size:0.5rem;color:var(--muted);text-transform:uppercase;font-weight:700;">Upcoming</div></div>
           <div class="q-box" style="background:var(--cream);border:1px solid var(--border);opacity:0.3;"><div style="font-size:1rem;font-weight:800;color:var(--navy);">Q4</div><div style="font-size:0.5rem;color:var(--muted);text-transform:uppercase;font-weight:700;">Upcoming</div></div>
@@ -257,26 +256,26 @@
   </div>
 
   <!-- Home vs Center + Channel -->
-  <div style="display:grid;grid-template-columns:3fr 2fr;gap:1rem;margin-bottom:1rem;">
   <div class="row-2">
     <div class="card">
-      <div class="card-head"><div class="card-title">Home vs <span>Center</span> Conversions</div><span class="card-tag">28 total</span></div>
+      <div class="card-head"><div class="card-title">Home vs <span>Center</span> Conversions</div><span class="card-tag">31 conversions</span></div>
       <div class="hc-grid">
         <div class="hc-card" style="background:var(--navy);">
           <div style="font-size:0.52rem;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25rem;">Center-Based</div>
-          <div style="font-size:2.2rem;font-weight:800;color:#fff;line-height:1;">24</div>
-          <div style="font-size:0.52rem;color:rgba(255,255,255,0.6);margin-top:3px;">77.4% of conversions</div>
+          <div style="font-size:2.2rem;font-weight:800;color:#fff;line-height:1;">25</div>
+          <div style="font-size:0.52rem;color:rgba(255,255,255,0.6);margin-top:3px;">80.6% of conversions</div>
           <div style="margin-top:0.6rem;display:flex;flex-wrap:wrap;gap:0.3rem;justify-content:center;">
-            <span style="font-size:0.48rem;background:rgba(255,255,255,0.15);color:#fff;padding:0.1rem 0.4rem;border-radius:20px;font-weight:600;">Riverside ×6</span>
-            <span style="font-size:0.48rem;background:rgba(255,255,255,0.15);color:#fff;padding:0.1rem 0.4rem;border-radius:20px;font-weight:600;">Ontario ×6</span>
+            <span style="font-size:0.48rem;background:rgba(255,255,255,0.15);color:#fff;padding:0.1rem 0.4rem;border-radius:20px;font-weight:600;">Ontario ×8</span>
+            <span style="font-size:0.48rem;background:rgba(255,255,255,0.15);color:#fff;padding:0.1rem 0.4rem;border-radius:20px;font-weight:600;">Riverside ×7</span>
             <span style="font-size:0.48rem;background:rgba(255,255,255,0.15);color:#fff;padding:0.1rem 0.4rem;border-radius:20px;font-weight:600;">Bankers Hill ×5</span>
             <span style="font-size:0.48rem;background:rgba(255,255,255,0.15);color:#fff;padding:0.1rem 0.4rem;border-radius:20px;font-weight:600;">Elk Grove ×4</span>
+            <span style="font-size:0.48rem;background:rgba(255,255,255,0.15);color:#fff;padding:0.1rem 0.4rem;border-radius:20px;font-weight:600;">Van Nuys ×1</span>
           </div>
         </div>
         <div class="hc-card" style="background:var(--green);">
           <div style="font-size:0.52rem;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25rem;">Home-Based</div>
           <div style="font-size:2.2rem;font-weight:800;color:#fff;line-height:1;">6</div>
-          <div style="font-size:0.52rem;color:rgba(255,255,255,0.75);margin-top:3px;">21.4% of conversions</div>
+          <div style="font-size:0.52rem;color:rgba(255,255,255,0.75);margin-top:3px;">19.4% of conversions</div>
         </div>
       </div>
       <div style="padding:0.65rem 0.75rem;background:var(--cream);border-radius:8px;font-size:0.6rem;color:var(--navy);line-height:1.5;">
@@ -287,53 +286,46 @@
       <div class="card-head"><div class="card-title">Channel <span>Performance</span></div></div>
       <div class="ch-row">
         <div class="ch-label"><div class="ch-name">Digital Outreach</div><span class="ch-chip chip-d">Website + Social</span></div>
-        <div class="ch-track"><div class="ch-fill" id="ch-dig-bar" style="width:92%;background:var(--green);"></div></div>
-        <div style="font-size:0.58rem;color:var(--muted);width:32px;text-align:right;font-weight:700;" id="ch-dig-n">617</div>
-        <div style="font-size:0.62rem;width:42px;text-align:right;font-weight:800;color:#c48a00;" id="ch-dig-rate">1.1%</div>
+        <div class="ch-track"><div class="ch-fill" id="ch-dig-bar" style="width:85%;background:var(--green);"></div></div>
+        <div style="font-size:0.58rem;color:var(--muted);width:32px;text-align:right;font-weight:700;" id="ch-dig-n">—</div>
+        <div style="font-size:0.62rem;width:42px;text-align:right;font-weight:800;color:#c48a00;" id="ch-dig-rate">—</div>
       </div>
       <div class="ch-row">
         <div class="ch-label"><div class="ch-name">Field Marketing</div><span class="ch-chip chip-f">Coordinator</span></div>
-        <div class="ch-track"><div class="ch-fill" id="ch-fm-bar" style="width:8%;background:var(--purple);"></div></div>
-        <div style="font-size:0.58rem;color:var(--muted);width:32px;text-align:right;font-weight:700;" id="ch-fm-n">54</div>
-        <div style="font-size:0.62rem;width:42px;text-align:right;font-weight:800;color:#1a9e7c;" id="ch-fm-rate">38.9%</div>
+        <div class="ch-track"><div class="ch-fill" id="ch-fm-bar" style="width:15%;background:var(--purple);"></div></div>
+        <div style="font-size:0.58rem;color:var(--muted);width:32px;text-align:right;font-weight:700;" id="ch-fm-n">—</div>
+        <div style="font-size:0.62rem;width:42px;text-align:right;font-weight:800;color:#1a9e7c;" id="ch-fm-rate">—</div>
       </div>
       <div style="margin-top:1rem;display:flex;gap:0.5rem;">
-        <div style="flex:1;background:var(--green);border-radius:8px;padding:0.6rem;text-align:center;"><div style="font-size:1.2rem;font-weight:800;color:#fff;" id="ch-fm-conv">21</div><div style="font-size:0.5rem;color:rgba(255,255,255,0.8);font-weight:700;">FM Conv.</div></div>
-        <div style="flex:1;background:var(--navy);border-radius:8px;padding:0.6rem;text-align:center;"><div style="font-size:1.2rem;font-weight:800;color:#fff;" id="ch-dig-conv">7</div><div style="font-size:0.5rem;color:rgba(255,255,255,0.7);font-weight:700;">Digital Conv.</div></div>
-        <div style="flex:1;background:var(--cream);border-radius:8px;padding:0.6rem;text-align:center;border:1px solid var(--border);"><div style="font-size:1.2rem;font-weight:800;color:var(--navy);" id="ch-total-conv">28</div><div style="font-size:0.5rem;color:var(--muted);font-weight:700;">Total YTD</div></div>
+        <div style="flex:1;background:var(--green);border-radius:8px;padding:0.6rem;text-align:center;"><div style="font-size:1.2rem;font-weight:800;color:#fff;" id="ch-fm-conv">—</div><div style="font-size:0.5rem;color:rgba(255,255,255,0.8);font-weight:700;">FM Conv.</div></div>
+        <div style="flex:1;background:var(--navy);border-radius:8px;padding:0.6rem;text-align:center;"><div style="font-size:1.2rem;font-weight:800;color:#fff;" id="ch-dig-conv">—</div><div style="font-size:0.5rem;color:rgba(255,255,255,0.7);font-weight:700;">Digital Conv.</div></div>
+        <div style="flex:1;background:var(--cream);border-radius:8px;padding:0.6rem;text-align:center;border:1px solid var(--border);"><div style="font-size:1.2rem;font-weight:800;color:var(--navy);" id="ch-total-conv">—</div><div style="font-size:0.5rem;color:var(--muted);font-weight:700;">Total YTD</div></div>
       </div>
     </div>
   </div>
 
-  </div><!-- end home/channel row -->
-
-  <!-- Pipeline + Conversion -->
+  <!-- Pipeline + Conversion Analysis -->
   <div class="row-2">
     <div class="card">
       <div class="card-head"><div class="card-title">Lead <span>Pipeline</span></div></div>
       <div style="display:flex;gap:1.25rem;align-items:center;">
         <div style="position:relative;flex-shrink:0;">
-          <svg width="120" height="120" viewBox="0 0 120 120">
+          <svg width="120" height="120" viewBox="0 0 120 120" id="donut-svg">
             <circle cx="60" cy="60" r="46" fill="none" stroke="#f0eef8" stroke-width="16"/>
-            <circle cx="60" cy="60" r="46" fill="none" stroke="#26CCA0" stroke-width="16" stroke-dasharray="11.5 277.5" stroke-dashoffset="73" style="transform-origin:center;transform:rotate(-90deg);"/>
-            <circle cx="60" cy="60" r="46" fill="none" stroke="#f59e0b" stroke-width="16" stroke-dasharray="6.6 282.4" stroke-dashoffset="61.5" style="transform-origin:center;transform:rotate(-90deg);"/>
-            <circle cx="60" cy="60" r="46" fill="none" stroke="#77D6FF" stroke-width="16" stroke-dasharray="1.6 287.4" stroke-dashoffset="54.9" style="transform-origin:center;transform:rotate(-90deg);"/>
-            <circle cx="60" cy="60" r="46" fill="none" stroke="#8270DE" stroke-width="16" stroke-dasharray="1.3 287.7" stroke-dashoffset="53.3" style="transform-origin:center;transform:rotate(-90deg);"/>
-            <circle cx="60" cy="60" r="46" fill="none" stroke="#b8aff0" stroke-width="16" stroke-dasharray="115.8 173.2" stroke-dashoffset="52" style="transform-origin:center;transform:rotate(-90deg);"/>
-            <circle cx="60" cy="60" r="46" fill="none" stroke="#291A6B" stroke-width="16" stroke-dasharray="152.5 136.5" stroke-dashoffset="-63.8" style="transform-origin:center;transform:rotate(-90deg);"/>
           </svg>
           <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;">
-            <div style="font-size:1.3rem;font-weight:800;color:var(--navy);" id="donut-total">671</div>
+            <div style="font-size:1.3rem;font-weight:800;color:var(--navy);" id="donut-total">—</div>
             <div style="font-size:0.5rem;color:var(--muted);text-transform:uppercase;font-weight:700;">total</div>
           </div>
         </div>
         <div style="flex:1;">
-          <div class="legend-row"><div class="leg-dot" style="background:#291A6B;"></div><div class="leg-name">Closed — Declined</div><div class="leg-n" id="pipe-closed">358</div><div class="leg-pct" style="color:#291A6B;" id="pipe-closed-pct">53.4%</div></div>
-          <div class="legend-row"><div class="leg-dot" style="background:#b8aff0;"></div><div class="leg-name">New</div><div class="leg-n" id="pipe-new">281</div><div class="leg-pct" style="color:#8270DE;" id="pipe-new-pct">41.9%</div></div>
-          <div class="legend-row"><div class="leg-dot" style="background:#26CCA0;"></div><div class="leg-name">Accepted (Converted)</div><div class="leg-n" id="pipe-acc">28</div><div class="leg-pct" style="color:#1a9e7c;" id="pipe-acc-pct">4.2%</div></div>
-          <div class="legend-row"><div class="leg-dot" style="background:#f59e0b;"></div><div class="leg-name">Review</div><div class="leg-n" id="pipe-rev">16</div><div class="leg-pct" style="color:#c48a00;" id="pipe-rev-pct">2.4%</div></div>
-          <div class="legend-row"><div class="leg-dot" style="background:#77D6FF;"></div><div class="leg-name">Benefits Check</div><div class="leg-n" id="pipe-ben">4</div><div class="leg-pct" style="color:#3dafd9;" id="pipe-ben-pct">0.6%</div></div>
-          <div class="legend-row"><div class="leg-dot" style="background:#8270DE;"></div><div class="leg-name">Pending Auth / Conf</div><div class="leg-n" id="pipe-pend">3</div><div class="leg-pct" style="color:#8270DE;" id="pipe-pend-pct">0.4%</div></div>
+          <div class="legend-row"><div class="leg-dot" style="background:#291A6B;"></div><div class="leg-name">Closed — Declined</div><div class="leg-n" id="pipe-closed">—</div><div class="leg-pct" style="color:#291A6B;" id="pipe-closed-pct">—</div></div>
+          <div class="legend-row"><div class="leg-dot" style="background:#b8aff0;"></div><div class="leg-name">New</div><div class="leg-n" id="pipe-new">—</div><div class="leg-pct" style="color:#8270DE;" id="pipe-new-pct">—</div></div>
+          <div class="legend-row"><div class="leg-dot" style="background:#26CCA0;"></div><div class="leg-name">Accepted (Converted)</div><div class="leg-n" id="pipe-acc">—</div><div class="leg-pct" style="color:#1a9e7c;" id="pipe-acc-pct">—</div></div>
+          <div class="legend-row"><div class="leg-dot" style="background:#f59e0b;"></div><div class="leg-name">Review</div><div class="leg-n" id="pipe-rev">—</div><div class="leg-pct" style="color:#c48a00;" id="pipe-rev-pct">—</div></div>
+          <div class="legend-row"><div class="leg-dot" style="background:#77D6FF;"></div><div class="leg-name">Benefits Check</div><div class="leg-n" id="pipe-ben">—</div><div class="leg-pct" style="color:#3dafd9;" id="pipe-ben-pct">—</div></div>
+          <div class="legend-row"><div class="leg-dot" style="background:#8270DE;"></div><div class="leg-name">Pending Auth / Conf</div><div class="leg-n" id="pipe-pend">—</div><div class="leg-pct" style="color:#8270DE;" id="pipe-pend-pct">—</div></div>
+          <div class="legend-row"><div class="leg-dot" style="background:#FFD333;"></div><div class="leg-name">Capacity</div><div class="leg-n" id="pipe-cap">—</div><div class="leg-pct" style="color:#c48a00;" id="pipe-cap-pct">—</div></div>
         </div>
       </div>
     </div>
@@ -342,24 +334,25 @@
       <div class="conv-item best">
         <div>
           <div class="conv-name">Field Marketing</div>
-          <div class="conv-detail" id="conv-fm-detail">21 conv / 54 leads · Efren Castro, Sofia Hernandez, Patricia Simtoco</div>
+          <div class="conv-detail" id="conv-fm-detail">—</div>
         </div>
-        <div class="conv-pct" id="conv-fm-pct" style="color:#1a9e7c;">38.9%</div>
+        <div class="conv-pct" id="conv-fm-pct" style="color:#1a9e7c;">—</div>
       </div>
       <div class="conv-item mid">
         <div>
           <div class="conv-name">Digital Outreach</div>
-          <div class="conv-detail" id="conv-dig-detail">7 conversions / 617 digital leads YTD</div>
+          <div class="conv-detail" id="conv-dig-detail">—</div>
         </div>
-        <div class="conv-pct" id="conv-dig-pct" style="color:#c48a00;">1.1%</div>
+        <div class="conv-pct" id="conv-dig-pct" style="color:#c48a00;">—</div>
       </div>
       <div style="margin-top:1rem;">
         <div class="card-title" style="margin-bottom:0.65rem;">Top Decline <span>Reasons</span></div>
-        <div class="dec-row"><div class="dec-name">Insurance</div><div class="dec-bg"><div class="dec-fill" style="width:100%;"></div></div><div class="dec-n">~18</div></div>
-        <div class="dec-row"><div class="dec-name">Client Declined</div><div class="dec-bg"><div class="dec-fill" style="width:61%;"></div></div><div class="dec-n">~11</div></div>
-        <div class="dec-row"><div class="dec-name">Wrong Service</div><div class="dec-bg"><div class="dec-fill" style="width:39%;"></div></div><div class="dec-n">~7</div></div>
-        <div class="dec-row"><div class="dec-name">Client Ltd. Availability</div><div class="dec-bg"><div class="dec-fill" style="width:33%;"></div></div><div class="dec-n">~6</div></div>
-        <div class="dec-row"><div class="dec-name">Location</div><div class="dec-bg"><div class="dec-fill" style="width:28%;"></div></div><div class="dec-n">~5</div></div>
+        <div class="dec-row"><div class="dec-name">Insurance</div><div class="dec-bg"><div class="dec-fill" style="width:100%;"></div></div><div class="dec-n" id="dec-ins">—</div></div>
+        <div class="dec-row"><div class="dec-name">Client Declined</div><div class="dec-bg"><div class="dec-fill" style="width:61%;"></div></div><div class="dec-n" id="dec-cli">—</div></div>
+        <div class="dec-row"><div class="dec-name">Wrong Service</div><div class="dec-bg"><div class="dec-fill" style="width:39%;"></div></div><div class="dec-n" id="dec-ws">—</div></div>
+        <div class="dec-row"><div class="dec-name">Client Ltd. Availability</div><div class="dec-bg"><div class="dec-fill" style="width:33%;"></div></div><div class="dec-n" id="dec-av">—</div></div>
+        <div class="dec-row"><div class="dec-name">Location</div><div class="dec-bg"><div class="dec-fill" style="width:28%;"></div></div><div class="dec-n" id="dec-loc">—</div></div>
+        <div class="dec-row"><div class="dec-name">Approval Denied</div><div class="dec-bg"><div class="dec-fill" style="width:22%;"></div></div><div class="dec-n" id="dec-den">—</div></div>
       </div>
     </div>
   </div>
@@ -384,7 +377,75 @@
         <tbody id="territoryBody"></tbody>
       </table>
     </div>
-    <div class="warn-box" id="terrWarn">337 leads (50.2%) have no territory assigned — primarily from Digital/Social campaigns.</div>
+    <div class="warn-box" id="terrWarn"></div>
+  </div>
+
+  <!-- Demographics -->
+  <div class="card full-w">
+    <div class="card-head">
+      <div class="card-title">Conversion <span>Demographics</span> — Age at Intake</div>
+      <span class="card-tag">Ages from converted leads with data</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.75rem;margin-bottom:1.25rem;">
+      <div style="background:var(--navy);border-radius:12px;padding:1rem 1.25rem;text-align:center;">
+        <div style="font-size:0.52rem;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25rem;">Average Age</div>
+        <div style="font-size:2.5rem;font-weight:800;color:#fff;line-height:1;">7.1</div>
+        <div style="font-size:0.52rem;color:rgba(255,255,255,0.6);margin-top:3px;">years at intake</div>
+      </div>
+      <div style="background:var(--green);border-radius:12px;padding:1rem 1.25rem;text-align:center;">
+        <div style="font-size:0.52rem;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25rem;">Most Common Range</div>
+        <div style="font-size:2.5rem;font-weight:800;color:#fff;line-height:1;">4–8</div>
+        <div style="font-size:0.52rem;color:rgba(255,255,255,0.75);margin-top:3px;">yrs · 16 conversions (52%)</div>
+      </div>
+      <div style="background:var(--purple);border-radius:12px;padding:1rem 1.25rem;text-align:center;">
+        <div style="font-size:0.52rem;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25rem;">Youngest</div>
+        <div style="font-size:2.5rem;font-weight:800;color:#fff;line-height:1;">3.2</div>
+        <div style="font-size:0.52rem;color:rgba(255,255,255,0.75);margin-top:3px;">yrs · Kameron Powell</div>
+      </div>
+      <div style="background:#2a8aab;border-radius:12px;padding:1rem 1.25rem;text-align:center;">
+        <div style="font-size:0.52rem;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25rem;">Oldest</div>
+        <div style="font-size:2.5rem;font-weight:800;color:#fff;line-height:1;">12.3</div>
+        <div style="font-size:0.52rem;color:rgba(255,255,255,0.75);margin-top:3px;">yrs · Myah Guillermo</div>
+      </div>
+    </div>
+    <div style="margin-bottom:0.5rem;">
+      <div style="font-size:0.6rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:var(--navy);margin-bottom:0.75rem;">Age Distribution of Converted Clients</div>
+      <div style="display:flex;align-items:flex-end;gap:0.5rem;height:120px;">
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <div style="font-size:0.62rem;font-weight:800;color:var(--navy);">5</div>
+          <div style="width:100%;background:var(--purple);border-radius:6px 6px 0 0;height:55%;"></div>
+          <div style="font-size:0.55rem;color:var(--muted);font-weight:700;white-space:nowrap;">2–4 yrs</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <div style="font-size:0.62rem;font-weight:800;color:var(--navy);">9</div>
+          <div style="width:100%;background:var(--green);border-radius:6px 6px 0 0;height:100%;"></div>
+          <div style="font-size:0.55rem;color:var(--muted);font-weight:700;white-space:nowrap;">4–6 yrs</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <div style="font-size:0.62rem;font-weight:800;color:var(--navy);">7</div>
+          <div style="width:100%;background:var(--green);border-radius:6px 6px 0 0;height:78%;opacity:0.7;"></div>
+          <div style="font-size:0.55rem;color:var(--muted);font-weight:700;white-space:nowrap;">6–8 yrs</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <div style="font-size:0.62rem;font-weight:800;color:var(--navy);">4</div>
+          <div style="width:100%;background:var(--teal);border-radius:6px 6px 0 0;height:44%;"></div>
+          <div style="font-size:0.55rem;color:var(--muted);font-weight:700;white-space:nowrap;">8–10 yrs</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <div style="font-size:0.62rem;font-weight:800;color:var(--navy);">3</div>
+          <div style="width:100%;background:var(--purple);border-radius:6px 6px 0 0;height:33%;opacity:0.7;"></div>
+          <div style="font-size:0.55rem;color:var(--muted);font-weight:700;white-space:nowrap;">10–12 yrs</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <div style="font-size:0.62rem;font-weight:800;color:var(--navy);">3</div>
+          <div style="width:100%;background:var(--amber);border-radius:6px 6px 0 0;height:33%;"></div>
+          <div style="font-size:0.55rem;color:var(--muted);font-weight:700;white-space:nowrap;">12+ yrs</div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:0.75rem;padding:0.65rem 0.75rem;background:var(--green-light);border:1px solid rgba(38,204,160,0.25);border-radius:8px;font-size:0.58rem;color:#1a9e7c;font-weight:700;">
+      Most converted clients are between 4–8 years old (52% of conversions). Early childhood remains the primary intake window.
+    </div>
   </div>
 
   <!-- Insurance -->
@@ -393,25 +454,160 @@
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.75rem;">
       <div class="ins-big" style="background:var(--green);">
         <div style="font-size:0.52rem;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25rem;">Inland Empire Health Plan</div>
-        <div style="font-size:1.8rem;font-weight:800;color:#fff;line-height:1;">13</div>
-        <div style="font-size:0.52rem;color:rgba(255,255,255,0.75);font-weight:600;margin-top:2px;">46.4% of conversions</div>
+        <div style="font-size:1.8rem;font-weight:800;color:#fff;line-height:1;">16</div>
+        <div style="font-size:0.52rem;color:rgba(255,255,255,0.75);font-weight:600;margin-top:2px;">51.6% of conversions</div>
       </div>
       <div class="ins-big" style="background:var(--navy);">
         <div style="font-size:0.52rem;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25rem;">Molina Healthcare</div>
-        <div style="font-size:1.8rem;font-weight:800;color:#fff;line-height:1;">8</div>
-        <div style="font-size:0.52rem;color:rgba(255,255,255,0.65);font-weight:600;margin-top:2px;">28.6% of conversions</div>
+        <div style="font-size:1.8rem;font-weight:800;color:#fff;line-height:1;">7</div>
+        <div style="font-size:0.52rem;color:rgba(255,255,255,0.65);font-weight:600;margin-top:2px;">22.6% of conversions</div>
       </div>
       <div class="card" style="padding:1rem;">
         <div style="font-size:0.52rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.65rem;">Other Insurances</div>
         <div class="ins-row"><div class="ins-name">Cigna</div><div style="display:flex;align-items:center;gap:0.5rem;"><div class="ins-bar-bg"><div class="ins-bar-fill" style="width:100%;"></div></div><div class="ins-n">2</div></div></div>
-        <div class="ins-row"><div class="ins-name">Anthem BCBS</div><div style="display:flex;align-items:center;gap:0.5rem;"><div class="ins-bar-bg"><div class="ins-bar-fill" style="width:50%;"></div></div><div class="ins-n">2</div></div></div>
-        <div class="ins-row"><div class="ins-name">Blue Shield CA</div><div style="display:flex;align-items:center;gap:0.5rem;"><div class="ins-bar-bg"><div class="ins-bar-fill" style="width:50%;"></div></div><div class="ins-n">1</div></div></div>
-        <div class="ins-row"><div class="ins-name">Optum / UHC</div><div style="display:flex;align-items:center;gap:0.5rem;"><div class="ins-bar-bg"><div class="ins-bar-fill" style="width:50%;"></div></div><div class="ins-n">1</div></div></div>
-        <div class="ins-row"><div class="ins-name">Catalight</div><div style="display:flex;align-items:center;gap:0.5rem;"><div class="ins-bar-bg"><div class="ins-bar-fill" style="width:50%;"></div></div><div class="ins-n">1</div></div></div>
+        <div class="ins-row"><div class="ins-name">Blue Shield CA</div><div style="display:flex;align-items:center;gap:0.5rem;"><div class="ins-bar-bg"><div class="ins-bar-fill" style="width:67%;"></div></div><div class="ins-n">2</div></div></div>
+        <div class="ins-row"><div class="ins-name">Anthem BCBS</div><div style="display:flex;align-items:center;gap:0.5rem;"><div class="ins-bar-bg"><div class="ins-bar-fill" style="width:67%;"></div></div><div class="ins-n">2</div></div></div>
+        <div class="ins-row"><div class="ins-name">Optum / UHC</div><div style="display:flex;align-items:center;gap:0.5rem;"><div class="ins-bar-bg"><div class="ins-bar-fill" style="width:33%;"></div></div><div class="ins-n">1</div></div></div>
+        <div class="ins-row"><div class="ins-name">Catalight</div><div style="display:flex;align-items:center;gap:0.5rem;"><div class="ins-bar-bg"><div class="ins-bar-fill" style="width:33%;"></div></div><div class="ins-n">1</div></div></div>
       </div>
     </div>
     <div style="margin-top:0.75rem;padding:0.6rem 0.75rem;background:var(--green-light);border:1px solid rgba(38,204,160,0.25);border-radius:8px;font-size:0.58rem;color:#1a9e7c;font-weight:700;">
-      IEHS + Molina account for 75% of all conversions — both serve the Inland Empire and San Diego regions where Field Marketing is most active.
+      IEHP + Molina account for 74% of all conversions — both serve the Inland Empire and San Diego regions where Field Marketing is most active.
+    </div>
+  </div>
+
+  <!-- FM Coordinator Breakdown -->
+  <div class="card full-w">
+    <div class="card-head">
+      <div class="card-title">Field Marketing <span>Coordinator Breakdown</span></div>
+      <span class="card-tag">22 FM conversions · YTD salary prorated $15,780/coord</span>
+    </div>
+
+    <!-- Main coordinator cards -->
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem;margin-bottom:0.75rem;">
+
+      <!-- Efren Castro -->
+      <div style="background:var(--green);border-radius:12px;padding:1rem 1.25rem;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
+          <div>
+            <div style="font-size:0.52rem;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;">Efren Castro</div>
+            <div style="font-size:0.45rem;color:rgba(255,255,255,0.65);font-weight:600;margin-top:1px;">IEN · IES · LAN</div>
+          </div>
+          <span style="font-size:0.48rem;background:rgba(255,255,255,0.2);color:#fff;padding:0.1rem 0.4rem;border-radius:20px;font-weight:700;">48.1% conv rate</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.4rem;margin-bottom:0.6rem;">
+          <div style="background:rgba(255,255,255,0.15);border-radius:8px;padding:0.5rem;text-align:center;">
+            <div style="font-size:1.4rem;font-weight:800;color:#fff;line-height:1;">13</div>
+            <div style="font-size:0.44rem;color:rgba(255,255,255,0.75);font-weight:700;text-transform:uppercase;margin-top:2px;">Converted</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.15);border-radius:8px;padding:0.5rem;text-align:center;">
+            <div style="font-size:1.4rem;font-weight:800;color:#fff;line-height:1;">27</div>
+            <div style="font-size:0.44rem;color:rgba(255,255,255,0.75);font-weight:700;text-transform:uppercase;margin-top:2px;">Leads</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.15);border-radius:8px;padding:0.5rem;text-align:center;">
+            <div style="font-size:1.4rem;font-weight:800;color:#fff;line-height:1;">1</div>
+            <div style="font-size:0.44rem;color:rgba(255,255,255,0.75);font-weight:700;text-transform:uppercase;margin-top:2px;">Pipeline</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;">
+          <div style="background:rgba(0,0,0,0.15);border-radius:8px;padding:0.5rem;">
+            <div style="font-size:0.44rem;color:rgba(255,255,255,0.7);text-transform:uppercase;font-weight:700;margin-bottom:2px;">Cost / Conversion</div>
+            <div style="font-size:1rem;font-weight:800;color:#fff;">$1,214</div>
+            <div style="font-size:0.42rem;color:rgba(255,255,255,0.6);">$15,780 ÷ 13</div>
+          </div>
+          <div style="background:rgba(0,0,0,0.15);border-radius:8px;padding:0.5rem;">
+            <div style="font-size:0.44rem;color:rgba(255,255,255,0.7);text-transform:uppercase;font-weight:700;margin-bottom:2px;">Cost / Lead</div>
+            <div style="font-size:1rem;font-weight:800;color:#fff;">$585</div>
+            <div style="font-size:0.42rem;color:rgba(255,255,255,0.6);">$15,780 ÷ 27</div>
+          </div>
+        </div>
+        <div style="margin-top:0.5rem;background:rgba(0,0,0,0.12);border-radius:8px;padding:0.5rem;display:flex;justify-content:space-between;align-items:center;">
+          <div style="font-size:0.44rem;color:rgba(255,255,255,0.7);text-transform:uppercase;font-weight:700;">Est. Pipeline Revenue</div>
+          <div style="font-size:0.9rem;font-weight:800;color:#fff;">$100,000</div>
+          <div style="font-size:0.42rem;color:rgba(255,255,255,0.6);">1 lead × $100k</div>
+        </div>
+      </div>
+
+      <!-- Sofia Hernandez -->
+      <div style="background:var(--navy);border-radius:12px;padding:1rem 1.25rem;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
+          <div>
+            <div style="font-size:0.52rem;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;">Sofia Hernandez</div>
+            <div style="font-size:0.45rem;color:rgba(255,255,255,0.55);font-weight:600;margin-top:1px;">SD</div>
+          </div>
+          <span style="font-size:0.48rem;background:rgba(38,204,160,0.3);color:#26CCA0;padding:0.1rem 0.4rem;border-radius:20px;font-weight:700;">53.3% conv rate ★</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.4rem;margin-bottom:0.6rem;">
+          <div style="background:rgba(255,255,255,0.08);border-radius:8px;padding:0.5rem;text-align:center;">
+            <div style="font-size:1.4rem;font-weight:800;color:#fff;line-height:1;">8</div>
+            <div style="font-size:0.44rem;color:rgba(255,255,255,0.6);font-weight:700;text-transform:uppercase;margin-top:2px;">Converted</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.08);border-radius:8px;padding:0.5rem;text-align:center;">
+            <div style="font-size:1.4rem;font-weight:800;color:#fff;line-height:1;">15</div>
+            <div style="font-size:0.44rem;color:rgba(255,255,255,0.6);font-weight:700;text-transform:uppercase;margin-top:2px;">Leads</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.08);border-radius:8px;padding:0.5rem;text-align:center;">
+            <div style="font-size:1.4rem;font-weight:800;color:#fff;line-height:1;">2</div>
+            <div style="font-size:0.44rem;color:rgba(255,255,255,0.6);font-weight:700;text-transform:uppercase;margin-top:2px;">Pipeline</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;">
+          <div style="background:rgba(255,255,255,0.06);border-radius:8px;padding:0.5rem;">
+            <div style="font-size:0.44rem;color:rgba(255,255,255,0.6);text-transform:uppercase;font-weight:700;margin-bottom:2px;">Cost / Conversion</div>
+            <div style="font-size:1rem;font-weight:800;color:#26CCA0;">$1,973</div>
+            <div style="font-size:0.42rem;color:rgba(255,255,255,0.5);">$15,780 ÷ 8</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.06);border-radius:8px;padding:0.5rem;">
+            <div style="font-size:0.44rem;color:rgba(255,255,255,0.6);text-transform:uppercase;font-weight:700;margin-bottom:2px;">Cost / Lead</div>
+            <div style="font-size:1rem;font-weight:800;color:#fff;">$1,052</div>
+            <div style="font-size:0.42rem;color:rgba(255,255,255,0.5);">$15,780 ÷ 15</div>
+          </div>
+        </div>
+        <div style="margin-top:0.5rem;background:rgba(255,255,255,0.06);border-radius:8px;padding:0.5rem;display:flex;justify-content:space-between;align-items:center;">
+          <div style="font-size:0.44rem;color:rgba(255,255,255,0.6);text-transform:uppercase;font-weight:700;">Est. Pipeline Revenue</div>
+          <div style="font-size:0.9rem;font-weight:800;color:#26CCA0;">$200,000</div>
+          <div style="font-size:0.42rem;color:rgba(255,255,255,0.5);">2 leads × $100k</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Newer coordinators row -->
+    <div style="background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:0.85rem;">
+      <div style="font-size:0.55rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:var(--navy);margin-bottom:0.6rem;">Newer Coordinators — No Conversions Yet</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.6rem;">
+        <div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:0.65rem;">
+          <div style="font-size:0.6rem;font-weight:800;color:var(--navy);">Jillian Blythe</div>
+          <div style="font-size:0.48rem;color:var(--muted);font-weight:600;margin-bottom:0.35rem;">LAW · Torrance</div>
+          <div style="display:flex;gap:0.5rem;">
+            <div style="text-align:center;flex:1;"><div style="font-size:0.9rem;font-weight:800;color:var(--navy);">3</div><div style="font-size:0.42rem;color:var(--muted);font-weight:700;">Leads</div></div>
+            <div style="text-align:center;flex:1;"><div style="font-size:0.9rem;font-weight:800;color:var(--amber);">$15,780</div><div style="font-size:0.42rem;color:var(--muted);font-weight:700;">YTD Cost</div></div>
+            <div style="text-align:center;flex:1;"><div style="font-size:0.9rem;font-weight:800;color:var(--muted);">—</div><div style="font-size:0.42rem;color:var(--muted);font-weight:700;">Cost/Conv</div></div>
+          </div>
+        </div>
+        <div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:0.65rem;">
+          <div style="font-size:0.6rem;font-weight:800;color:var(--navy);">Abhijeet Paluru</div>
+          <div style="font-size:0.48rem;color:var(--muted);font-weight:600;margin-bottom:0.35rem;">LAN · LA North</div>
+          <div style="display:flex;gap:0.5rem;">
+            <div style="text-align:center;flex:1;"><div style="font-size:0.9rem;font-weight:800;color:var(--navy);">2</div><div style="font-size:0.42rem;color:var(--muted);font-weight:700;">Leads</div></div>
+            <div style="text-align:center;flex:1;"><div style="font-size:0.9rem;font-weight:800;color:var(--amber);">$15,780</div><div style="font-size:0.42rem;color:var(--muted);font-weight:700;">YTD Cost</div></div>
+            <div style="text-align:center;flex:1;"><div style="font-size:0.9rem;font-weight:800;color:var(--muted);">—</div><div style="font-size:0.42rem;color:var(--muted);font-weight:700;">Cost/Conv</div></div>
+          </div>
+        </div>
+        <div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:0.65rem;">
+          <div style="font-size:0.6rem;font-weight:800;color:var(--navy);">Mikinzie Gard</div>
+          <div style="font-size:0.48rem;color:var(--muted);font-weight:600;margin-bottom:0.35rem;">SAC · Sacramento</div>
+          <div style="display:flex;gap:0.5rem;">
+            <div style="text-align:center;flex:1;"><div style="font-size:0.9rem;font-weight:800;color:var(--navy);">1</div><div style="font-size:0.42rem;color:var(--muted);font-weight:700;">Leads</div></div>
+            <div style="text-align:center;flex:1;"><div style="font-size:0.9rem;font-weight:800;color:var(--amber);">$15,780</div><div style="font-size:0.42rem;color:var(--muted);font-weight:700;">YTD Cost</div></div>
+            <div style="text-align:center;flex:1;"><div style="font-size:0.9rem;font-weight:800;color:var(--muted);">—</div><div style="font-size:0.42rem;color:var(--muted);font-weight:700;">Cost/Conv</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:0.75rem;padding:0.6rem 0.75rem;background:var(--purple-light);border:1px solid rgba(130,112,222,0.25);border-radius:8px;font-size:0.58rem;color:#5b47c4;font-weight:700;">
+      Sofia Hernandez has the best cost per conversion ($1,973) and highest conversion rate (53.3%). Efren Castro leads in volume with the lowest cost per lead ($585). Pipeline revenue est. based on $100k avg client value — unweighted.
     </div>
   </div>
 
@@ -437,38 +633,103 @@
   </div>
 
   <div style="text-align:center;padding:1.5rem 0;border-top:1px solid var(--border);font-size:0.55rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;font-weight:700;margin-top:0.5rem;">
-    intercare therapy · Lead Generation Dashboard · YTD 2026 · Digital Outreach + Field Marketing
+    intercare therapy · Lead Generation Dashboard · YTD 2026 · Digital Outreach + Field Marketing · Excludes duplicates, spam &amp; school referrals
   </div>
 </main>
 
 <script>
-// ── ALL DATA & FUNCTIONS AT TOP LEVEL — no window.load wrapper needed ─────────
+// ── CLEAN DATA (post-dedup/junk removal) ─────────────────────────────────────
+// Total clean leads: 697
+// FM leads (has coordinator or referring physician): 50
+//   Efren Castro: 27 leads (13 conv, 14 declined/pipeline)
+//   Sofia Hernandez: 15 leads (8 conv, 7 declined)
+//   Patricia Simtoco: 8 leads (1 conv, 7 declined/pipeline)
+//   Jillian Blythe: 3 leads (0 conv)  Abhijeet Paluru: 2 leads (0 conv)  Mikinzie Gard: 1 lead (0 conv)
+// Digital leads: 647
+// Accepted/Converted: 31 total (22 FM, 9 digital)
+// Pipeline: 18 (Review:14, Benefits:2, Pending Auth/Conf:2, Capacity:2 → actually capacity in pipeline)
+// Closed-Declined: ~338
+// New: ~308
 
 var DATA = {
-  ytd: {leads:671,conv:28,pipe:25,digLeads:617,fmLeads:54,digConv:7,fmConv:21,digRate:'1.1%',fmRate:'38.9%',rate:'4.2%',label:'',sub:'',closed:358,newL:281,acc:28,rev:16,ben:4,pend:3},
-  q1:  {leads:662,conv:28,pipe:25,digLeads:608,fmLeads:54,digConv:7,fmConv:21,digRate:'1.2%',fmRate:'38.9%',rate:'4.2%',label:'',sub:'',closed:349,newL:263,acc:28,rev:16,ben:4,pend:3},
-  jan: {leads:215,conv:8, pipe:3, digLeads:192,fmLeads:23,digConv:1,fmConv:7, digRate:'0.5%',fmRate:'30.4%',rate:'3.7%',label:'January 2026',sub:'January 2026 · Jan 1 — Jan 31',closed:104,newL:100,acc:8, rev:3, ben:0,pend:3},
-  feb: {leads:217,conv:11,pipe:5, digLeads:198,fmLeads:19,digConv:3,fmConv:8, digRate:'1.5%',fmRate:'42.1%',rate:'5.1%',label:'February 2026',sub:'February 2026 · Feb 1 — Feb 28',closed:114,newL:87, acc:11,rev:4, ben:2,pend:1},
-  mar: {leads:230,conv:9, pipe:17,digLeads:218,fmLeads:12,digConv:3,fmConv:6, digRate:'1.4%',fmRate:'50.0%',rate:'3.9%',label:'March 2026',sub:'March 2026 · Mar 1 — Mar 31',closed:131,newL:76, acc:9, rev:10,ben:2,pend:1},
-  apr: {leads:9,  conv:0, pipe:0, digLeads:9,  fmLeads:0, digConv:0,fmConv:0, digRate:'0.0%',fmRate:'0.0%', rate:'0.0%',label:'April 2026 (to date)',sub:'April 2026 · Apr 1 (partial)',closed:0,  newL:9,  acc:0, rev:0, ben:0,pend:0}
+  ytd: {
+    leads:697, conv:31, pipe:20,
+    digLeads:647, fmLeads:50,
+    digConv:9, fmConv:22,
+    digRate:'1.4%', fmRate:'44.0%', rate:'4.4%',
+    label:'', sub:'',
+    closed:338, newL:308, acc:31, rev:14, ben:2, pend:2, cap:2,
+    decIns:20, decCli:13, decWS:7, decAv:5, decLoc:4, decDen:4
+  },
+  q1: {
+    leads:651, conv:29, pipe:18,
+    digLeads:603, fmLeads:48,
+    digConv:8, fmConv:21,
+    digRate:'1.3%', fmRate:'43.8%', rate:'4.5%',
+    label:'Q1 2026', sub:'Q1 2026 · Jan 1 — Mar 31',
+    closed:311, newL:293, acc:29, rev:14, ben:2, pend:2, cap:0,
+    decIns:18, decCli:12, decWS:7, decAv:5, decLoc:4, decDen:4
+  },
+  jan: {
+    leads:207, conv:8, pipe:3,
+    digLeads:189, fmLeads:18,
+    digConv:1, fmConv:7,
+    digRate:'0.5%', fmRate:'38.9%', rate:'3.9%',
+    label:'January 2026', sub:'January 2026 · Jan 1 — Jan 31',
+    closed:100, newL:96, acc:8, rev:3, ben:0, pend:0, cap:0,
+    decIns:6, decCli:4, decWS:2, decAv:1, decLoc:2, decDen:2
+  },
+  feb: {
+    leads:213, conv:11, pipe:5,
+    digLeads:196, fmLeads:17,
+    digConv:3, fmConv:8,
+    digRate:'1.5%', fmRate:'47.1%', rate:'5.2%',
+    label:'February 2026', sub:'February 2026 · Feb 1 — Feb 28',
+    closed:112, newL:85, acc:11, rev:4, ben:2, pend:1, cap:0,
+    decIns:8, decCli:5, decWS:3, decAv:2, decLoc:1, decDen:1
+  },
+  mar: {
+    leads:231, conv:10, pipe:10,
+    digLeads:218, fmLeads:13,
+    digConv:4, fmConv:6,
+    digRate:'1.8%', fmRate:'46.2%', rate:'4.3%',
+    label:'March 2026', sub:'March 2026 · Mar 1 — Mar 31',
+    closed:109, newL:112, acc:10, rev:7, ben:0, pend:1, cap:0,
+    decIns:6, decCli:3, decWS:2, decAv:2, decLoc:1, decDen:1
+  },
+  apr: {
+    leads:46, conv:2, pipe:2,
+    digLeads:44, fmLeads:2,
+    digConv:1, fmConv:1,
+    digRate:'2.3%', fmRate:'50.0%', rate:'4.3%',
+    label:'April 2026 (to date)', sub:'April 2026 · Apr 1 — Apr 6 (partial)',
+    closed:0, newL:42, acc:2, rev:0, ben:0, pend:0, cap:2,
+    decIns:0, decCli:0, decWS:0, decAv:0, decLoc:0, decDen:0
+  }
 };
 
+// territory: [code, name, total, digital, fm, conv, pipe, home, center]
 var TERR_ALL = [
-  ['SD', 'San Diego',84,62,22,9,3,2,7],
-  ['IEN','Inland Empire North',27,5,22,8,4,0,8],
-  ['IES','Inland Empire South',35,15,20,5,2,0,5],
-  ['SAC','Sacramento',68,50,18,3,5,0,2],
-  ['LAW','Los Angeles West',30,22,8,2,2,1,0],
-  ['LAN','Los Angeles North',27,15,12,1,3,0,1],
-  ['OC', 'Orange County',12,12,0,0,1,0,0],
-  ['BAY','Bay Area',6,6,0,0,0,0,0],
-  ['?',  'Unassigned',337,335,2,0,2,0,0]
+  ['SD',  'San Diego',        77, 59, 18, 10, 2, 1, 9],
+  ['IEN', 'Inland Empire N',  34,  6, 28, 12, 3, 0,12],
+  ['IES', 'Inland Empire S',  38, 15, 23,  7, 1, 0, 7],
+  ['SAC', 'Sacramento',       64, 55,  9,  1, 1, 0, 1],
+  ['LAW', 'Los Angeles West', 32, 28,  4,  1, 2, 1, 0],
+  ['LAN', 'Los Angeles North',31, 27,  4,  1, 1, 0, 1],
+  ['OC',  'Orange County',    11, 11,  0,  0, 0, 0, 0],
+  ['BAY', 'Bay Area',          4,  4,  0,  0, 0, 0, 0],
+  ['?',   'Unassigned',      306,304,  2,  0, 0, 0, 0]
 ];
 
-var MONTHLY = {labels:['Jan','Feb','Mar','Apr'],conv:[8,11,9,3],leads:[215,217,230,54]};
-var WEEKLY  = {labels:['W1-J','W2-J','W3-J','W4-J','W1-F','W2-F','W3-F','W4-F','W1-M','W2-M','W3-M','W4-M','W1-A'],conv:[2,2,2,2,2,3,3,3,2,3,2,2,0],leads:[52,55,58,50,48,55,60,54,55,62,58,55,9]};
+var MONTHLY = {labels:['Jan','Feb','Mar','Apr'],conv:[8,11,10,2],leads:[207,213,231,46]};
+var WEEKLY  = {
+  labels:['W1-J','W2-J','W3-J','W4-J','W1-F','W2-F','W3-F','W4-F','W1-M','W2-M','W3-M','W4-M','W1-A'],
+  conv:  [2,2,2,2,2,3,3,3,2,3,3,2,2],
+  leads: [50,52,55,50,48,55,58,52,55,62,60,54,46]
+};
 
 function fmt(n){return n.toLocaleString();}
+function pct(a,b){return b>0?((a/b)*100).toFixed(1)+'%':'—';}
 function todayLabel(){return new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});}
 function todayShort(){return new Date().toLocaleDateString('en-US',{month:'short',day:'numeric'});}
 
@@ -490,33 +751,42 @@ function applyCustom(){
 
 function applyData(d,rangeLabel){
   var total=d.leads;
-  document.getElementById('kpi-leads').textContent=fmt(d.leads);
+  document.getElementById('kpi-leads').textContent=fmt(total);
   document.getElementById('kpi-leads-sub').textContent='All channels · '+rangeLabel;
   document.getElementById('kpi-leads-tag').textContent=d.label||rangeLabel;
   document.getElementById('kpi-conv').textContent=d.conv;
-  document.getElementById('kpi-conv-of').textContent=fmt(d.leads);
+  document.getElementById('kpi-conv-of').textContent=fmt(total);
   document.getElementById('kpi-rate').textContent=d.rate;
   document.getElementById('kpi-rate-sub').textContent='Digital: '+d.digRate+' · FM: '+d.fmRate;
-  document.getElementById('kpi-rate-tag').textContent=d.conv+' of '+fmt(d.leads);
-  document.getElementById('kpi-pipe').textContent=d.pipe;
+  document.getElementById('kpi-rate-tag').textContent=d.conv+' of '+fmt(total);
+  var activePipe=d.rev+d.ben+d.pend+d.cap;
+  document.getElementById('kpi-pipe').textContent=activePipe;
   document.getElementById('kpi-fm').textContent=d.fmRate;
   document.getElementById('kpi-fm-tag').textContent=d.fmConv+' of '+d.fmLeads+' leads';
   if(d.sub) document.getElementById('page-sub').textContent=d.sub+' · All Territories';
   document.getElementById('filter-info').innerHTML='Showing <strong>'+(d.label||rangeLabel)+'</strong> · All Territories';
-  var engaged=d.conv+d.pipe,gConv=Math.min(d.conv,100),gPipe=Math.min(d.pipe,100-gConv);
+
+  // goal tracker
+  var engaged=d.conv+activePipe;
+  var gConv=Math.min(d.conv,100),gPipe=Math.min(activePipe,100-gConv);
   document.getElementById('goal-big').textContent=engaged;
   document.getElementById('goal-tag').textContent=Math.round((engaged/100)*100)+'% to goal';
   document.getElementById('goal-conv-line').textContent=d.conv+' converted ✓';
-  document.getElementById('goal-pipe-line').textContent=d.pipe+' in pipeline →';
-  document.getElementById('goal-summary').textContent=d.conv+' + '+d.pipe;
+  document.getElementById('goal-pipe-line').textContent=activePipe+' in pipeline →';
+  document.getElementById('goal-summary').textContent=d.conv+' + '+activePipe;
   document.getElementById('goal-bar-conv').style.width=gConv+'%';
   document.getElementById('goal-bar-pipe').style.left=gConv+'%';
   document.getElementById('goal-bar-pipe').style.width=gPipe+'%';
   document.getElementById('leg-conv').textContent=d.conv+' Converted';
-  document.getElementById('leg-pipe').textContent=d.pipe+' Pipeline';
+  document.getElementById('leg-pipe').textContent=activePipe+' Pipeline';
   document.getElementById('leg-rem').textContent=Math.max(0,100-engaged)+' remaining';
-  document.getElementById('ch-dig-bar').style.width=Math.round((d.digLeads/total)*100)+'%';
-  document.getElementById('ch-fm-bar').style.width=Math.round((d.fmLeads/total)*100)+'%';
+  document.getElementById('q1-label').textContent=(rangeLabel==='YTD'||rangeLabel==='Q1'?'29 ✓':'—');
+
+  // channel bars
+  var digPct=total>0?Math.round((d.digLeads/total)*100):0;
+  var fmPct=total>0?Math.round((d.fmLeads/total)*100):0;
+  document.getElementById('ch-dig-bar').style.width=digPct+'%';
+  document.getElementById('ch-fm-bar').style.width=Math.max(fmPct,2)+'%';
   document.getElementById('ch-dig-n').textContent=fmt(d.digLeads);
   document.getElementById('ch-fm-n').textContent=d.fmLeads;
   document.getElementById('ch-dig-rate').textContent=d.digRate;
@@ -524,23 +794,70 @@ function applyData(d,rangeLabel){
   document.getElementById('ch-fm-conv').textContent=d.fmConv;
   document.getElementById('ch-dig-conv').textContent=d.digConv;
   document.getElementById('ch-total-conv').textContent=d.conv;
-  document.getElementById('conv-fm-detail').textContent=d.fmConv+' conv / '+d.fmLeads+' leads · Efren Castro, Sofia Hernandez, Patricia Simtoco';
+
+  // conversion analysis
+  document.getElementById('conv-fm-detail').textContent=d.fmConv+' conv / '+d.fmLeads+' leads · Castro, Hernandez, Simtoco';
   document.getElementById('conv-dig-detail').textContent=d.digConv+' conversions / '+fmt(d.digLeads)+' digital leads';
   document.getElementById('conv-fm-pct').textContent=d.fmRate;
   document.getElementById('conv-dig-pct').textContent=d.digRate;
+
+  // decline reasons
+  document.getElementById('dec-ins').textContent=d.decIns;
+  document.getElementById('dec-cli').textContent=d.decCli;
+  document.getElementById('dec-ws').textContent=d.decWS;
+  document.getElementById('dec-av').textContent=d.decAv;
+  document.getElementById('dec-loc').textContent=d.decLoc;
+  document.getElementById('dec-den').textContent=d.decDen;
+
+  // pipeline donut
   document.getElementById('donut-total').textContent=fmt(total);
   document.getElementById('pipe-closed').textContent=fmt(d.closed);
-  document.getElementById('pipe-closed-pct').textContent=Math.round((d.closed/total)*10)/10+'%';
+  document.getElementById('pipe-closed-pct').textContent=pct(d.closed,total);
   document.getElementById('pipe-new').textContent=fmt(d.newL);
-  document.getElementById('pipe-new-pct').textContent=Math.round((d.newL/total)*10)/10+'%';
+  document.getElementById('pipe-new-pct').textContent=pct(d.newL,total);
   document.getElementById('pipe-acc').textContent=d.acc;
-  document.getElementById('pipe-acc-pct').textContent=Math.round((d.acc/total)*10)/10+'%';
+  document.getElementById('pipe-acc-pct').textContent=pct(d.acc,total);
   document.getElementById('pipe-rev').textContent=d.rev;
-  document.getElementById('pipe-rev-pct').textContent=Math.round((d.rev/total)*10)/10+'%';
+  document.getElementById('pipe-rev-pct').textContent=pct(d.rev,total);
   document.getElementById('pipe-ben').textContent=d.ben;
-  document.getElementById('pipe-ben-pct').textContent=Math.round((d.ben/total)*10)/10+'%';
+  document.getElementById('pipe-ben-pct').textContent=pct(d.ben,total);
   document.getElementById('pipe-pend').textContent=d.pend;
-  document.getElementById('pipe-pend-pct').textContent=Math.round((d.pend/total)*10)/10+'%';
+  document.getElementById('pipe-pend-pct').textContent=pct(d.pend,total);
+  document.getElementById('pipe-cap').textContent=d.cap;
+  document.getElementById('pipe-cap-pct').textContent=pct(d.cap,total);
+
+  renderDonut(d);
+}
+
+function renderDonut(d){
+  var circ=2*Math.PI*46;
+  var segs=[
+    {n:d.closed, color:'#291A6B'},
+    {n:d.newL,   color:'#b8aff0'},
+    {n:d.acc,    color:'#26CCA0'},
+    {n:d.rev,    color:'#f59e0b'},
+    {n:d.ben,    color:'#77D6FF'},
+    {n:d.pend,   color:'#8270DE'},
+    {n:d.cap,    color:'#FFD333'}
+  ];
+  var total=d.leads, offset=0;
+  var svg=document.getElementById('donut-svg');
+  // remove old arcs
+  while(svg.children.length>1) svg.removeChild(svg.lastChild);
+  var startOffset=circ*0.25; // start at top
+  segs.forEach(function(s){
+    if(s.n<=0) return;
+    var frac=s.n/total;
+    var dash=frac*circ;
+    var c=document.createElementNS('http://www.w3.org/2000/svg','circle');
+    c.setAttribute('cx','60');c.setAttribute('cy','60');c.setAttribute('r','46');
+    c.setAttribute('fill','none');c.setAttribute('stroke',s.color);c.setAttribute('stroke-width','16');
+    c.setAttribute('stroke-dasharray',dash+' '+(circ-dash));
+    c.setAttribute('stroke-dashoffset',startOffset-offset*circ);
+    c.setAttribute('style','transform-origin:center;transform:rotate(-90deg);');
+    svg.appendChild(c);
+    offset+=frac;
+  });
 }
 
 function sliceTerritory(key,btn){
@@ -548,18 +865,23 @@ function sliceTerritory(key,btn){
   btn.classList.add('active');
   var data=key==='all'?TERR_ALL:TERR_ALL.filter(function(r){return r[0]===key;});
   buildTerritoryTable(data);
+  var unassigned=306, totalClean=697;
   document.getElementById('terrWarn').style.display=key==='all'?'block':'none';
+  document.getElementById('terrWarn').textContent=unassigned+' leads ('+((unassigned/totalClean)*100).toFixed(1)+'%) have no territory assigned — primarily digital/social leads without location data.';
 }
 
 function buildTerritoryTable(data){
   var maxL=Math.max.apply(null,data.map(function(r){return r[2];}));
+  var totalAll=697;
   document.getElementById('territoryBody').innerHTML=data.map(function(r){
     var code=r[0],name=r[1],total=r[2],dig=r[3],fm=r[4],conv=r[5],pipe=r[6],hc=r[7],cc=r[8];
     var rate=total>0?((conv/total)*100).toFixed(1)+'%':'—';
-    var share=((total/671)*100).toFixed(1)+'%';
+    var share=((total/totalAll)*100).toFixed(1)+'%';
     var bw=Math.round((total/maxL)*100);
-    var rc=parseFloat(rate)>10?'#1a9e7c':parseFloat(rate)>5?'#a07200':'var(--danger)';
-    var rb=parseFloat(rate)>10?'var(--green-light)':parseFloat(rate)>5?'var(--yellow-light)':'rgba(224,82,82,0.1)';
+    var rNum=parseFloat(rate)||0;
+    var rc=rNum>20?'#1a9e7c':rNum>8?'#a07200':'var(--danger)';
+    var rb=rNum>20?'var(--green-light)':rNum>8?'var(--yellow-light)':'rgba(224,82,82,0.1)';
+    if(rate==='—'){rc='var(--muted)';rb='var(--cream)';}
     return '<tr><td><div class="t-name">'+code+'</div><div class="t-sub">'+name+'</div></td>'
       +'<td style="font-weight:800;">'+fmt(total)+'</td>'
       +'<td><span class="ch-chip chip-d">'+dig+'</span></td>'
@@ -574,10 +896,7 @@ function buildTerritoryTable(data){
 }
 
 function renderTrend(mode,btn){
-  if(btn){
-    document.querySelectorAll('.toggle-btn').forEach(function(b){b.classList.remove('active');});
-    btn.classList.add('active');
-  }
+  if(btn){document.querySelectorAll('.toggle-btn').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');}
   var d=mode==='monthly'?MONTHLY:WEEKLY;
   var n=d.labels.length;
   var L=40,R=680,T=15,B=155,W=R-L,H=B-T;
@@ -608,17 +927,16 @@ function renderTrend(mode,btn){
   document.getElementById('trendSvgWrap').innerHTML=svg;
 }
 
-// ── INIT ──────────────────────────────────────────────────────────────────────
 (function(){
   var lbl='Jan 1 – '+todayLabel();
   var sub='YTD 2026 · Jan 1 — '+todayShort()+' · All Territories';
   DATA.ytd.label=lbl; DATA.ytd.sub=sub;
-  DATA.q1.label=lbl;  DATA.q1.sub=sub;
   document.getElementById('date-to').value=new Date().toISOString().split('T')[0];
   document.getElementById('page-sub').textContent=sub;
   document.getElementById('filter-info').innerHTML='Showing <strong>'+lbl+'</strong> · All Territories';
   applyData(DATA.ytd,'YTD');
   buildTerritoryTable(TERR_ALL);
+  renderDonut(DATA.ytd);
   renderTrend('monthly',null);
 })();
 </script>
