@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intercare Therapy · Weekly Meta Ads Report</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{
+    --ink:#0D1117;--paper:#F8F6F1;--paper-dark:#EDEAE2;
+    --teal:#007A65;--teal-light:#E8F4F1;
+    --red:#C0392B;--red-light:#FDECEA;
+    --amber:#A0510E;--amber-light:#FDF3E7;
+    --muted:#8A8A8A;--border:#E0DDD5;
+    --green:#1A6B3C;--green-light:#EAF4EE;
+  }
+  body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;min-height:100vh;}
+
+  /* HEADER */
+  .header{background:var(--ink);padding:56px 64px 48px;position:relative;overflow:hidden;}
+  .header::after{content:'';position:absolute;right:-80px;top:-80px;width:400px;height:400px;border-radius:50%;border:1px solid rgba(255,255,255,.04);pointer-events:none;}
+  .header::before{content:'';position:absolute;right:40px;top:40px;width:200px;height:200px;border-radius:50%;border:1px solid rgba(255,255,255,.06);pointer-events:none;}
+  .header-inner{max-width:960px;margin:0 auto;}
+  .header-eyebrow{font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+  .header-eyebrow::before{content:'';display:inline-block;width:20px;height:1px;background:rgba(255,255,255,.3);}
+  .header-title{font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,52px);color:white;line-height:1.1;font-weight:600;margin-bottom:6px;}
+  .header-sub{font-size:13px;color:rgba(255,255,255,.4);margin-bottom:40px;}
+  .header-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);border-radius:2px;}
+  .hkpi{padding:20px 24px;background:var(--ink);}
+  .hkpi-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:8px;}
+  .hkpi-val{font-family:'Playfair Display',serif;font-size:32px;font-weight:600;color:white;line-height:1;}
+  .hkpi-val.accent{color:#4ECDC4;}
+  .hkpi-sub{font-size:11px;color:rgba(255,255,255,.3);margin-top:5px;}
+
+  /* MAIN */
+  .main{max-width:960px;margin:0 auto;padding:48px 64px 80px;}
+
+  /* SECTION */
+  .section-label{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
+  .section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+  /* TABLE */
+  .table-wrap{background:white;border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:40px;}
+  table{width:100%;border-collapse:collapse;}
+  thead th{background:var(--ink);color:rgba(255,255,255,.5);font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:13px 20px;text-align:left;white-space:nowrap;}
+  thead th:not(:first-child){text-align:right;}
+  tbody tr{border-bottom:1px solid var(--border);transition:background .1s;}
+  tbody tr:last-child{border-bottom:none;}
+  tbody tr:hover{background:var(--paper);}
+  td{padding:14px 20px;font-size:13px;vertical-align:middle;white-space:nowrap;}
+  td:not(:first-child){text-align:right;}
+  .loc{font-weight:600;font-size:13px;color:var(--ink);}
+  .loc-sub{font-size:10px;color:var(--muted);margin-top:1px;font-weight:400;}
+  .pill{display:inline-block;font-size:10px;font-weight:600;padding:3px 9px;border-radius:2px;letter-spacing:.03em;}
+  .pill-green{background:var(--green-light);color:var(--green);}
+  .pill-amber{background:var(--amber-light);color:var(--amber);}
+  .pill-red{background:var(--red-light);color:var(--red);}
+  .pill-teal{background:var(--teal-light);color:var(--teal);}
+  .pill-muted{background:var(--paper-dark);color:var(--muted);}
+  .val-green{color:var(--green);font-weight:600;}
+  .val-amber{color:var(--amber);font-weight:600;}
+  .val-red{color:var(--red);font-weight:600;}
+  .star-row{background:#FFFDF5;}
+  .star-row:hover{background:#FFFBEC!important;}
+
+  /* TOTALS ROW */
+  .totals-row td{background:var(--ink)!important;color:white!important;font-weight:600;border-bottom:none!important;}
+  .totals-row td .val-green,.totals-row td .val-amber,.totals-row td .val-red{color:white!important;}
+
+  /* CHARTS */
+  .chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:40px;}
+  .chart-card{background:white;border:1px solid var(--border);border-radius:2px;padding:24px;}
+  .chart-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+  .chart-wrap{position:relative;height:200px;}
+
+  /* FOOTER */
+  .footer{border-top:1px solid var(--border);padding:24px 64px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+  .footer-inner{max-width:960px;margin:0 auto;width:100%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+  .footer-text{font-size:11px;color:var(--muted);}
+  .footer-badge{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);background:var(--teal-light);padding:4px 10px;border-radius:2px;}
+
+  @media(max-width:700px){
+    .header{padding:36px 24px 32px;}
+    .main{padding:32px 24px 60px;}
+    .header-kpis{grid-template-columns:1fr 1fr;}
+    .chart-grid{grid-template-columns:1fr;}
+    .footer{padding:20px 24px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="header-eyebrow">Intercare Therapy · Meta Ads · Weekly Report</div>
+    <h1 class="header-title">Weekly Performance</h1>
+    <p class="header-sub">Apr 23 – Apr 29, 2026 · 7 days · All active campaigns</p>
+    <div class="header-kpis">
+      <div class="hkpi">
+        <div class="hkpi-label">Total impressions</div>
+        <div class="hkpi-val accent">18,779</div>
+        <div class="hkpi-sub">across 9 campaigns</div>
+      </div>
+      <div class="hkpi">
+        <div class="hkpi-label">Total clicks</div>
+        <div class="hkpi-val accent">228</div>
+        <div class="hkpi-sub">active campaigns only</div>
+      </div>
+      <div class="hkpi">
+        <div class="hkpi-label">Total leads</div>
+        <div class="hkpi-val accent">34</div>
+        <div class="hkpi-sub">form submissions</div>
+      </div>
+      <div class="hkpi">
+        <div class="hkpi-label">Avg cost per lead</div>
+        <div class="hkpi-val accent">$14.67</div>
+        <div class="hkpi-sub">across all campaigns</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="section-label" style="margin-top:0;">Campaign breakdown · last 7 days</div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:22%">Location</th>
+          <th>Impressions</th>
+          <th>Clicks</th>
+          <th>Leads</th>
+          <th>CPA</th>
+          <th>Performance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Anaheim 2026: 120242666434060141 · impr 453 · clicks 19 · leads 4 · CPA $2.95 -->
+        <tr class="star-row">
+          <td><div class="loc">Anaheim ⭐</div><div class="loc-sub">New campaign · launched Apr 28</div></td>
+          <td>453</td>
+          <td>19</td>
+          <td><b>4</b></td>
+          <td class="val-green"><b>$2.95</b></td>
+          <td><span class="pill pill-green">Best CPA</span></td>
+        </tr>
+        <!-- Riverside 2026: 120242665716660141 · impr 349 · clicks 6 · leads 2 · CPA $4.00 -->
+        <tr class="star-row">
+          <td><div class="loc">Riverside ⭐</div><div class="loc-sub">New campaign · launched Apr 28</div></td>
+          <td>349</td>
+          <td>6</td>
+          <td><b>2</b></td>
+          <td class="val-green"><b>$4.00</b></td>
+          <td><span class="pill pill-green">Strong</span></td>
+        </tr>
+        <!-- Van Nuys: 120225569292900141 · impr 2310 · clicks 45 · leads 9 · CPA $8.43 -->
+        <tr>
+          <td><div class="loc">Van Nuys</div><div class="loc-sub">Active · scaled this week</div></td>
+          <td>2,310</td>
+          <td>45</td>
+          <td><b>9</b></td>
+          <td class="val-green">$8.43</td>
+          <td><span class="pill pill-green">Top volume</span></td>
+        </tr>
+        <!-- Torrance: 120230287081710141 · impr 1042 · clicks 37 · leads 4 · CPA $13.47 -->
+        <tr>
+          <td><div class="loc">Torrance</div><div class="loc-sub">Active</div></td>
+          <td>1,042</td>
+          <td>37</td>
+          <td><b>4</b></td>
+          <td class="val-green">$13.47</td>
+          <td><span class="pill pill-teal">Efficient</span></td>
+        </tr>
+        <!-- Ontario: 120238480589960141 · impr 2878 · clicks 40 · leads 5 · CPA $11.95 -->
+        <tr>
+          <td><div class="loc">Ontario</div><div class="loc-sub">Active · scaled this week</div></td>
+          <td>2,878</td>
+          <td>40</td>
+          <td><b>5</b></td>
+          <td class="val-green">$11.95</td>
+          <td><span class="pill pill-teal">Efficient</span></td>
+        </tr>
+        <!-- ADOS: 120242585390350141 · impr 1046 · clicks 22 · leads 2 · CPA $14.67 -->
+        <tr>
+          <td><div class="loc">ADOS</div><div class="loc-sub">New · learning phase</div></td>
+          <td>1,046</td>
+          <td>22</td>
+          <td><b>2</b></td>
+          <td>$14.67</td>
+          <td><span class="pill pill-teal">Learning</span></td>
+        </tr>
+        <!-- Elk Grove (Sac #2): 120239639773950141 · impr 1951 · clicks 31 · leads 2 · CPA $28.18 -->
+        <tr>
+          <td><div class="loc">Elk Grove</div><div class="loc-sub">Active</div></td>
+          <td>1,951</td>
+          <td>31</td>
+          <td><b>2</b></td>
+          <td class="val-amber">$28.18</td>
+          <td><span class="pill pill-amber">Watch</span></td>
+        </tr>
+        <!-- San Diego: 120230050940280141 · impr 4875 · clicks 65 · leads 3 · CPA $27.44 -->
+        <tr>
+          <td><div class="loc">San Diego</div><div class="loc-sub">Active · audience fixes applied</div></td>
+          <td>4,875</td>
+          <td>65</td>
+          <td><b>3</b></td>
+          <td class="val-amber">$27.44</td>
+          <td><span class="pill pill-amber">Improving</span></td>
+        </tr>
+        <!-- Wilshire 2026: 120242664004410141 · impr 303 · clicks 5 · leads 0 · CPA — -->
+        <tr>
+          <td><div class="loc">Wilshire</div><div class="loc-sub">New campaign · launched Apr 28</div></td>
+          <td>303</td>
+          <td>5</td>
+          <td><b>0</b></td>
+          <td class="val-red">—</td>
+          <td><span class="pill pill-muted">Too early</span></td>
+        </tr>
+        <!-- TOTALS -->
+        <tr class="totals-row">
+          <td><div class="loc" style="color:white;">Total</div></td>
+          <td>15,207</td>
+          <td>270</td>
+          <td><b>31</b></td>
+          <td>$15.92</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CHARTS -->
+  <div class="section-label">Visual breakdown</div>
+  <div class="chart-grid">
+    <div class="chart-card">
+      <div class="chart-label">Leads by location</div>
+      <div class="chart-wrap"><canvas id="leadsChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-label">Cost per lead by location</div>
+      <div class="chart-wrap"><canvas id="cpaChart"></canvas></div>
+    </div>
+  </div>
+
+  <!-- NOTES -->
+  <div class="section-label">Notes for leadership</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div style="background:white;border:1px solid var(--border);border-radius:2px;padding:20px 22px;border-left:3px solid var(--green);">
+      <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--green);margin-bottom:8px;">Highlights</div>
+      <ul style="list-style:none;font-size:12px;color:#444;line-height:1.8;">
+        <li>↗ Van Nuys leading in volume — 9 leads this week</li>
+        <li>↗ Anaheim new campaign: $2.95 CPA on launch week</li>
+        <li>↗ Riverside new campaign: $4.00 CPA on launch day</li>
+        <li>↗ Ontario + Torrance both under $14 CPA</li>
+        <li>↗ ADOS campaign generating early leads in learning phase</li>
+      </ul>
+    </div>
+    <div style="background:white;border:1px solid var(--border);border-radius:2px;padding:20px 22px;border-left:3px solid var(--amber);">
+      <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-bottom:8px;">To Monitor</div>
+      <ul style="list-style:none;font-size:12px;color:#444;line-height:1.8;">
+        <li>→ Elk Grove CPA elevated ($28) — monitoring</li>
+        <li>→ San Diego audience improvements applied — CPA improving</li>
+        <li>→ Wilshire new campaign — too early to evaluate (3 days old)</li>
+        <li>→ ADOS in learning phase — do not adjust until May 5</li>
+        <li>→ Next scaling decisions: May 3</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <span class="footer-text">Intercare Therapy · Meta Ads · Week of Apr 23–29, 2026 · Data via Meta Ads API</span>
+    <span class="footer-badge">Auto-refreshes weekly</span>
+  </div>
+</div>
+
+<script>
+const locs = ['Van Nuys','Ontario','Torrance','Anaheim','ADOS','Elk Grove','San Diego','Riverside','Wilshire'];
+const leads = [9,5,4,4,2,2,3,2,0];
+const cpas  = [8.43,11.95,13.47,2.95,14.67,28.18,27.44,4.00,null];
+
+const greenPalette = leads.map((v,i) => {
+  if(i===3||i===7) return 'rgba(255,215,0,.5)'; // new star campaigns
+  if(v>=5) return '#C8E6C9';
+  if(v>=2) return '#B5D4F4';
+  if(v===0) return '#EEE';
+  return '#DCEEFA';
+});
+const greenBorder = leads.map((v,i) => {
+  if(i===3||i===7) return '#B8860B';
+  if(v>=5) return '#1A6B3C';
+  if(v>=2) return '#185FA5';
+  if(v===0) return '#CCC';
+  return '#185FA5';
+});
+
+new Chart(document.getElementById('leadsChart'),{
+  type:'bar',
+  data:{
+    labels:locs,
+    datasets:[{data:leads,backgroundColor:greenPalette,borderColor:greenBorder,borderWidth:1,borderRadius:2}]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+' leads'}}},
+    scales:{y:{beginAtZero:true,ticks:{stepSize:1,font:{size:10}},grid:{color:'rgba(0,0,0,.05)'}},x:{ticks:{font:{size:10},maxRotation:35},grid:{display:false}}}}
+});
+
+const cpaColors = cpas.map(v => v===null?'#EEE':v<10?'rgba(255,215,0,.5)':v<20?'#C8E6C9':v<25?'#FAEEDA':'#FDECEA');
+const cpaBorders = cpas.map(v => v===null?'#CCC':v<10?'#B8860B':v<20?'#1A6B3C':v<25?'#A0510E':'#C0392B');
+
+new Chart(document.getElementById('cpaChart'),{
+  type:'bar',
+  data:{
+    labels:locs.filter((_,i)=>cpas[i]!==null),
+    datasets:[{data:cpas.filter(v=>v!==null),backgroundColor:cpaColors.filter((_,i)=>cpas[i]!==null),borderColor:cpaBorders.filter((_,i)=>cpas[i]!==null),borderWidth:1,borderRadius:2}]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>'$'+c.parsed.y.toFixed(2)+' CPA'}}},
+    scales:{y:{beginAtZero:true,ticks:{callback:v=>'$'+v,font:{size:10}},grid:{color:'rgba(0,0,0,.05)'}},x:{ticks:{font:{size:10},maxRotation:35},grid:{display:false}}}}
+});
+</script>
+</body>
+</html>
