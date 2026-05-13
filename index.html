@@ -143,6 +143,7 @@
   <button class="filter-btn" onclick="setFilter('feb',this)">February</button>
   <button class="filter-btn" onclick="setFilter('mar',this)">March</button>
   <button class="filter-btn" onclick="setFilter('apr',this)">April</button>
+  <button class="filter-btn" onclick="setFilter('may',this)">May</button>
   <div class="filter-divider"></div>
   <span style="font-size:0.6rem;color:var(--muted);font-weight:600;">Custom:</span>
   <input type="date" class="date-input" id="date-from" value="2026-01-01">
@@ -657,88 +658,97 @@
 
 <script>
 // ── CLEAN DATA (post-dedup/junk removal) ─────────────────────────────────────
-// Report date: 2026-04-14 | Total clean leads: ~763
-// FM leads: ~62 | Digital leads: ~701
-// Accepted/Converted: 34 total (24 FM, 10 digital)
-// Pipeline: ~19 (Review:15, Benefits:2, Pending:2)
-// Closed-Declined: ~372 | New: ~338
-// Proration: 114/365 = 31.2% → $18,699/coordinator YTD
+// Report date: 2026-05-13 | Total clean leads: 1,040
+// FM leads: 168 | Digital leads: 872
+// Accepted/Converted: 42 total (30 FM, 12 digital)
+// Pipeline: 18 (Review:16, Pending:1, Capacity:1)
+// Closed-Declined: 797 | New: 182
+// Proration: 133/365 = 36.4% → $21,863/coordinator YTD
 
 var DATA = {
   ytd: {
-    leads:865, conv:40, pipe:18,
-    digLeads:748, fmLeads:117,
-    digConv:12, fmConv:28,
-    digRate:'1.6%', fmRate:'23.9%', rate:'4.6%',
+    leads:1040, conv:42, pipe:18,
+    digLeads:872, fmLeads:168,
+    digConv:12, fmConv:30,
+    digRate:'1.4%', fmRate:'17.9%', rate:'4.0%',
     label:'', sub:'',
-    closed:465, newL:342, acc:40, rev:14, ben:1, pend:1, cap:0,
-    decIns:28, decCli:19, decWS:11, decAv:7, decLoc:5, decDen:4
+    closed:797, newL:182, acc:42, rev:16, ben:0, pend:1, cap:1,
+    decIns:56, decCli:121, decWS:32, decAv:9, decLoc:9, decDen:1
   },
   q1: {
-    leads:651, conv:29, pipe:4,
-    digLeads:603, fmLeads:48,
-    digConv:8, fmConv:21,
-    digRate:'1.3%', fmRate:'43.8%', rate:'4.5%',
+    leads:655, conv:30, pipe:4,
+    digLeads:579, fmLeads:76,
+    digConv:8, fmConv:22,
+    digRate:'1.4%', fmRate:'28.9%', rate:'4.6%',
     label:'Q1 2026', sub:'Q1 2026 · Jan 1 — Mar 31',
-    closed:335, newL:283, acc:29, rev:4, ben:0, pend:2, cap:0,
-    decIns:18, decCli:12, decWS:7, decAv:5, decLoc:4, decDen:4
+    closed:577, newL:44, acc:30, rev:2, ben:0, pend:2, cap:0,
+    decIns:20, decCli:12, decWS:7, decAv:5, decLoc:4, decDen:4
   },
   jan: {
-    leads:207, conv:8, pipe:3,
-    digLeads:189, fmLeads:18,
-    digConv:1, fmConv:7,
-    digRate:'0.5%', fmRate:'38.9%', rate:'3.9%',
+    leads:208, conv:9, pipe:2,
+    digLeads:184, fmLeads:24,
+    digConv:3, fmConv:6,
+    digRate:'1.6%', fmRate:'25.0%', rate:'4.3%',
     label:'January 2026', sub:'January 2026 · Jan 1 — Jan 31',
-    closed:100, newL:96, acc:8, rev:3, ben:0, pend:0, cap:0,
-    decIns:6, decCli:4, decWS:2, decAv:1, decLoc:2, decDen:2
+    closed:197, newL:0, acc:9, rev:2, ben:0, pend:0, cap:0,
+    decIns:7, decCli:4, decWS:2, decAv:1, decLoc:2, decDen:2
   },
   feb: {
-    leads:213, conv:11, pipe:5,
-    digLeads:196, fmLeads:17,
-    digConv:3, fmConv:8,
-    digRate:'1.5%', fmRate:'47.1%', rate:'5.2%',
+    leads:212, conv:11, pipe:0,
+    digLeads:185, fmLeads:27,
+    digConv:4, fmConv:7,
+    digRate:'2.2%', fmRate:'25.9%', rate:'5.2%',
     label:'February 2026', sub:'February 2026 · Feb 1 — Feb 28',
-    closed:112, newL:85, acc:11, rev:4, ben:2, pend:1, cap:0,
+    closed:192, newL:9, acc:11, rev:0, ben:0, pend:0, cap:0,
     decIns:8, decCli:5, decWS:3, decAv:2, decLoc:1, decDen:1
   },
   mar: {
-    leads:231, conv:10, pipe:2,
-    digLeads:218, fmLeads:13,
-    digConv:4, fmConv:6,
-    digRate:'1.8%', fmRate:'46.2%', rate:'4.3%',
+    leads:235, conv:10, pipe:2,
+    digLeads:210, fmLeads:25,
+    digConv:1, fmConv:9,
+    digRate:'0.5%', fmRate:'36.0%', rate:'4.3%',
     label:'March 2026', sub:'March 2026 · Mar 1 — Mar 31',
-    closed:130, newL:89, acc:10, rev:0, ben:0, pend:1, cap:0,
+    closed:188, newL:35, acc:10, rev:2, ben:0, pend:0, cap:0,
     decIns:6, decCli:3, decWS:2, decAv:2, decLoc:1, decDen:1
   },
   apr: {
-    leads:214, conv:11, pipe:16,
-    digLeads:145, fmLeads:69,
+    leads:287, conv:11, pipe:9,
+    digLeads:214, fmLeads:73,
     digConv:4, fmConv:7,
-    digRate:'2.8%', fmRate:'10.1%', rate:'5.1%',
-    label:'April 2026 (to date)', sub:'April 2026 · Apr 1 — Apr 29 (partial)',
-    closed:97, newL:101, acc:11, rev:11, ben:1, pend:1, cap:0,
-    decIns:10, decCli:7, decWS:4, decAv:2, decLoc:1, decDen:0
+    digRate:'1.9%', fmRate:'9.6%', rate:'3.8%',
+    label:'April 2026', sub:'April 2026 · Apr 1 — Apr 30',
+    closed:204, newL:63, acc:11, rev:9, ben:0, pend:0, cap:0,
+    decIns:15, decCli:55, decWS:12, decAv:3, decLoc:3, decDen:0
+  },
+  may: {
+    leads:97, conv:1, pipe:5,
+    digLeads:78, fmLeads:19,
+    digConv:0, fmConv:1,
+    digRate:'0.0%', fmRate:'5.3%', rate:'1.0%',
+    label:'May 2026 (partial)', sub:'May 2026 · May 1 — May 13 (partial)',
+    closed:16, newL:75, acc:1, rev:5, ben:0, pend:0, cap:0,
+    decIns:1, decCli:5, decWS:2, decAv:0, decLoc:0, decDen:0
   }
 };
 
 // territory: [code, name, total, digital, fm, conv, pipe, home, center]
 var TERR_ALL = [
-  ['SD',  'San Diego',        89, 64, 25, 12, 0, 1,11],
-  ['IEN', 'Inland Empire N',  41,  6, 35, 15, 1, 0,15],
-  ['IES', 'Inland Empire S',  44, 15, 29,  8, 0, 0, 8],
-  ['SAC', 'Sacramento',      103, 61, 42,  1, 3, 0, 1],
-  ['LAW', 'Los Angeles West', 38, 30,  8,  2, 2, 1, 1],
-  ['LAN', 'Los Angeles North',40, 29, 11,  1, 2, 0, 1],
-  ['OC',  'Orange County',    13, 13,  0,  0, 1, 0, 0],
-  ['BAY', 'Bay Area',          4,  4,  0,  0, 0, 0, 0],
-  ['?',   'Unassigned',      348,346,  2,  0, 0, 0, 0]
+  ['SD',  'San Diego',        121, 94, 27, 14, 2, 6, 8],
+  ['IEN', 'Inland Empire N',   36, 17, 19, 13, 0, 1,12],
+  ['IES', 'Inland Empire S',   43, 17, 26,  9, 2, 3, 6],
+  ['SAC', 'Sacramento',       124, 70, 54,  3, 4, 1, 2],
+  ['LAW', 'Los Angeles West',  81, 66, 15,  2, 1, 1, 1],
+  ['LAN', 'Los Angeles North', 39, 21, 18,  1, 1, 0, 1],
+  ['OC',  'Orange County',     53, 46,  7,  0, 0, 0, 0],
+  ['BAY', 'Bay Area',           4,  4,  0,  0, 0, 0, 0],
+  ['?',   'Unassigned',       290,289,  1,  0, 0, 0, 0]
 ];
 
-var MONTHLY = {labels:['Jan','Feb','Mar','Apr'],conv:[8,11,10,11],leads:[207,213,231,214]};
+var MONTHLY = {labels:['Jan','Feb','Mar','Apr','May'],conv:[9,11,10,11,1],leads:[208,212,235,287,97]};
 var WEEKLY  = {
-  labels:['W1-J','W2-J','W3-J','W4-J','W1-F','W2-F','W3-F','W4-F','W1-M','W2-M','W3-M','W4-M','W1-A','W2-A','W3-A','W4-A'],
-  conv:  [2,2,2,2,2,3,3,3,2,3,3,2,2,3,2,4],
-  leads: [50,52,55,50,48,55,58,52,55,62,60,54,50,52,57,55]
+  labels:['W1-J','W2-J','W3-J','W4-J','W1-F','W2-F','W3-F','W4-F','W1-M','W2-M','W3-M','W4-M','W1-A','W2-A','W3-A','W4-A','W1-M2','W2-M2'],
+  conv:  [2,2,2,3,2,3,3,3,2,3,3,2,2,3,3,3,1,0],
+  leads: [50,52,55,51,48,55,58,51,55,62,63,55,65,72,75,75,55,42]
 };
 
 function fmt(n){return n.toLocaleString();}
@@ -793,7 +803,7 @@ function applyData(d,rangeLabel){
   document.getElementById('leg-conv').textContent=d.conv+' Converted';
   document.getElementById('leg-pipe').textContent=activePipe+' Pipeline';
   document.getElementById('leg-rem').textContent=Math.max(0,100-engaged)+' remaining';
-  document.getElementById('q1-label').textContent=(rangeLabel==='YTD'||rangeLabel==='Q1'?'29 ✓':'—');
+  document.getElementById('q1-label').textContent=(rangeLabel==='YTD'||rangeLabel==='Q1'?'30 ✓':'—');
 
   // channel bars
   var digPct=total>0?Math.round((d.digLeads/total)*100):0;
@@ -809,7 +819,7 @@ function applyData(d,rangeLabel){
   document.getElementById('ch-total-conv').textContent=d.conv;
 
   // conversion analysis
-            document.getElementById('conv-fm-detail').textContent=d.fmConv+' conv / '+d.fmLeads+' leads · Castro, Hernandez, Simtoco';
+            document.getElementById('conv-fm-detail').textContent=d.fmConv+' conv / '+d.fmLeads+' leads · Castro, Hernandez, Gard';
   document.getElementById('conv-dig-detail').textContent=d.digConv+' conversions / '+fmt(d.digLeads)+' digital leads';
   document.getElementById('conv-fm-pct').textContent=d.fmRate;
   document.getElementById('conv-dig-pct').textContent=d.digRate;
@@ -878,7 +888,7 @@ function sliceTerritory(key,btn){
   btn.classList.add('active');
   var data=key==='all'?TERR_ALL:TERR_ALL.filter(function(r){return r[0]===key;});
   buildTerritoryTable(data);
-  var unassigned=306, totalClean=697;
+  var unassigned=290, totalClean=1040;
   document.getElementById('terrWarn').style.display=key==='all'?'block':'none';
   document.getElementById('terrWarn').textContent=unassigned+' leads ('+((unassigned/totalClean)*100).toFixed(1)+'%) have no territory assigned — primarily digital/social leads without location data.';
 }
