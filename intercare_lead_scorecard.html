@@ -199,7 +199,7 @@
       <option value="New">New</option>
       <option value="Review">Review / Pipeline</option>
     </select>
-    <button class="key-btn" onclick="openKey()" style="margin-left:0.5rem; display:none;">🔑 Name Key</button>
+
   </div>
 
   <div class="card">
@@ -270,20 +270,7 @@
   <footer>intercare therapy · lead scorecard · ytd 2026 · age + insurance + proximity scoring · data: salesforce "copy of website leads" · may 20, 2026</footer>
 </main>
 
-<!-- NAME KEY MODAL -->
-<div class="modal-overlay" id="key-modal" onclick="closeKeyOutside(event)">
-  <div class="modal">
-    <div class="modal-head">
-      <div class="modal-title">🔑 Salesforce Name Key</div>
-      <button class="modal-close" onclick="closeKey()">×</button>
-    </div>
-    <div class="modal-note">Use the key code to find the lead in Salesforce. Leads with a Salesforce-assigned prefix (e.g. JaRa04) already match their record name exactly. For others, search Salesforce by the full name shown here. This document should be stored securely and not shared externally.</div>
-    <table class="key-table" id="key-table">
-      <thead><tr><th>Key</th><th>Full Name (Salesforce)</th><th>Status</th><th>Territory</th></tr></thead>
-      <tbody id="key-tbody"></tbody>
-    </table>
-  </div>
-</div>
+
 
 <script>
 // Weights: Age=28.6%, Drive=4.8%, Insurance=66.7% (re-normalized from M1=0.15, M2=0.025, M4=0.35)
@@ -319,14 +306,6 @@ var LEADS = [
   {name:"D. G.", key:"DAGU18", full:"Damien Gutierrez",                 status:"Closed - Declined", terr:"IEN", age:10, ins:"IEHP",             ageS:48, insS:22.4,  drvS:47.9, score:30.9, tier:"Moderate", dr:"Client Limited Availability"},
   {name:"K. V.", key:"KeVa02", full:"KeVa02_Keanu Valdez",              status:"Accepted",          terr:"IEN", age:6,  ins:"IEHP",             ageS:48, insS:22.4,  drvS:47.9, score:30.9, tier:"Moderate", dr:null},
   {name:"R. E.", key:"ROES29", full:"Roman Esperecueta-Onofre",         status:"Closed - Declined", terr:"LAN", age:5,  ins:"LA Care",          ageS:56, insS:6.2,   drvS:44.1, score:22.2, tier:"Low",      dr:"Insurance"},
-];
-
-// 4 leads with age but insurance didn't match our map — listed separately
-var UNMATCHED = [
-  {name:"Z. C.", key:"ZACO10", full:"Zander (ADOS) Nakamura Contreras", status:"Closed - Declined", terr:"LAN", age:2, ins:"Anthem BCBS", ageS:93, dr:"Wrong Service"},
-  {name:"J. R.", key:"JaRa04", full:"JaRa04_Jack Raya",                 status:"Accepted",          terr:"IEN", age:3, ins:"Anthem BCBS", ageS:93, dr:null},
-  {name:"R. H.", key:"RaHe03", full:"RaHe03_Raymond Hernandez",         status:"Accepted",          terr:"IEN", age:8, ins:"Anthem BCBS", ageS:48, dr:null},
-  {name:"H. R.", key:"HURI24", full:"Hudson (ADOS) Riley",              status:"Closed - Declined", terr:"SAC", age:10,ins:"Anthem BCBS", ageS:48, dr:null},
 ];
 
 var PIPELINE = [
@@ -430,20 +409,6 @@ function renderPipeline() {
       +'<td style="font-size:0.6rem;color:var(--muted);">IEHP: <strong style="color:var(--amber);">'+iehpEst+'</strong> &nbsp;·&nbsp; Molina: <strong style="color:#1a9e7c;">'+molinaEst+'</strong></td>'
       +'</tr>';
   }).join('');
-  }).join('');
-}
-
-function renderKeyTable() {
-  var allLeads = LEADS.concat(UNMATCHED).concat(PIPELINE);
-  allLeads.sort(function(a,b){return a.key.localeCompare(b.key);});
-  document.getElementById('key-tbody').innerHTML = allLeads.map(function(l) {
-    return '<tr>'
-      +'<td><span class="key-code">'+l.key+'</span></td>'
-      +'<td style="font-weight:600;">'+l.full+'</td>'
-      +'<td>'+statusBadge(l.status)+'</td>'
-      +'<td style="color:var(--muted);font-size:0.65rem;">'+l.terr+'</td>'
-      +'</tr>';
-  }).join('');
 }
 
 function filterTier(tier, btn) {
@@ -456,13 +421,9 @@ function filterStatus() {
   currentStatus = document.getElementById('status-filter').value;
   render();
 }
-function openKey() { document.getElementById('key-modal').classList.add('open'); }
-function closeKey() { document.getElementById('key-modal').classList.remove('open'); }
-function closeKeyOutside(e) { if (e.target===document.getElementById('key-modal')) closeKey(); }
 
 render();
 renderPipeline();
-renderKeyTable();
 </script>
 </body>
 </html>
