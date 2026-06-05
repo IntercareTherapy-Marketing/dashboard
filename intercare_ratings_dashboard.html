@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intercare Therapy — Review Ratings Dashboard</title>
+<style>
+  :root {
+    --green:#26CCA0;
+    --navy:#291A6B;
+    --purple:#8270DE;
+    --yellow:#FFD333;
+    --teal:#2a8aab;
+    --amber:#c48a00;
+    --cream:#F7F5FF;
+    --border:#e8e4f0;
+    --muted:#7a7099;
+    --danger:#e05252;
+    --green-light:rgba(38,204,160,0.12);
+    --navy-light:rgba(41,26,107,0.07);
+    --purple-light:rgba(130,112,222,0.12);
+    --yellow-light:rgba(255,211,51,0.18);
+  }
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: #f0eef8;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    min-height: 100vh;
+  }
+
+  .topbar {
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .logo { display: flex; align-items: center; gap: 0.6rem; }
+  .logo-icon {
+    width: 30px; height: 30px;
+    background: var(--green);
+    border-radius: 7px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .logo-icon svg { width: 18px; height: 18px; }
+  .logo-text { font-size: 1rem; font-weight: 800; color: var(--navy); letter-spacing: -0.02em; }
+  .logo-text span { color: var(--green); }
+  .topbar-right { display: flex; align-items: center; gap: 0.75rem; }
+  .topbar-meta { font-size: 0.58rem; color: var(--muted); font-weight: 600; text-align: right; }
+  .topbar-meta strong { color: var(--navy); display: block; }
+  .user-avatar {
+    width: 30px; height: 30px; border-radius: 50%;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.58rem; font-weight: 800; color: #fff;
+  }
+
+  .main { padding: 1.75rem 2rem 3rem; width: 100%; max-width: 1100px; margin: 0 auto; }
+  .page-title { font-size: 1.6rem; font-weight: 800; color: var(--navy); letter-spacing: -0.02em; }
+  .page-sub { font-size: 0.6rem; color: var(--muted); margin-top: 0.25rem; text-transform: uppercase; letter-spacing: 0.1em; }
+
+  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 1.5rem 0; }
+  .kpi { border-radius: 16px; padding: 1.4rem 1.25rem; position: relative; overflow: hidden; }
+  .kpi::after {
+    content: ''; position: absolute; bottom: -18px; right: -18px;
+    width: 80px; height: 80px; border-radius: 50%; background: rgba(255,255,255,0.08);
+  }
+  .kpi-label { font-size: 0.56rem; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.75); font-weight: 700; margin-bottom: 0.5rem; position: relative; z-index: 1; }
+  .kpi-val { font-size: 2.2rem; font-weight: 800; line-height: 1; color: #fff; position: relative; z-index: 1; margin-bottom: 0.2rem; }
+  .kpi-sub { font-size: 0.56rem; color: rgba(255,255,255,0.7); position: relative; z-index: 1; }
+
+  .card { background: #fff; border-radius: 14px; padding: 1.25rem; border: 1px solid var(--border); margin-bottom: 1rem; }
+  .card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+  .card-title { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--navy); }
+  .card-title span { color: var(--green); }
+  .card-tag { font-size: 0.52rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 20px; background: var(--green-light); color: #1a9e7c; }
+
+  .t-table { width: 100%; border-collapse: collapse; font-size: 0.62rem; }
+  .t-table th { font-size: 0.5rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-weight: 700; padding: 0.4rem 0.65rem; text-align: left; border-bottom: 1.5px solid var(--border); }
+  .t-table td { padding: 0.7rem 0.65rem; border-bottom: 1px solid var(--border); color: var(--navy); vertical-align: middle; }
+  .t-table tr:last-child td { border-bottom: none; }
+  .t-table tr:hover td { background: var(--cream); }
+  .t-name { font-weight: 800; font-size: 0.7rem; color: var(--navy); }
+
+  .rating-cell { display: flex; align-items: center; gap: 6px; }
+  .stars { display: flex; gap: 2px; }
+  .star { width: 10px; height: 10px; border-radius: 2px; }
+  .star.on { background: #FFD333; }
+  .star.off { background: var(--border); }
+  .score { font-size: 0.7rem; font-weight: 800; min-width: 26px; }
+  .score.low { color: var(--danger); }
+  .score.high { color: #1a9e7c; }
+  .no-rating { display: inline-block; font-size: 0.52rem; font-weight: 700; color: var(--muted); background: var(--cream); border-radius: 20px; padding: 0.15rem 0.5rem; }
+
+  /* Action cards — styled like the screenshot card */
+  .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
+  .action-card {
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: 16px;
+    padding: 1.1rem 1.2rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .action-pill {
+    display: inline-block;
+    font-size: 0.5rem; font-weight: 700;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    width: fit-content;
+  }
+  .action-pill.blue   { background: var(--green-light); color: #1a9e7c; border: 1px solid rgba(38,204,160,0.3); }
+  .action-pill.yellow { background: var(--yellow-light); color: #8a6200; border: 1px solid rgba(255,211,51,0.4); }
+  .action-pill.purple { background: var(--purple-light); color: #5b47c4; border: 1px solid rgba(130,112,222,0.3); }
+  .action-title { font-size: 0.82rem; font-weight: 800; color: var(--navy); line-height: 1.3; }
+  .action-desc { font-size: 0.62rem; color: var(--muted); line-height: 1.65; }
+  .action-desc ul { margin: 5px 0 0 13px; }
+  .action-desc li { margin-bottom: 3px; }
+  .action-desc strong { color: var(--navy); font-weight: 700; }
+
+  footer { text-align: center; padding: 2rem 0 1rem; font-size: 0.55rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; }
+  footer span { color: var(--green); }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">
+    <div class="logo-icon">
+      <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="9" cy="9" r="7.5" stroke="#fff" stroke-width="1.5"/>
+        <path d="M5.5 9h7M9 5.5v7" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="logo-text">Intercare<span>.</span></div>
+  </div>
+  <div class="topbar-right">
+    <div class="topbar-meta">All Locations · June 2026</div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="page-title">Review Ratings Dashboard</div>
+  <div class="page-sub">All locations · Google &amp; Yelp · June 2026</div>
+
+  <div class="kpi-row">
+    <div class="kpi" style="background:var(--navy);">
+      <div class="kpi-label">Total locations</div>
+      <div class="kpi-val">9</div>
+      <div class="kpi-sub">Across California</div>
+    </div>
+    <div class="kpi" style="background:#1a9e7c;">
+      <div class="kpi-label">Rated 5.0 on Google</div>
+      <div class="kpi-val">5</div>
+      <div class="kpi-sub">EG · ANA · TOR · VN · SD</div>
+    </div>
+    <div class="kpi" style="background:var(--danger);">
+      <div class="kpi-label">Low ratings (&lt;3.0)</div>
+      <div class="kpi-val">2</div>
+      <div class="kpi-sub">LA · Riverside</div>
+    </div>
+    <div class="kpi" style="background:var(--amber);">
+      <div class="kpi-label">No ratings yet</div>
+      <div class="kpi-val">2</div>
+      <div class="kpi-sub">RSV · ONT</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title">Ratings by <span>Location</span></div>
+      <span class="card-tag">Live data</span>
+    </div>
+    <table class="t-table">
+      <thead>
+        <tr>
+          <th>Location</th>
+          <th>Google rating</th>
+          <th>Yelp rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="t-name">Los Angeles</div></td>
+          <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div><span class="score low">2.6</span></div></td>
+          <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div><span class="score low">2.2</span></div></td>
+        </tr>
+        <tr>
+          <td><div class="t-name">Riverside</div></td>
+          <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div><span class="score low">2.6</span></div></td>
+          <td><span class="no-rating">No rating</span></td>
+        </tr>
+        <tr>
+          <td><div class="t-name">Elk Grove</div></td>
+          <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div></div><span class="score high">5.0</span></div></td>
+          <td><span class="no-rating">No rating</span></td>
+        </tr>
+        <tr>
+          <td><div class="t-name">Anaheim</div></td>
+          <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div></div><span class="score high">5.0</span></div></td>
+          <td><span class="no-rating">No rating</span></td>
+        </tr>
+        <tr>
+          <td><div class="t-name">Torrance</div></td>
+          <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div></div><span class="score high">5.0</span></div></td>
+          <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div><span class="score low">1.0</span></div></td>
+        </tr>
+        <tr>
+          <td><div class="t-name">Van Nuys</div></td>
+          <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div></div><span class="score high">5.0</span></div></td>
+          <td><span class="no-rating">No rating</span></td>
+        </tr>
+        <tr>
+          <td><div class="t-name">San Diego</div></td>
+          <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div></div><span class="score high">5.0</span></div></td>
+          <td><span class="no-rating">No rating</span></td>
+        </tr>
+        <tr>
+          <td><div class="t-name">Roseville</div></td>
+          <td><span class="no-rating">No rating</span></td>
+          <td><span class="no-rating">No rating</span></td>
+        </tr>
+        <tr>
+          <td><div class="t-name">Ontario</div></td>
+          <td><span class="no-rating">No rating</span></td>
+          <td><span class="no-rating">No rating</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title">Priority <span>Actions</span></div>
+    </div>
+    <div class="actions">
+
+      <div class="action-card">
+        <span class="action-pill blue">Ongoing</span>
+        <div class="action-title">QR code flyer + Owala water bottle giveaway</div>
+        <div class="action-desc">
+          COS team to place QR code flyer at front desk at all locations. Promote chance to win a branded Owala water bottle in exchange for leaving a review.
+          <ul>
+            <li>Priority deploy: <strong>Los Angeles</strong>, <strong>Riverside</strong>, <strong>Torrance (Yelp)</strong> — lowest rated</li>
+            <li>Also deploy at <strong>Roseville</strong>, <strong>Ontario</strong> — build from zero</li>
+            <li>Track entries by location to measure lift per site</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="action-card">
+        <span class="action-pill purple">Yelp focus</span>
+        <div class="action-title">Build Yelp presence across all locations</div>
+        <div class="action-desc">
+          Only 2 of 9 locations have any Yelp rating. Yelp drives significant local discovery for healthcare providers.
+          <ul>
+            <li>Add Yelp QR code alongside Google on all front desk flyers</li>
+            <li>Claim and fully complete all 9 Yelp business profiles if not already done</li>
+            <li>For <strong>Torrance</strong> (1.0): respond to existing review, flag for monitoring — a few new reviews can shift the score significantly</li>
+            <li>Coach COS staff to verbally mention Yelp as an option when asking for reviews</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="action-card">
+        <span class="action-pill yellow">Next up</span>
+        <div class="action-title">Post-session auto-email review request</div>
+        <div class="action-desc">
+          Automate review asks after sessions — send only to clients likely to leave a positive review.
+          <ul>
+            <li><strong>NPS pulse first</strong> — 1-question rating before the ask; route only 4s and 5s to the review link</li>
+            <li><strong>Session milestones</strong> — trigger at session 5, 10, or discharge</li>
+            <li><strong>Suppress complaints</strong> — exclude anyone with a concern or billing dispute in last 60 days</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="action-card">
+        <span class="action-pill blue">Ongoing</span>
+        <div class="action-title">Monitor &amp; respond to all reviews</div>
+        <div class="action-desc">
+          Assign a COS leader per location to monitor Google and Yelp weekly. Respond to all reviews — positive and negative — within 48 hours to signal active management and boost algorithmic visibility.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Intercare Therapy</span> &nbsp;·&nbsp; COS Review Initiative &nbsp;·&nbsp; Confidential Internal Use
+</footer>
+
+</body>
+</html>
