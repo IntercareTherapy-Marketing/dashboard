@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intercare Revenue Pipeline — 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+:root {
+  --green: #26CCA0;
+  --navy: #291A6B;
+  --purple: #8270DE;
+  --yellow: #FFD333;
+  --teal: #2a8aab;
+  --amber: #c48a00;
+  --cream: #F7F5FF;
+  --border: #e8e4f0;
+  --muted: #7a7099;
+  --danger: #e05252;
+  --green-light: rgba(38,204,160,0.12);
+  --navy-light: rgba(41,26,107,0.07);
+  --purple-light: rgba(130,112,222,0.12);
+  --yellow-light: rgba(255,211,51,0.18);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #f0eef8; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; min-height: 100vh; color: var(--navy); }
+
+
+/* ── Toggle controls ── */
+.controls-bar {
+  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: 0.6rem 2rem;
+  position: sticky;
+  top: 60px;
+  z-index: 99;
+}
+.ctrl-label {
+  font-size: 0.5rem; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--muted); font-weight: 700; white-space: nowrap;
+}
+.toggle-group {
+  display: flex; border-radius: 8px; overflow: hidden;
+  border: 1px solid var(--border); gap: 0;
+}
+.toggle-btn {
+  padding: 0.3rem 0.75rem; font-size: 0.6rem; font-weight: 700;
+  cursor: pointer; border: none; background: transparent;
+  color: var(--muted); transition: background 0.15s, color 0.15s;
+  border-right: 1px solid var(--border); white-space: nowrap;
+}
+.toggle-btn:last-child { border-right: none; }
+.toggle-btn.active { background: var(--navy); color: #fff; }
+.toggle-btn.active.tier-excellence { background: var(--green); }
+.toggle-btn.active.tier-stretch { background: var(--purple); }
+.ctrl-divider { width: 1px; height: 28px; background: var(--border); }
+/* Dynamic value targets */
+[data-val] { transition: opacity 0.2s; }
+
+/* Topbar */
+.topbar { background: #fff; border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+.logo { display: flex; align-items: center; gap: 0.6rem; }
+.logo-icon { width: 30px; height: 30px; background: var(--green); border-radius: 7px; display: flex; align-items: center; justify-content: center; }
+.logo-text { font-size: 1rem; font-weight: 800; color: var(--navy); letter-spacing: -0.02em; }
+.logo-text span { color: var(--green); }
+.user-avatar { width: 30px; height: 30px; border-radius: 50%; background: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 0.58rem; font-weight: 800; color: #fff; }
+
+/* Main */
+.main { padding: 1.75rem 2rem 3rem; width: 100%; max-width: 1400px; margin: 0 auto; }
+.page-title { font-size: 1.6rem; font-weight: 800; color: var(--navy); letter-spacing: -0.02em; }
+.page-sub { font-size: 0.6rem; color: var(--muted); margin-top: 0.25rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; }
+
+/* Assumptions */
+.assumptions { background: var(--navy); border-radius: 14px; padding: 1rem 1.5rem; margin-bottom: 1.5rem; display: grid; grid-template-columns: repeat(7, 1fr); gap: 0; }
+.assume-item { padding: 0.35rem 0.75rem; border-right: 1px solid rgba(255,255,255,0.12); }
+.assume-item:first-child { padding-left: 0; }
+.assume-item:last-child { border-right: none; }
+.assume-item .al { font-size: 0.5rem; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.55); font-weight: 700; margin-bottom: 3px; }
+.assume-item .av { font-size: 0.85rem; font-weight: 800; color: var(--green); }
+
+/* Section label */
+.section-label { font-size: 0.56rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.65rem; }
+
+/* KPI row */
+.kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+.kpi { border-radius: 16px; padding: 1.4rem 1.25rem; position: relative; overflow: hidden; }
+.kpi::after { content: ''; position: absolute; bottom: -18px; right: -18px; width: 80px; height: 80px; border-radius: 50%; background: rgba(255,255,255,0.08); }
+.kpi-label { font-size: 0.56rem; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.75); font-weight: 700; margin-bottom: 0.5rem; position: relative; z-index: 1; }
+.kpi-val { font-size: 2.4rem; font-weight: 800; line-height: 1; color: #fff; position: relative; z-index: 1; margin-bottom: 0.2rem; letter-spacing: -0.02em; }
+.kpi-sub { font-size: 0.56rem; color: rgba(255,255,255,0.7); position: relative; z-index: 1; }
+.kpi-tag { display: inline-block; font-size: 0.5rem; padding: 0.15rem 0.5rem; border-radius: 20px; margin-top: 0.4rem; font-weight: 700; background: rgba(255,255,255,0.2); color: #fff; position: relative; z-index: 1; }
+
+/* Cards */
+.card { background: #fff; border-radius: 14px; padding: 1.25rem; border: 1px solid var(--border); margin-bottom: 1rem; }
+.card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.card-title { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--navy); }
+.card-title span { color: var(--green); }
+.card-tag { font-size: 0.52rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 20px; background: var(--green-light); color: #1a9e7c; }
+
+/* Two col */
+.row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+
+/* Funnel */
+.funnel-col { background: var(--cream); border: 1px solid var(--border); border-radius: 10px; padding: 0.9rem 1.1rem; }
+.funnel-head { font-size: 0.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--navy); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 7px; }
+.frow { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-bottom: 1px solid var(--border); font-size: 0.62rem; }
+.frow:last-child { border-bottom: none; }
+.fl { color: var(--muted); font-weight: 600; }
+.fv { font-weight: 800; color: var(--navy); }
+.fv.good { color: #1a9e7c; }
+.fv.bad { color: var(--danger); }
+.fv.blue { color: var(--purple); }
+.fr { font-size: 0.5rem; color: var(--muted); margin-left: 6px; font-weight: 700; }
+
+/* Tables */
+.t-table { width: 100%; border-collapse: collapse; font-size: 0.62rem; }
+.t-table th { font-size: 0.5rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-weight: 700; padding: 0.4rem 0.65rem; text-align: left; border-bottom: 1.5px solid var(--border); white-space: nowrap; }
+.t-table td { padding: 0.55rem 0.65rem; border-bottom: 1px solid var(--border); color: var(--navy); vertical-align: middle; }
+.t-table tr:last-child td { border-bottom: none; }
+.t-table tr:hover td { background: var(--cream); }
+.t-table .total-row td { background: var(--cream); font-weight: 800; border-top: 1.5px solid var(--border); }
+.t-name { font-weight: 800; font-size: 0.68rem; }
+.t-right { text-align: right; }
+.t-center { text-align: center; }
+.t-muted { color: var(--muted); }
+.grp-hdr td { background: var(--navy) !important; color: rgba(255,255,255,0.7) !important; font-size: 0.5rem !important; font-weight: 800 !important; text-transform: uppercase !important; letter-spacing: 0.1em !important; padding: 0.35rem 0.65rem !important; }
+
+/* Pills / badges */
+.pill { display: inline-block; font-size: 0.5rem; font-weight: 700; padding: 0.12rem 0.45rem; border-radius: 20px; vertical-align: middle; }
+.pill-act { background: var(--green-light); color: #1a9e7c; }
+.pill-proj { background: var(--purple-light); color: #5b47c4; }
+.pill-new { background: var(--yellow-light); color: var(--amber); }
+.t-badge { display: inline-block; padding: 0.12rem 0.4rem; border-radius: 20px; font-size: 0.55rem; font-weight: 700; }
+.t-rev { font-weight: 800; color: var(--navy); }
+.t-fy { font-weight: 800; color: var(--navy); }
+
+/* Charts */
+.chart-wrap { position: relative; width: 100%; }
+.legend-row { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 10px; }
+.legend-item { display: flex; align-items: center; gap: 5px; font-size: 0.58rem; font-weight: 700; color: var(--muted); }
+.legend-dot { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
+
+/* Channel bars */
+.ch-row { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
+.ch-label { width: 120px; flex-shrink: 0; }
+.ch-name { font-size: 0.62rem; font-weight: 700; color: var(--navy); }
+.ch-chip { display: inline-block; font-size: 0.48rem; padding: 0.08rem 0.35rem; border-radius: 20px; text-transform: uppercase; font-weight: 700; margin-top: 2px; }
+.chip-d { background: var(--green-light); color: #1a9e7c; }
+.chip-f { background: var(--purple-light); color: #5b47c4; }
+.ch-track { flex: 1; height: 8px; background: var(--cream); border-radius: 50px; overflow: hidden; }
+.ch-fill { height: 100%; border-radius: 50px; }
+
+/* Insight row */
+.insight-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 1rem; }
+.insight { background: var(--cream); border-radius: 10px; padding: 0.85rem 1rem; }
+.insight .il { font-size: 0.56rem; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+.insight .iv { font-size: 1.4rem; font-weight: 800; line-height: 1.1; }
+.insight .is { font-size: 0.55rem; color: var(--muted); margin-top: 2px; font-weight: 600; }
+
+/* Note */
+.note { font-size: 0.55rem; color: var(--muted); margin-top: 0.75rem; line-height: 1.6; font-weight: 600; }
+
+/* Ch bar mini */
+.ch-bar-wrap { margin-top: 6px; }
+.ch-bar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.ch-bar-label { width: 120px; font-size: 0.6rem; font-weight: 700; flex-shrink: 0; }
+.ch-bar-bg { flex: 1; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+.ch-bar-fill { height: 6px; border-radius: 3px; }
+.ch-bar-val { width: 48px; text-align: right; font-size: 0.62rem; font-weight: 800; color: var(--navy); }
+
+/* warn box */
+.warn-box { padding: 0.55rem 0.75rem; background: var(--green-light); border: 1px solid rgba(38,204,160,0.25); border-radius: 8px; font-size: 0.58rem; color: #1a9e7c; font-weight: 700; margin-top: 0.75rem; }
+
+/* footer */
+.footer { text-align: center; padding: 1.5rem 0; border-top: 1px solid var(--border); font-size: 0.55rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; margin-top: 0.5rem; }
+
+@media(max-width: 1100px) { .kpi-row { grid-template-columns: repeat(2,1fr); } .assumptions { grid-template-columns: repeat(4,1fr); } }
+@media(max-width: 768px) { .topbar { padding: 0.65rem 1rem; } .main { padding: 1rem; } .kpi-row { grid-template-columns: repeat(2,1fr); } .row-2 { grid-template-columns: 1fr; } .assumptions { grid-template-columns: repeat(2,1fr); } }
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="logo">
+    <div class="logo-icon">
+      <img src="https://i.ibb.co/jZMPqWbf/Intercare-Icon-Cream-1.png" width="22" height="22" style="display:block;object-fit:contain;">
+    </div>
+    <div class="logo-text">inter<span>care</span> <span style="color:var(--muted);font-weight:600;font-size:0.75rem;">· Revenue Pipeline</span></div>
+  </div>
+  <div style="display:flex;align-items:center;gap:0.75rem;">
+    <div style="font-size:0.62rem;color:var(--muted);font-weight:600;">VOE <span id="topbarTier">Excellence</span> Tier · 2026</div>
+    <div class="user-avatar">IC</div>
+  </div>
+</nav>
+
+
+<main class="main">
+  <div style="margin-bottom:1.5rem;">
+    <div class="page-title">Revenue Pipeline</div>
+    <div class="page-sub" id="pageSub">Q1 Actual · Q2–Q4 VOE Excellence Tier Projections · 12-Month Cohort Revenue Model</div>
+  </div>
+
+  <!-- Assumptions banner -->
+  <div class="assumptions" style="margin-bottom:1.5rem;">
+    <div class="assume-item"><div class="al">Avg Payor Rate</div><div class="av">$68.00/hr</div></div>
+    <div class="assume-item"><div class="al">Auth Hrs/Client/Wk</div><div class="av">18 hrs</div></div>
+    <div class="assume-item"><div class="al">Utilization Rate</div><div class="av">85%</div></div>
+    <div class="assume-item"><div class="al">Monthly Rev/Client</div><div class="av">$4,508</div></div>
+    <div class="assume-item"><div class="al">Annual Rev/Client</div><div class="av">$54,101</div></div>
+    <div class="assume-item"><div class="al">Digital Conv Rate</div><div class="av assume-dig-rate">2.25%</div></div>
+    <div class="assume-item"><div class="al">Field Conv Rate</div><div class="av assume-field-rate">32.5%</div></div>
+  </div>
+
+  <!-- KPI row -->
+  
+  <!-- Controls -->
+  <div class="controls-bar">
+    <span class="ctrl-label">Projection window</span>
+    <div class="toggle-group" id="periodToggle">
+      <button class="toggle-btn" onclick="setMode('period','12mo')">12-Month</button>
+      <button class="toggle-btn active" onclick="setMode('period','ltv')">LTV (2.5 yrs)</button>
+    </div>
+    <div class="ctrl-divider"></div>
+    <span class="ctrl-label">Conversion tier</span>
+    <div class="toggle-group" id="tierToggle">
+      <button class="toggle-btn" onclick="setMode('tier','baseline')">Baseline<br><span style="font-size:0.45rem;font-weight:600;opacity:0.75">1.5% dig · 25% field</span></button>
+      <button class="toggle-btn active tier-excellence" onclick="setMode('tier','excellence')">Excellence<br><span style="font-size:0.45rem;font-weight:600;opacity:0.75">2.25% dig · 32.5% field</span></button>
+      <button class="toggle-btn tier-stretch" onclick="setMode('tier','stretch')">Stretch<br><span style="font-size:0.45rem;font-weight:600;opacity:0.75">3% dig · 40% field</span></button>
+    </div>
+    <div class="ctrl-divider"></div>
+    <div style="font-size:0.55rem;color:var(--muted);">
+      Showing: <span id="activeLabel" style="font-weight:800;color:var(--navy);">Excellence · 12-Month</span>
+    </div>
+  </div>
+
+<p class="section-label">Annual overview — <span class="period-label">12-Month</span> cohort revenue</p>
+  <div class="kpi-row">
+    <div class="kpi" style="background:var(--green);">
+      <div class="kpi-label">Q1 <span id="q1KpiLabel">Projected</span> Revenue</div>
+      <div class="kpi-val" data-val="q1total">—</div>
+      <div class="kpi-sub"><span data-val="q1clients">—</span> clients · <span data-val="q1dig">—</span> dig + <span data-val="q1field">—</span> field</div>
+      <div class="kpi-tag">Excellence · VOE</div>
+    </div>
+    <div class="kpi" style="background:var(--navy);">
+      <div class="kpi-label">Q2 Projected Revenue</div>
+      <div class="kpi-val" data-val="q2total">—</div>
+      <div class="kpi-sub"><span data-val="q2clients">—</span> new clients · VOE</div>
+      <div class="kpi-tag">VOE Projected</div>
+    </div>
+    <div class="kpi" style="background:var(--purple);">
+      <div class="kpi-label">Q3 Projected Revenue</div>
+      <div class="kpi-val" data-val="q3total">—</div>
+      <div class="kpi-sub"><span data-val="q3clients">—</span> new clients · VOE</div>
+      <div class="kpi-tag">VOE Projected</div>
+    </div>
+    <div class="kpi" style="background:var(--teal);">
+      <div class="kpi-label">Q4 Projected Revenue</div>
+      <div class="kpi-val" data-val="q4total">—</div>
+      <div class="kpi-sub"><span data-val="q4clients">—</span> new clients · VOE</div>
+      <div class="kpi-tag">VOE Projected</div>
+    </div>
+  </div>
+
+  <!-- Revenue chart -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title">Revenue <span>Trajectory</span> — Digital vs Field, 12-Month Cohort</div>
+    </div>
+    <div class="legend-row">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--green);"></div>Digital (3% conv)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--navy);"></div>Field (40% conv)</div>
+    </div>
+    <div class="chart-wrap" style="height:260px;">
+      <canvas id="revChart" data-reactive="true" role="img" aria-label="Grouped bar chart of 12-month revenue by channel Q1 through Q4"></canvas>
+    </div>
+  </div>
+
+  <!-- Q1 Funnel -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title">Q1 2026 Funnel <span>Breakdown</span> — Digital vs Field · Lead → Accept → Launch</div>
+      <span class="card-tag">30 accepted · 18 launched</span>
+    </div>
+    <div class="row-2">
+      <div class="funnel-col">
+        <div class="funnel-head">
+          <div style="width:8px;height:8px;border-radius:50%;background:var(--green);flex-shrink:0;"></div>
+          Digital Channel — No Outreach Coordinator
+        </div>
+        <div class="frow"><span class="fl">Total leads</span><span class="fv">603</span></div>
+        <div class="frow"><span class="fl">Closed / declined</span><span><span class="fv bad">547</span><span class="fr">90.7%</span></span></div>
+        <div class="frow"><span class="fl">New / in review</span><span><span class="fv">48</span><span class="fr">8.0%</span></span></div>
+        <div class="frow" style="background:rgba(38,204,160,0.07);border-radius:4px;"><span class="fl" style="font-weight:800;">Accepted</span><span><span class="fv good" style="font-size:0.85rem;">8</span><span class="fr">1.3% lead conv</span></span></div>
+        <div class="frow" style="padding-left:0.75rem;"><span class="fl">↳ Launched</span><span><span class="fv good">6</span><span class="fr">75% of accepted</span></span></div>
+        <div class="frow" style="padding-left:0.75rem;"><span class="fl">↳ Did not launch</span><span><span class="fv bad">2</span><span class="fr">Declined / termed</span></span></div>
+        <div class="frow" style="padding-left:0.75rem;"><span class="fl">↳ In progress</span><span><span class="fv">0</span><span class="fr">—</span></span></div>
+        <div class="frow"><span class="fl">Goal rate (3%)</span><span><span class="fv blue">18</span><span class="fr">potential clients</span></span></div>
+        <div class="frow"><span class="fl">Gap vs goal</span><span><span class="fv bad">–10</span><span class="fr">below target</span></span></div>
+      </div>
+      <div class="funnel-col">
+        <div class="funnel-head">
+          <div style="width:8px;height:8px;border-radius:50%;background:var(--purple);flex-shrink:0;"></div>
+          Field Channel — Has Outreach Coordinator
+        </div>
+        <div class="frow"><span class="fl">Total leads</span><span class="fv">76</span></div>
+        <div class="frow"><span class="fl">Closed / declined</span><span><span class="fv bad">52</span><span class="fr">68.4%</span></span></div>
+        <div class="frow"><span class="fl">New / in review</span><span><span class="fv">2</span><span class="fr">2.6%</span></span></div>
+        <div class="frow" style="background:rgba(130,112,222,0.08);border-radius:4px;"><span class="fl" style="font-weight:800;">Accepted</span><span><span class="fv good" style="font-size:0.85rem;">22</span><span class="fr">28.9% lead conv</span></span></div>
+        <div class="frow" style="padding-left:0.75rem;"><span class="fl">↳ Launched</span><span><span class="fv good">12</span><span class="fr">55% of accepted</span></span></div>
+        <div class="frow" style="padding-left:0.75rem;"><span class="fl">↳ Did not launch</span><span><span class="fv bad">7</span><span class="fr">Declined / termed</span></span></div>
+        <div class="frow" style="padding-left:0.75rem;"><span class="fl">↳ In progress</span><span><span class="fv">3</span><span class="fr">Coordinating / on hold</span></span></div>
+        <div class="frow"><span class="fl">Goal rate (40%)</span><span><span class="fv blue">30</span><span class="fr">potential clients</span></span></div>
+        <div class="frow"><span class="fl">Gap vs goal</span><span><span class="fv bad">–8</span><span class="fr">below target</span></span></div>
+      </div>
+    </div>
+    <div style="margin-top:1rem;background:var(--cream);border-radius:10px;padding:0.85rem 1rem;">
+      <div style="font-size:0.56rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);font-weight:700;margin-bottom:0.65rem;">Launch funnel — all 30 Q1 accepted leads matched to New Accounts Report by client ID</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;">
+        <div style="text-align:center;padding:0.6rem;background:#fff;border-radius:8px;border:1px solid var(--border);">
+          <div style="font-size:1.3rem;font-weight:800;color:#1a9e7c;">$2.43M</div>
+          <div style="font-size:0.55rem;font-weight:700;color:var(--muted);text-transform:uppercase;margin-top:2px;">Launched (18)</div>
+          <div style="font-size:0.55rem;color:var(--muted);">60% of accepted · LTV</div>
+        </div>
+        <div style="text-align:center;padding:0.6rem;background:#fff;border-radius:8px;border:1px solid var(--border);">
+          <div style="font-size:1.3rem;font-weight:800;color:var(--purple);">$406K</div>
+          <div style="font-size:0.55rem;font-weight:700;color:var(--muted);text-transform:uppercase;margin-top:2px;">In Progress (3)</div>
+          <div style="font-size:0.55rem;color:var(--muted);">Coordinating / on hold · LTV</div>
+        </div>
+        <div style="text-align:center;padding:0.6rem;background:#fff;border-radius:8px;border:1px solid var(--border);">
+          <div style="font-size:1.3rem;font-weight:800;color:var(--danger);">$1.22M</div>
+          <div style="font-size:0.55rem;font-weight:700;color:var(--muted);text-transform:uppercase;margin-top:2px;">Did Not Launch (9)</div>
+          <div style="font-size:0.55rem;color:var(--muted);">Declined / termed · LTV lost</div>
+        </div>
+        <div style="text-align:center;padding:0.6rem;background:#fff;border-radius:8px;border:1px solid var(--border);">
+          <div style="font-size:1.3rem;font-weight:800;color:var(--navy);">60%</div>
+          <div style="font-size:0.55rem;font-weight:700;color:var(--muted);text-transform:uppercase;margin-top:2px;">Launch Rate</div>
+          <div style="font-size:0.55rem;color:var(--muted);">18 launched / 30 accepted</div>
+        </div>
+      </div>
+    </div>
+    <div class="insight-row">
+      <div class="insight">
+        <div class="il">1LTV revenue — three views</div>
+        <div class="iv" style="color:#1a9e7c;font-size:1.1rem;">$2.43M <span style="font-size:0.7rem;color:var(--muted);font-weight:600;">confirmed launched (18 clients · LTV)</span></div>
+        <div style="font-size:1.0rem;font-weight:800;color:var(--navy);margin-top:4px;">$4.06M <span style="font-size:0.65rem;color:var(--muted);font-weight:600;">all accepted (30 clients · LTV)</span></div>
+        <div style="font-size:1.0rem;font-weight:800;color:var(--purple);margin-top:4px;">$3.38M <span style="font-size:0.65rem;color:var(--muted);font-weight:600;">at goal rates (25 clients · LTV)</span></div>
+        <div class="is" style="margin-top:6px;color:var(--danger);">9 accepted → did not launch = $1.22M lost post-acceptance (LTV)</div>
+      </div>
+      <div class="insight">
+        <div class="il">Q1 channel revenue — accepted vs launched</div>
+        <div class="ch-bar-wrap">
+          <div class="ch-bar-row">
+            <div class="ch-bar-label" style="color:#1a9e7c;font-size:0.58rem;">Digital accepted (8)</div>
+            <div class="ch-bar-bg"><div class="ch-bar-fill" style="width:27%;background:var(--green);"></div></div>
+            <div class="ch-bar-val">$1.08M</div>
+          </div>
+          <div class="ch-bar-row">
+            <div class="ch-bar-label" style="color:#1a9e7c;font-size:0.58rem;">↳ Launched (6)</div>
+            <div class="ch-bar-bg"><div class="ch-bar-fill" style="width:20%;background:rgba(38,204,160,0.4);"></div></div>
+            <div class="ch-bar-val" style="color:var(--muted);">$812K</div>
+          </div>
+          <div class="ch-bar-row">
+            <div class="ch-bar-label" style="color:#5b47c4;font-size:0.58rem;">Field accepted (22)</div>
+            <div class="ch-bar-bg"><div class="ch-bar-fill" style="width:73%;background:var(--purple);"></div></div>
+            <div class="ch-bar-val">$2.98M</div>
+          </div>
+          <div class="ch-bar-row">
+            <div class="ch-bar-label" style="color:#5b47c4;font-size:0.58rem;">↳ Launched (12)</div>
+            <div class="ch-bar-bg"><div class="ch-bar-fill" style="width:40%;background:rgba(130,112,222,0.4);"></div></div>
+            <div class="ch-bar-val" style="color:var(--muted);">$1.62M</div>
+          </div>
+        </div>
+        <div class="is" style="margin-top:8px;">True launched: $2.43M · 72% of $3.38M potential at goal rates (LTV)</div>
+      
+    <hr class="hr" style="margin:1rem 0;">
+    <div class="card-title" style="margin-bottom:0.75rem;">Post-Acceptance Decline Reasons <span>— Q1 2026 (9 of 30 did not launch)</span></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div>
+        <div style="font-size:0.56rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:0.5rem;">Decline Category</div>
+        <table class="t-table">
+          <thead>
+            <tr>
+              <th>Reason</th>
+              <th class="t-center">Count</th>
+              <th class="t-center">Channel</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Unresponsive / non-responsive</td><td class="t-center" style="font-weight:700;">5</td><td class="t-center tm">4 Field · 1 Digital</td></tr>
+            <tr><td>Pending diagnosis</td><td class="t-center" style="font-weight:700;">1</td><td class="t-center tm">Field</td></tr>
+            <tr><td>CCM stated not moving forward</td><td class="t-center" style="font-weight:700;">1</td><td class="t-center tm">Field</td></tr>
+            <tr><td>Family non-responsive</td><td class="t-center" style="font-weight:700;">1</td><td class="t-center tm">Field</td></tr>
+            <tr><td>CG did not disclose</td><td class="t-center" style="font-weight:700;">1</td><td class="t-center tm">Digital</td></tr>
+            <tr><td>Termed (no reason provided)</td><td class="t-center" style="font-weight:700;">1</td><td class="t-center tm">Digital</td></tr>
+            <tr style="background:var(--cream);font-weight:700;"><td>Total did not launch</td><td class="t-center" style="color:var(--danger);">9</td><td class="t-center tm">7 Field · 2 Digital</td></tr>
+          </tbody>
+        </table>
+        <p class="note" style="margin-top:0.5rem;">Source: Declined Post Acceptance Reason + Reason Other fields matched from New Accounts Report by client ID · Excludes 1 On Hold + 1 Launch Coordinating still in progress</p>
+      </div>
+      <div>
+        <div style="font-size:0.56rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:0.5rem;">Key Insight</div>
+        <div style="background:var(--cream);border-radius:10px;padding:0.85rem 1rem;margin-bottom:0.65rem;">
+          <div style="font-size:0.62rem;font-weight:800;color:var(--danger);margin-bottom:3px;">56% of declines = unresponsiveness</div>
+          <div style="font-size:0.58rem;color:var(--muted);">5 of 9 clients who accepted but did not launch simply stopped responding. This points to a follow-up cadence gap between acceptance and launch scheduling, not a fit or eligibility problem.</div>
+        </div>
+        <div style="background:var(--cream);border-radius:10px;padding:0.85rem 1rem;">
+          <div style="font-size:0.62rem;font-weight:800;color:var(--navy);margin-bottom:3px;">Revenue lost to unresponsiveness</div>
+          <div style="font-size:1.2rem;font-weight:800;color:var(--danger);">$259K</div>
+          <div style="font-size:0.55rem;color:var(--muted);">5 clients × $54,101 annual × 11.5/12 mo · Recoverable with faster follow-up SLA</div>
+        </div>
+      </div>
+    </div></div>
+    </div>
+  </div>
+
+  <!-- Q2-Q4 table -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title">Q2–Q4 Lead → Client → <span>Revenue</span> — VOE <span class="tier-label">Excellence</span> Tier · <span class="period-label">12-Month</span></div>
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="t-table">
+        <thead>
+          <tr>
+            <th>Quarter</th>
+            <th class="t-right">Dig Leads</th>
+            <th class="t-right">Field Leads</th>
+            <th class="t-right">Dig Clients (3%)</th>
+            <th class="t-right">Field Clients (40%)</th>
+            <th class="t-right">Total New Clients</th>
+            <th class="t-right">Digital 12-mo Rev</th>
+            <th class="t-right">Field 12-mo Rev</th>
+            <th class="t-right">Combined Forecast</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="pill pill-act">Q1 <span id="q1PillLabel">Projected</span></span></td>
+            <td class="t-right tm">603</td><td class="t-right tm">76</td>
+            <td class="t-right tm" data-val="q1dig">—</td>
+            <td class="t-right tm" data-val="q1field">—</td>
+            <td class="t-right tm" data-val="q1clients">—</td>
+            <td class="t-right t-rev" data-val="q1digrev">—</td>
+            <td class="t-right t-rev" data-val="q1fieldrev">—</td>
+            <td class="t-right t-fy" style="color:#1a9e7c;" data-val="q1total">—</td>
+          </tr>
+          <tr>
+            <td><span class="pill pill-proj">Q2</span></td>
+            <td class="t-right">881</td><td class="t-right">179</td>
+            <td class="t-right" data-val="q2dig">—</td>
+            <td class="t-right" data-val="q2field">—</td>
+            <td class="t-right" data-val="q2clients">—</td>
+            <td class="t-right t-rev" data-val="q2digrev">—</td>
+            <td class="t-right t-rev" data-val="q2fieldrev">—</td>
+            <td class="t-right t-fy" data-val="q2total">—</td>
+          </tr>
+          <tr>
+            <td><span class="pill pill-proj">Q3</span></td>
+            <td class="t-right">1,593</td><td class="t-right">351</td>
+            <td class="t-right" data-val="q3dig">—</td>
+            <td class="t-right" data-val="q3field">—</td>
+            <td class="t-right" data-val="q3clients">—</td>
+            <td class="t-right t-rev" data-val="q3digrev">—</td>
+            <td class="t-right t-rev" data-val="q3fieldrev">—</td>
+            <td class="t-right t-fy" data-val="q3total">—</td>
+          </tr>
+          <tr>
+            <td><span class="pill pill-proj">Q4</span></td>
+            <td class="t-right">2,069</td><td class="t-right">399</td>
+            <td class="t-right" data-val="q4dig">—</td>
+            <td class="t-right" data-val="q4field">—</td>
+            <td class="t-right" data-val="q4clients">—</td>
+            <td class="t-right t-rev" data-val="q4digrev">—</td>
+            <td class="t-right t-rev" data-val="q4fieldrev">—</td>
+            <td class="t-right t-fy" data-val="q4total">—</td>
+          </tr>
+          <tr class="total-row">
+            <td>FY 2026</td>
+            <td class="t-right">5,146</td><td class="t-right">1,005</td>
+            <td class="t-right" data-val="fydig">—</td>
+            <td class="t-right" data-val="fyfield">—</td>
+            <td class="t-right" data-val="fyclients">—</td>
+            <td class="t-right" data-val="fydigrev">—</td>
+            <td class="t-right" data-val="fyfieldrev">—</td>
+            <td class="t-right" style="color:#1a9e7c;" data-val="fytotal">—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">12-mo revenue = new clients × $4,508/mo × months remaining · Q1: 11.5 mo · Q2: 10 mo · Q3: 7 mo · Q4: 4 mo · Q2–Q4 leads from VOE excellence tier MC lead goals</p>
+  </div>
+
+  <!-- Center forecast table -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title">Center-Level Revenue <span>Forecast</span> — Q1 Actual + Q2–Q4 VOE <span class="tier-label">Excellence</span> Tier · <span class="period-label">12-Month</span></div>
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="t-table">
+        <thead>
+          <tr>
+            <th>Center</th>
+            <th>Status</th>
+            <th class="t-right">Q1 Actual</th>
+            <th class="t-center">Q1 Clients</th>
+            <th class="t-right">Q2 Forecast</th>
+            <th class="t-center">Q2 Clients</th>
+            <th class="t-right">Q3 Forecast</th>
+            <th class="t-center">Q3 Clients</th>
+            <th class="t-right">Q4 Forecast</th>
+            <th class="t-center">Q4 Clients</th>
+            <th class="t-right">FY Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="grp-hdr"><td colspan="11">Existing Centers — Active Q1</td></tr>
+          <tr><td class="t-name">Bankers Hill</td><td><span class="pill pill-act">Active</span></td><td class="t-right t-rev">$570K</td><td class="t-center">11</td><td class="t-right t-rev" data-val="c_bankers_hill_q2r">—</td><td class="t-center" data-val="c_bankers_hill_q2c">—</td><td class="t-right t-rev" data-val="c_bankers_hill_q3r">—</td><td class="t-center" data-val="c_bankers_hill_q3c">—</td><td class="t-right t-rev" data-val="c_bankers_hill_q4r">—</td><td class="t-center" data-val="c_bankers_hill_q4c">—</td><td class="t-right t-fy" data-val="c_bankers_hill_fy">—</td></tr>
+          <tr><td class="t-name">Ontario</td><td><span class="pill pill-act">Active</span></td><td class="t-right t-rev">$467K</td><td class="t-center">9</td><td class="t-right t-rev" data-val="c_ontario_q2r">—</td><td class="t-center" data-val="c_ontario_q2c">—</td><td class="t-right t-rev" data-val="c_ontario_q3r">—</td><td class="t-center" data-val="c_ontario_q3c">—</td><td class="t-right t-rev" data-val="c_ontario_q4r">—</td><td class="t-center" data-val="c_ontario_q4c">—</td><td class="t-right t-fy" data-val="c_ontario_fy">—</td></tr>
+          <tr><td class="t-name">Riverside</td><td><span class="pill pill-act">Active</span></td><td class="t-right t-rev">$363K</td><td class="t-center">7</td><td class="t-right t-rev" data-val="c_riverside_q2r">—</td><td class="t-center" data-val="c_riverside_q2c">—</td><td class="t-right t-rev" data-val="c_riverside_q3r">—</td><td class="t-center" data-val="c_riverside_q3c">—</td><td class="t-right t-rev" data-val="c_riverside_q4r">—</td><td class="t-center" data-val="c_riverside_q4c">—</td><td class="t-right t-fy" data-val="c_riverside_fy">—</td></tr>
+          <tr><td class="t-name">Wilshire</td><td><span class="pill pill-act">Active</span></td><td class="t-right t-rev">$52K</td><td class="t-center">1</td><td class="t-right t-rev" data-val="c_wilshire_q2r">—</td><td class="t-center" data-val="c_wilshire_q2c">—</td><td class="t-right t-rev" data-val="c_wilshire_q3r">—</td><td class="t-center" data-val="c_wilshire_q3c">—</td><td class="t-right t-rev" data-val="c_wilshire_q4r">—</td><td class="t-center" data-val="c_wilshire_q4c">—</td><td class="t-right t-fy" data-val="c_wilshire_fy">—</td></tr>
+          <tr><td class="t-name">Anaheim</td><td><span class="pill pill-act">Active</span></td><td class="t-right t-muted">—</td><td class="t-center t-muted">0</td><td class="t-right t-rev" data-val="c_anaheim_q2r">—</td><td class="t-center" data-val="c_anaheim_q2c">—</td><td class="t-right t-rev" data-val="c_anaheim_q3r">—</td><td class="t-center" data-val="c_anaheim_q3c">—</td><td class="t-right t-rev" data-val="c_anaheim_q4r">—</td><td class="t-center" data-val="c_anaheim_q4c">—</td><td class="t-right t-fy" data-val="c_anaheim_fy">—</td></tr>
+          <tr><td class="t-name">Torrance</td><td><span class="pill pill-act">Active</span></td><td class="t-right t-muted">—</td><td class="t-center t-muted">0</td><td class="t-right t-rev" data-val="c_torrance_q2r">—</td><td class="t-center" data-val="c_torrance_q2c">—</td><td class="t-right t-rev" data-val="c_torrance_q3r">—</td><td class="t-center" data-val="c_torrance_q3c">—</td><td class="t-right t-rev" data-val="c_torrance_q4r">—</td><td class="t-center" data-val="c_torrance_q4c">—</td><td class="t-right t-fy" data-val="c_torrance_fy">—</td></tr>
+          <tr><td class="t-name">Elk Grove</td><td><span class="pill pill-act">Active</span></td><td class="t-right t-rev">$104K</td><td class="t-center">2</td><td class="t-right t-rev" data-val="c_elk_grove_q2r">—</td><td class="t-center" data-val="c_elk_grove_q2c">—</td><td class="t-right t-rev" data-val="c_elk_grove_q3r">—</td><td class="t-center" data-val="c_elk_grove_q3c">—</td><td class="t-right t-rev" data-val="c_elk_grove_q4r">—</td><td class="t-center" data-val="c_elk_grove_q4c">—</td><td class="t-right t-fy" data-val="c_elk_grove_fy">—</td></tr>
+          <tr><td class="t-name">Van Nuys</td><td><span class="pill pill-act">Active</span></td><td class="t-right t-muted">—</td><td class="t-center t-muted">0</td><td class="t-right t-rev" data-val="c_van_nuys_q2r">—</td><td class="t-center" data-val="c_van_nuys_q2c">—</td><td class="t-right t-rev" data-val="c_van_nuys_q3r">—</td><td class="t-center" data-val="c_van_nuys_q3c">—</td><td class="t-right t-rev" data-val="c_van_nuys_q4r">—</td><td class="t-center" data-val="c_van_nuys_q4c">—</td><td class="t-right t-fy" data-val="c_van_nuys_fy">—</td></tr>
+          <tr><td class="t-name">Roseville</td><td><span class="pill pill-act">Active</span></td><td class="t-right t-muted">—</td><td class="t-center t-muted">0</td><td class="t-right t-rev" data-val="c_roseville_q2r">—</td><td class="t-center" data-val="c_roseville_q2c">—</td><td class="t-right t-rev" data-val="c_roseville_q3r">—</td><td class="t-center" data-val="c_roseville_q3c">—</td><td class="t-right t-rev" data-val="c_roseville_q4r">—</td><td class="t-center" data-val="c_roseville_q4c">—</td><td class="t-right t-fy" data-val="c_roseville_fy">—</td></tr>
+          <tr class="grp-hdr"><td colspan="11">New Centers — Opening Q2–Q4</td></tr>
+          <tr><td class="t-name">Long Beach</td><td><span class="pill pill-new">Aug 2026</span></td><td class="t-right t-muted">—</td><td class="t-center t-muted">—</td><td class="t-right t-muted">—</td><td class="t-center t-muted">—</td><td class="t-right t-rev" data-val="c_long_beach_q3r">—</td><td class="t-center" data-val="c_long_beach_q3c">—</td><td class="t-right t-rev" data-val="c_long_beach_q4r">—</td><td class="t-center" data-val="c_long_beach_q4c">—</td><td class="t-right t-fy" data-val="c_long_beach_fy">—</td></tr>
+          <tr><td class="t-name">Chula Vista</td><td><span class="pill pill-new">Oct 2026</span></td><td class="t-right t-muted">—</td><td class="t-center t-muted">—</td><td class="t-right t-muted">—</td><td class="t-center t-muted">—</td><td class="t-right t-muted">—</td><td class="t-center t-muted">—</td><td class="t-right t-rev" data-val="c_chula_vista_q4r">—</td><td class="t-center" data-val="c_chula_vista_q4c">—</td><td class="t-right t-fy" data-val="c_chula_vista_fy">—</td></tr>
+          <tr><td class="t-name">San Bernardino</td><td><span class="pill pill-new">Jun 2026</span></td><td class="t-right t-muted">—</td><td class="t-center t-muted">—</td><td class="t-right t-rev" data-val="c_san_bernardino_q2r">—</td><td class="t-center" data-val="c_san_bernardino_q2c">—</td><td class="t-right t-rev" data-val="c_san_bernardino_q3r">—</td><td class="t-center" data-val="c_san_bernardino_q3c">—</td><td class="t-right t-rev" data-val="c_san_bernardino_q4r">—</td><td class="t-center" data-val="c_san_bernardino_q4c">—</td><td class="t-right t-fy" data-val="c_san_bernardino_fy">—</td></tr>
+          <tr><td class="t-name">West Covina</td><td><span class="pill pill-new">Jul 2026</span></td><td class="t-right t-muted">—</td><td class="t-center t-muted">—</td><td class="t-right t-muted">—</td><td class="t-center t-muted">—</td><td class="t-right t-rev" data-val="c_west_covina_q3r">—</td><td class="t-center" data-val="c_west_covina_q3c">—</td><td class="t-right t-rev" data-val="c_west_covina_q4r">—</td><td class="t-center" data-val="c_west_covina_q4c">—</td><td class="t-right t-fy" data-val="c_west_covina_fy">—</td></tr>
+          <tr><td class="t-name">Signal Hill</td><td><span class="pill pill-new">Sep 2026</span></td><td class="t-right t-muted">—</td><td class="t-center t-muted">—</td><td class="t-right t-muted">—</td><td class="t-center t-muted">—</td><td class="t-right t-muted">—</td><td class="t-center t-muted">—</td><td class="t-right t-muted">TBD</td><td class="t-center t-muted">—</td><td class="t-right t-muted">TBD</td></tr>
+          <tr><td class="t-name">Whittier</td><td><span class="pill pill-new">Aug–Sep 2026</span></td><td class="t-right t-muted">—</td><td class="t-center t-muted">—</td><td class="t-right t-muted">—</td><td class="t-center t-muted">—</td><td class="t-right t-muted">—</td><td class="t-center t-muted">—</td><td class="t-right t-muted">TBD</td><td class="t-center t-muted">—</td><td class="t-right t-muted">TBD</td></tr>
+          <tr><td class="t-name">Escondido</td><td><span class="pill pill-new">Sep 2026</span></td><td class="t-right t-muted">—</td><td class="t-center t-muted">—</td><td class="t-right t-muted">—</td><td class="t-center t-muted">—</td><td class="t-right t-rev" data-val="c_escondido_q3r">—</td><td class="t-center" data-val="c_escondido_q3c">—</td><td class="t-right t-rev" data-val="c_escondido_q4r">—</td><td class="t-center" data-val="c_escondido_q4c">—</td><td class="t-right t-fy" data-val="c_escondido_fy">—</td></tr>
+          <tr><td class="t-name">Downey</td><td><span class="pill pill-new">Aug 2026</span></td><td class="t-right t-muted">—</td><td class="t-center t-muted">—</td><td class="t-right t-muted">—</td><td class="t-center t-muted">—</td><td class="t-right t-rev" data-val="c_downey_q3r">—</td><td class="t-center" data-val="c_downey_q3c">—</td><td class="t-right t-rev" data-val="c_downey_q4r">—</td><td class="t-center" data-val="c_downey_q4c">—</td><td class="t-right t-fy" data-val="c_downey_fy">—</td></tr>
+          <tr><td class="t-name">Modesto/Merced</td><td><span class="pill pill-new">Nov 2026</span></td><td class="t-right t-muted">—</td><td class="t-center t-muted">—</td><td class="t-right t-muted">—</td><td class="t-center t-muted">—</td><td class="t-right t-muted">—</td><td class="t-center t-muted">—</td><td class="t-right t-rev" data-val="c_modesto_merced_q4r">—</td><td class="t-center" data-val="c_modesto_merced_q4c">—</td><td class="t-right t-fy" data-val="c_modesto_merced_fy">—</td></tr>
+          <tr><td class="t-name">Murrieta</td><td><span class="pill pill-new">Nov 2026</span></td><td class="t-right t-muted">—</td><td class="t-center t-muted">—</td><td class="t-right t-muted">—</td><td class="t-center t-muted">—</td><td class="t-right t-muted">—</td><td class="t-center t-muted">—</td><td class="t-right t-rev" data-val="c_murrieta_q4r">—</td><td class="t-center" data-val="c_murrieta_q4c">—</td><td class="t-right t-fy" data-val="c_murrieta_fy">—</td></tr>
+          <tr><td class="t-name">Phoenix</td><td><span class="pill pill-new">Oct 2026</span></td><td class="t-right t-muted">—</td><td class="t-center t-muted">—</td><td class="t-right t-muted">—</td><td class="t-center t-muted">—</td><td class="t-right t-muted">—</td><td class="t-center t-muted">—</td><td class="t-right t-rev" data-val="c_phoenix_q4r">—</td><td class="t-center" data-val="c_phoenix_q4c">—</td><td class="t-right t-fy" data-val="c_phoenix_fy">—</td></tr>
+          <tr><td class="t-name">Mesa</td><td><span class="pill pill-new">Oct 2026</span></td><td class="t-right t-muted">—</td><td class="t-center t-muted">—</td><td class="t-right t-muted">—</td><td class="t-center t-muted">—</td><td class="t-right t-muted">—</td><td class="t-center t-muted">—</td><td class="t-right t-rev" data-val="c_mesa_q4r">—</td><td class="t-center" data-val="c_mesa_q4c">—</td><td class="t-right t-fy" data-val="c_mesa_fy">—</td></tr>
+          <tr><td class="t-name">Chandler</td><td><span class="pill pill-new">Dec 2026</span></td><td class="t-right t-muted">—</td><td class="t-center t-muted">—</td><td class="t-right t-muted">—</td><td class="t-center t-muted">—</td><td class="t-right t-muted">—</td><td class="t-center t-muted">—</td><td class="t-right t-rev" data-val="c_chandler_q4r">—</td><td class="t-center" data-val="c_chandler_q4c">—</td><td class="t-right t-fy" data-val="c_chandler_fy">—</td></tr>
+          <tr class="total-row"><td style="font-size:0.72rem;">Total — All Centers</td><td></td><td class="t-right">$1.56M</td><td class="t-center">30</td><td class="t-right" data-val="cfy_q2r">—</td><td class="t-center" data-val="cfy_q2c">—</td><td class="t-right" data-val="cfy_q3r">—</td><td class="t-center" data-val="cfy_q3c">—</td><td class="t-right" data-val="cfy_q4r">—</td><td class="t-center" data-val="cfy_q4c">—</td><td class="t-right" style="color:#1a9e7c;" data-val="cfy_total">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="warn-box">Revenue = new clients × $4,508/mo × months remaining (Q1: 11.5 mo · Q2: 10 mo · Q3: 7 mo · Q4: 4 mo) · All 30 Q1 clients assigned — 7 without clinic tag attributed by territory + outreach coordinator · Q2–Q4 from VOE excellence tier (1.4× budget) · Payor rate = mean of 85 contracts ($68.00/hr)</div>
+  </div>
+
+  <!-- Center stacked chart -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title">Center FY Revenue <span>Forecast</span> — Stacked by Quarter</div>
+    </div>
+    <div class="legend-row">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--green);"></div>Q1 Actual</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--navy);"></div>Q2 Projected</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--purple);"></div>Q3 Projected</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--yellow);"></div>Q4 Projected</div>
+    </div>
+    <div class="chart-wrap" style="height:460px;">
+      <canvas id="centerChart" role="img" aria-label="Stacked horizontal bar chart of FY revenue by center"></canvas>
+    </div>
+  </div>
+
+  <div class="footer">intercare therapy · Revenue Pipeline Dashboard · VOE <span class="tier-label">Excellence</span> Tier 2026 · Digital Outreach + Field Marketing</div>
+</main>
+
+<script>
+const fmtK = v => v === 0 ? '$0' : v >= 1000000 ? '$' + (v/1000000).toFixed(2) + 'M' : '$' + (v/1000).toFixed(0) + 'K';
+const gc = 'rgba(41,26,107,0.06)';
+const tc = '#7a7099';
+
+new Chart(document.getElementById('revChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Q1 Actual', 'Q2 Projected', 'Q3 Projected', 'Q4 Projected'],
+    datasets: [
+      { label: 'Digital (3%)', data: [674006, 856596, 1104558, 829546], backgroundColor: '#26CCA0', borderRadius: 4, borderSkipped: false },
+      { label: 'Field (40%)',  data: [1244318, 2614872, 3597703, 2326334], backgroundColor: '#291A6B', borderRadius: 4, borderSkipped: false }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + fmtK(ctx.raw) } }
+    },
+    scales: {
+      x: { grid: { display: false }, ticks: { color: tc, font: { size: 11, weight: '700' } } },
+      y: { grid: { color: gc }, ticks: { color: tc, font: { size: 10 }, callback: v => fmtK(v) }, border: { display: false } }
+    }
+  }
+});
+
+// ── Clinic data (all tiers × periods) ───────────────────────────────────────
+const CLINIC_DATA = {
+  '12mo': {
+    'baseline': [
+      {n:'Bankers Hill',q1c:11,q1r:570313,q2c:6,q2r:270504,q3c:12,q3r:378706,q4c:9,q4r:162302,fy:1381825},
+      {n:'Ontario',q1c:9,q1r:466619,q2c:6,q2r:270504,q3c:13,q3r:410264,q4c:14,q4r:252470,fy:1399857},
+      {n:'Riverside',q1c:7,q1r:362926,q2c:8,q2r:360672,q3c:13,q3r:410264,q4c:10,q4r:180336,fy:1314198},
+      {n:'Wilshire',q1c:1,q1r:51847,q2c:7,q2r:315588,q3c:13,q3r:410264,q4c:10,q4r:180336,fy:958035},
+      {n:'Anaheim',q1c:0,q1r:0,q2c:8,q2r:360672,q3c:15,q3r:473382,q4c:7,q4r:126235,fy:960289},
+      {n:'Torrance',q1c:0,q1r:0,q2c:8,q2r:360672,q3c:12,q3r:378706,q4c:10,q4r:180336,fy:919714},
+      {n:'Elk Grove',q1c:2,q1r:103693,q2c:6,q2r:270504,q3c:12,q3r:378706,q4c:10,q4r:180336,fy:933239},
+      {n:'Van Nuys',q1c:0,q1r:0,q2c:7,q2r:315588,q3c:11,q3r:347147,q4c:9,q4r:162302,fy:825037},
+      {n:'Roseville',q1c:0,q1r:0,q2c:5,q2r:225420,q3c:11,q3r:347147,q4c:14,q4r:252470,fy:825037},
+      {n:'Long Beach',q1c:0,q1r:0,q2c:0,q2r:0,q3c:8,q3r:252470,q4c:7,q4r:126235,fy:378705},
+      {n:'Chula Vista',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:10,q4r:180336,fy:180336},
+      {n:'San Bernardino',q1c:0,q1r:0,q2c:16,q2r:721344,q3c:9,q3r:284029,q4c:7,q4r:126235,fy:1131608},
+      {n:'West Covina',q1c:0,q1r:0,q2c:0,q2r:0,q3c:23,q3r:725852,q4c:6,q4r:108202,fy:834054},
+      {n:'Signal Hill',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:0,q4r:0,fy:0},
+      {n:'Whittier',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:0,q4r:0,fy:0},
+      {n:'Escondido',q1c:0,q1r:0,q2c:0,q2r:0,q3c:17,q3r:536500,q4c:10,q4r:180336,fy:716836},
+      {n:'Downey',q1c:0,q1r:0,q2c:0,q2r:0,q3c:19,q3r:599617,q4c:4,q4r:72134,fy:671751},
+      {n:'Modesto/Merced',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:22,q4r:396739,fy:396739},
+      {n:'Murrieta',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:21,q4r:378706,fy:378706},
+      {n:'Phoenix',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:19,q4r:342638,fy:342638},
+      {n:'Mesa',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:19,q4r:342638,fy:342638},
+      {n:'Chandler',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:12,q4r:216403,fy:216403},
+    ],
+    'excellence': [
+      {n:'Bankers Hill',q1c:11,q1r:570313,q2c:8,q2r:360672,q3c:16,q3r:504941,q4c:12,q4r:216403,fy:1652329},
+      {n:'Ontario',q1c:9,q1r:466619,q2c:8,q2r:360672,q3c:18,q3r:568058,q4c:19,q4r:342638,fy:1737987},
+      {n:'Riverside',q1c:7,q1r:362926,q2c:11,q2r:495924,q3c:17,q3r:536500,q4c:14,q4r:252470,fy:1647820},
+      {n:'Wilshire',q1c:1,q1r:51847,q2c:10,q2r:450840,q3c:17,q3r:536500,q4c:13,q4r:234437,fy:1273624},
+      {n:'Anaheim',q1c:0,q1r:0,q2c:11,q2r:495924,q3c:20,q3r:631176,q4c:10,q4r:180336,fy:1307436},
+      {n:'Torrance',q1c:0,q1r:0,q2c:11,q2r:495924,q3c:16,q3r:504941,q4c:14,q4r:252470,fy:1253335},
+      {n:'Elk Grove',q1c:2,q1r:103693,q2c:8,q2r:360672,q3c:16,q3r:504941,q4c:13,q4r:234437,fy:1203743},
+      {n:'Van Nuys',q1c:0,q1r:0,q2c:9,q2r:405756,q3c:15,q3r:473382,q4c:12,q4r:216403,fy:1095541},
+      {n:'Roseville',q1c:0,q1r:0,q2c:7,q2r:315588,q3c:15,q3r:473382,q4c:19,q4r:342638,fy:1131608},
+      {n:'Long Beach',q1c:0,q1r:0,q2c:0,q2r:0,q3c:11,q3r:347147,q4c:9,q4r:162302,fy:509449},
+      {n:'Chula Vista',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:14,q4r:252470,fy:252470},
+      {n:'San Bernardino',q1c:0,q1r:0,q2c:21,q2r:946764,q3c:12,q3r:378706,q4c:9,q4r:162302,fy:1487772},
+      {n:'West Covina',q1c:0,q1r:0,q2c:0,q2r:0,q3c:31,q3r:978323,q4c:8,q4r:144269,fy:1122592},
+      {n:'Signal Hill',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:0,q4r:0,fy:0},
+      {n:'Whittier',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:0,q4r:0,fy:0},
+      {n:'Escondido',q1c:0,q1r:0,q2c:0,q2r:0,q3c:23,q3r:725852,q4c:14,q4r:252470,fy:978322},
+      {n:'Downey',q1c:0,q1r:0,q2c:0,q2r:0,q3c:26,q3r:820529,q4c:5,q4r:90168,fy:910697},
+      {n:'Modesto/Merced',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:30,q4r:541008,fy:541008},
+      {n:'Murrieta',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:28,q4r:504941,fy:504941},
+      {n:'Phoenix',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:25,q4r:450840,fy:450840},
+      {n:'Mesa',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:25,q4r:450840,fy:450840},
+      {n:'Chandler',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:16,q4r:288538,fy:288538},
+    ],
+    'stretch': [
+      {n:'Bankers Hill',q1c:11,q1r:570313,q2c:10,q2r:450840,q3c:20,q3r:631176,q4c:15,q4r:270504,fy:1922833},
+      {n:'Ontario',q1c:9,q1r:466619,q2c:10,q2r:450840,q3c:23,q3r:725852,q4c:24,q4r:432806,fy:2076117},
+      {n:'Riverside',q1c:7,q1r:362926,q2c:14,q2r:631176,q3c:21,q3r:662735,q4c:18,q4r:324605,fy:1981442},
+      {n:'Wilshire',q1c:1,q1r:51847,q2c:13,q2r:586092,q3c:21,q3r:662735,q4c:16,q4r:288538,fy:1589212},
+      {n:'Anaheim',q1c:0,q1r:0,q2c:14,q2r:631176,q3c:25,q3r:788970,q4c:13,q4r:234437,fy:1654583},
+      {n:'Torrance',q1c:0,q1r:0,q2c:14,q2r:631176,q3c:20,q3r:631176,q4c:18,q4r:324605,fy:1586957},
+      {n:'Elk Grove',q1c:2,q1r:103693,q2c:10,q2r:450840,q3c:20,q3r:631176,q4c:16,q4r:288538,fy:1474247},
+      {n:'Van Nuys',q1c:0,q1r:0,q2c:11,q2r:495924,q3c:19,q3r:599617,q4c:15,q4r:270504,fy:1366045},
+      {n:'Roseville',q1c:0,q1r:0,q2c:9,q2r:405756,q3c:19,q3r:599617,q4c:24,q4r:432806,fy:1438179},
+      {n:'Long Beach',q1c:0,q1r:0,q2c:0,q2r:0,q3c:14,q3r:441823,q4c:11,q4r:198370,fy:640193},
+      {n:'Chula Vista',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:18,q4r:324605,fy:324605},
+      {n:'San Bernardino',q1c:0,q1r:0,q2c:26,q2r:1172184,q3c:15,q3r:473382,q4c:11,q4r:198370,fy:1843936},
+      {n:'West Covina',q1c:0,q1r:0,q2c:0,q2r:0,q3c:39,q3r:1230793,q4c:10,q4r:180336,fy:1411129},
+      {n:'Signal Hill',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:0,q4r:0,fy:0},
+      {n:'Whittier',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:0,q4r:0,fy:0},
+      {n:'Escondido',q1c:0,q1r:0,q2c:0,q2r:0,q3c:29,q3r:915205,q4c:18,q4r:324605,fy:1239810},
+      {n:'Downey',q1c:0,q1r:0,q2c:0,q2r:0,q3c:33,q3r:1041440,q4c:6,q4r:108202,fy:1149642},
+      {n:'Modesto/Merced',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:38,q4r:685277,fy:685277},
+      {n:'Murrieta',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:35,q4r:631176,fy:631176},
+      {n:'Phoenix',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:32,q4r:577075,fy:577075},
+      {n:'Mesa',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:32,q4r:577075,fy:577075},
+      {n:'Chandler',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:20,q4r:360672,fy:360672},
+    ],
+  },
+  'ltv': {
+    'baseline': [
+      {n:'Bankers Hill',q1c:11,q1r:570313,q2c:6,q2r:811512,q3c:12,q3r:1623024,q4c:9,q4r:1217268,fy:4222117},
+      {n:'Ontario',q1c:9,q1r:466619,q2c:6,q2r:811512,q3c:13,q3r:1758276,q4c:14,q4r:1893528,fy:4929935},
+      {n:'Riverside',q1c:7,q1r:362926,q2c:8,q2r:1082016,q3c:13,q3r:1758276,q4c:10,q4r:1352520,fy:4555738},
+      {n:'Wilshire',q1c:1,q1r:51847,q2c:7,q2r:946764,q3c:13,q3r:1758276,q4c:10,q4r:1352520,fy:4109407},
+      {n:'Anaheim',q1c:0,q1r:0,q2c:8,q2r:1082016,q3c:15,q3r:2028780,q4c:7,q4r:946764,fy:4057560},
+      {n:'Torrance',q1c:0,q1r:0,q2c:8,q2r:1082016,q3c:12,q3r:1623024,q4c:10,q4r:1352520,fy:4057560},
+      {n:'Elk Grove',q1c:2,q1r:103693,q2c:6,q2r:811512,q3c:12,q3r:1623024,q4c:10,q4r:1352520,fy:3890749},
+      {n:'Van Nuys',q1c:0,q1r:0,q2c:7,q2r:946764,q3c:11,q3r:1487772,q4c:9,q4r:1217268,fy:3651804},
+      {n:'Roseville',q1c:0,q1r:0,q2c:5,q2r:676260,q3c:11,q3r:1487772,q4c:14,q4r:1893528,fy:4057560},
+      {n:'Long Beach',q1c:0,q1r:0,q2c:0,q2r:0,q3c:8,q3r:1082016,q4c:7,q4r:946764,fy:2028780},
+      {n:'Chula Vista',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:10,q4r:1352520,fy:1352520},
+      {n:'San Bernardino',q1c:0,q1r:0,q2c:16,q2r:2164032,q3c:9,q3r:1217268,q4c:7,q4r:946764,fy:4328064},
+      {n:'West Covina',q1c:0,q1r:0,q2c:0,q2r:0,q3c:23,q3r:3110796,q4c:6,q4r:811512,fy:3922308},
+      {n:'Signal Hill',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:0,q4r:0,fy:0},
+      {n:'Whittier',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:0,q4r:0,fy:0},
+      {n:'Escondido',q1c:0,q1r:0,q2c:0,q2r:0,q3c:17,q3r:2299284,q4c:10,q4r:1352520,fy:3651804},
+      {n:'Downey',q1c:0,q1r:0,q2c:0,q2r:0,q3c:19,q3r:2569788,q4c:4,q4r:541008,fy:3110796},
+      {n:'Modesto/Merced',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:22,q4r:2975544,fy:2975544},
+      {n:'Murrieta',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:21,q4r:2840292,fy:2840292},
+      {n:'Phoenix',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:19,q4r:2569788,fy:2569788},
+      {n:'Mesa',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:19,q4r:2569788,fy:2569788},
+      {n:'Chandler',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:12,q4r:1623024,fy:1623024},
+    ],
+    'excellence': [
+      {n:'Bankers Hill',q1c:11,q1r:570313,q2c:8,q2r:1082016,q3c:16,q3r:2164032,q4c:12,q4r:1623024,fy:5439385},
+      {n:'Ontario',q1c:9,q1r:466619,q2c:8,q2r:1082016,q3c:18,q3r:2434536,q4c:19,q4r:2569788,fy:6552959},
+      {n:'Riverside',q1c:7,q1r:362926,q2c:11,q2r:1487772,q3c:17,q3r:2299284,q4c:14,q4r:1893528,fy:6043510},
+      {n:'Wilshire',q1c:1,q1r:51847,q2c:10,q2r:1352520,q3c:17,q3r:2299284,q4c:13,q4r:1758276,fy:5461927},
+      {n:'Anaheim',q1c:0,q1r:0,q2c:11,q2r:1487772,q3c:20,q3r:2705040,q4c:10,q4r:1352520,fy:5545332},
+      {n:'Torrance',q1c:0,q1r:0,q2c:11,q2r:1487772,q3c:16,q3r:2164032,q4c:14,q4r:1893528,fy:5545332},
+      {n:'Elk Grove',q1c:2,q1r:103693,q2c:8,q2r:1082016,q3c:16,q3r:2164032,q4c:13,q4r:1758276,fy:5108017},
+      {n:'Van Nuys',q1c:0,q1r:0,q2c:9,q2r:1217268,q3c:15,q3r:2028780,q4c:12,q4r:1623024,fy:4869072},
+      {n:'Roseville',q1c:0,q1r:0,q2c:7,q2r:946764,q3c:15,q3r:2028780,q4c:19,q4r:2569788,fy:5545332},
+      {n:'Long Beach',q1c:0,q1r:0,q2c:0,q2r:0,q3c:11,q3r:1487772,q4c:9,q4r:1217268,fy:2705040},
+      {n:'Chula Vista',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:14,q4r:1893528,fy:1893528},
+      {n:'San Bernardino',q1c:0,q1r:0,q2c:21,q2r:2840292,q3c:12,q3r:1623024,q4c:9,q4r:1217268,fy:5680584},
+      {n:'West Covina',q1c:0,q1r:0,q2c:0,q2r:0,q3c:31,q3r:4192812,q4c:8,q4r:1082016,fy:5274828},
+      {n:'Signal Hill',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:0,q4r:0,fy:0},
+      {n:'Whittier',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:0,q4r:0,fy:0},
+      {n:'Escondido',q1c:0,q1r:0,q2c:0,q2r:0,q3c:23,q3r:3110796,q4c:14,q4r:1893528,fy:5004324},
+      {n:'Downey',q1c:0,q1r:0,q2c:0,q2r:0,q3c:26,q3r:3516552,q4c:5,q4r:676260,fy:4192812},
+      {n:'Modesto/Merced',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:30,q4r:4057560,fy:4057560},
+      {n:'Murrieta',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:28,q4r:3787056,fy:3787056},
+      {n:'Phoenix',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:25,q4r:3381300,fy:3381300},
+      {n:'Mesa',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:25,q4r:3381300,fy:3381300},
+      {n:'Chandler',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:16,q4r:2164032,fy:2164032},
+    ],
+    'stretch': [
+      {n:'Bankers Hill',q1c:11,q1r:570313,q2c:10,q2r:1352520,q3c:20,q3r:2705040,q4c:15,q4r:2028780,fy:6656653},
+      {n:'Ontario',q1c:9,q1r:466619,q2c:10,q2r:1352520,q3c:23,q3r:3110796,q4c:24,q4r:3246048,fy:8175983},
+      {n:'Riverside',q1c:7,q1r:362926,q2c:14,q2r:1893528,q3c:21,q3r:2840292,q4c:18,q4r:2434536,fy:7531282},
+      {n:'Wilshire',q1c:1,q1r:51847,q2c:13,q2r:1758276,q3c:21,q3r:2840292,q4c:16,q4r:2164032,fy:6814447},
+      {n:'Anaheim',q1c:0,q1r:0,q2c:14,q2r:1893528,q3c:25,q3r:3381300,q4c:13,q4r:1758276,fy:7033104},
+      {n:'Torrance',q1c:0,q1r:0,q2c:14,q2r:1893528,q3c:20,q3r:2705040,q4c:18,q4r:2434536,fy:7033104},
+      {n:'Elk Grove',q1c:2,q1r:103693,q2c:10,q2r:1352520,q3c:20,q3r:2705040,q4c:16,q4r:2164032,fy:6325285},
+      {n:'Van Nuys',q1c:0,q1r:0,q2c:11,q2r:1487772,q3c:19,q3r:2569788,q4c:15,q4r:2028780,fy:6086340},
+      {n:'Roseville',q1c:0,q1r:0,q2c:9,q2r:1217268,q3c:19,q3r:2569788,q4c:24,q4r:3246048,fy:7033104},
+      {n:'Long Beach',q1c:0,q1r:0,q2c:0,q2r:0,q3c:14,q3r:1893528,q4c:11,q4r:1487772,fy:3381300},
+      {n:'Chula Vista',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:18,q4r:2434536,fy:2434536},
+      {n:'San Bernardino',q1c:0,q1r:0,q2c:26,q2r:3516552,q3c:15,q3r:2028780,q4c:11,q4r:1487772,fy:7033104},
+      {n:'West Covina',q1c:0,q1r:0,q2c:0,q2r:0,q3c:39,q3r:5274828,q4c:10,q4r:1352520,fy:6627348},
+      {n:'Signal Hill',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:0,q4r:0,fy:0},
+      {n:'Whittier',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:0,q4r:0,fy:0},
+      {n:'Escondido',q1c:0,q1r:0,q2c:0,q2r:0,q3c:29,q3r:3922308,q4c:18,q4r:2434536,fy:6356844},
+      {n:'Downey',q1c:0,q1r:0,q2c:0,q2r:0,q3c:33,q3r:4463316,q4c:6,q4r:811512,fy:5274828},
+      {n:'Modesto/Merced',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:38,q4r:5139576,fy:5139576},
+      {n:'Murrieta',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:35,q4r:4733820,fy:4733820},
+      {n:'Phoenix',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:32,q4r:4328064,fy:4328064},
+      {n:'Mesa',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:32,q4r:4328064,fy:4328064},
+      {n:'Chandler',q1c:0,q1r:0,q2c:0,q2r:0,q3c:0,q3r:0,q4c:20,q4r:2705040,fy:2705040},
+    ],
+  },
+}
+
+// ── Slugify clinic name to match data-val keys ───────────────────────────────
+function slugify(n) {
+  return 'c_' + n.toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'');
+}
+
+// ── Center chart instance ─────────────────────────────────────────────────────
+let centerChart = null;
+
+// ── Update center table + chart ──────────────────────────────────────────────
+function updateCenters(clinics) {
+  let tq2r=0, tq2c=0, tq3r=0, tq3c=0, tq4r=0, tq4c=0, tfy=0;
+  clinics.forEach(c => {
+    const slug = slugify(c.n);
+    const set = (k,v) => { const el=document.querySelector('[data-val="'+slug+'_'+k+'"]'); if(el) el.textContent=v; };
+    set('q2r', c.q2r ? fmt(c.q2r) : '—');
+    set('q2c', c.q2c || '—');
+    set('q3r', c.q3r ? fmt(c.q3r) : '—');
+    set('q3c', c.q3c || '—');
+    set('q4r', c.q4r ? fmt(c.q4r) : '—');
+    set('q4c', c.q4c || '—');
+    set('fy',  c.fy  ? fmt(c.fy)  : '—');
+    tq2r+=c.q2r; tq2c+=c.q2c; tq3r+=c.q3r; tq3c+=c.q3c; tq4r+=c.q4r; tq4c+=c.q4c; tfy+=c.fy;
+  });
+  // Total row
+  const sv = (k,v) => { const el=document.querySelector('[data-val="'+k+'"]'); if(el) el.textContent=v; };
+  sv('cfy_q2r', fmt(tq2r)); sv('cfy_q2c', tq2c);
+  sv('cfy_q3r', fmt(tq3r)); sv('cfy_q3c', tq3c);
+  sv('cfy_q4r', fmt(tq4r)); sv('cfy_q4c', tq4c);
+  sv('cfy_total', fmt(tq2r+tq3r+tq4r+1555398)); // +Q1 actual
+
+  // Update chart
+  if (centerChart) {
+    const sorted = [...clinics].sort((a,b)=>(b.q1r+b.q2r+b.q3r+b.q4r)-(a.q1r+a.q2r+a.q3r+a.q4r));
+    centerChart.data.labels = sorted.map(c=>c.n);
+    centerChart.data.datasets[0].data = sorted.map(c=>c.q1r);
+    centerChart.data.datasets[1].data = sorted.map(c=>c.q2r);
+    centerChart.data.datasets[2].data = sorted.map(c=>c.q3r);
+    centerChart.data.datasets[3].data = sorted.map(c=>c.q4r);
+    centerChart.update();
+  }
+}
+
+// ── Extend main render to include centers ─────────────────────────────────────
+const _origRender = render;
+function render() {
+  _origRender();
+  const clinics = CLINIC_DATA[currentPeriod][currentTier];
+  updateCenters(clinics);
+}
+
+// ── Init center chart ─────────────────────────────────────────────────────────
+const fmtKc = v => v===0?'$0':v>=1000000?'$'+(v/1000000).toFixed(2)+'M':'$'+(v/1000).toFixed(0)+'K';
+
+const initClinics = CLINIC_DATA['12mo']['excellence'];
+const sortedInit = [...initClinics].sort((a,b)=>(b.q1r+b.q2r+b.q3r+b.q4r)-(a.q1r+a.q2r+a.q3r+a.q4r));
+
+centerChart = new Chart(document.getElementById('centerChart'), {
+  type: 'bar',
+  data: {
+    labels: sortedInit.map(c => c.n),
+    datasets: [
+      { label: 'Q1 Actual',    data: sortedInit.map(c=>c.q1r), backgroundColor: '#26CCA0', borderRadius: 0, borderSkipped: false },
+      { label: 'Q2 Projected', data: sortedInit.map(c=>c.q2r), backgroundColor: '#291A6B', borderRadius: 0, borderSkipped: false },
+      { label: 'Q3 Projected', data: sortedInit.map(c=>c.q3r), backgroundColor: '#8270DE', borderRadius: 0, borderSkipped: false },
+      { label: 'Q4 Projected', data: sortedInit.map(c=>c.q4r), backgroundColor: '#FFD333', borderRadius: [0,4,4,0], borderSkipped: false },
+    ]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + fmtKc(ctx.raw) } }
+    },
+    scales: {
+      x: { grid: { color: gc }, ticks: { color: tc, font: { size: 10 }, callback: v => fmtKc(v) }, border: { display: false }, stacked: true },
+      y: { grid: { display: false }, ticks: { color: tc, font: { size: 11, weight: '700' } }, stacked: true }
+    }
+  }
+});
+
+
+
+// ── Toggle data model ─────────────────────────────────────────────────────────
+const DATA = {
+  '12mo': {
+    baseline:   {
+      q1:  {dig:9,  field:19, digrev:466619,  fieldrev:985085,  total:1451704},
+      q2:  {dig:13, field:44, digrev:586092,  fieldrev:1983696, total:2569788},
+      q3:  {dig:23, field:87, digrev:725852,  fieldrev:2745616, total:3471468},
+      q4:  {dig:31, field:99, digrev:559042,  fieldrev:1785326, total:2344368},
+    },
+    excellence: {
+      q1:  {dig:13, field:24, digrev:674006,  fieldrev:1244318, total:1918324},
+      q2:  {dig:19, field:58, digrev:856596,  fieldrev:2614872, total:3471468},
+      q3:  {dig:35, field:114,digrev:1104558, fieldrev:3597703, total:4702261},
+      q4:  {dig:46, field:129,digrev:829546,  fieldrev:2326334, total:3155880},
+    },
+    stretch:    {
+      q1:  {dig:18, field:30, digrev:933239,  fieldrev:1555398, total:2488637},
+      q2:  {dig:26, field:71, digrev:1172184, fieldrev:3200964, total:4373148},
+      q3:  {dig:47, field:140,digrev:1483264, fieldrev:4418232, total:5901496},
+      q4:  {dig:62, field:159,digrev:1118083, fieldrev:2867342, total:3985425},
+    },
+  },
+  ltv: {
+    baseline:   {
+      q1:  {dig:9,  field:19, digrev:1217268, fieldrev:2569788, total:3787056},
+      q2:  {dig:13, field:44, digrev:1758276, fieldrev:5951088, total:7709364},
+      q3:  {dig:23, field:87, digrev:3110796, fieldrev:11766924,total:14877720},
+      q4:  {dig:31, field:99, digrev:4192812, fieldrev:13389948,total:17582760},
+    },
+    excellence: {
+      q1:  {dig:13, field:24, digrev:1758276, fieldrev:3246048, total:5004324},
+      q2:  {dig:19, field:58, digrev:2569788, fieldrev:7844616, total:10414404},
+      q3:  {dig:35, field:114,digrev:4733820, fieldrev:15418728,total:20152548},
+      q4:  {dig:46, field:129,digrev:6221592, fieldrev:17447508,total:23669100},
+    },
+    stretch:    {
+      q1:  {dig:18, field:30, digrev:2434536, fieldrev:4057560, total:6492096},
+      q2:  {dig:26, field:71, digrev:3516552, fieldrev:9602892, total:13119444},
+      q3:  {dig:47, field:140,digrev:6356844, fieldrev:18935280,total:25292124},
+      q4:  {dig:62, field:159,digrev:8385624, fieldrev:21505068,total:29890692},
+    },
+  }
+};
+
+let currentPeriod = 'ltv';
+let currentTier   = 'excellence';
+let revChart      = null;
+
+function fmt(n) {
+  if (n >= 1e6)  return '$' + (n/1e6).toFixed(2) + 'M';
+  if (n >= 1000) return '$' + (n/1000).toFixed(0) + 'K';
+  return '$' + Math.round(n);
+}
+function fmtClients(n) { return n.toLocaleString(); }
+
+function render() {
+  const d  = DATA[currentPeriod][currentTier];
+  const qs = ['q1','q2','q3','q4'];
+  let fdig=0, ffield=0, fdigrev=0, ffieldrev=0, ftotal=0;
+  qs.forEach(q => {
+    fdig     += d[q].dig;
+    ffield   += d[q].field;
+    fdigrev  += d[q].digrev;
+    ffieldrev+= d[q].fieldrev;
+    ftotal   += d[q].total;
+  });
+
+  const vals = {
+    q1dig: fmtClients(d.q1.dig), q1field: fmtClients(d.q1.field),
+    q1clients: fmtClients(d.q1.dig + d.q1.field),
+    q1digrev: fmt(d.q1.digrev), q1fieldrev: fmt(d.q1.fieldrev), q1total: fmt(d.q1.total),
+    q2dig: fmtClients(d.q2.dig), q2field: fmtClients(d.q2.field),
+    q2clients: fmtClients(d.q2.dig + d.q2.field),
+    q2digrev: fmt(d.q2.digrev), q2fieldrev: fmt(d.q2.fieldrev), q2total: fmt(d.q2.total),
+    q3dig: fmtClients(d.q3.dig), q3field: fmtClients(d.q3.field),
+    q3clients: fmtClients(d.q3.dig + d.q3.field),
+    q3digrev: fmt(d.q3.digrev), q3fieldrev: fmt(d.q3.fieldrev), q3total: fmt(d.q3.total),
+    q4dig: fmtClients(d.q4.dig), q4field: fmtClients(d.q4.field),
+    q4clients: fmtClients(d.q4.dig + d.q4.field),
+    q4digrev: fmt(d.q4.digrev), q4fieldrev: fmt(d.q4.fieldrev), q4total: fmt(d.q4.total),
+    fydig: fmtClients(fdig), fyfield: fmtClients(ffield), fyclients: fmtClients(fdig+ffield),
+    fydigrev: fmt(fdigrev), fyfieldrev: fmt(ffieldrev), fytotal: fmt(ftotal),
+  };
+
+  document.querySelectorAll('[data-val]').forEach(el => {
+    const k = el.getAttribute('data-val');
+    if (vals[k] !== undefined) el.textContent = vals[k];
+  });
+
+  // Active label + all dynamic tier/period labels
+  const periodName = currentPeriod === '12mo' ? '12-Month' : 'LTV (2.5 yrs)';
+  const tierName   = {baseline:'Baseline', excellence:'Excellence', stretch:'Stretch'}[currentTier];
+  const lbl = document.getElementById('activeLabel');
+  if (lbl) lbl.textContent = tierName + ' · ' + periodName;
+  // Topbar
+  const tb = document.getElementById('topbarTier');
+  if (tb) tb.textContent = tierName;
+  // Page subtitle
+  const ps = document.getElementById('pageSub');
+  if (ps) ps.textContent = 'Q1 Actual · Q2–Q4 VOE ' + tierName + ' Tier Projections · ' + periodName + ' Cohort Revenue';
+  // All .tier-label spans
+  document.querySelectorAll('.tier-label').forEach(el => el.textContent = tierName);
+  // All .period-label spans
+  document.querySelectorAll('.period-label').forEach(el => el.textContent = periodName);
+
+  // Assumptions bar
+  const digRates   = {baseline:'1.5%',  excellence:'2.25%', stretch:'3%'};
+  const fieldRates = {baseline:'25%',   excellence:'32.5%', stretch:'40%'};
+  document.querySelectorAll('.assume-dig-rate').forEach(e => e.textContent = digRates[currentTier]);
+  document.querySelectorAll('.assume-field-rate').forEach(e => e.textContent = fieldRates[currentTier]);
+  document.querySelectorAll('.assume-period').forEach(e => e.textContent = periodName);
+
+  // Revenue chart
+  if (revChart) {
+    revChart.data.datasets[0].data = [d.q1.digrev,   d.q2.digrev,   d.q3.digrev,   d.q4.digrev];
+    revChart.data.datasets[1].data = [d.q1.fieldrev, d.q2.fieldrev, d.q3.fieldrev, d.q4.fieldrev];
+    revChart.update();
+  }
+
+  // Centers
+  const clinics = CLINIC_DATA[currentPeriod][currentTier];
+  updateCenters(clinics);
+}
+
+function setMode(type, val) {
+  if (type === 'period') {
+    currentPeriod = val;
+    document.querySelectorAll('#periodToggle .toggle-btn').forEach((b,i) => {
+      b.classList.toggle('active', (i===0 && val==='12mo') || (i===1 && val==='ltv'));
+    });
+  } else {
+    currentTier = val;
+    document.querySelectorAll('#tierToggle .toggle-btn').forEach((b,i) => {
+      b.classList.remove('active');
+      if ((i===0&&val==='baseline')||(i===1&&val==='excellence')||(i===2&&val==='stretch'))
+        b.classList.add('active');
+    });
+  }
+  render();
+}
+
+window.addEventListener('load', () => {
+  revChart = Chart.getChart(document.getElementById('revChart'));
+  render();
+});
+
+</script>
