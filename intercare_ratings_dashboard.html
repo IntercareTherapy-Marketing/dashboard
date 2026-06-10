@@ -97,6 +97,7 @@
   .score.low { color: var(--danger); }
   .score.high { color: #1a9e7c; }
   .no-rating { display: inline-block; font-size: 0.52rem; font-weight: 700; color: var(--muted); background: var(--cream); border-radius: 20px; padding: 0.15rem 0.5rem; }
+  .change-new { display: inline-block; font-size: 0.52rem; font-weight: 700; color: #1a9e7c; background: var(--green-light); border-radius: 20px; padding: 0.15rem 0.55rem; border: 1px solid rgba(38,204,160,0.25); }
 
   /* Action cards — styled like the screenshot card */
   .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
@@ -129,6 +130,15 @@
 
   footer { text-align: center; padding: 2rem 0 1rem; font-size: 0.55rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; }
   footer span { color: var(--green); }
+
+  .trend-btn {
+    font-size: 0.52rem; font-weight: 700; padding: 0.2rem 0.65rem;
+    border-radius: 20px; border: 1.5px solid var(--border);
+    background: #fff; color: var(--muted); cursor: pointer;
+    text-transform: uppercase; letter-spacing: 0.06em; transition: all 0.15s;
+  }
+  .trend-btn.active { background: var(--navy); color: #fff; border-color: var(--navy); }
+  .trend-btn:hover:not(.active) { border-color: var(--navy); color: var(--navy); }
 </style>
 </head>
 <body>
@@ -186,6 +196,7 @@
           <th>Location</th>
           <th>Google rating</th>
           <th>Yelp rating</th>
+          <th>Recent changes</th>
         </tr>
       </thead>
       <tbody>
@@ -193,49 +204,72 @@
           <td><div class="t-name">Los Angeles</div></td>
           <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div><span class="score low">2.6</span></div></td>
           <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div><span class="score low">2.2</span></div></td>
+          <td><span class="no-rating">—</span></td>
         </tr>
         <tr>
           <td><div class="t-name">Riverside</div></td>
           <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div><span class="score low">2.6</span></div></td>
           <td><span class="no-rating">No rating</span></td>
+          <td><span class="no-rating">—</span></td>
         </tr>
         <tr>
           <td><div class="t-name">Elk Grove</div></td>
           <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div></div><span class="score high">5.0</span></div></td>
           <td><span class="no-rating">No rating</span></td>
+          <td><span class="no-rating">—</span></td>
         </tr>
         <tr>
           <td><div class="t-name">Anaheim</div></td>
           <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div></div><span class="score high">5.0</span></div></td>
           <td><span class="no-rating">No rating</span></td>
+          <td><span class="no-rating">—</span></td>
         </tr>
         <tr>
           <td><div class="t-name">Torrance</div></td>
           <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div></div><span class="score high">5.0</span></div></td>
           <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div><span class="score low">1.0</span></div></td>
+          <td><span class="no-rating">—</span></td>
         </tr>
         <tr>
           <td><div class="t-name">Van Nuys</div></td>
           <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div></div><span class="score high">5.0</span></div></td>
           <td><span class="no-rating">No rating</span></td>
+          <td><span class="no-rating">—</span></td>
         </tr>
         <tr>
           <td><div class="t-name">San Diego</div></td>
           <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div></div><span class="score high">5.0</span></div></td>
-          <td><span class="no-rating">No rating</span></td>
+          <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div></div><span class="score high">5.0</span></div></td>
+          <td><span class="change-new">⭐ New 5-star Yelp review · Jun 8</span></td>
         </tr>
         <tr>
           <td><div class="t-name">Roseville</div></td>
           <td><span class="no-rating">No rating</span></td>
           <td><span class="no-rating">No rating</span></td>
+          <td><span class="no-rating">—</span></td>
         </tr>
         <tr>
           <td><div class="t-name">Ontario</div></td>
           <td><span class="no-rating">No rating</span></td>
           <td><span class="no-rating">No rating</span></td>
+          <td><span class="no-rating">—</span></td>
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <div class="card" id="trend-card">
+    <div class="card-head">
+      <div class="card-title">Rating <span>Trends</span></div>
+      <div style="display:flex;gap:0.4rem;align-items:center;">
+        <button class="trend-btn active" onclick="setView('google')">Google</button>
+        <button class="trend-btn" onclick="setView('yelp')">Yelp</button>
+      </div>
+    </div>
+    <div style="position:relative;height:260px;">
+      <canvas id="trendChart"></canvas>
+    </div>
+    <div style="font-size:0.5rem;color:var(--muted);margin-top:0.6rem;text-align:right;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">Q1 = baseline &nbsp;&middot;&nbsp; Q2 = current &nbsp;&middot;&nbsp; Locations without data in both periods are hidden</div>
   </div>
 
   <div class="card">
@@ -301,5 +335,111 @@
   <span>Intercare Therapy</span> &nbsp;·&nbsp; COS Review Initiative &nbsp;·&nbsp; Confidential Internal Use
 </footer>
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const locations = ['Los Angeles','Riverside','Elk Grove','Anaheim','Torrance','Van Nuys','San Diego','Roseville','Ontario'];
+
+const data = {
+  google: {
+    q1: [2.3, 2.2, 5.0, 4.0, null, 4.0, null, null, null],
+    q2: [2.6, 2.6, 5.0, 5.0, 5.0,  5.0, 5.0,  null, null]
+  },
+  yelp: {
+    q1: [2.2, null, null, null, 1.0, null, null, null, null],
+    q2: [2.2, null, null, null, 1.0, null, 5.0,  null, null]
+  }
+};
+
+const COLORS = [
+  '#291A6B','#26CCA0','#8270DE','#FFD333','#e05252',
+  '#2a8aab','#f97316','#c48a00','#a855f7'
+];
+
+function buildDatasets(platform) {
+  const q1 = data[platform].q1;
+  const q2 = data[platform].q2;
+  return locations
+    .map((loc, i) => {
+      if (q1[i] === null && q2[i] === null) return null;
+      return {
+        label: loc,
+        data: [q1[i], q2[i]],
+        borderColor: COLORS[i],
+        backgroundColor: COLORS[i] + '22',
+        borderWidth: 2.5,
+        pointRadius: 5,
+        pointHoverRadius: 7,
+        pointBackgroundColor: COLORS[i],
+        tension: 0.3,
+        spanGaps: false
+      };
+    })
+    .filter(Boolean);
+}
+
+let chart;
+function initChart(platform) {
+  const ctx = document.getElementById('trendChart').getContext('2d');
+  if (chart) chart.destroy();
+  chart = new Chart(ctx, {
+    type: 'line',
+    data: { labels: ['Q1 2026', 'Q2 2026'], datasets: buildDatasets(platform) },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: {
+            font: { size: 10, weight: '700', family: '-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif' },
+            color: '#291A6B',
+            boxWidth: 10, boxHeight: 10, borderRadius: 3,
+            padding: 14, usePointStyle: true, pointStyle: 'circle'
+          }
+        },
+        tooltip: {
+          backgroundColor: '#fff',
+          borderColor: '#e8e4f0',
+          borderWidth: 1,
+          titleColor: '#291A6B',
+          bodyColor: '#7a7099',
+          titleFont: { weight: '800', size: 11 },
+          bodyFont: { size: 11 },
+          padding: 10,
+          callbacks: {
+            label: ctx => {
+              const v = ctx.raw;
+              return v === null ? ` ${ctx.dataset.label}: No data` : ` ${ctx.dataset.label}: ${v.toFixed(1)} ★`;
+            }
+          }
+        }
+      },
+      scales: {
+        y: {
+          min: 0, max: 5,
+          ticks: { stepSize: 1, color: '#7a7099', font: { size: 10, weight: '600' } },
+          grid: { color: 'rgba(122,112,153,0.1)' },
+          border: { display: false }
+        },
+        x: {
+          ticks: { color: '#7a7099', font: { size: 10, weight: '700' } },
+          grid: { display: false },
+          border: { display: false }
+        }
+      }
+    }
+  });
+}
+
+function setView(platform) {
+  document.querySelectorAll('.trend-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  initChart(platform);
+}
+
+initChart('google');
+</script>
 </body>
 </html>
