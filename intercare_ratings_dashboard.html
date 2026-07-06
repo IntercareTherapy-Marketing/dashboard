@@ -65,7 +65,7 @@
   .page-title { font-size: 1.6rem; font-weight: 800; color: var(--navy); letter-spacing: -0.02em; }
   .page-sub { font-size: 0.6rem; color: var(--muted); margin-top: 0.25rem; text-transform: uppercase; letter-spacing: 0.1em; }
 
-  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 1.5rem 0; }
+  .kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; }
   .kpi { border-radius: 16px; padding: 1.4rem 1.25rem; position: relative; overflow: hidden; }
   .kpi::after {
     content: ''; position: absolute; bottom: -18px; right: -18px;
@@ -154,13 +154,13 @@
     <div class="logo-text">Intercare<span>.</span></div>
   </div>
   <div class="topbar-right">
-    <div class="topbar-meta">All Locations · June 2026</div>
+    <div class="topbar-meta">All Locations · July 2026</div>
   </div>
 </div>
 
 <div class="main">
   <div class="page-title">Review Ratings Dashboard</div>
-  <div class="page-sub">All locations · Google &amp; Yelp · June 2026</div>
+  <div class="page-sub">All locations · Google &amp; Yelp · July 2026</div>
 
   <div class="kpi-row">
     <div class="kpi" style="background:var(--navy);">
@@ -173,12 +173,7 @@
       <div class="kpi-val">5</div>
       <div class="kpi-sub">EG · ANA · TOR · VN · SD</div>
     </div>
-    <div class="kpi" style="background:var(--danger);">
-      <div class="kpi-label">Low ratings (&lt;3.0)</div>
-      <div class="kpi-val">2</div>
-      <div class="kpi-sub">LA · Riverside</div>
-    </div>
-    <div class="kpi" style="background:var(--amber);">
+<div class="kpi" style="background:var(--amber);">
       <div class="kpi-label">No ratings yet</div>
       <div class="kpi-val">2</div>
       <div class="kpi-sub">RSV · ONT</div>
@@ -221,26 +216,26 @@
         <tr>
           <td><div class="t-name">Anaheim</div></td>
           <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div></div><span class="score high">5.0</span></div></td>
-          <td><span class="no-rating">No rating</span></td>
-          <td><span class="no-rating">—</span></td>
+          <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div></div><span class="score high">5.0</span></div></td>
+          <td><span class="change-new">⭐ Google: Nicole, Cynthia, Rafaela, Francisco, Marvin, Elif, Hannah, Olivia, Marini · Jun 15–23 &nbsp;·&nbsp; Yelp: Nicole 5★ Jun 16 · Marini 5★ Jun 17 · Raf 5★ Jun 18</span></td>
         </tr>
         <tr>
           <td><div class="t-name">Torrance</div></td>
           <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div></div><span class="score high">5.0</span></div></td>
-          <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div><span class="score low">1.0</span></div></td>
-          <td><span class="no-rating">—</span></td>
+          <td><span class="no-rating">No rating</span></td>
+          <td><span class="change-new">🗑 Yelp 1-star removed · Jun 12 &nbsp;·&nbsp; Google: Tom Jun 17 · N D Jun 18 · Lindsey Jun 24 · all 5★</span></td>
         </tr>
         <tr>
           <td><div class="t-name">Van Nuys</div></td>
           <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div></div><span class="score high">5.0</span></div></td>
-          <td><span class="no-rating">No rating</span></td>
-          <td><span class="no-rating">—</span></td>
+          <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div><span class="score low">—</span></div></td>
+          <td><span class="change-new">⭐ Google: L. Sanchez, Araceli, Inna Jun 22 · Stephanie, Jacqueline, Vartuhi Jul 1–2 · Mic Jul 3 · Cristian Jul 4 · all 5★ &nbsp;·&nbsp; Yelp: Ara G. 5★ Jun 22 · ⚠️ mimi negative review Jul 2</span></td>
         </tr>
         <tr>
           <td><div class="t-name">San Diego</div></td>
           <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div></div><span class="score high">5.0</span></div></td>
           <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div></div><span class="score high">5.0</span></div></td>
-          <td><span class="change-new">⭐ New 5-star Yelp review · Jun 8</span></td>
+          <td><span class="change-new">⭐ Google: Edith Jun 5 · Renita Jun 17 · Claudia Jun 18 · all 5★ &nbsp;·&nbsp; Yelp: Nicole R 5★ Jun 8</span></td>
         </tr>
         <tr>
           <td><div class="t-name">Roseville</div></td>
@@ -250,9 +245,9 @@
         </tr>
         <tr>
           <td><div class="t-name">Ontario</div></td>
-          <td><span class="no-rating">No rating</span></td>
-          <td><span class="no-rating">No rating</span></td>
-          <td><span class="no-rating">—</span></td>
+          <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div></div><span class="score high">5.0</span></div></td>
+          <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div></div><span class="score high">5.0</span></div></td>
+          <td><span class="change-new">⭐ Google: Leticia Jun 12 · Lanieta, Ruvicell, Stephanie, Yolontzin Jun 15–22 · all 5★ &nbsp;·&nbsp; Yelp: Kimberly 5★ Jun 12 · Michelle 5★ Jun 15 · Rae 5★ Jun 17</span></td>
         </tr>
       </tbody>
     </table>
@@ -284,8 +279,6 @@
         <div class="action-desc">
           COS team to place QR code flyer at front desk at all locations. Promote chance to win a branded Owala water bottle in exchange for leaving a review.
           <ul>
-            <li>Priority deploy: <strong>Los Angeles</strong>, <strong>Riverside</strong>, <strong>Torrance (Yelp)</strong> — lowest rated</li>
-            <li>Also deploy at <strong>Roseville</strong>, <strong>Ontario</strong> — build from zero</li>
             <li>Track entries by location to measure lift per site</li>
           </ul>
         </div>
@@ -297,10 +290,7 @@
         <div class="action-desc">
           Only 2 of 9 locations have any Yelp rating. Yelp drives significant local discovery for healthcare providers.
           <ul>
-            <li>Add Yelp QR code alongside Google on all front desk flyers</li>
-            <li>Claim and fully complete all 9 Yelp business profiles if not already done</li>
             <li>For <strong>Torrance</strong> (1.0): respond to existing review, flag for monitoring — a few new reviews can shift the score significantly</li>
-            <li>Coach COS staff to verbally mention Yelp as an option when asking for reviews</li>
           </ul>
         </div>
       </div>
@@ -343,11 +333,11 @@ const locations = ['Los Angeles','Riverside','Elk Grove','Anaheim','Torrance','V
 const data = {
   google: {
     q1: [2.3, 2.2, 5.0, 4.0, null, 4.0, null, null, null],
-    q2: [2.6, 2.6, 5.0, 5.0, 5.0,  5.0, 5.0,  null, null]
+    q2: [2.6, 2.6, 5.0, 5.0, 5.0,  5.0, 5.0,  null, 5.0]
   },
   yelp: {
     q1: [2.2, null, null, null, 1.0, null, null, null, null],
-    q2: [2.2, null, null, null, 1.0, null, 5.0,  null, null]
+    q2: [2.2, null, null, 5.0, null, null, 5.0,  null, 5.0]
   }
 };
 
