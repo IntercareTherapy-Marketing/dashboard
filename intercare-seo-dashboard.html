@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Intercare Therapy — SEO &amp; AEO Impact Dashboard</title>
+<style>
+  :root {
+    --navy: #291a6b;
+    --navy-deep: #1a1147;
+    --teal: #26cca0;
+    --teal-deep: #1faa86;
+    --cream: #fcf9f7;
+    --cream-2: #f7f3ec;
+    --ink: #1a1330;
+    --mute: #6b6685;
+    --hair: #e6e2da;
+    --faint-navy: #f3f0fa;
+    --faint-teal: #e4f7f0;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: Inter, system-ui, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  h1, h2, h3 {
+    font-family: Georgia, "Lora", serif;
+    font-weight: 700;
+    color: var(--navy);
+    margin: 0;
+  }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 64px 48px; }
+  header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+    padding: 56px 48px;
+  }
+  header .wrap { padding: 0; }
+  .eyebrow {
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin: 0 0 12px;
+  }
+  header h1 { color: #fff; font-size: 40px; letter-spacing: -0.5px; line-height: 1.15; }
+  header p.lede { color: var(--light-navy, #c9c2eb); font-size: 17px; margin: 14px 0 0; max-width: 620px; }
+  section { margin: 56px 0; }
+  h2 { font-size: 28px; letter-spacing: -0.3px; margin-bottom: 24px; }
+  h3 { font-size: 18px; margin-bottom: 8px; }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .kpi-card {
+    background: #fff;
+    border: 1px solid var(--hair);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 4px 18px rgba(41,26,107,0.06);
+  }
+  .kpi-label {
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+    color: var(--mute);
+    margin: 0 0 8px;
+  }
+  .kpi-value {
+    font-family: Georgia, "Lora", serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--navy);
+    margin: 0;
+  }
+  .kpi-delta {
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--teal-deep);
+    margin: 8px 0 0;
+  }
+
+  .chart-card {
+    background: #fff;
+    border: 1px solid var(--hair);
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 4px 18px rgba(41,26,107,0.06);
+    margin-bottom: 24px;
+  }
+  .chart-wrap { position: relative; width: 100%; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border: 1px solid var(--hair);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  th, td {
+    text-align: left;
+    padding: 12px 16px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--hair);
+  }
+  th {
+    background: var(--faint-navy);
+    color: var(--navy);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 11px;
+  }
+  td.gain { color: var(--teal-deep); font-weight: 700; }
+  tr:last-child td { border-bottom: none; }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .work-card {
+    background: #fff;
+    border: 1px solid var(--hair);
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 4px 18px rgba(41,26,107,0.06);
+  }
+  .work-card .badge {
+    display: inline-block;
+    background: var(--teal);
+    color: #fff;
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+  .work-card ul { margin: 0; padding-left: 20px; }
+  .work-card li { font-size: 14.5px; color: var(--ink); margin-bottom: 10px; line-height: 1.5; }
+
+  .callout {
+    background: var(--faint-navy);
+    border-radius: 14px;
+    padding: 22px 26px;
+    border-left: 4px solid var(--teal);
+    font-size: 15px;
+    color: var(--ink);
+  }
+  .callout strong { color: var(--navy); }
+
+  footer {
+    border-top: 1px solid var(--hair);
+    padding-top: 24px;
+    font-size: 13px;
+    color: var(--mute);
+  }
+
+  @media (max-width: 860px) {
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .work-grid { grid-template-columns: 1fr; }
+    .wrap { padding: 40px 24px; }
+    header { padding: 40px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <p class="eyebrow">Intercare Therapy — Marketing Report</p>
+    <h1>SEO &amp; AEO impact dashboard</h1>
+    <p class="lede">A snapshot of the technical SEO, content, and local-search work completed since May 2026 — and the measurable search visibility it's producing.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section>
+    <h2>Headline KPIs</h2>
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <p class="kpi-label">SEO health score</p>
+        <p class="kpi-value">45 &rarr; 64</p>
+        <p class="kpi-delta">+42% since May audit</p>
+      </div>
+      <div class="kpi-card">
+        <p class="kpi-label">Search impressions</p>
+        <p class="kpi-value">17,581</p>
+        <p class="kpi-delta">+33% vs. prior 20 days</p>
+      </div>
+      <div class="kpi-card">
+        <p class="kpi-label">Avg. search position</p>
+        <p class="kpi-value">28.1</p>
+        <p class="kpi-delta">+4.2 spots better</p>
+      </div>
+      <div class="kpi-card">
+        <p class="kpi-label">Queries ranking</p>
+        <p class="kpi-value">2,145</p>
+        <p class="kpi-delta">+11% distinct queries</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Health score by audit</h2>
+    <div class="chart-card">
+      <div class="chart-wrap" style="height:220px;">
+        <canvas id="healthChart" role="img" aria-label="Line chart of SEO health score across three audits: May 21 at 45, June 19 at 53, July 13 at 64">Health score: May 21 = 45, June 19 = 53, July 13 = 64.</canvas>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Keyword ranking gains</h2>
+    <p style="color: var(--mute); margin-top: -12px; margin-bottom: 20px;">Search Console positions, June 11&ndash;30 vs. July 1&ndash;20, 2026.</p>
+    <div class="chart-card">
+      <div class="chart-wrap" style="height:340px;">
+        <canvas id="keywordChart" role="img" aria-label="Horizontal bar chart of search ranking positions gained per keyword, largest gain 30 positions for how much does aba therapy cost, smallest gain 6 positions for aba vs speech therapy">Positions gained: how much does ABA therapy cost +30, how much does ABA therapy cost with insurance +27, ABA therapy cost with insurance +24, autism spectrum disorders treatment Torrance +23, ABA therapy for toddlers +20, best ABA therapy near me +17, what to do after autism diagnosis +16, ABA vs speech therapy +6.</canvas>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>Keyword</th><th>Before</th><th>Now</th><th>Gain</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>How much does ABA therapy cost</td><td>80.5</td><td>50.2</td><td class="gain">+30</td></tr>
+        <tr><td>How much does ABA therapy cost with insurance</td><td>65.0</td><td>37.9</td><td class="gain">+27</td></tr>
+        <tr><td>ABA therapy cost with insurance</td><td>64.3</td><td>40.3</td><td class="gain">+24</td></tr>
+        <tr><td>Autism spectrum disorder treatment, Torrance</td><td>45.0</td><td>22.5</td><td class="gain">+23</td></tr>
+        <tr><td>ABA therapy for toddlers <span style="color:var(--mute); font-weight:400;">(impressions 68&rarr;658, 9.7x)</span></td><td>34.6</td><td>14.5</td><td class="gain">+20</td></tr>
+        <tr><td>Best ABA therapy near me</td><td>48.2</td><td>31.6</td><td class="gain">+17</td></tr>
+        <tr><td>What to do after an autism diagnosis</td><td>35.0</td><td>18.7</td><td class="gain">+16</td></tr>
+        <tr><td>ABA vs. speech therapy <span style="color:var(--mute); font-weight:400;">(now page 1)</span></td><td>16.0</td><td>9.6</td><td class="gain">+6</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size: 13.5px; color: var(--mute); margin-top: 14px;">New rankings that didn't exist before this window: "types of autism therapy," "how to get ABA therapy," "early signs of autism in toddlers" (position 2), "diagnostic tools for autism spectrum disorder" (position 2).</p>
+  </section>
+
+  <section>
+    <h2>AEO &amp; AI citability</h2>
+    <div class="kpi-grid" style="margin-bottom: 24px;">
+      <div class="kpi-card">
+        <p class="kpi-label">Articles with FAQ schema</p>
+        <p class="kpi-value">32</p>
+        <p class="kpi-delta">Structured for AI answer extraction</p>
+      </div>
+      <div class="kpi-card">
+        <p class="kpi-label">llms.txt</p>
+        <p class="kpi-value">Live</p>
+        <p class="kpi-delta">AI crawler access confirmed</p>
+      </div>
+      <div class="kpi-card">
+        <p class="kpi-label">IndexNow submissions</p>
+        <p class="kpi-value">88 URLs</p>
+        <p class="kpi-delta">Instant-push indexing active</p>
+      </div>
+      <div class="kpi-card">
+        <p class="kpi-label">AI visibility check</p>
+        <p class="kpi-value">1 of 8</p>
+        <p class="kpi-delta">Queries with a confirmed citation</p>
+      </div>
+    </div>
+    <div class="callout">
+      <strong>Real citation win:</strong> for "What age can ABA therapy start for toddlers?" Intercare ranks #2 of 10 organic results with a direct link to the toddlers article &mdash; the kind of result AI Overviews and answer engines typically pull from. This is the one confirmed win out of 8 target queries checked on 2026-07-17; the other 7 (including two local queries where a directory-listing issue was found) did not yet surface Intercare.
+    </div>
+    <h3 style="margin-top: 28px;">Target queries checked</h3>
+    <table>
+      <thead>
+        <tr><th>Query</th><th>Type</th><th>Result</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>How much does ABA therapy cost with insurance?</td><td>Informational</td><td>Not yet surfaced</td></tr>
+        <tr><td>How do I get ABA therapy for my child?</td><td>Informational</td><td>Not yet surfaced</td></tr>
+        <tr><td>What age can ABA therapy start for toddlers?</td><td>Informational</td><td class="gain">#2, cited</td></tr>
+        <tr><td>What are the different types of therapy for autism?</td><td>Informational</td><td>Not yet surfaced</td></tr>
+        <tr><td>Is ABA therapy controversial?</td><td>Informational</td><td>Not yet surfaced</td></tr>
+        <tr><td>Best ABA therapy provider in Los Angeles</td><td>Branded / local</td><td>Not yet surfaced</td></tr>
+        <tr><td>ABA therapy providers in Torrance, California <span style="color:var(--mute); font-weight:400;">(location rotates monthly, 1 of 9 centers)</span></td><td>Branded / local</td><td>Not yet surfaced</td></tr>
+        <tr><td>Intercare Therapy reviews</td><td>Branded / local</td><td>Found, wrong content type</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size: 13.5px; color: var(--mute); margin-top: 14px;">Checked via Google web search as a proxy for AI Overview sourcing on 2026-07-17. ChatGPT, Perplexity, Gemini, and Copilot have not yet been checked directly for these same 8 queries. Query 7 rotates through all 9 California centers (Torrance, Van Nuys, San Diego, Ontario, Anaheim, Riverside, Roseville, Elk Grove, Los Angeles) one per month, so every center gets checked roughly twice a year without doubling the monthly workload.</p>
+
+    <p style="font-size: 13.5px; color: var(--mute); margin-top: 14px;">Monthly AI-visibility monitoring (ChatGPT, Perplexity, Gemini, Copilot, plus this Google check) launched 2026-07-17 with this as month one's baseline. No multi-month trend exists yet &mdash; next check due 2026-08.</p>
+  </section>
+
+  <section>
+    <h2>Summary of work completed</h2>
+    <div class="work-grid">
+
+      <div class="work-card">
+        <span class="badge">Technical SEO</span>
+        <ul>
+          <li>Fixed sitewide bugs: broken byline logic, empty FAQ schema on 48 of 50 pages, address swaps, broken links</li>
+          <li>Rebuilt sitemap (92&rarr;79 URLs), submitted to Bing (88 URLs crawled)</li>
+          <li>Set up IndexNow instant-push indexing</li>
+          <li>Found and fixed a GA4 tracking outage and a GTM double-counting risk</li>
+          <li>Connected real GSC + GA4 API reporting</li>
+          <li>Set up 5 GA4 Key Events on real conversion pages &mdash; 510 conversions/28 days</li>
+          <li>Closed the full GA4 best-practices checklist</li>
+          <li>Sitewide JSON-LD schema: 9 MedicalClinic nodes, Person/BCBA credentials, Breadcrumbs, Wikidata entity</li>
+          <li>Core Web Vitals confirmed fast (LCP 1.06s, INP 87ms, CLS 0)</li>
+        </ul>
+      </div>
+
+      <div class="work-card">
+        <span class="badge">Content</span>
+        <ul>
+          <li>4-pillar, 21-article content cluster (19 live)</li>
+          <li>FAQ schema written and published for 32 articles &mdash; all research-grounded, not fabricated</li>
+          <li>Query fan-out / PAA gap-fill applied to the 4 pillar articles</li>
+          <li>Full internal linking across the cluster (54 links)</li>
+          <li>AI-writing-tell cleanup across the 4 most-affected articles (108 fixes)</li>
+          <li>Freshness dates updated to reflect real edits</li>
+          <li>Fact-check corrections: fabricated stat removed, real citations added</li>
+        </ul>
+      </div>
+
+      <div class="work-card">
+        <span class="badge">Local SEO</span>
+        <ul>
+          <li>Full Google Business Profile rollout for all 9 California centers</li>
+          <li>MedicalClinic schema with geo data live on all 9 city pages</li>
+          <li>Bing Places claimed, Yelp citations confirmed complete</li>
+          <li>Diagnosed the LA / Torrance visibility gap to a specific, fixable cause: a mislabeled directory listing and thin review count</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="callout">
+      <strong>Reading note:</strong> clicks are roughly flat (+1%) even as impressions and rankings climb &mdash; that's expected, since most of these gains are still landing in positions 15&ndash;50, not the top 10 yet where click-through kicks in. Rising impressions and improving position are the leading indicators; clicks follow as more keywords cross into page one.
+    </div>
+  </section>
+
+  <footer>
+    Data as of July 22, 2026. Search Console figures reflect the intercaretherapy.com property (verified June 2026). GA4-based session totals for June 20&ndash;July 8 are excluded from any trend calculation due to a tracking outage during that window (fixed and verified July 8&ndash;10).
+  </footer>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+new Chart(document.getElementById('healthChart'), {
+  type: 'line',
+  data: {
+    labels: ['May 21', 'Jun 19', 'Jul 13'],
+    datasets: [{
+      data: [45, 53, 64],
+      borderColor: '#26cca0',
+      backgroundColor: 'rgba(38,204,160,0.12)',
+      fill: true,
+      tension: 0.3,
+      pointRadius: 6,
+      pointBackgroundColor: '#1faa86',
+      borderWidth: 3
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      y: { min: 0, max: 100, ticks: { stepSize: 25, color: '#6b6685' }, grid: { color: '#e6e2da' } },
+      x: { ticks: { color: '#6b6685' }, grid: { display: false } }
+    }
+  }
+});
+
+new Chart(document.getElementById('keywordChart'), {
+  type: 'bar',
+  data: {
+    labels: [
+      'how much does ABA therapy cost',
+      'how much does ABA cost w/ insurance',
+      'ABA therapy cost with insurance',
+      'autism spectrum treatment, Torrance',
+      'ABA therapy for toddlers',
+      'best ABA therapy near me',
+      'what to do after autism diagnosis',
+      'ABA vs speech therapy'
+    ],
+    datasets: [{
+      label: 'Positions gained',
+      data: [30, 27, 24, 23, 20, 17, 16, 6],
+      backgroundColor: '#291a6b',
+      borderRadius: 4
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { title: { display: true, text: 'positions gained', color: '#6b6685', font: { size: 12 } }, grid: { color: '#e6e2da' }, ticks: { color: '#6b6685' } },
+      y: { grid: { display: false }, ticks: { font: { size: 12 }, color: '#1a1330' } }
+    }
+  }
+});
+</script>
+
+</body>
+</html>
