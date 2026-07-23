@@ -208,9 +208,10 @@
   <!-- Goal Tracker -->
   <div class="card full-w">
     <div class="card-head">
-      <div class="card-title">Annual Goal <span>Tracker</span></div>
+      <div class="card-title">Funnel 1 · Lead <span>→ Accepted</span></div>
       <span class="card-tag" id="goal-tag">—</span>
     </div>
+    <div style="font-size:0.56rem;color:var(--muted);font-weight:700;margin-bottom:0.75rem;margin-top:-0.5rem;">Annual goal: 100 conversions/year</div>
     <div style="display:flex;gap:2rem;align-items:flex-start;">
       <div style="flex-shrink:0;">
         <div style="font-size:3rem;font-weight:800;color:var(--green);line-height:1;" id="goal-big">—</div>
@@ -240,6 +241,88 @@
           <div class="q-box" style="background:var(--cream);border:1px solid var(--border);opacity:0.3;"><div style="font-size:1rem;font-weight:800;color:var(--navy);">Q4</div><div style="font-size:0.5rem;color:var(--muted);text-transform:uppercase;font-weight:700;">Upcoming</div></div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- Funnel 2: Opportunity -> Launched -->
+  <div class="card full-w">
+    <div class="card-head">
+      <div class="card-title">Funnel 2 · Opportunity <span>→ Launched</span></div>
+      <span class="card-tag" style="background:var(--purple-light);color:#5b47c4;">32 launched YTD</span>
+    </div>
+    <div style="font-size:0.56rem;color:var(--muted);font-weight:700;margin-bottom:0.9rem;">Monthly goal: 15 launches/month · Tracks only the 81 leads accepted above, matched to their Opportunity record</div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.75rem;margin-bottom:1rem;">
+      <div style="background:var(--green);border-radius:12px;padding:1rem 1.25rem;text-align:center;">
+        <div style="font-size:0.52rem;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25rem;">Launched</div>
+        <div style="font-size:2.2rem;font-weight:800;color:#fff;line-height:1;">32</div>
+        <div style="font-size:0.52rem;color:rgba(255,255,255,0.75);margin-top:3px;">Closed Won</div>
+      </div>
+      <div style="background:var(--amber);border-radius:12px;padding:1rem 1.25rem;text-align:center;">
+        <div style="font-size:0.52rem;color:rgba(255,255,255,0.85);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25rem;">Active in Pipeline</div>
+        <div style="font-size:2.2rem;font-weight:800;color:#fff;line-height:1;">32</div>
+        <div style="font-size:0.52rem;color:rgba(255,255,255,0.8);margin-top:3px;">Assessment → Launch stages</div>
+      </div>
+      <div style="background:var(--navy);border-radius:12px;padding:1rem 1.25rem;text-align:center;">
+        <div style="font-size:0.52rem;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25rem;">Closed Lost</div>
+        <div style="font-size:2.2rem;font-weight:800;color:#fff;line-height:1;">10</div>
+        <div style="font-size:0.52rem;color:rgba(255,255,255,0.6);margin-top:3px;">Fell through post-accept</div>
+      </div>
+      <div style="background:var(--muted);border-radius:12px;padding:1rem 1.25rem;text-align:center;">
+        <div style="font-size:0.52rem;color:rgba(255,255,255,0.85);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25rem;">No Opportunity Yet</div>
+        <div style="font-size:2.2rem;font-weight:800;color:#fff;line-height:1;">7</div>
+        <div style="font-size:0.52rem;color:rgba(255,255,255,0.8);margin-top:3px;">Accepted, unmatched</div>
+      </div>
+    </div>
+
+    <div class="row-2" style="margin-bottom:0.75rem;">
+      <div>
+        <div class="card-title" style="margin-bottom:0.65rem;">Launch Goal <span>Tracker</span></div>
+        <div style="display:flex;gap:0.5rem;">
+          <div style="flex:1;background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:0.7rem 0.5rem;text-align:center;">
+            <div style="font-size:0.48rem;color:var(--muted);text-transform:uppercase;font-weight:700;">June 2026</div>
+            <div style="font-size:1.5rem;font-weight:800;color:var(--navy);margin-top:2px;">32</div>
+            <div style="font-size:0.46rem;color:#1a9e7c;font-weight:700;">launched · vs. 15 goal</div>
+          </div>
+          <div style="flex:1;background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:0.7rem 0.5rem;text-align:center;">
+            <div style="font-size:0.48rem;color:var(--muted);text-transform:uppercase;font-weight:700;">July (so far)</div>
+            <div style="font-size:1.5rem;font-weight:800;color:var(--navy);margin-top:2px;">0</div>
+            <div style="font-size:0.46rem;color:var(--danger);font-weight:700;">launched · vs. 15 goal</div>
+          </div>
+          <div style="flex:1;background:var(--amber);border-radius:10px;padding:0.7rem 0.5rem;text-align:center;">
+            <div style="font-size:0.48rem;color:rgba(255,255,255,0.85);text-transform:uppercase;font-weight:700;">Near-Launch</div>
+            <div style="font-size:1.5rem;font-weight:800;color:#fff;margin-top:2px;">5</div>
+            <div style="font-size:0.46rem;color:rgba(255,255,255,0.9);font-weight:700;">Launch Coord./Sched.</div>
+          </div>
+        </div>
+        <div style="margin-top:0.5rem;padding:0.5rem 0.65rem;background:var(--cream);border:1px solid var(--border);border-radius:8px;">
+          <div style="font-size:0.5rem;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:var(--navy);margin-bottom:0.35rem;">July's Working Pipeline (14 opportunities opened this month)</div>
+          <div style="font-size:0.55rem;color:var(--navy);line-height:1.6;">
+            <strong>5 near-launch</strong> (opened in June, now at Launch Coordinating ×3 or Launch Scheduled ×2) — most likely to close as launches soonest.<br>
+            <strong>14 opened in July</strong>, all still early-stage: In Assessment ×5, Pending Prior Auth Docs ×4, ADOS Scheduled ×2, Pending Assessment Auth ×2, Assessment Scheduling ×1.
+          </div>
+        </div>
+        <div style="margin-top:0.5rem;padding:0.55rem 0.7rem;background:var(--yellow-light);border:1px solid rgba(255,211,51,0.4);border-radius:8px;font-size:0.55rem;color:#8a6200;font-weight:700;line-height:1.4;">
+          ⚠️ All 32 "Closed Won" records share close dates of 6/13–6/20/2026 — this looks like a bulk/batch close in Salesforce rather than 32 real launches happening that week. Monthly pacing against the 15/month goal won't be reliable until we confirm with Ashley whether Close Date reflects the actual launch date.
+        </div>
+      </div>
+      <div>
+        <div class="card-title" style="margin-bottom:0.65rem;">Opportunity Stage <span>Breakdown</span></div>
+        <div class="dec-row"><div class="dec-name" style="flex:1.4;">Closed Won (Launched)</div><div class="dec-bg"><div class="dec-fill" style="width:100%;background:var(--green);opacity:1;"></div></div><div class="dec-n">32</div></div>
+        <div class="dec-row"><div class="dec-name" style="flex:1.4;">In Assessment</div><div class="dec-bg"><div class="dec-fill" style="width:38%;"></div></div><div class="dec-n">12</div></div>
+        <div class="dec-row"><div class="dec-name" style="flex:1.4;">Closed Lost</div><div class="dec-bg"><div class="dec-fill" style="width:31%;"></div></div><div class="dec-n">10</div></div>
+        <div class="dec-row"><div class="dec-name" style="flex:1.4;">Pending Prior Auth Docs</div><div class="dec-bg"><div class="dec-fill" style="width:13%;"></div></div><div class="dec-n">4</div></div>
+        <div class="dec-row"><div class="dec-name" style="flex:1.4;">ADOS Scheduled</div><div class="dec-bg"><div class="dec-fill" style="width:9%;"></div></div><div class="dec-n">3</div></div>
+        <div class="dec-row"><div class="dec-name" style="flex:1.4;">Launch Coordinating</div><div class="dec-bg"><div class="dec-fill" style="width:9%;"></div></div><div class="dec-n">3</div></div>
+        <div class="dec-row"><div class="dec-name" style="flex:1.4;">Launch Scheduled</div><div class="dec-bg"><div class="dec-fill" style="width:6%;"></div></div><div class="dec-n">2</div></div>
+        <div class="dec-row"><div class="dec-name" style="flex:1.4;">Pending Assessment Auth</div><div class="dec-bg"><div class="dec-fill" style="width:6%;"></div></div><div class="dec-n">2</div></div>
+        <div class="dec-row"><div class="dec-name" style="flex:1.4;">ADOS Scheduling</div><div class="dec-bg"><div class="dec-fill" style="width:6%;"></div></div><div class="dec-n">2</div></div>
+        <div class="dec-row"><div class="dec-name" style="flex:1.4;">Report Review / Assess. Sched. / Pending Tx Auth / On Hold</div><div class="dec-bg"><div class="dec-fill" style="width:3%;"></div></div><div class="dec-n">4</div></div>
+      </div>
+    </div>
+
+    <div style="padding:0.6rem 0.75rem;background:var(--cream);border-radius:8px;font-size:0.58rem;color:var(--navy);line-height:1.5;">
+      <strong>No Opportunity Yet (7):</strong> These leads show Accepted in the lead export but no matching Opportunity record was found in Salesforce as of 7/23 — worth a quick check on whether they stalled before intake setup.
     </div>
   </div>
 
