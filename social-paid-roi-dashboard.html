@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Social Media Paid — ROI Dashboard</title>
+<style>
+  :root{
+    --navy:#291a6b; --navy-deep:#1a1147; --teal:#26cca0; --teal-deep:#1faa86;
+    --cream:#fcf9f7; --ink:#1a1330; --mute:#6b6685; --hair:#e6e2da;
+    --faint-navy:#f3f0fa; --faint-teal:#e4f7f0;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--cream); color:var(--ink);
+    font-family:Inter,system-ui,Arial,sans-serif; line-height:1.5;
+  }
+  h1,h2,h3{ font-family:Georgia,'Lora',serif; color:var(--navy); margin:0; }
+  .wrap{ max-width:1120px; margin:0 auto; padding:48px 24px 80px; }
+  header{ margin-bottom:36px; }
+  header .eyebrow{
+    font-size:11px; font-weight:700; letter-spacing:1.8px; text-transform:uppercase;
+    color:var(--teal-deep); margin-bottom:8px; display:block;
+  }
+  header h1{ font-size:36px; letter-spacing:-0.5px; margin-bottom:8px; }
+  header p{ color:var(--mute); font-size:15px; }
+
+  .grid{ display:grid; gap:20px; }
+  .grid-4{ grid-template-columns:repeat(4,1fr); }
+  .grid-3{ grid-template-columns:repeat(3,1fr); }
+  .grid-2{ grid-template-columns:repeat(2,1fr); }
+  @media(max-width:900px){ .grid-4{grid-template-columns:repeat(2,1fr);} .grid-3{grid-template-columns:1fr;} .grid-2{grid-template-columns:1fr;} }
+
+  .card{
+    background:#fff; border:1px solid var(--hair); border-radius:20px; padding:24px;
+    box-shadow:0 4px 18px rgba(41,26,107,0.06);
+  }
+  .stat-label{ font-size:12px; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; color:var(--mute); margin-bottom:6px; }
+  .stat-value{ font-size:30px; font-weight:700; color:var(--navy); }
+  .stat-sub{ font-size:13px; color:var(--mute); margin-top:4px; }
+  .stat-value.teal{ color:var(--teal-deep); }
+
+  section{ margin-top:48px; }
+  section > h2{ font-size:22px; margin-bottom:6px; }
+  section > .section-sub{ color:var(--mute); font-size:14px; margin-bottom:20px; }
+
+  table{ width:100%; border-collapse:collapse; background:#fff; border-radius:16px; overflow:hidden; border:1px solid var(--hair); }
+  th,td{ text-align:left; padding:12px 16px; font-size:14px; border-bottom:1px solid var(--hair); }
+  th{ background:var(--faint-navy); color:var(--navy); font-weight:700; font-size:12px; text-transform:uppercase; letter-spacing:0.5px; }
+  tr:last-child td{ border-bottom:none; }
+  td.num{ text-align:right; font-variant-numeric:tabular-nums; }
+
+  .badge{ display:inline-block; padding:3px 10px; border-radius:999px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; }
+  .badge-teal{ background:var(--faint-teal); color:var(--teal-deep); }
+  .badge-navy{ background:var(--faint-navy); color:var(--navy); }
+  .badge-mute{ background:#f2f0f5; color:var(--mute); }
+
+  .funnel{ display:flex; flex-direction:column; gap:8px; }
+  .funnel-row{ display:grid; grid-template-columns:180px 1fr 60px; align-items:center; gap:12px; font-size:13px; }
+  .funnel-bar-track{ background:#f2f0f5; border-radius:8px; height:26px; overflow:hidden; }
+  .funnel-bar{ height:100%; background:linear-gradient(90deg,var(--navy),var(--teal)); border-radius:8px; }
+  .funnel-count{ text-align:right; font-weight:700; color:var(--navy); }
+
+  .callout{
+    background:var(--faint-navy); border-left:4px solid var(--teal); border-radius:14px;
+    padding:20px 24px; font-size:14px; color:var(--ink);
+  }
+  .callout b{ color:var(--navy); }
+
+  .scenario-cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  @media(max-width:900px){ .scenario-cards{ grid-template-columns:1fr; } }
+  .scenario-card{ border-radius:20px; padding:24px; border:1px solid var(--hair); background:#fff; }
+  .scenario-card.best{ border-color:var(--teal); background:var(--faint-teal); }
+  .scenario-title{ font-weight:700; color:var(--navy); font-size:14px; margin-bottom:14px; }
+  .scenario-row{ display:flex; justify-content:space-between; font-size:13px; padding:6px 0; border-bottom:1px dashed var(--hair); }
+  .scenario-row:last-child{ border-bottom:none; }
+  .scenario-row span:last-child{ font-weight:700; color:var(--ink); }
+  .scenario-roi{ font-size:26px; font-weight:700; color:var(--teal-deep); margin-top:10px; }
+
+  footer{ margin-top:56px; font-size:12px; color:var(--mute); text-align:center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="eyebrow">Intercare Therapy · Meta Ads Account</span>
+    <h1>Social Media Paid — ROI Dashboard</h1>
+    <p>Period: Apr 28 – Jul 28, 2026 (past 3 months) &nbsp;·&nbsp; Source: Salesforce lead export + Meta Ads Insights (act_1135579218381004)</p>
+  </header>
+
+  <section style="margin-top:0;">
+    <div class="grid grid-4">
+      <div class="card">
+        <div class="stat-label">Ad Spend</div>
+        <div class="stat-value">$11,352</div>
+        <div class="stat-sub">588K impressions · 9,470 clicks</div>
+      </div>
+      <div class="card">
+        <div class="stat-label">Leads Generated</div>
+        <div class="stat-value">636</div>
+        <div class="stat-sub">$17.85 cost per CRM lead</div>
+      </div>
+      <div class="card">
+        <div class="stat-label">Converted Clients</div>
+        <div class="stat-value teal">9</div>
+        <div class="stat-sub">0.47% of total leads</div>
+      </div>
+      <div class="card">
+        <div class="stat-label">Confirmed ROI</div>
+        <div class="stat-value teal">+4,189%</div>
+        <div class="stat-sub">~42.9x return · CAC $1,261/client</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Lead Funnel</h2>
+    <div class="section-sub">All 636 Social Media Paid leads, by current status</div>
+    <div class="card">
+      <div class="funnel">
+        <div class="funnel-row"><span>New</span><div class="funnel-bar-track"><div class="funnel-bar" style="width:100%"></div></div><span class="funnel-count">337</span></div>
+        <div class="funnel-row"><span>Closed – Declined</span><div class="funnel-bar-track"><div class="funnel-bar" style="width:54%"></div></div><span class="funnel-count">182</span></div>
+        <div class="funnel-row"><span>Engagement Initiated</span><div class="funnel-bar-track"><div class="funnel-bar" style="width:15%"></div></div><span class="funnel-count">49</span></div>
+        <div class="funnel-row"><span>New Inquiry Received</span><div class="funnel-bar-track"><div class="funnel-bar" style="width:15%"></div></div><span class="funnel-count">49</span></div>
+        <div class="funnel-row"><span>Initial Qualification</span><div class="funnel-bar-track"><div class="funnel-bar" style="width:3%"></div></div><span class="funnel-count">9</span></div>
+        <div class="funnel-row"><span>Internal Review</span><div class="funnel-bar-track"><div class="funnel-bar" style="width:1%"></div></div><span class="funnel-count">8</span></div>
+        <div class="funnel-row"><span>Accepted</span><div class="funnel-bar-track"><div class="funnel-bar" style="width:1%"></div></div><span class="funnel-count">9</span></div>
+        <div class="funnel-row"><span>Review</span><div class="funnel-bar-track"><div class="funnel-bar" style="width:1%"></div></div><span class="funnel-count">2</span></div>
+        <div class="funnel-row"><span>Offer Out</span><div class="funnel-bar-track"><div class="funnel-bar" style="width:1%"></div></div><span class="funnel-count">1</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Pipeline View — Internal Review &amp; Above</h2>
+    <div class="section-sub">Late-stage leads: closest to becoming revenue. Excludes New / Engagement Initiated / New Inquiry Received / Initial Qualification.</div>
+
+    <div class="grid grid-3" style="margin-bottom:20px;">
+      <div class="card">
+        <div class="stat-label">Late-Stage Leads</div>
+        <div class="stat-value">20</div>
+        <div class="stat-sub">1.6% of all paid leads</div>
+      </div>
+      <div class="card">
+        <div class="stat-label">Already Accepted</div>
+        <div class="stat-value teal">9</div>
+        <div class="stat-sub">Counted in confirmed ROI above</div>
+      </div>
+      <div class="card">
+        <div class="stat-label">Still In Motion</div>
+        <div class="stat-value">11</div>
+        <div class="stat-sub">Internal Review (8) + Review (2) + Offer Out (1)</div>
+      </div>
+    </div>
+
+    <table>
+      <thead><tr><th>Stage</th><th class="num">Leads</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Internal Review</td><td class="num">8</td><td><span class="badge badge-navy">In Progress</span></td></tr>
+        <tr><td>Review</td><td class="num">2</td><td><span class="badge badge-navy">In Progress</span></td></tr>
+        <tr><td>Offer Out</td><td class="num">1</td><td><span class="badge badge-navy">Awaiting Response</span></td></tr>
+        <tr><td>Accepted</td><td class="num">9</td><td><span class="badge badge-teal">Converted</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Projected ROI</h2>
+    <div class="section-sub">If the 11 in-motion late-stage leads convert to clients at the rates below, on top of the 9 already accepted (spend basis: $11,352 already committed)</div>
+
+    <div class="scenario-cards">
+      <div class="scenario-card">
+        <div class="scenario-title">Conservative — 30% convert</div>
+        <div class="scenario-row"><span>New clients</span><span>~3.3</span></div>
+        <div class="scenario-row"><span>Total clients</span><span>12.3</span></div>
+        <div class="scenario-row"><span>Projected annual rev</span><span>$665,442</span></div>
+        <div class="scenario-roi">+5,762% ROI</div>
+      </div>
+      <div class="scenario-card">
+        <div class="scenario-title">Moderate — 50% convert</div>
+        <div class="scenario-row"><span>New clients</span><span>~5.5</span></div>
+        <div class="scenario-row"><span>Total clients</span><span>14.5</span></div>
+        <div class="scenario-row"><span>Projected annual rev</span><span>$784,464</span></div>
+        <div class="scenario-roi">+6,810% ROI</div>
+      </div>
+      <div class="scenario-card best">
+        <div class="scenario-title">Best Case — 100% convert</div>
+        <div class="scenario-row"><span>New clients</span><span>11</span></div>
+        <div class="scenario-row"><span>Total clients</span><span>20</span></div>
+        <div class="scenario-row"><span>Projected annual rev</span><span>$1,082,020</span></div>
+        <div class="scenario-roi">+9,432% ROI</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Reading the Numbers</h2>
+    <div class="callout">
+      <b>337 of 636 leads (53%) are still sitting in "New"</b> — the biggest lever isn't ad spend, it's how fast those leads get worked. Even moving a fraction of that backlog into the late-stage pipeline would swing projected ROI well past the "best case" scenario shown here.<br><br>
+      <b>Top decline reasons:</b> Client Declined (31), Webform Spam (10), Wrong Service (4), Insurance (3) — spam and service-mismatch declines (14 of 182, ~8%) point to targeting/qualification cleanup, not a spend problem.
+    </div>
+  </section>
+
+  <footer>
+    Generated for Intercare Therapy · Data as of 2026-07-28 · Lead source: Salesforce export &nbsp;|&nbsp; Ad data: Meta Ads Insights API
+  </footer>
+
+</div>
+</body>
+</html>
