@@ -170,8 +170,8 @@
     </div>
     <div class="kpi" style="background:#1a9e7c;">
       <div class="kpi-label">Rated 5.0 on Google</div>
-      <div class="kpi-val">5</div>
-      <div class="kpi-sub">EG · ANA · TOR · VN · SD</div>
+      <div class="kpi-val">4</div>
+      <div class="kpi-sub">EG · ANA · VN · SD</div>
     </div>
 <div class="kpi" style="background:var(--amber);">
       <div class="kpi-label">No ratings yet</div>
@@ -197,9 +197,9 @@
       <tbody>
         <tr>
           <td><div class="t-name">Los Angeles</div></td>
-          <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div><span class="score low">2.6</span></div></td>
-          <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div><span class="score low">2.2</span></div></td>
-          <td><span class="no-rating">—</span></td>
+          <td><div class="rating-cell"><div class="stars"><div class="star off"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div><span class="score low">0.0</span></div></td>
+          <td><div class="rating-cell"><div class="stars"><div class="star off"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div><div class="star off"></div></div><span class="score low">0.0</span></div></td>
+          <td><span class="change-new">📍 New Shatto location just went live on Google &amp; Yelp — no reviews yet</span></td>
         </tr>
         <tr>
           <td><div class="t-name">Riverside</div></td>
@@ -210,8 +210,8 @@
         <tr>
           <td><div class="t-name">Elk Grove</div></td>
           <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div></div><span class="score high">5.0</span></div></td>
-          <td><span class="no-rating">No rating</span></td>
-          <td><span class="no-rating">—</span></td>
+          <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div></div><span class="score high">5.0</span></div></td>
+          <td><span class="change-new">⭐ Google: 5.0 (3 reviews) &nbsp;·&nbsp; Yelp: first review in — 5★</span></td>
         </tr>
         <tr>
           <td><div class="t-name">Anaheim</div></td>
@@ -221,15 +221,15 @@
         </tr>
         <tr>
           <td><div class="t-name">Torrance</div></td>
-          <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div></div><span class="score high">5.0</span></div></td>
+          <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div></div><span class="score high">4.4</span></div></td>
           <td><span class="no-rating">No rating</span></td>
-          <td><span class="change-new">🗑 Yelp 1-star removed · Jun 12 &nbsp;·&nbsp; Google: Tom Jun 17 · N D Jun 18 · Lindsey Jun 24 · all 5★</span></td>
+          <td><span class="change-new">🗑 Yelp 1-star removed · Jun 12 &nbsp;·&nbsp; Google: now 4.4 (5 reviews) — Tom Jun 17 · N D Jun 18 · Lindsey Jun 24 · all 5★</span></td>
         </tr>
         <tr>
           <td><div class="t-name">Van Nuys</div></td>
           <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star on"></div></div><span class="score high">5.0</span></div></td>
-          <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div><span class="score low">—</span></div></td>
-          <td><span class="change-new">⭐ Google: L. Sanchez, Araceli, Inna Jun 22 · Stephanie, Jacqueline, Vartuhi Jul 1–2 · Mic Jul 3 · Cristian Jul 4 · all 5★ &nbsp;·&nbsp; Yelp: Ara G. 5★ Jun 22 · ⚠️ mimi negative review Jul 2</span></td>
+          <td><div class="rating-cell"><div class="stars"><div class="star on"></div><div class="star on"></div><div class="star on"></div><div class="star off"></div><div class="star off"></div></div><span class="score low">3.0</span></div></td>
+          <td><span class="change-new">⭐ Google: now 5.0 (9 reviews) — L. Sanchez, Araceli, Inna Jun 22 · Stephanie, Jacqueline, Vartuhi Jul 1–2 · Mic Jul 3 · Cristian Jul 4 · all 5★ &nbsp;·&nbsp; Yelp: now 3.0 — Ara G. 5★ Jun 22 · ⚠️ mimi negative review Jul 2</span></td>
         </tr>
         <tr>
           <td><div class="t-name">San Diego</div></td>
@@ -332,11 +332,11 @@ const locations = ['Los Angeles','Riverside','Elk Grove','Anaheim','Torrance','V
 const data = {
   google: {
     q1: [2.3, 2.2, 5.0, 4.0, null, 4.0, null, null, null],
-    q2: [2.6, 2.6, 5.0, 5.0, 5.0,  5.0, 5.0,  null, 5.0]
+    q2: [0.0, 2.6, 5.0, 5.0, 4.4,  5.0, 5.0,  null, 5.0]
   },
   yelp: {
     q1: [2.2, null, null, null, 1.0, null, null, null, null],
-    q2: [2.2, null, null, 5.0, null, null, 5.0,  null, 5.0]
+    q2: [0.0, null, 5.0, 5.0, null, 3.0, 5.0,  null, 5.0]
   }
 };
 
