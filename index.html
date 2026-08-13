@@ -146,6 +146,7 @@
   <button class="filter-btn" onclick="setFilter('may',this)">May</button>
   <button class="filter-btn" onclick="setFilter('jun',this)">June</button>
   <button class="filter-btn" onclick="setFilter('jul',this)">July</button>
+  <button class="filter-btn" onclick="setFilter('aug',this)">August</button>
   <div class="filter-divider"></div>
   <span style="font-size:0.6rem;color:var(--muted);font-weight:600;">Custom:</span>
   <input type="date" class="date-input" id="date-from" value="2026-01-01">
@@ -248,81 +249,102 @@
   <div class="card full-w">
     <div class="card-head">
       <div class="card-title">Funnel 2 · Opportunity <span>→ Launched</span></div>
-      <span class="card-tag" style="background:var(--purple-light);color:#5b47c4;">32 launched YTD</span>
+      <span class="card-tag" style="background:var(--purple-light);color:#5b47c4;">39 launched YTD</span>
     </div>
-    <div style="font-size:0.56rem;color:var(--muted);font-weight:700;margin-bottom:0.9rem;">Monthly goal: 15 launches/month · Tracks only the 81 leads accepted above, matched to their Opportunity record</div>
+    <div style="font-size:0.56rem;color:var(--muted);font-weight:700;margin-bottom:0.9rem;">Monthly goal: 15 launches/month · Scoped to Opportunities with an Outreach Coordinator (FM) OR a digital referral source (web search, paid social, organic social) — same channel definition used elsewhere on this dashboard. 93 of 1,946 total company opportunities qualify (vs. 94 accepted leads above). Pacing now uses the <strong>Launch Date</strong> field, not Close Date.</div>
 
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.75rem;margin-bottom:1rem;">
       <div style="background:var(--green);border-radius:12px;padding:1rem 1.25rem;text-align:center;">
         <div style="font-size:0.52rem;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25rem;">Launched</div>
-        <div style="font-size:2.2rem;font-weight:800;color:#fff;line-height:1;">32</div>
+        <div style="font-size:2.2rem;font-weight:800;color:#fff;line-height:1;">39</div>
         <div style="font-size:0.52rem;color:rgba(255,255,255,0.75);margin-top:3px;">Closed Won</div>
       </div>
       <div style="background:var(--amber);border-radius:12px;padding:1rem 1.25rem;text-align:center;">
         <div style="font-size:0.52rem;color:rgba(255,255,255,0.85);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25rem;">Active in Pipeline</div>
-        <div style="font-size:2.2rem;font-weight:800;color:#fff;line-height:1;">32</div>
+        <div style="font-size:2.2rem;font-weight:800;color:#fff;line-height:1;">43</div>
         <div style="font-size:0.52rem;color:rgba(255,255,255,0.8);margin-top:3px;">Assessment → Launch stages</div>
       </div>
       <div style="background:var(--navy);border-radius:12px;padding:1rem 1.25rem;text-align:center;">
         <div style="font-size:0.52rem;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25rem;">Closed Lost</div>
-        <div style="font-size:2.2rem;font-weight:800;color:#fff;line-height:1;">10</div>
+        <div style="font-size:2.2rem;font-weight:800;color:#fff;line-height:1;">11</div>
         <div style="font-size:0.52rem;color:rgba(255,255,255,0.6);margin-top:3px;">Fell through post-accept</div>
       </div>
       <div style="background:var(--muted);border-radius:12px;padding:1rem 1.25rem;text-align:center;">
-        <div style="font-size:0.52rem;color:rgba(255,255,255,0.85);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25rem;">No Opportunity Yet</div>
-        <div style="font-size:2.2rem;font-weight:800;color:#fff;line-height:1;">7</div>
-        <div style="font-size:0.52rem;color:rgba(255,255,255,0.8);margin-top:3px;">Accepted, unmatched</div>
+        <div style="font-size:0.52rem;color:rgba(255,255,255,0.85);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25rem;">Near-Launch</div>
+        <div style="font-size:2.2rem;font-weight:800;color:#fff;line-height:1;">9</div>
+        <div style="font-size:0.52rem;color:rgba(255,255,255,0.8);margin-top:3px;">Launch Coord./Sched.</div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:0.75rem;">
+      <div class="card-title" style="margin-bottom:0.65rem;">Launch Goal <span>Tracker</span> — by actual Launch Date</div>
+      <div style="display:flex;gap:0.4rem;">
+        <div style="flex:1;background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:0.55rem 0.4rem;text-align:center;">
+          <div style="font-size:0.44rem;color:var(--muted);text-transform:uppercase;font-weight:700;">Feb</div>
+          <div style="font-size:1.2rem;font-weight:800;color:var(--navy);margin-top:2px;">1</div>
+          <div style="font-size:0.4rem;color:var(--danger);font-weight:700;">vs. 15</div>
+        </div>
+        <div style="flex:1;background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:0.55rem 0.4rem;text-align:center;">
+          <div style="font-size:0.44rem;color:var(--muted);text-transform:uppercase;font-weight:700;">Mar</div>
+          <div style="font-size:1.2rem;font-weight:800;color:var(--navy);margin-top:2px;">3</div>
+          <div style="font-size:0.4rem;color:var(--danger);font-weight:700;">vs. 15</div>
+        </div>
+        <div style="flex:1;background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:0.55rem 0.4rem;text-align:center;">
+          <div style="font-size:0.44rem;color:var(--muted);text-transform:uppercase;font-weight:700;">Apr</div>
+          <div style="font-size:1.2rem;font-weight:800;color:var(--navy);margin-top:2px;">6</div>
+          <div style="font-size:0.4rem;color:var(--danger);font-weight:700;">vs. 15</div>
+        </div>
+        <div style="flex:1;background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:0.55rem 0.4rem;text-align:center;">
+          <div style="font-size:0.44rem;color:var(--muted);text-transform:uppercase;font-weight:700;">May</div>
+          <div style="font-size:1.2rem;font-weight:800;color:var(--navy);margin-top:2px;">4</div>
+          <div style="font-size:0.4rem;color:var(--danger);font-weight:700;">vs. 15</div>
+        </div>
+        <div style="flex:1;background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:0.55rem 0.4rem;text-align:center;">
+          <div style="font-size:0.44rem;color:var(--muted);text-transform:uppercase;font-weight:700;">Jun</div>
+          <div style="font-size:1.2rem;font-weight:800;color:var(--navy);margin-top:2px;">11</div>
+          <div style="font-size:0.4rem;color:#a07200;font-weight:700;">vs. 15</div>
+        </div>
+        <div style="flex:1;background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:0.55rem 0.4rem;text-align:center;">
+          <div style="font-size:0.44rem;color:var(--muted);text-transform:uppercase;font-weight:700;">Jul</div>
+          <div style="font-size:1.2rem;font-weight:800;color:var(--navy);margin-top:2px;">6</div>
+          <div style="font-size:0.4rem;color:var(--danger);font-weight:700;">vs. 15</div>
+        </div>
+        <div style="flex:1;background:var(--amber);border-radius:10px;padding:0.55rem 0.4rem;text-align:center;">
+          <div style="font-size:0.44rem;color:rgba(255,255,255,0.85);text-transform:uppercase;font-weight:700;">Aug (so far)</div>
+          <div style="font-size:1.2rem;font-weight:800;color:#fff;margin-top:2px;">3</div>
+          <div style="font-size:0.4rem;color:rgba(255,255,255,0.9);font-weight:700;">vs. 15</div>
+        </div>
+      </div>
+      <div style="margin-top:0.5rem;padding:0.55rem 0.7rem;background:var(--yellow-light);border:1px solid rgba(255,211,51,0.4);border-radius:8px;font-size:0.55rem;color:#8a6200;font-weight:700;line-height:1.4;">
+        ✅ Mystery solved: with real Launch Date instead of Close Date, launches spread naturally across Feb–Aug (peaking at 11 in June) instead of clustering on 6/20. The Close Date field was indeed a batch-set artifact, not real launch timing — but the corrected picture is worse for pacing: <strong>no month has hit the 15/month goal</strong> this year. 4 Closed Won records have no Launch Date at all, and 1 has a clearly erroneous date (Oct 2024) — both worth a data-quality pass in Salesforce.
       </div>
     </div>
 
     <div class="row-2" style="margin-bottom:0.75rem;">
       <div>
-        <div class="card-title" style="margin-bottom:0.65rem;">Launch Goal <span>Tracker</span></div>
-        <div style="display:flex;gap:0.5rem;">
-          <div style="flex:1;background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:0.7rem 0.5rem;text-align:center;">
-            <div style="font-size:0.48rem;color:var(--muted);text-transform:uppercase;font-weight:700;">June 2026</div>
-            <div style="font-size:1.5rem;font-weight:800;color:var(--navy);margin-top:2px;">32</div>
-            <div style="font-size:0.46rem;color:#1a9e7c;font-weight:700;">launched · vs. 15 goal</div>
-          </div>
-          <div style="flex:1;background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:0.7rem 0.5rem;text-align:center;">
-            <div style="font-size:0.48rem;color:var(--muted);text-transform:uppercase;font-weight:700;">July (so far)</div>
-            <div style="font-size:1.5rem;font-weight:800;color:var(--navy);margin-top:2px;">0</div>
-            <div style="font-size:0.46rem;color:var(--danger);font-weight:700;">launched · vs. 15 goal</div>
-          </div>
-          <div style="flex:1;background:var(--amber);border-radius:10px;padding:0.7rem 0.5rem;text-align:center;">
-            <div style="font-size:0.48rem;color:rgba(255,255,255,0.85);text-transform:uppercase;font-weight:700;">Near-Launch</div>
-            <div style="font-size:1.5rem;font-weight:800;color:#fff;margin-top:2px;">5</div>
-            <div style="font-size:0.46rem;color:rgba(255,255,255,0.9);font-weight:700;">Launch Coord./Sched.</div>
-          </div>
-        </div>
-        <div style="margin-top:0.5rem;padding:0.5rem 0.65rem;background:var(--cream);border:1px solid var(--border);border-radius:8px;">
-          <div style="font-size:0.5rem;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:var(--navy);margin-bottom:0.35rem;">July's Working Pipeline (14 opportunities opened this month)</div>
-          <div style="font-size:0.55rem;color:var(--navy);line-height:1.6;">
-            <strong>5 near-launch</strong> (opened in June, now at Launch Coordinating ×3 or Launch Scheduled ×2) — most likely to close as launches soonest.<br>
-            <strong>14 opened in July</strong>, all still early-stage: In Assessment ×5, Pending Prior Auth Docs ×4, ADOS Scheduled ×2, Pending Assessment Auth ×2, Assessment Scheduling ×1.
-          </div>
-        </div>
-        <div style="margin-top:0.5rem;padding:0.55rem 0.7rem;background:var(--yellow-light);border:1px solid rgba(255,211,51,0.4);border-radius:8px;font-size:0.55rem;color:#8a6200;font-weight:700;line-height:1.4;">
-          ⚠️ All 32 "Closed Won" records share close dates of 6/13–6/20/2026 — this looks like a bulk/batch close in Salesforce rather than 32 real launches happening that week. Monthly pacing against the 15/month goal won't be reliable until we confirm with Ashley whether Close Date reflects the actual launch date.
+        <div class="card-title" style="margin-bottom:0.65rem;">Working Pipeline <span>(43 active)</span></div>
+        <div style="padding:0.5rem 0.65rem;background:var(--cream);border:1px solid var(--border);border-radius:8px;font-size:0.55rem;color:var(--navy);line-height:1.6;">
+          <strong>9 near-launch</strong> (Launch Coordinating ×6, Launch Scheduled ×3) — most likely to close as launches soonest.<br>
+          <strong>34 other active</strong>, earlier-stage: In Assessment ×10, Assessment Scheduling ×7, Pending Assessment Auth ×6, Pending Prior Auth Docs ×6, ADOS Scheduling ×2, Report Review ×1, ADOS Scheduled ×1, Pending Treatment Auth ×1.
         </div>
       </div>
       <div>
         <div class="card-title" style="margin-bottom:0.65rem;">Opportunity Stage <span>Breakdown</span></div>
-        <div class="dec-row"><div class="dec-name" style="flex:1.4;">Closed Won (Launched)</div><div class="dec-bg"><div class="dec-fill" style="width:100%;background:var(--green);opacity:1;"></div></div><div class="dec-n">32</div></div>
-        <div class="dec-row"><div class="dec-name" style="flex:1.4;">In Assessment</div><div class="dec-bg"><div class="dec-fill" style="width:38%;"></div></div><div class="dec-n">12</div></div>
-        <div class="dec-row"><div class="dec-name" style="flex:1.4;">Closed Lost</div><div class="dec-bg"><div class="dec-fill" style="width:31%;"></div></div><div class="dec-n">10</div></div>
-        <div class="dec-row"><div class="dec-name" style="flex:1.4;">Pending Prior Auth Docs</div><div class="dec-bg"><div class="dec-fill" style="width:13%;"></div></div><div class="dec-n">4</div></div>
-        <div class="dec-row"><div class="dec-name" style="flex:1.4;">ADOS Scheduled</div><div class="dec-bg"><div class="dec-fill" style="width:9%;"></div></div><div class="dec-n">3</div></div>
-        <div class="dec-row"><div class="dec-name" style="flex:1.4;">Launch Coordinating</div><div class="dec-bg"><div class="dec-fill" style="width:9%;"></div></div><div class="dec-n">3</div></div>
-        <div class="dec-row"><div class="dec-name" style="flex:1.4;">Launch Scheduled</div><div class="dec-bg"><div class="dec-fill" style="width:6%;"></div></div><div class="dec-n">2</div></div>
-        <div class="dec-row"><div class="dec-name" style="flex:1.4;">Pending Assessment Auth</div><div class="dec-bg"><div class="dec-fill" style="width:6%;"></div></div><div class="dec-n">2</div></div>
-        <div class="dec-row"><div class="dec-name" style="flex:1.4;">ADOS Scheduling</div><div class="dec-bg"><div class="dec-fill" style="width:6%;"></div></div><div class="dec-n">2</div></div>
-        <div class="dec-row"><div class="dec-name" style="flex:1.4;">Report Review / Assess. Sched. / Pending Tx Auth / On Hold</div><div class="dec-bg"><div class="dec-fill" style="width:3%;"></div></div><div class="dec-n">4</div></div>
+        <div class="dec-row"><div class="dec-name" style="flex:1.4;">Closed Won (Launched)</div><div class="dec-bg"><div class="dec-fill" style="width:100%;background:var(--green);opacity:1;"></div></div><div class="dec-n">39</div></div>
+        <div class="dec-row"><div class="dec-name" style="flex:1.4;">Closed Lost</div><div class="dec-bg"><div class="dec-fill" style="width:28%;"></div></div><div class="dec-n">11</div></div>
+        <div class="dec-row"><div class="dec-name" style="flex:1.4;">In Assessment</div><div class="dec-bg"><div class="dec-fill" style="width:26%;"></div></div><div class="dec-n">10</div></div>
+        <div class="dec-row"><div class="dec-name" style="flex:1.4;">Assessment Scheduling</div><div class="dec-bg"><div class="dec-fill" style="width:18%;"></div></div><div class="dec-n">7</div></div>
+        <div class="dec-row"><div class="dec-name" style="flex:1.4;">Pending Assessment Auth</div><div class="dec-bg"><div class="dec-fill" style="width:15%;"></div></div><div class="dec-n">6</div></div>
+        <div class="dec-row"><div class="dec-name" style="flex:1.4;">Launch Coordinating</div><div class="dec-bg"><div class="dec-fill" style="width:15%;"></div></div><div class="dec-n">6</div></div>
+        <div class="dec-row"><div class="dec-name" style="flex:1.4;">Pending Prior Auth Docs</div><div class="dec-bg"><div class="dec-fill" style="width:15%;"></div></div><div class="dec-n">6</div></div>
+        <div class="dec-row"><div class="dec-name" style="flex:1.4;">Launch Scheduled</div><div class="dec-bg"><div class="dec-fill" style="width:8%;"></div></div><div class="dec-n">3</div></div>
+        <div class="dec-row"><div class="dec-name" style="flex:1.4;">ADOS Scheduling</div><div class="dec-bg"><div class="dec-fill" style="width:5%;"></div></div><div class="dec-n">2</div></div>
+        <div class="dec-row"><div class="dec-name" style="flex:1.4;">Report Review / ADOS Scheduled / Pending Tx Auth</div><div class="dec-bg"><div class="dec-fill" style="width:8%;"></div></div><div class="dec-n">3</div></div>
       </div>
     </div>
 
     <div style="padding:0.6rem 0.75rem;background:var(--cream);border-radius:8px;font-size:0.58rem;color:var(--navy);line-height:1.5;">
-      <strong>No Opportunity Yet (7):</strong> These leads show Accepted in the lead export but no matching Opportunity record was found in Salesforce as of 7/23 — worth a quick check on whether they stalled before intake setup.
+      <strong>Coverage note:</strong> 93 Opportunities qualify under this channel definition vs. 94 accepted leads tracked in the funnel above — close enough that channel-based filtering (rather than name-matching individual records) looks like the right lens, though it can't confirm each Opportunity ties to a specific accepted lead.
     </div>
   </div>
 
@@ -345,24 +367,24 @@
   <!-- Home vs Center + Channel -->
   <div class="row-2">
     <div class="card">
-      <div class="card-head"><div class="card-title">Home vs <span>Center</span> Conversions</div><span class="card-tag">81 conversions</span></div>
+      <div class="card-head"><div class="card-title">Home vs <span>Center</span> Conversions</div><span class="card-tag">94 conversions</span></div>
       <div class="hc-grid">
         <div class="hc-card" style="background:var(--navy);">
           <div style="font-size:0.52rem;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25rem;">Center-Based</div>
-          <div style="font-size:2.2rem;font-weight:800;color:#fff;line-height:1;">52</div>
-          <div style="font-size:0.52rem;color:rgba(255,255,255,0.6);margin-top:3px;">64.2% of conversions</div>
+          <div style="font-size:2.2rem;font-weight:800;color:#fff;line-height:1;">60</div>
+          <div style="font-size:0.52rem;color:rgba(255,255,255,0.6);margin-top:3px;">63.8% of conversions</div>
           <div style="margin-top:0.6rem;display:flex;flex-wrap:wrap;gap:0.3rem;justify-content:center;">
             <span style="font-size:0.48rem;background:rgba(255,255,255,0.15);color:#fff;padding:0.1rem 0.4rem;border-radius:20px;font-weight:600;">Riverside ×13</span>
             <span style="font-size:0.48rem;background:rgba(255,255,255,0.15);color:#fff;padding:0.1rem 0.4rem;border-radius:20px;font-weight:600;">Bankers Hill ×12</span>
             <span style="font-size:0.48rem;background:rgba(255,255,255,0.15);color:#fff;padding:0.1rem 0.4rem;border-radius:20px;font-weight:600;">Ontario ×11</span>
-            <span style="font-size:0.48rem;background:rgba(255,255,255,0.15);color:#fff;padding:0.1rem 0.4rem;border-radius:20px;font-weight:600;">Elk Grove ×5</span>
-            <span style="font-size:0.48rem;background:rgba(255,255,255,0.15);color:#fff;padding:0.1rem 0.4rem;border-radius:20px;font-weight:600;">Anaheim ×4</span>
+            <span style="font-size:0.48rem;background:rgba(255,255,255,0.15);color:#fff;padding:0.1rem 0.4rem;border-radius:20px;font-weight:600;">Anaheim ×8</span>
+            <span style="font-size:0.48rem;background:rgba(255,255,255,0.15);color:#fff;padding:0.1rem 0.4rem;border-radius:20px;font-weight:600;">Elk Grove ×6</span>
           </div>
         </div>
         <div class="hc-card" style="background:var(--green);">
           <div style="font-size:0.52rem;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25rem;">Home-Based</div>
-          <div style="font-size:2.2rem;font-weight:800;color:#fff;line-height:1;">29</div>
-          <div style="font-size:0.52rem;color:rgba(255,255,255,0.75);margin-top:3px;">35.8% of conversions</div>
+          <div style="font-size:2.2rem;font-weight:800;color:#fff;line-height:1;">34</div>
+          <div style="font-size:0.52rem;color:rgba(255,255,255,0.75);margin-top:3px;">36.2% of conversions</div>
         </div>
       </div>
       <div style="padding:0.65rem 0.75rem;background:var(--cream);border-radius:8px;font-size:0.6rem;color:var(--navy);line-height:1.5;">
@@ -435,7 +457,7 @@
       <div style="margin-top:1rem;">
         <div class="card-title" style="margin-bottom:0.65rem;">Top Decline <span>Reasons</span></div>
         <div class="dec-row"><div class="dec-name">Client Declined</div><div class="dec-bg"><div class="dec-fill" style="width:100%;"></div></div><div class="dec-n" id="dec-cli">—</div></div>
-        <div class="dec-row"><div class="dec-name">Insurance</div><div class="dec-bg"><div class="dec-fill" style="width:40%;"></div></div><div class="dec-n" id="dec-ins">—</div></div>
+        <div class="dec-row"><div class="dec-name">Insurance</div><div class="dec-bg"><div class="dec-fill" style="width:41%;"></div></div><div class="dec-n" id="dec-ins">—</div></div>
         <div class="dec-row"><div class="dec-name">Wrong Service</div><div class="dec-bg"><div class="dec-fill" style="width:23%;"></div></div><div class="dec-n" id="dec-ws">—</div></div>
         <div class="dec-row"><div class="dec-name">Location</div><div class="dec-bg"><div class="dec-fill" style="width:8%;"></div></div><div class="dec-n" id="dec-loc">—</div></div>
         <div class="dec-row"><div class="dec-name">Client Ltd. Availability</div><div class="dec-bg"><div class="dec-fill" style="width:6%;"></div></div><div class="dec-n" id="dec-av">—</div></div>
@@ -492,7 +514,7 @@
       </div>
       <div style="background:#2a8aab;border-radius:12px;padding:1rem 1.25rem;text-align:center;">
         <div style="font-size:0.52rem;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25rem;">Oldest</div>
-        <div style="font-size:2.5rem;font-weight:800;color:#fff;line-height:1;">15.8</div>
+        <div style="font-size:2.5rem;font-weight:800;color:#fff;line-height:1;">15.9</div>
         <div style="font-size:0.52rem;color:rgba(255,255,255,0.75);margin-top:3px;">yrs · oldest client</div>
       </div>
     </div>
@@ -500,68 +522,68 @@
       <div style="font-size:0.6rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:var(--navy);margin-bottom:0.75rem;">Age Distribution of Converted Clients</div>
       <div style="display:flex;align-items:flex-end;gap:0.5rem;height:120px;">
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
-          <div style="font-size:0.62rem;font-weight:800;color:var(--navy);">18</div>
-          <div style="width:100%;background:var(--purple);border-radius:6px 6px 0 0;height:69%;"></div>
+          <div style="font-size:0.62rem;font-weight:800;color:var(--navy);">21</div>
+          <div style="width:100%;background:var(--purple);border-radius:6px 6px 0 0;height:72%;"></div>
           <div style="font-size:0.55rem;color:var(--muted);font-weight:700;white-space:nowrap;">2–4 yrs</div>
         </div>
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
-          <div style="font-size:0.62rem;font-weight:800;color:var(--navy);">26</div>
+          <div style="font-size:0.62rem;font-weight:800;color:var(--navy);">29</div>
           <div style="width:100%;background:var(--green);border-radius:6px 6px 0 0;height:100%;"></div>
           <div style="font-size:0.55rem;color:var(--muted);font-weight:700;white-space:nowrap;">4–6 yrs</div>
         </div>
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
           <div style="font-size:0.62rem;font-weight:800;color:var(--navy);">17</div>
-          <div style="width:100%;background:var(--green);border-radius:6px 6px 0 0;height:65%;opacity:0.7;"></div>
+          <div style="width:100%;background:var(--green);border-radius:6px 6px 0 0;height:59%;opacity:0.7;"></div>
           <div style="font-size:0.55rem;color:var(--muted);font-weight:700;white-space:nowrap;">6–8 yrs</div>
         </div>
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
-          <div style="font-size:0.62rem;font-weight:800;color:var(--navy);">7</div>
-          <div style="width:100%;background:var(--teal);border-radius:6px 6px 0 0;height:27%;"></div>
+          <div style="font-size:0.62rem;font-weight:800;color:var(--navy);">11</div>
+          <div style="width:100%;background:var(--teal);border-radius:6px 6px 0 0;height:38%;"></div>
           <div style="font-size:0.55rem;color:var(--muted);font-weight:700;white-space:nowrap;">8–10 yrs</div>
         </div>
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
-          <div style="font-size:0.62rem;font-weight:800;color:var(--navy);">6</div>
-          <div style="width:100%;background:var(--purple);border-radius:6px 6px 0 0;height:23%;opacity:0.7;"></div>
+          <div style="font-size:0.62rem;font-weight:800;color:var(--navy);">7</div>
+          <div style="width:100%;background:var(--purple);border-radius:6px 6px 0 0;height:24%;opacity:0.7;"></div>
           <div style="font-size:0.55rem;color:var(--muted);font-weight:700;white-space:nowrap;">10–12 yrs</div>
         </div>
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
           <div style="font-size:0.62rem;font-weight:800;color:var(--navy);">5</div>
-          <div style="width:100%;background:var(--amber);border-radius:6px 6px 0 0;height:19%;"></div>
+          <div style="width:100%;background:var(--amber);border-radius:6px 6px 0 0;height:17%;"></div>
           <div style="font-size:0.55rem;color:var(--muted);font-weight:700;white-space:nowrap;">12+ yrs</div>
         </div>
       </div>
     </div>
     <div style="margin-top:0.75rem;padding:0.65rem 0.75rem;background:var(--green-light);border:1px solid rgba(38,204,160,0.25);border-radius:8px;font-size:0.58rem;color:#1a9e7c;font-weight:700;">
-      Most converted clients are between 4–6 years old (33% of conversions). Early childhood remains the primary intake window.
+      Most converted clients are between 4–6 years old (31% of conversions). Early childhood remains the primary intake window.
     </div>
   </div>
 
   <!-- Insurance -->
   <div class="card full-w">
-    <div class="card-head"><div class="card-title">Insurance <span>Breakdown</span> — 81 Conversions</div></div>
+    <div class="card-head"><div class="card-title">Insurance <span>Breakdown</span> — 94 Conversions</div></div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.75rem;">
       <div class="ins-big" style="background:var(--green);">
         <div style="font-size:0.52rem;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25rem;">Inland Empire Health Plan</div>
         <div style="font-size:1.8rem;font-weight:800;color:#fff;line-height:1;">28</div>
-        <div style="font-size:0.52rem;color:rgba(255,255,255,0.75);font-weight:600;margin-top:2px;">34.6% of conversions</div>
+        <div style="font-size:0.52rem;color:rgba(255,255,255,0.75);font-weight:600;margin-top:2px;">29.8% of conversions</div>
       </div>
       <div class="ins-big" style="background:var(--navy);">
         <div style="font-size:0.52rem;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25rem;">Molina Healthcare</div>
-        <div style="font-size:1.8rem;font-weight:800;color:#fff;line-height:1;">15</div>
-        <div style="font-size:0.52rem;color:rgba(255,255,255,0.65);font-weight:600;margin-top:2px;">18.5% of conversions</div>
+        <div style="font-size:1.8rem;font-weight:800;color:#fff;line-height:1;">17</div>
+        <div style="font-size:0.52rem;color:rgba(255,255,255,0.65);font-weight:600;margin-top:2px;">18.1% of conversions</div>
       </div>
       <div class="card" style="padding:1rem;">
         <div style="font-size:0.52rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.65rem;">Other Insurances</div>
-        <div class="ins-row"><div class="ins-name">Blue Shield CA</div><div style="display:flex;align-items:center;gap:0.5rem;"><div class="ins-bar-bg"><div class="ins-bar-fill" style="width:50%;"></div></div><div class="ins-n">6</div></div></div>
-        <div class="ins-row"><div class="ins-name">Anthem BCBS</div><div style="display:flex;align-items:center;gap:0.5rem;"><div class="ins-bar-bg"><div class="ins-bar-fill" style="width:50%;"></div></div><div class="ins-n">6</div></div></div>
-        <div class="ins-row"><div class="ins-name">Aetna</div><div style="display:flex;align-items:center;gap:0.5rem;"><div class="ins-bar-bg"><div class="ins-bar-fill" style="width:42%;"></div></div><div class="ins-n">5</div></div></div>
-        <div class="ins-row"><div class="ins-name">Cigna</div><div style="display:flex;align-items:center;gap:0.5rem;"><div class="ins-bar-bg"><div class="ins-bar-fill" style="width:42%;"></div></div><div class="ins-n">5</div></div></div>
-        <div class="ins-row"><div class="ins-name">Optum / UHC</div><div style="display:flex;align-items:center;gap:0.5rem;"><div class="ins-bar-bg"><div class="ins-bar-fill" style="width:33%;"></div></div><div class="ins-n">4</div></div></div>
-        <div class="ins-row"><div class="ins-name">Other / CalOptima / Anthem BC of CA / Catalight / Blue Shield Promise</div><div style="display:flex;align-items:center;gap:0.5rem;"><div class="ins-bar-bg"><div class="ins-bar-fill" style="width:100%;"></div></div><div class="ins-n">12</div></div></div>
+        <div class="ins-row"><div class="ins-name">Blue Shield CA</div><div style="display:flex;align-items:center;gap:0.5rem;"><div class="ins-bar-bg"><div class="ins-bar-fill" style="width:47%;"></div></div><div class="ins-n">8</div></div></div>
+        <div class="ins-row"><div class="ins-name">Anthem BCBS</div><div style="display:flex;align-items:center;gap:0.5rem;"><div class="ins-bar-bg"><div class="ins-bar-fill" style="width:41%;"></div></div><div class="ins-n">7</div></div></div>
+        <div class="ins-row"><div class="ins-name">Aetna</div><div style="display:flex;align-items:center;gap:0.5rem;"><div class="ins-bar-bg"><div class="ins-bar-fill" style="width:41%;"></div></div><div class="ins-n">7</div></div></div>
+        <div class="ins-row"><div class="ins-name">Cigna</div><div style="display:flex;align-items:center;gap:0.5rem;"><div class="ins-bar-bg"><div class="ins-bar-fill" style="width:29%;"></div></div><div class="ins-n">5</div></div></div>
+        <div class="ins-row"><div class="ins-name">Optum / UHC</div><div style="display:flex;align-items:center;gap:0.5rem;"><div class="ins-bar-bg"><div class="ins-bar-fill" style="width:29%;"></div></div><div class="ins-n">5</div></div></div>
+        <div class="ins-row"><div class="ins-name">Other / CalOptima / Anthem BC of CA / Catalight / Blue Shield Promise</div><div style="display:flex;align-items:center;gap:0.5rem;"><div class="ins-bar-bg"><div class="ins-bar-fill" style="width:100%;"></div></div><div class="ins-n">17</div></div></div>
       </div>
     </div>
     <div style="margin-top:0.75rem;padding:0.6rem 0.75rem;background:var(--green-light);border:1px solid rgba(38,204,160,0.25);border-radius:8px;font-size:0.58rem;color:#1a9e7c;font-weight:700;">
-      IEHP + Molina account for 53% of all conversions — both serve the Inland Empire and San Diego regions where Field Marketing is most active.
+      IEHP + Molina account for 48% of all conversions — both serve the Inland Empire and San Diego regions where Field Marketing is most active.
     </div>
   </div>
 
@@ -569,7 +591,7 @@
   <div class="card full-w">
     <div class="card-head">
       <div class="card-title">Field Marketing <span>Coordinator Breakdown</span></div>
-      <span class="card-tag">54 FM conversions YTD</span>
+      <span class="card-tag">65 FM conversions YTD</span>
     </div>
 
     <!-- Main coordinator cards -->
@@ -582,7 +604,7 @@
             <div style="font-size:0.52rem;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;">Efren Castro</div>
             <div style="font-size:0.45rem;color:rgba(255,255,255,0.65);font-weight:600;margin-top:1px;">IES · IEN</div>
           </div>
-          <span style="font-size:0.48rem;background:rgba(255,255,255,0.2);color:#fff;padding:0.1rem 0.4rem;border-radius:20px;font-weight:700;">24.7% conv rate</span>
+          <span style="font-size:0.48rem;background:rgba(255,255,255,0.2);color:#fff;padding:0.1rem 0.4rem;border-radius:20px;font-weight:700;">26.7% conv rate</span>
         </div>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.4rem;margin-bottom:0.6rem;">
           <div style="background:rgba(255,255,255,0.15);border-radius:8px;padding:0.5rem;text-align:center;">
@@ -590,24 +612,24 @@
             <div style="font-size:0.44rem;color:rgba(255,255,255,0.75);font-weight:700;text-transform:uppercase;margin-top:2px;">Converted</div>
           </div>
           <div style="background:rgba(255,255,255,0.15);border-radius:8px;padding:0.5rem;text-align:center;">
-            <div style="font-size:1.4rem;font-weight:800;color:#fff;line-height:1;">93</div>
+            <div style="font-size:1.4rem;font-weight:800;color:#fff;line-height:1;">86</div>
             <div style="font-size:0.44rem;color:rgba(255,255,255,0.75);font-weight:700;text-transform:uppercase;margin-top:2px;">Leads</div>
           </div>
           <div style="background:rgba(255,255,255,0.15);border-radius:8px;padding:0.5rem;text-align:center;">
-            <div style="font-size:1.4rem;font-weight:800;color:#fff;line-height:1;">18</div>
+            <div style="font-size:1.4rem;font-weight:800;color:#fff;line-height:1;">19</div>
             <div style="font-size:0.44rem;color:rgba(255,255,255,0.75);font-weight:700;text-transform:uppercase;margin-top:2px;">Pipeline</div>
           </div>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;">
           <div style="background:rgba(0,0,0,0.12);border-radius:8px;padding:0.5rem;text-align:center;">
             <div style="font-size:0.44rem;color:rgba(255,255,255,0.7);text-transform:uppercase;font-weight:700;margin-bottom:2px;">Open Leads</div>
-            <div style="font-size:0.9rem;font-weight:800;color:#fff;">41</div>
+            <div style="font-size:0.9rem;font-weight:800;color:#fff;">42</div>
             <div style="font-size:0.42rem;color:rgba(255,255,255,0.6);">Conv + Pipeline</div>
           </div>
           <div style="background:rgba(0,0,0,0.12);border-radius:8px;padding:0.5rem;text-align:center;">
             <div style="font-size:0.44rem;color:rgba(255,255,255,0.7);text-transform:uppercase;font-weight:700;margin-bottom:2px;">Closed Declined</div>
             <div style="font-size:0.9rem;font-weight:800;color:#FFD333;">30</div>
-            <div style="font-size:0.42rem;color:rgba(255,255,255,0.6);">of 93 total</div>
+            <div style="font-size:0.42rem;color:rgba(255,255,255,0.6);">of 86 total</div>
           </div>
         </div>
       </div>
@@ -669,9 +691,9 @@
           <div style="font-size:0.6rem;font-weight:800;color:var(--navy);">Abhijeet Paluru</div>
           <div style="font-size:0.48rem;color:var(--muted);font-weight:600;margin-bottom:0.35rem;">LAN · LAW</div>
           <div style="display:flex;gap:0.3rem;">
-            <div style="text-align:center;flex:1;"><div style="font-size:0.85rem;font-weight:800;color:var(--navy);">36</div><div style="font-size:0.4rem;color:var(--muted);font-weight:700;">Leads</div></div>
-            <div style="text-align:center;flex:1;"><div style="font-size:0.85rem;font-weight:800;color:#1a9e7c;">3</div><div style="font-size:0.4rem;color:var(--muted);font-weight:700;">Conv</div></div>
-            <div style="text-align:center;flex:1;"><div style="font-size:0.85rem;font-weight:800;color:#c48a00;">15</div><div style="font-size:0.4rem;color:var(--muted);font-weight:700;">Pipe</div></div>
+            <div style="text-align:center;flex:1;"><div style="font-size:0.85rem;font-weight:800;color:var(--navy);">38</div><div style="font-size:0.4rem;color:var(--muted);font-weight:700;">Leads</div></div>
+            <div style="text-align:center;flex:1;"><div style="font-size:0.85rem;font-weight:800;color:#1a9e7c;">6</div><div style="font-size:0.4rem;color:var(--muted);font-weight:700;">Conv</div></div>
+            <div style="text-align:center;flex:1;"><div style="font-size:0.85rem;font-weight:800;color:#c48a00;">14</div><div style="font-size:0.4rem;color:var(--muted);font-weight:700;">Pipe</div></div>
             <div style="text-align:center;flex:1;"><div style="font-size:0.85rem;font-weight:800;color:var(--danger);">17</div><div style="font-size:0.4rem;color:var(--muted);font-weight:700;">Decl.</div></div>
           </div>
         </div>
@@ -679,19 +701,19 @@
           <div style="font-size:0.6rem;font-weight:800;color:var(--navy);">Mikinzie Gard</div>
           <div style="font-size:0.48rem;color:var(--muted);font-weight:600;margin-bottom:0.35rem;">SAC · Sacramento</div>
           <div style="display:flex;gap:0.3rem;">
-            <div style="text-align:center;flex:1;"><div style="font-size:0.85rem;font-weight:800;color:var(--navy);">95</div><div style="font-size:0.4rem;color:var(--muted);font-weight:700;">Leads</div></div>
-            <div style="text-align:center;flex:1;"><div style="font-size:0.85rem;font-weight:800;color:#1a9e7c;">6</div><div style="font-size:0.4rem;color:var(--muted);font-weight:700;">Conv</div></div>
-            <div style="text-align:center;flex:1;"><div style="font-size:0.85rem;font-weight:800;color:#c48a00;">16</div><div style="font-size:0.4rem;color:var(--muted);font-weight:700;">Pipe</div></div>
-            <div style="text-align:center;flex:1;"><div style="font-size:0.85rem;font-weight:800;color:var(--danger);">67</div><div style="font-size:0.4rem;color:var(--muted);font-weight:700;">Decl.</div></div>
+            <div style="text-align:center;flex:1;"><div style="font-size:0.85rem;font-weight:800;color:var(--navy);">108</div><div style="font-size:0.4rem;color:var(--muted);font-weight:700;">Leads</div></div>
+            <div style="text-align:center;flex:1;"><div style="font-size:0.85rem;font-weight:800;color:#1a9e7c;">9</div><div style="font-size:0.4rem;color:var(--muted);font-weight:700;">Conv</div></div>
+            <div style="text-align:center;flex:1;"><div style="font-size:0.85rem;font-weight:800;color:#c48a00;">23</div><div style="font-size:0.4rem;color:var(--muted);font-weight:700;">Pipe</div></div>
+            <div style="text-align:center;flex:1;"><div style="font-size:0.85rem;font-weight:800;color:var(--danger);">68</div><div style="font-size:0.4rem;color:var(--muted);font-weight:700;">Decl.</div></div>
           </div>
         </div>
         <div style="background:#fff;border:1px dashed var(--border);border-radius:8px;padding:0.65rem;">
           <div style="font-size:0.6rem;font-weight:800;color:var(--navy);">Noah Lee</div>
           <div style="font-size:0.48rem;color:var(--muted);font-weight:600;margin-bottom:0.35rem;">OC</div>
           <div style="display:flex;gap:0.3rem;">
-            <div style="text-align:center;flex:1;"><div style="font-size:0.85rem;font-weight:800;color:var(--navy);">7</div><div style="font-size:0.4rem;color:var(--muted);font-weight:700;">Leads</div></div>
-            <div style="text-align:center;flex:1;"><div style="font-size:0.85rem;font-weight:800;color:#1a9e7c;">1</div><div style="font-size:0.4rem;color:var(--muted);font-weight:700;">Conv</div></div>
-            <div style="text-align:center;flex:1;"><div style="font-size:0.85rem;font-weight:800;color:#c48a00;">3</div><div style="font-size:0.4rem;color:var(--muted);font-weight:700;">Pipe</div></div>
+            <div style="text-align:center;flex:1;"><div style="font-size:0.85rem;font-weight:800;color:var(--navy);">11</div><div style="font-size:0.4rem;color:var(--muted);font-weight:700;">Leads</div></div>
+            <div style="text-align:center;flex:1;"><div style="font-size:0.85rem;font-weight:800;color:#1a9e7c;">2</div><div style="font-size:0.4rem;color:var(--muted);font-weight:700;">Conv</div></div>
+            <div style="text-align:center;flex:1;"><div style="font-size:0.85rem;font-weight:800;color:#c48a00;">9</div><div style="font-size:0.4rem;color:var(--muted);font-weight:700;">Pipe</div></div>
             <div style="text-align:center;flex:1;"><div style="font-size:0.85rem;font-weight:800;color:var(--danger);">0</div><div style="font-size:0.4rem;color:var(--muted);font-weight:700;">Decl.</div></div>
           </div>
         </div>
@@ -705,11 +727,21 @@
             <div style="text-align:center;flex:1;"><div style="font-size:0.85rem;font-weight:800;color:var(--danger);">0</div><div style="font-size:0.4rem;color:var(--muted);font-weight:700;">Decl.</div></div>
           </div>
         </div>
+        <div style="background:#fff;border:1px dashed var(--border);border-radius:8px;padding:0.65rem;">
+          <div style="font-size:0.6rem;font-weight:800;color:var(--navy);">Patricia Bianca Simtoco</div>
+          <div style="font-size:0.48rem;color:var(--muted);font-weight:600;margin-bottom:0.35rem;">SAC · LAW · New this period</div>
+          <div style="display:flex;gap:0.3rem;">
+            <div style="text-align:center;flex:1;"><div style="font-size:0.85rem;font-weight:800;color:var(--navy);">9</div><div style="font-size:0.4rem;color:var(--muted);font-weight:700;">Leads</div></div>
+            <div style="text-align:center;flex:1;"><div style="font-size:0.85rem;font-weight:800;color:#1a9e7c;">1</div><div style="font-size:0.4rem;color:var(--muted);font-weight:700;">Conv</div></div>
+            <div style="text-align:center;flex:1;"><div style="font-size:0.85rem;font-weight:800;color:#c48a00;">0</div><div style="font-size:0.4rem;color:var(--muted);font-weight:700;">Pipe</div></div>
+            <div style="text-align:center;flex:1;"><div style="font-size:0.85rem;font-weight:800;color:var(--danger);">8</div><div style="font-size:0.4rem;color:var(--muted);font-weight:700;">Decl.</div></div>
+          </div>
+        </div>
       </div>
     </div>
 
     <div style="margin-top:0.75rem;padding:0.6rem 0.75rem;background:var(--purple-light);border:1px solid rgba(130,112,222,0.25);border-radius:8px;font-size:0.58rem;color:#5b47c4;font-weight:700;">
-      Sofia Hernandez leads in conversion rate (38.6%) with 17 conversions from 44 leads. Efren Castro leads in volume with 23 conversions across IES/IEN. Mikinzie Gard has grown to 95 leads but only a 6.3% conversion rate — 67 closed-declined warrants a lead-quality review. Noah Lee is picking up (7 leads, 1 conversion); Bradley Eicher just started (2 leads) — too early to read into his numbers yet.
+      Sofia Hernandez leads in conversion rate (38.6%) with 17 conversions from 44 leads. Efren Castro leads in volume with 23 conversions across IES/IEN. Mikinzie Gard has grown to 108 leads but only an 8.3% conversion rate — 68 closed-declined still warrants a lead-quality review. Noah Lee is picking up (11 leads, 2 conversions); Patricia Bianca Simtoco is a new coordinator this period (9 leads, 1 conversion); Bradley Eicher remains at just 2 leads — too early to read into his numbers yet.
     </div>
   </div>
 
@@ -722,13 +754,13 @@
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin-bottom:1rem;">
       <div style="background:var(--navy);border-radius:12px;padding:1rem 1.25rem;text-align:center;">
         <div style="font-size:0.52rem;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25rem;">Total Leads</div>
-        <div style="font-size:2.2rem;font-weight:800;color:#fff;line-height:1;">56</div>
+        <div style="font-size:2.2rem;font-weight:800;color:#fff;line-height:1;">94</div>
         <div style="font-size:0.52rem;color:rgba(255,255,255,0.6);margin-top:3px;">School Services – New Contract</div>
       </div>
       <div style="background:var(--teal);border-radius:12px;padding:1rem 1.25rem;text-align:center;">
         <div style="font-size:0.52rem;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25rem;">Source Channel</div>
         <div style="font-size:1.6rem;font-weight:800;color:#fff;line-height:1;">Social Paid</div>
-        <div style="font-size:0.52rem;color:rgba(255,255,255,0.75);margin-top:3px;">51 of 56 tagged (91%)</div>
+        <div style="font-size:0.52rem;color:rgba(255,255,255,0.75);margin-top:3px;">87 of 94 tagged (93%)</div>
       </div>
       <div style="background:var(--amber);border-radius:12px;padding:1rem 1.25rem;text-align:center;">
         <div style="font-size:0.52rem;color:rgba(255,255,255,0.85);text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:0.25rem;">Converted</div>
@@ -741,42 +773,47 @@
         <div class="card-title" style="margin-bottom:0.65rem;">Stage <span>Breakdown</span></div>
         <div class="ch-row">
           <div class="ch-label"><div class="ch-name">New Inquiry Received</div></div>
-          <div class="ch-track"><div class="ch-fill" style="width:79%;background:var(--purple);"></div></div>
-          <div style="font-size:0.58rem;color:var(--muted);width:60px;text-align:right;font-weight:700;">44 · 79%</div>
+          <div class="ch-track"><div class="ch-fill" style="width:83%;background:var(--purple);"></div></div>
+          <div style="font-size:0.58rem;color:var(--muted);width:60px;text-align:right;font-weight:700;">78 · 83%</div>
         </div>
         <div class="ch-row">
           <div class="ch-label"><div class="ch-name">Initial Qualification</div></div>
-          <div class="ch-track"><div class="ch-fill" style="width:20%;background:var(--teal);"></div></div>
-          <div style="font-size:0.58rem;color:var(--muted);width:60px;text-align:right;font-weight:700;">11 · 20%</div>
+          <div class="ch-track"><div class="ch-fill" style="width:15%;background:var(--teal);"></div></div>
+          <div style="font-size:0.58rem;color:var(--muted);width:60px;text-align:right;font-weight:700;">14 · 15%</div>
         </div>
         <div class="ch-row" style="margin-bottom:0;">
           <div class="ch-label"><div class="ch-name">Contact Local Entity</div></div>
           <div class="ch-track"><div class="ch-fill" style="width:2%;background:var(--amber);"></div></div>
-          <div style="font-size:0.58rem;color:var(--muted);width:60px;text-align:right;font-weight:700;">1 · 2%</div>
+          <div style="font-size:0.58rem;color:var(--muted);width:60px;text-align:right;font-weight:700;">2 · 2%</div>
         </div>
       </div>
       <div>
         <div class="card-title" style="margin-bottom:0.65rem;">School <span>Districts</span></div>
         <div style="display:flex;flex-wrap:wrap;gap:0.35rem;">
-          <span style="font-size:0.52rem;background:var(--cream);border:1px solid var(--border);color:var(--navy);padding:0.15rem 0.5rem;border-radius:20px;font-weight:700;">Other/Unspecified ×26</span>
-          <span style="font-size:0.52rem;background:var(--cream);border:1px solid var(--border);color:var(--navy);padding:0.15rem 0.5rem;border-radius:20px;font-weight:700;">LAUSD ×3</span>
+          <span style="font-size:0.52rem;background:var(--cream);border:1px solid var(--border);color:var(--navy);padding:0.15rem 0.5rem;border-radius:20px;font-weight:700;">Other/Unspecified ×53</span>
+          <span style="font-size:0.52rem;background:var(--cream);border:1px solid var(--border);color:var(--navy);padding:0.15rem 0.5rem;border-radius:20px;font-weight:700;">LAUSD ×5</span>
+          <span style="font-size:0.52rem;background:var(--cream);border:1px solid var(--border);color:var(--navy);padding:0.15rem 0.5rem;border-radius:20px;font-weight:700;">Long Beach USD ×3</span>
+          <span style="font-size:0.52rem;background:var(--cream);border:1px solid var(--border);color:var(--navy);padding:0.15rem 0.5rem;border-radius:20px;font-weight:700;">Garden Grove USD ×3</span>
+          <span style="font-size:0.52rem;background:var(--cream);border:1px solid var(--border);color:var(--navy);padding:0.15rem 0.5rem;border-radius:20px;font-weight:700;">Moreno Valley USD ×3</span>
+          <span style="font-size:0.52rem;background:var(--cream);border:1px solid var(--border);color:var(--navy);padding:0.15rem 0.5rem;border-radius:20px;font-weight:700;">Corona-Norco USD ×2</span>
           <span style="font-size:0.52rem;background:var(--cream);border:1px solid var(--border);color:var(--navy);padding:0.15rem 0.5rem;border-radius:20px;font-weight:700;">Fontana USD ×2</span>
           <span style="font-size:0.52rem;background:var(--cream);border:1px solid var(--border);color:var(--navy);padding:0.15rem 0.5rem;border-radius:20px;font-weight:700;">San Bernardino City USD ×2</span>
-          <span style="font-size:0.52rem;background:var(--cream);border:1px solid var(--border);color:var(--navy);padding:0.15rem 0.5rem;border-radius:20px;font-weight:700;">Garden Grove USD ×2</span>
-          <span style="font-size:0.52rem;background:var(--cream);border:1px solid var(--border);color:var(--navy);padding:0.15rem 0.5rem;border-radius:20px;font-weight:700;">Moreno Valley USD ×2</span>
           <span style="font-size:0.52rem;background:var(--cream);border:1px solid var(--border);color:var(--navy);padding:0.15rem 0.5rem;border-radius:20px;font-weight:700;">Compton USD ×2</span>
           <span style="font-size:0.52rem;background:var(--cream);border:1px solid var(--border);color:var(--navy);padding:0.15rem 0.5rem;border-radius:20px;font-weight:700;">Orange USD ×2</span>
-          <span style="font-size:0.52rem;background:var(--cream);border:1px solid var(--border);color:var(--navy);padding:0.15rem 0.5rem;border-radius:20px;font-weight:700;">Long Beach USD ×2</span>
-          <span style="font-size:0.52rem;background:var(--cream);border:1px solid var(--border);color:var(--navy);padding:0.15rem 0.5rem;border-radius:20px;font-weight:700;">Corona-Norco USD ×2</span>
           <span style="font-size:0.52rem;background:var(--cream);border:1px solid var(--border);color:var(--navy);padding:0.15rem 0.5rem;border-radius:20px;font-weight:700;">Bonita USD ×2</span>
           <span style="font-size:0.52rem;background:var(--cream);border:1px solid var(--border);color:var(--navy);padding:0.15rem 0.5rem;border-radius:20px;font-weight:700;">ABC USD ×1</span>
           <span style="font-size:0.52rem;background:var(--cream);border:1px solid var(--border);color:var(--navy);padding:0.15rem 0.5rem;border-radius:20px;font-weight:700;">Mountain View SD ×1</span>
           <span style="font-size:0.52rem;background:var(--cream);border:1px solid var(--border);color:var(--navy);padding:0.15rem 0.5rem;border-radius:20px;font-weight:700;">Paradise Valley USD ×1</span>
           <span style="font-size:0.52rem;background:var(--cream);border:1px solid var(--border);color:var(--navy);padding:0.15rem 0.5rem;border-radius:20px;font-weight:700;">La Habra City ESD ×1</span>
+          <span style="font-size:0.52rem;background:var(--cream);border:1px solid var(--border);color:var(--navy);padding:0.15rem 0.5rem;border-radius:20px;font-weight:700;">Palm Springs USD ×1</span>
+          <span style="font-size:0.52rem;background:var(--cream);border:1px solid var(--border);color:var(--navy);padding:0.15rem 0.5rem;border-radius:20px;font-weight:700;">Menifee USD ×1</span>
+          <span style="font-size:0.52rem;background:var(--cream);border:1px solid var(--border);color:var(--navy);padding:0.15rem 0.5rem;border-radius:20px;font-weight:700;">Santa Ana USD ×1</span>
+          <span style="font-size:0.52rem;background:var(--cream);border:1px solid var(--border);color:var(--navy);padding:0.15rem 0.5rem;border-radius:20px;font-weight:700;">San Bernardino USD ×1</span>
+          <span style="font-size:0.52rem;background:var(--cream);border:1px solid var(--border);color:var(--navy);padding:0.15rem 0.5rem;border-radius:20px;font-weight:700;">Downey USD ×1</span>
+          <span style="font-size:0.52rem;background:var(--cream);border:1px solid var(--border);color:var(--navy);padding:0.15rem 0.5rem;border-radius:20px;font-weight:700;">Riverside Unified ESD ×1</span>
           <span style="font-size:0.52rem;background:var(--cream);border:1px solid var(--border);color:var(--navy);padding:0.15rem 0.5rem;border-radius:20px;font-weight:700;">Whittier City ESD ×1</span>
           <span style="font-size:0.52rem;background:var(--cream);border:1px solid var(--border);color:var(--navy);padding:0.15rem 0.5rem;border-radius:20px;font-weight:700;">Torrance USD ×1</span>
-          <span style="font-size:0.52rem;background:var(--cream);border:1px solid var(--border);color:var(--navy);padding:0.15rem 0.5rem;border-radius:20px;font-weight:700;">San Bernardino USD ×1</span>
-          <span style="font-size:0.52rem;background:var(--cream);border:1px solid var(--border);color:var(--navy);padding:0.15rem 0.5rem;border-radius:20px;font-weight:700;">Riverside Unified ESD ×1</span>
+          <span style="font-size:0.52rem;background:var(--cream);border:1px solid var(--border);color:var(--navy);padding:0.15rem 0.5rem;border-radius:20px;font-weight:700;">Colton USD ×1</span>
           <span style="font-size:0.52rem;background:var(--cream);border:1px solid var(--border);color:var(--navy);padding:0.15rem 0.5rem;border-radius:20px;font-weight:700;">Chino Valley USD ×1</span>
         </div>
       </div>
@@ -786,6 +823,9 @@
   <!-- Campaign -->
   <div class="card full-w">
     <div class="card-head"><div class="card-title">Social Media Campaign <span>CPA Breakdown</span></div></div>
+    <div style="padding:0.5rem 0.7rem;background:var(--yellow-light);border:1px solid rgba(255,211,51,0.4);border-radius:8px;font-size:0.55rem;color:#8a6200;font-weight:700;margin-bottom:0.75rem;">
+      ⚠️ Not refreshed with the new export — ad spend/cost-per-lead figures aren't included in the ALL_LEAD_GEN lead export. Figures below are still from the prior data pull.
+    </div>
     <div class="camp-summary">
       <div><div class="cs-lab">Total Leads</div><div class="cs-val">414</div></div>
       <div><div class="cs-lab">Est. Spend</div><div class="cs-val">$5,328</div></div>
@@ -813,113 +853,123 @@
 // ── CLEAN DATA (post-dedup/junk removal) ─────────────────────────────────────
 // Report date: 2026-07-22 | Total clean leads: 1,679
 // FM leads: 320 | Digital leads: 1,359
-// Accepted/Converted: 81 total (54 FM, 27 digital)
-// Pipeline: 165 (Review+Internal Review:73, Prescreen:2, Engagement Initiated:84, Offer Confirmation:6)
-// Closed-Declined: 1,041 | New: 385
+// Accepted/Converted: 94 total (65 FM, 29 digital)
+// Pipeline: 223 (Review+Internal Review:114, Prescreen:6, Engagement Initiated:94, Offer Confirmation+Offer Out:9)
+// Closed-Declined: 1,076 | New: 543
+// Data refreshed 2026-08-13 from ALL_LEAD_GEN export (through Aug 13, 2026)
 
 var DATA = {
   ytd: {
-    leads:1679, conv:81, pipe:165,
-    digLeads:1359, fmLeads:320,
-    digConv:27, fmConv:54,
-    digRate:'2.0%', fmRate:'16.9%', rate:'4.8%',
+    leads:1936, conv:94, pipe:223,
+    digLeads:1602, fmLeads:334,
+    digConv:29, fmConv:65,
+    digRate:'1.8%', fmRate:'19.5%', rate:'4.9%',
     label:'', sub:'',
-    closed:1041, newL:385, acc:81, rev:73, ben:2, pend:84, cap:6,
-    decIns:69, decCli:170, decWS:39, decAv:10, decLoc:14, decDen:3
+    closed:1076, newL:543, acc:94, rev:114, ben:6, pend:94, cap:9,
+    decIns:70, decCli:171, decWS:39, decAv:10, decLoc:14, decDen:3
   },
   q1: {
-    leads:652, conv:32, pipe:6,
-    digLeads:571, fmLeads:81,
+    leads:674, conv:32, pipe:6,
+    digLeads:593, fmLeads:81,
     digConv:9, fmConv:23,
-    digRate:'1.6%', fmRate:'28.4%', rate:'4.9%',
+    digRate:'1.5%', fmRate:'28.4%', rate:'4.7%',
     label:'Q1 2026', sub:'Q1 2026 · Jan 1 — Mar 31',
-    closed:580, newL:34, acc:32, rev:1, ben:0, pend:5, cap:0,
-    decIns:27, decCli:84, decWS:23, decAv:7, decLoc:8, decDen:1
+    closed:599, newL:37, acc:32, rev:1, ben:0, pend:5, cap:0,
+    decIns:28, decCli:84, decWS:23, decAv:7, decLoc:8, decDen:1
   },
   jan: {
-    leads:206, conv:9, pipe:1,
-    digLeads:183, fmLeads:23,
+    leads:208, conv:9, pipe:1,
+    digLeads:185, fmLeads:23,
     digConv:3, fmConv:6,
-    digRate:'1.6%', fmRate:'26.1%', rate:'4.4%',
+    digRate:'1.6%', fmRate:'26.1%', rate:'4.3%',
     label:'January 2026', sub:'January 2026 · Jan 1 — Jan 31',
-    closed:196, newL:0, acc:9, rev:1, ben:0, pend:0, cap:0,
+    closed:198, newL:0, acc:9, rev:1, ben:0, pend:0, cap:0,
     decIns:3, decCli:22, decWS:3, decAv:1, decLoc:2, decDen:1
   },
   feb: {
-    leads:212, conv:11, pipe:0,
-    digLeads:185, fmLeads:27,
+    leads:218, conv:11, pipe:0,
+    digLeads:191, fmLeads:27,
     digConv:4, fmConv:7,
-    digRate:'2.2%', fmRate:'25.9%', rate:'5.2%',
+    digRate:'2.1%', fmRate:'25.9%', rate:'5.0%',
     label:'February 2026', sub:'February 2026 · Feb 1 — Feb 28',
-    closed:194, newL:7, acc:11, rev:0, ben:0, pend:0, cap:0,
+    closed:200, newL:7, acc:11, rev:0, ben:0, pend:0, cap:0,
     decIns:13, decCli:32, decWS:12, decAv:2, decLoc:1, decDen:0
   },
   mar: {
-    leads:234, conv:12, pipe:5,
-    digLeads:203, fmLeads:31,
+    leads:248, conv:12, pipe:5,
+    digLeads:217, fmLeads:31,
     digConv:2, fmConv:10,
-    digRate:'1.0%', fmRate:'32.3%', rate:'5.1%',
+    digRate:'0.9%', fmRate:'32.3%', rate:'4.8%',
     label:'March 2026', sub:'March 2026 · Mar 1 — Mar 31',
-    closed:190, newL:27, acc:12, rev:0, ben:0, pend:5, cap:0,
-    decIns:11, decCli:30, decWS:8, decAv:4, decLoc:5, decDen:0
+    closed:201, newL:30, acc:12, rev:0, ben:0, pend:5, cap:0,
+    decIns:12, decCli:30, decWS:8, decAv:4, decLoc:5, decDen:0
   },
   apr: {
-    leads:284, conv:12, pipe:9,
-    digLeads:210, fmLeads:74,
-    digConv:5, fmConv:7,
-    digRate:'2.4%', fmRate:'9.5%', rate:'4.2%',
+    leads:293, conv:13, pipe:8,
+    digLeads:219, fmLeads:74,
+    digConv:5, fmConv:8,
+    digRate:'2.3%', fmRate:'10.8%', rate:'4.4%',
     label:'April 2026', sub:'April 2026 · Apr 1 — Apr 30',
-    closed:236, newL:27, acc:12, rev:7, ben:0, pend:2, cap:0,
+    closed:244, newL:28, acc:13, rev:7, ben:0, pend:1, cap:0,
     decIns:26, decCli:56, decWS:9, decAv:3, decLoc:1, decDen:0
   },
   may: {
-    leads:260, conv:16, pipe:7,
-    digLeads:217, fmLeads:43,
-    digConv:4, fmConv:12,
-    digRate:'1.8%', fmRate:'27.9%', rate:'6.2%',
+    leads:269, conv:17, pipe:7,
+    digLeads:226, fmLeads:43,
+    digConv:4, fmConv:13,
+    digRate:'1.8%', fmRate:'30.2%', rate:'6.3%',
     label:'May 2026', sub:'May 2026 · May 1 — May 31',
-    closed:172, newL:65, acc:16, rev:2, ben:0, pend:4, cap:1,
-    decIns:12, decCli:25, decWS:5, decAv:0, decLoc:4, decDen:1
+    closed:179, newL:66, acc:17, rev:2, ben:0, pend:5, cap:0,
+    decIns:12, decCli:26, decWS:5, decAv:0, decLoc:4, decDen:1
   },
   jun: {
-    leads:285, conv:13, pipe:98,
-    digLeads:202, fmLeads:83,
-    digConv:6, fmConv:7,
-    digRate:'3.0%', fmRate:'8.4%', rate:'4.6%',
+    leads:290, conv:15, pipe:101,
+    digLeads:217, fmLeads:73,
+    digConv:7, fmConv:8,
+    digRate:'3.2%', fmRate:'11.0%', rate:'5.2%',
     label:'June 2026', sub:'June 2026 · Jun 1 — Jun 30',
-    closed:53, newL:120, acc:13, rev:35, ben:2, pend:56, cap:5,
+    closed:54, newL:120, acc:15, rev:38, ben:4, pend:54, cap:5,
     decIns:4, decCli:5, decWS:2, decAv:0, decLoc:1, decDen:1
   },
   jul: {
-    leads:198, conv:8, pipe:45,
-    digLeads:159, fmLeads:39,
-    digConv:3, fmConv:5,
-    digRate:'1.9%', fmRate:'12.8%', rate:'4.0%',
-    label:'July 2026 (partial)', sub:'July 2026 · Jul 1 — Jul 22 (partial)',
-    closed:0, newL:139, acc:8, rev:28, ben:0, pend:17, cap:0,
+    leads:293, conv:17, pipe:74,
+    digLeads:245, fmLeads:48,
+    digConv:4, fmConv:13,
+    digRate:'1.6%', fmRate:'27.1%', rate:'5.8%',
+    label:'July 2026', sub:'July 2026 · Jul 1 — Jul 31',
+    closed:0, newL:202, acc:17, rev:58, ben:2, pend:10, cap:4,
+    decIns:0, decCli:0, decWS:0, decAv:0, decLoc:0, decDen:0
+  },
+  aug: {
+    leads:117, conv:0, pipe:27,
+    digLeads:102, fmLeads:15,
+    digConv:0, fmConv:0,
+    digRate:'0.0%', fmRate:'0.0%', rate:'0.0%',
+    label:'August 2026 (partial)', sub:'August 2026 · Aug 1 — Aug 13 (partial)',
+    closed:0, newL:90, acc:0, rev:8, ben:0, pend:19, cap:0,
     decIns:0, decCli:0, decWS:0, decAv:0, decLoc:0, decDen:0
   }
 };
 
 // territory: [code, name, total, digital, fm, conv, pipe, home, center]
 var TERR_ALL = [
-  ['SD',  'San Diego',        167,133, 34, 20, 6, 8,12],
-  ['IEN', 'Inland Empire N',   58, 32, 26, 17,15, 3,14],
-  ['IES', 'Inland Empire S',   62, 27, 35, 14,12, 5, 9],
-  ['SAC', 'Sacramento',       193, 96, 97, 13,24, 6, 7],
-  ['LAW', 'Los Angeles West', 137,103, 34,  7,15, 3, 4],
-  ['LAN', 'Los Angeles North', 54, 34, 20,  3,10, 1, 2],
-  ['OC',  'Orange County',    101, 80, 21,  7,14, 3, 4],
+  ['SD',  'San Diego',        174,140, 34, 20, 9, 8,12],
+  ['IEN', 'Inland Empire N',   73, 45, 28, 17,29, 3,14],
+  ['IES', 'Inland Empire S',   72, 35, 37, 14,20, 5, 9],
+  ['SAC', 'Sacramento',       209,104,105, 16,36, 7, 9],
+  ['LAW', 'Los Angeles West', 144,108, 36, 11,20, 5, 6],
+  ['LAN', 'Los Angeles North', 63, 41, 22,  6,15, 3, 3],
+  ['OC',  'Orange County',    110, 85, 25, 10,20, 3, 7],
   ['BAY', 'Bay Area',           6,  6,  0,  0, 0, 0, 0],
   ['DEN', 'Denver',             4,  4,  0,  0, 2, 0, 0],
-  ['?',   'Unassigned',       897,844, 53,  0,67, 0, 0]
+  ['?',   'Unassigned',      1081,1034,47,  0,72, 0, 0]
 ];
 
-var MONTHLY = {labels:['Jan','Feb','Mar','Apr','May','Jun','Jul'],conv:[9,11,12,12,16,13,8],leads:[206,212,234,284,260,285,198]};
+var MONTHLY = {labels:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug'],conv:[9,11,12,13,17,15,17,0],leads:[208,218,248,293,269,290,293,117]};
 var WEEKLY  = {
-  labels:['W1-J','W2-J','W3-J','W4-J','W1-F','W2-F','W3-F','W4-F','W1-M','W2-M','W3-M','W4-M','W1-A','W2-A','W3-A','W4-A','W1-M2','W2-M2','W3-M2','W4-M2','W1-Jn','W2-Jn','W3-Jn','W4-Jn','W1-Jl','W2-Jl','W3-Jl','W4-Jl','W5-Jl'],
-  conv:  [1,0,3,3,3,0,6,2,5,3,2,0,4,3,3,2,4,1,3,4,7,2,2,4,5,1,6,2,0],
-  leads: [44,48,51,48,47,36,59,56,63,54,55,48,58,55,68,69,67,46,65,71,59,80,57,75,54,60,71,62,53]
+  labels:['W1-J','W2-J','W3-J','W4-J','W5-J','W1-F','W2-F','W3-F','W4-F','W1-M','W2-M','W3-M','W4-M','W5-M','W1-A','W2-A','W3-A','W4-A','W5-A','W1-M2','W2-M2','W3-M2','W4-M2','W5-M2','W1-Jn','W2-Jn','W3-Jn','W4-Jn','W5-Jn','W1-Jl','W2-Jl','W3-Jl','W4-Jl','W5-Jl','W1-Ag','W2-Ag'],
+  conv:  [1,0,3,3,2,1,3,3,4,3,5,0,3,1,3,3,3,4,0,1,3,5,8,0,3,1,6,4,1,5,5,4,2,1,0,0],
+  leads: [44,48,53,48,15,49,41,65,63,55,71,48,43,31,61,75,72,58,27,44,75,65,60,25,83,68,63,55,21,66,73,64,67,23,68,49]
 };
 
 function fmt(n){return n.toLocaleString();}
@@ -1058,7 +1108,7 @@ function sliceTerritory(key,btn){
   btn.classList.add('active');
   var data=key==='all'?TERR_ALL:TERR_ALL.filter(function(r){return r[0]===key;});
   buildTerritoryTable(data);
-  var unassigned=897, totalClean=1679;
+  var unassigned=1081, totalClean=1936;
   document.getElementById('terrWarn').style.display=key==='all'?'block':'none';
   document.getElementById('terrWarn').textContent=unassigned+' leads ('+((unassigned/totalClean)*100).toFixed(1)+'%) have no territory assigned — primarily digital/social leads without location data.';
 }
